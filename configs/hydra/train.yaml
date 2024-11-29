@@ -1,0 +1,12 @@
+defaults:
+  - _self_
+  - model: prophet #orbit - random_forest - sarimax - lstm - gru - prophet
+  - dataset_loader: CoinMarket #Bitmex CoinMarket
+  - metrics
+
+validation_method: simple #simple - cross_validation
+symbol: Cvy
+# load_path: C:\Users\samen\Desktop\term9\CryptoPredictions\data\ETHUSD-1d-data.csv
+load_path: C:\Users\moham\Downloads\crypto\crypto\data\data1.csv
+save_dir:
+dataset_path:

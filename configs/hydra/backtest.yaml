@@ -1,0 +1,11 @@
+defaults:
+  - _self_
+  - train
+
+dataframe_path: C:\Users\moham\Downloads\crypto\crypto\outputs\2023-10-13\16-16-19\backTest_dataset\
+
+strategy_signal: signal1
+buy_stop_loss: 0.9
+buy_take_profit: 1.1
+sell_stop_loss: 1.1
+sell_take_profit: 0.9
