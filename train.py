@@ -156,4 +156,4 @@ def main(cfg: DictConfig) -> None:
     application.run_polling()
 
 if __name__ == '__main__':
-    main(cfg)
+    main()
