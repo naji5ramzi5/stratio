@@ -1,6 +1,6 @@
 import logging
 import os
-import yfinance as yf  # لم يتم حذفه كما طلبت
+import yfinance as yf  
 import hydra
 from omegaconf import DictConfig
 from models import MODELS
@@ -28,17 +28,14 @@ import csv
 
 logger = logging.getLogger(__name__)
 
-# إعداد API Key و Secret Key
 API_KEY = 'ddCXARf1hp1OjbaLJInHpYnEhMqKziYs9ae8dEH1NbLaonYpkgPu0tX75DqnjaDD'
 API_SECRET = 'oFHovFudTJcj9UteGQa3VxxIOp9OqvlPn7t9HWiHJ62afPvgvZVo7Id01VsVRHW2'
 
-# إعداد تفاصيل API Binance
 BASE_URL = "https://api.binance.com"
 url_klines = f"{BASE_URL}/api/v3/klines"
 
 symbols = [
-    "BTCUSDT", "ETHUSDT", "BNBUSDT"  # تم تعديل التنسيق ليكون متوافقاً مع Binance
-    # يمكنك إضافة المزيد من الرموز هنا بنفس التنسيق
+    "BTCUSDT", "ETHUSDT", "BNBUSDT"  
 ]
 
 data_folder = '/opt/render/project/src/data'
@@ -106,7 +103,6 @@ def train(cfg: DictConfig):
 
         add_future_dates(data_filename, symbol)
 
-        # باقي الكود كما هو دون تغيير
 
     print(title)
     return title
