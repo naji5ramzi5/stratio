@@ -107,7 +107,7 @@ def train(cfg: DictConfig):
 
 # Telegram Bot setup
 TOKEN = '7272871832:AAGa5-_FdFfziJqDG9pp4N9ljnZ2uyxslJ0'
-AUTHORIZED_USERS = [715531930, 117245128, 1796556765,991558864]
+AUTHORIZED_USERS = [715531930, 117245128, 1796556765]
 
 async def start(update: Update, context: ContextTypes.DEFAULT_TYPE) -> None:
     if not await check_authorized_user(update):
@@ -149,18 +149,16 @@ async def main(cfg: DictConfig) -> None:
 
     scheduler = AsyncIOScheduler()
 
-    # الحصول على حلقة asyncio الحالية
-    loop = asyncio.get_event_loop()
-
-    trigger = CronTrigger(hour=5, minute=0, second=0, timezone="Asia/Baghdad")
-    scheduler.add_job(daily_prediction, trigger, args=[cfg, application])
-
-    # تشغيل الجدولة باستخدام حلقة الحدث
+    # تأكد من أن الحلقة تعمل باستخدام asyncio
+    # لا تستخدم loop.run_until_complete هنا لأن ذلك يتعارض مع عملية الجدولة
     scheduler.start()
 
+    # إضافة الوظائف المطلوبة إلى الموجه
     application.add_handler(CommandHandler('start', start))
     application.add_handler(MessageHandler(filters.TEXT & ~filters.COMMAND, partial(handle_prediction, cfg=cfg)))
-    application.run_polling()
+    
+    # بدأ عمل bot وloop
+    await application.run_polling()
 
 if __name__ == '__main__':
-    asyncio.run(main())  # استخدام asyncio.run لتشغيل الدالة الرئيسية بشكل صحيح
+    asyncio.run(main())  # استخدم asyncio.run بدلاً من استخدام loop.run_until_complete
