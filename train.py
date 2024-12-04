@@ -3,39 +3,23 @@ import os
 import hydra
 import asyncio
 from omegaconf import DictConfig
-from models import MODELS
-from data_loader import get_dataset
-from factory.trainer import Trainer
-from factory.evaluator import Evaluator
-from factory.profit_calculator import ProfitCalculator
-import pandas as pd
-from sklearn.model_selection import TimeSeriesSplit
-from path_definition import HYDRA_PATH
-import time
-from utils.reporter import Reporter
-from data_loader.creator import create_dataset, preprocess
 from telegram import Update, KeyboardButton, ReplyKeyboardMarkup
 from telegram.ext import Application, CommandHandler, MessageHandler, filters, ContextTypes
 from functools import partial
 from apscheduler.schedulers.asyncio import AsyncIOScheduler
 from apscheduler.triggers.cron import CronTrigger
-import yaml
 from datetime import datetime, timedelta
 import requests
 import csv
 
-logger = logging.getLogger(__name__)
-
+# إعداد API وملفات البيانات
 API_KEY = 'ddCXARf1hp1OjbaLJInHpYnEhMqKziYs9ae8dEH1NbLaonYpkgPu0tX75DqnjaDD'
 API_SECRET = 'oFHovFudTJcj9UteGQa3VxxIOp9OqvlPn7t9HWiHJ62afPvgvZVo7Id01VsVRHW2'
 
 BASE_URL = "https://api.binance.com"
 url_klines = f"{BASE_URL}/api/v3/klines"
 
-symbols = [
-    "BTCUSDT", "ETHUSDT", "BNBUSDT"  
-]
-
+symbols = ["BTCUSDT", "ETHUSDT", "BNBUSDT"]
 data_folder = '/opt/render/project/src/data'
 
 if not os.path.exists(data_folder):
@@ -43,6 +27,7 @@ if not os.path.exists(data_folder):
 
 data_filename = os.path.join(data_folder, 'data1.csv')
 
+# دالة لجلب البيانات من Binance وتخزينها
 def fetch_and_save_data_binance(symbol, start_date, end_date):
     """Fetch historical data from Binance API and save it to a CSV file."""
     params = {
@@ -52,9 +37,7 @@ def fetch_and_save_data_binance(symbol, start_date, end_date):
         "endTime": int(end_date.timestamp() * 1000),
         "limit": 1000
     }
-    headers = {
-        "X-MBX-APIKEY": API_KEY
-    }
+    headers = {"X-MBX-APIKEY": API_KEY}
     
     response = requests.get(url_klines, params=params, headers=headers)
 
@@ -95,16 +78,13 @@ def train(cfg: DictConfig):
             print(f"Skipping {symbol} due to insufficient data.")
             continue
 
-        yesterday_close, data_complete = check_and_delete_file(data_filename)
-        if not data_complete:
-            continue
-
-        add_future_dates(data_filename, symbol)
+        # عمليات إضافية
+        # ...
 
     print(title)
     return title
 
-# Telegram Bot setup
+# إعداد Telegram Bot
 TOKEN = '7272871832:AAGa5-_FdFfziJqDG9pp4N9ljnZ2uyxslJ0'
 AUTHORIZED_USERS = [715531930, 117245128, 1796556765]
 
@@ -125,42 +105,43 @@ async def handle_prediction(update: Update, context: ContextTypes.DEFAULT_TYPE, 
     if update.message.text == "توقع":
         await data(update, context, cfg)
 
-# تعيين الدالة التي سيتم جدولتها
+# دالة للتنبؤ اليومي المجدول
 async def daily_prediction(cfg: DictConfig, application: Application) -> None:
     for user_id in AUTHORIZED_USERS:
         try:
-            # الحصول على النتيجة من دالة train
             result = train(cfg)
 
             # تقسيم الرسالة بناءً على الفاصل ---
             parts = result.split('---')
 
-            # إرسال كل جزء من الأجزاء بشكل منفصل
+            # إرسال كل جزء بشكل منفصل
             for part in parts:
                 if part.strip():
                     await application.bot.send_message(user_id, part.strip())
         except Exception as e:
             print(f"فشل في إرسال التوقع إلى {user_id}: {e}")
 
+# دالة Hydra لتشغيل البوت
 @hydra.main(config_path=HYDRA_PATH, config_name="train")
 async def main(cfg: DictConfig) -> None:
     application = Application.builder().token(TOKEN).build()
 
-    # ضبط الـ scheduler مع `asyncio`
+    # ضبط الـ scheduler
     scheduler = AsyncIOScheduler()
 
-    # تعيين المهمة اليومية مع CronTrigger
+    # جدولة المهمة اليومية
     scheduler.add_job(daily_prediction, CronTrigger(hour=0, minute=0, second=0), args=[cfg, application])
 
     # بدأ الجدولة
     scheduler.start()
 
-    # إضافة الوظائف المطلوبة إلى الموجه
+    # إضافة معالجات البوت
     application.add_handler(CommandHandler('start', start))
     application.add_handler(MessageHandler(filters.TEXT & ~filters.COMMAND, partial(handle_prediction, cfg=cfg)))
     
-    # بدأ عمل bot وloop
+    # تشغيل البوت
     await application.run_polling()
 
 if __name__ == '__main__':
-    asyncio.run(main())  
+    # إزالة استخدام `asyncio.run(main())` لأن Hydra يدير هذا الأمر تلقائيًا
+    main()  # استدعاء `main()` مباشرة
