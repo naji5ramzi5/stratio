@@ -1,6 +1,5 @@
 import logging
 import os
-import yfinance as yf  
 import hydra
 from omegaconf import DictConfig
 from models import MODELS
