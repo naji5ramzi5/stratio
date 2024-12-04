@@ -16,8 +16,6 @@ from data_loader.creator import create_dataset, preprocess
 from telegram import Update, KeyboardButton, ReplyKeyboardMarkup
 from telegram.ext import Application, CommandHandler, MessageHandler, filters, ContextTypes
 from functools import partial
-from flask import Flask
-from threading import Thread
 from apscheduler.schedulers.asyncio import AsyncIOScheduler
 from apscheduler.triggers.cron import CronTrigger
 import yaml
@@ -127,8 +125,22 @@ async def handle_prediction(update: Update, context: ContextTypes.DEFAULT_TYPE, 
     if update.message.text == "توقع":
         await data(update, context, cfg)
 
-# Flask and Bot running
-app = Flask(__name__)
+# تعيين الدالة التي سيتم جدولتها
+async def daily_prediction(cfg: DictConfig, application: Application) -> None:
+    for user_id in AUTHORIZED_USERS:
+        try:
+            # الحصول على النتيجة من دالة train
+            result = train(cfg)
+
+            # تقسيم الرسالة بناءً على الفاصل ---
+            parts = result.split('---')
+
+            # إرسال كل جزء من الأجزاء بشكل منفصل
+            for part in parts:
+                if part.strip():
+                    await application.bot.send_message(user_id, part.strip())
+        except Exception as e:
+            print(f"فشل في إرسال التوقع إلى {user_id}: {e}")
 
 @hydra.main(config_path=HYDRA_PATH, config_name="train")
 def main(cfg: DictConfig) -> None:
@@ -144,6 +156,4 @@ def main(cfg: DictConfig) -> None:
     application.run_polling()
 
 if __name__ == '__main__':
-    flask_thread = Thread(target=app.run, kwargs={'host': '0.0.0.0', 'port': 8080})
-    flask_thread.start()
-    main()
+    main(cfg)
