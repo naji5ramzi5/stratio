@@ -1,17 +1,39 @@
 import logging
 import os
 import hydra
-import asyncio
 from omegaconf import DictConfig
+from models import MODELS
+from data_loader import get_dataset
+from factory.trainer import Trainer
+from factory.evaluator import Evaluator
+from factory.profit_calculator import ProfitCalculator
+import pandas as pd
+from sklearn.model_selection import TimeSeriesSplit
+from path_definition import HYDRA_PATH
+import time
+
+from utils.reporter import Reporter
+from data_loader.creator import create_dataset, preprocess
 from telegram import Update, KeyboardButton, ReplyKeyboardMarkup
 from telegram.ext import Application, CommandHandler, MessageHandler, filters, ContextTypes
+import logging
+from omegaconf import DictConfig
 from functools import partial
+from flask import Flask
+from threading import Thread
 from apscheduler.schedulers.asyncio import AsyncIOScheduler
 from apscheduler.triggers.cron import CronTrigger
+
+
+
+import yaml
 from datetime import datetime, timedelta
+
 import requests
 import csv
-
+import os
+from datetime import datetime, timedelta
+import pandas as pd
 # إعداد API وملفات البيانات
 API_KEY = 'ddCXARf1hp1OjbaLJInHpYnEhMqKziYs9ae8dEH1NbLaonYpkgPu0tX75DqnjaDD'
 API_SECRET = 'oFHovFudTJcj9UteGQa3VxxIOp9OqvlPn7t9HWiHJ62afPvgvZVo7Id01VsVRHW2'
@@ -122,7 +144,7 @@ async def daily_prediction(cfg: DictConfig, application: Application) -> None:
             print(f"فشل في إرسال التوقع إلى {user_id}: {e}")
 
 # دالة Hydra لتشغيل البوت
-@hydra.main(config_path=HYDRA_PATH, config_name="train")
+@hydra.main(config_path="config", config_name="train") 
 async def main(cfg: DictConfig) -> None:
     application = Application.builder().token(TOKEN).build()
 
@@ -143,5 +165,4 @@ async def main(cfg: DictConfig) -> None:
     await application.run_polling()
 
 if __name__ == '__main__':
-    # إزالة استخدام `asyncio.run(main())` لأن Hydra يدير هذا الأمر تلقائيًا
     main()  # استدعاء `main()` مباشرة
