@@ -107,7 +107,7 @@ def train(cfg: DictConfig):
 
 # Telegram Bot setup
 TOKEN = '7272871832:AAGa5-_FdFfziJqDG9pp4N9ljnZ2uyxslJ0'
-AUTHORIZED_USERS = [715531930, 117245128, 1796556765]
+AUTHORIZED_USERS = [715531930, 117245128, 1796556765,991558864]
 
 async def start(update: Update, context: ContextTypes.DEFAULT_TYPE) -> None:
     if not await check_authorized_user(update):
@@ -144,24 +144,23 @@ async def daily_prediction(cfg: DictConfig, application: Application) -> None:
             print(f"فشل في إرسال التوقع إلى {user_id}: {e}")
 
 @hydra.main(config_path=HYDRA_PATH, config_name="train")
-def main(cfg: DictConfig) -> None:
+async def main(cfg: DictConfig) -> None:
     application = Application.builder().token(TOKEN).build()
 
     scheduler = AsyncIOScheduler()
 
-    # تأكد من تشغيل حلقة asyncio
+    # الحصول على حلقة asyncio الحالية
     loop = asyncio.get_event_loop()
-    
+
     trigger = CronTrigger(hour=5, minute=0, second=0, timezone="Asia/Baghdad")
     scheduler.add_job(daily_prediction, trigger, args=[cfg, application])
 
     # تشغيل الجدولة باستخدام حلقة الحدث
-    loop.run_until_complete(scheduler.start())
+    scheduler.start()
 
     application.add_handler(CommandHandler('start', start))
     application.add_handler(MessageHandler(filters.TEXT & ~filters.COMMAND, partial(handle_prediction, cfg=cfg)))
     application.run_polling()
 
 if __name__ == '__main__':
-    main()
-
+    asyncio.run(main())  # استخدام asyncio.run لتشغيل الدالة الرئيسية بشكل صحيح
