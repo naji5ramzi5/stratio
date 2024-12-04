@@ -101,7 +101,6 @@ def train(cfg: DictConfig):
 
         add_future_dates(data_filename, symbol)
 
-
     print(title)
     return title
 
@@ -147,10 +146,13 @@ async def daily_prediction(cfg: DictConfig, application: Application) -> None:
 async def main(cfg: DictConfig) -> None:
     application = Application.builder().token(TOKEN).build()
 
+    # ضبط الـ scheduler مع `asyncio`
     scheduler = AsyncIOScheduler()
 
-    # تأكد من أن الحلقة تعمل باستخدام asyncio
-    # لا تستخدم loop.run_until_complete هنا لأن ذلك يتعارض مع عملية الجدولة
+    # تعيين المهمة اليومية مع CronTrigger
+    scheduler.add_job(daily_prediction, CronTrigger(hour=0, minute=0, second=0), args=[cfg, application])
+
+    # بدأ الجدولة
     scheduler.start()
 
     # إضافة الوظائف المطلوبة إلى الموجه
@@ -161,4 +163,4 @@ async def main(cfg: DictConfig) -> None:
     await application.run_polling()
 
 if __name__ == '__main__':
-    asyncio.run(main())  # استخدم asyncio.run بدلاً من استخدام loop.run_until_complete
+    asyncio.run(main())  
