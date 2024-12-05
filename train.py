@@ -144,7 +144,7 @@ async def daily_prediction(cfg: DictConfig, application: Application) -> None:
             print(f"فشل في إرسال التوقع إلى {user_id}: {e}")
 
 # دالة Hydra لتشغيل البوت
-@hydra.main(config_path="config", config_name="train") 
+@hydra.main(config_path=HYDRA_PATH, config_name="train")
 async def main(cfg: DictConfig) -> None:
     application = Application.builder().token(TOKEN).build()
 
