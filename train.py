@@ -396,6 +396,6 @@ def main(cfg: DictConfig) -> None:
     application.run_polling()
 
 if __name__ == '__main__':
-     flask_thread = Thread(target=app.run, kwargs={'host': '0.0.0.0', 'port': 8080})
-     flask_thread.start()
+    flask_thread = Thread(target=app.run, kwargs={'host': '0.0.0.0', 'port': 8080})
+    flask_thread.start()
     main()
