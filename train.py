@@ -314,12 +314,12 @@ import logging
 import hydra
 from omegaconf import DictConfig
 from functools import partial
-# from flask import Flask
+from flask import Flask
 from threading import Thread
 from apscheduler.schedulers.asyncio import AsyncIOScheduler
 from apscheduler.triggers.cron import CronTrigger
 
-app = Flask(_name_)
+app = Flask(__name__)
 
 logging.basicConfig(level=logging.INFO)
 
