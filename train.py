@@ -240,7 +240,6 @@ def train(cfg: DictConfig):
         elif cfg.model is not None:
             dataset, profit_calculator = get_dataset(cfg.dataset_loader.name, cfg.dataset_loader.train_start_date,
                                 cfg.dataset_loader.valid_end_date, cfg)
-
         cfg.save_dir = os.getcwd()
         reporter = Reporter(cfg)
         reporter.setup_saving_dirs(cfg.save_dir)
