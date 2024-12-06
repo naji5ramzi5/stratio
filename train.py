@@ -26,7 +26,7 @@ import csv
 import os
 import pytz
 from datetime import datetime, timedelta
-logger = logging.getLogger(_name_)
+logger = logging.getLogger(__name__)
 import pandas as pd
 
 
