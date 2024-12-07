@@ -25,3 +25,4 @@ python-telegram-bot
 ruamel.yaml
 flask
 apscheduler
+python-binance
