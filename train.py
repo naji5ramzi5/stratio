@@ -317,9 +317,7 @@ from flask import Flask
 from threading import Thread
 from apscheduler.schedulers.asyncio import AsyncIOScheduler
 from apscheduler.triggers.cron import CronTrigger
-
 app = Flask(__name__)
-
 logging.basicConfig(level=logging.INFO)
 
 TOKEN = "7626181745:AAFmV0ctiYsj2SiecetN_GeLezMtBVDLx8E" 
