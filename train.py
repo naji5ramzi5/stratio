@@ -179,14 +179,21 @@ async def daily_prediction(cfg: DictConfig, application: Application) -> None:
 @hydra.main(config_path="configs/hydra", config_name="train")  # تصحيح المسار هنا
 def main(cfg: DictConfig) -> None:
     application = Application.builder().token(TOKEN).build()
+
+    # استخدام asyncio لتشغيل الوظائف في حلقة حدث
+    loop = asyncio.get_event_loop()
+
     scheduler = AsyncIOScheduler()
     trigger = CronTrigger(hour=13, minute=41, second=30, timezone="Asia/Baghdad")
     scheduler.add_job(daily_prediction, trigger, args=[cfg, application])
-    scheduler.start()
 
+    # استخدام async loop لتشغيل scheduler
+    loop.create_task(scheduler.start())
     application.add_handler(CommandHandler('start', start))
     application.add_handler(MessageHandler(filters.TEXT & ~filters.COMMAND, partial(handle_prediction, cfg=cfg)))
-    application.run_polling()
+    
+    # تشغيل البوت بشكل غير متزامن
+    loop.run_until_complete(application.run_polling())
 
 if __name__ == '__main__':
     flask_thread = Thread(target=app.run, kwargs={'host': '0.0.0.0', 'port': 8080})
