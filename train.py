@@ -139,8 +139,7 @@ async def main():
     application.add_handler(CommandHandler("start", start))
     application.add_handler(MessageHandler(filters.TEXT & ~filters.COMMAND, handle_prediction))
 
-    await application.run_polling()  # لا حاجة لاستخدام asyncio.run()
+    await application.run_polling()
 
 if __name__ == '__main__':
-    # لا تستخدم asyncio.run() هنا
-    main()  # شغل main() مباشرة
+    asyncio.run(main())  # استخدام asyncio.run مع main()
