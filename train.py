@@ -1,3 +1,4 @@
+import asyncio
 from binance.client import Client
 import pandas as pd
 import pytz
@@ -9,8 +10,6 @@ from telegram.ext import Application, CommandHandler, MessageHandler, filters, C
 import logging
 from apscheduler.schedulers.asyncio import AsyncIOScheduler
 from apscheduler.triggers.cron import CronTrigger
-from omegaconf import DictConfig
-import asyncio
 
 # إعدادات Binance API
 API_KEY = 'ddCXARf1hp1OjbaLJInHpYnEhMqKziYs9ae8dEH1NbLaonYpkgPu0tX75DqnjaDD'
@@ -23,15 +22,16 @@ AUTHORIZED_USERS = [123456789, 987654321]  # قم بإضافة ID المستخد
 
 # إعداد سجل الأخطاء
 logging.basicConfig(level=logging.INFO)
+logger = logging.getLogger(__name__)
 
 # دالة لجلب البيانات من Binance API
 def fetch_and_save_data(symbol: str, start_date: datetime, end_date: datetime) -> bool:
-    start_str = start_date.strftime('%Y-%m-%d %H:%M:%S')
-    end_str = end_date.strftime('%Y-%m-%d %H:%M:%S')
     try:
+        start_str = start_date.strftime('%Y-%m-%d %H:%M:%S')
+        end_str = end_date.strftime('%Y-%m-%d %H:%M:%S')
         klines = client.get_historical_klines(symbol, Client.KLINE_INTERVAL_1DAY, start_str, end_str)
     except Exception as e:
-        print(f"خطأ في جلب البيانات من Binance: {e}")
+        logger.error(f"خطأ في جلب البيانات من Binance: {e}")
         return False
 
     if klines:
@@ -39,16 +39,12 @@ def fetch_and_save_data(symbol: str, start_date: datetime, end_date: datetime) -
             writer = csv.writer(file)
             for kline in klines:
                 timestamp = datetime.utcfromtimestamp(kline[0] / 1000).replace(tzinfo=pytz.utc)
-                open_price = kline[1]
-                high = kline[2]
-                low = kline[3]
-                close = kline[4]
-                volume = kline[5]
+                open_price, high, low, close, volume = kline[1], kline[2], kline[3], kline[4], kline[5]
                 writer.writerow([timestamp, symbol, open_price, high, low, close, volume])
         return True
     return False
 
-# دالة للتحقق من البيانات في الملف وحذفه إذا لم يكن كاملاً
+# التحقق من الملف وحذفه إذا لم يكن كاملاً
 def check_and_delete_file(filename: str):
     if os.path.exists(filename):
         df = pd.read_csv(filename)
@@ -60,11 +56,11 @@ def check_and_delete_file(filename: str):
             return yesterday_close, True
     return None, False
 
-# دالة لإضافة تواريخ مستقبلية إلى الملف
+# إضافة تواريخ مستقبلية للبيانات
 def add_future_dates(filename: str, symbol: str):
+    future_dates = ['2024-12-08', '2024-12-09', '2024-12-10']
     with open(filename, 'a', newline='') as file:
         writer = csv.writer(file)
-        future_dates = ['2024-12-08', '2024-12-09', '2024-12-10']
         for date in future_dates:
             writer.writerow([date, symbol, '', '', '', '', ''])
 
@@ -73,16 +69,14 @@ def train():
     start_date = datetime(2020, 1, 1, tzinfo=pytz.utc)
     end_date = datetime.now(pytz.utc) - timedelta(days=1)
     period = timedelta(days=90)
-
-    symbols = ["BTCUSDT", "ETHUSDT"]  # قم بإضافة الرموز هنا
+    symbols = ["BTCUSDT", "ETHUSDT"]
     title = ''
 
     for symbol in symbols:
         data_filename = f"{symbol}_data.csv"
         if os.path.exists(data_filename):
-            os.remove(data_filename)  # حذف الملف إذا كان موجودًا
+            os.remove(data_filename)
 
-        # كتابة رؤوس الأعمدة فقط عند إنشاء الملف
         with open(data_filename, 'a', newline='') as file:
             writer = csv.writer(file)
             writer.writerow(['timestamp', 'symbol', 'open', 'high', 'low', 'close', 'volume'])
@@ -92,78 +86,26 @@ def train():
 
         while current_start < end_date:
             current_end = min(current_start + period, end_date)
-            print(f"Fetching data for {symbol} from {current_start.date()} to {current_end.date()}")
-        
-            # جلب البيانات لكل فترة
             if fetch_and_save_data(symbol, current_start, current_end):
-                data_available = True  # تم جلب البيانات بنجاح
-
+                data_available = True
             current_start = current_end + timedelta(days=1)
-    
+
         if not data_available:
-            print(f"Skipping {symbol} due to insufficient data.")
-            continue  # تخطي الرمز إذا لم تكن هناك بيانات
+            logger.info(f"Skipping {symbol} due to insufficient data.")
+            continue
 
         yesterday_close, data_complete = check_and_delete_file(data_filename)
         if not data_complete:
             continue
 
-        # إضافة تواريخ مستقبلية في نهاية الملف
         add_future_dates(data_filename, symbol)
 
-        print("Data download complete for all symbols with data from the beginning of 2020.")
-        
-        # المزيد من الكود الخاص بالتدريب والتوقعات ...
     return title
 
-# التفاعل مع Telegram Bot
-async def data(update: Update, context: ContextTypes.DEFAULT_TYPE) -> None:
-    result = train()
-    await update.message.reply_text(result if result else "لا توجد بيانات كافية للتوقع.")
-
-# بدء التفاعل مع البوت
+# أوامر Telegram Bot
 async def start(update: Update, context: ContextTypes.DEFAULT_TYPE) -> None:
     if update.message.from_user.id not in AUTHORIZED_USERS:
-        await update.message.reply_text('ليس لديك صلاحية للوصول إلى هذا البوت.')
+        await update.message.reply_text("ليس لديك صلاحية للوصول إلى هذا البوت.")
         return
-    
     keyboard = [[KeyboardButton("توقع")]]
-    reply_markup = ReplyKeyboardMarkup(keyboard, resize_keyboard=True, one_time_keyboard=False)
-    await update.message.reply_text('مرحبًا! اضغط على الزر لتوقع النتيجة.', reply_markup=reply_markup)
-
-# التعامل مع الرسائل والنصوص
-async def handle_prediction(update: Update, context: ContextTypes.DEFAULT_TYPE) -> None:
-    if update.message.from_user.id not in AUTHORIZED_USERS:
-        await update.message.reply_text('ليس لديك صلاحية للوصول إلى هذا البوت.')
-        return
-    
-    if update.message.text == "توقع":
-        await data(update, context)
-
-# التنبؤ اليومي
-async def daily_prediction(application: Application) -> None:
-    for user_id in AUTHORIZED_USERS:
-        try:
-            result = train()
-            await application.bot.send_message(user_id, result if result else "لا توجد بيانات كافية للتوقع.")
-        except Exception as e:
-            print(f"فشل في إرسال التوقع إلى {user_id}: {e}")
-
-# الوظيفة الرئيسية
-async def main():
-    application = Application.builder().token(TOKEN).build()
-    scheduler = AsyncIOScheduler()
-
-    # إضافة وظيفة يومية
-    trigger = CronTrigger(hour=8, minute=0, timezone="Asia/Baghdad")
-    scheduler.add_job(daily_prediction, trigger, args=[application])
-    scheduler.start()
-
-    # إعداد الأوامر
-    application.add_handler(CommandHandler('start', start))
-    application.add_handler(MessageHandler(filters.TEXT & ~filters.COMMAND, handle_prediction))
-
-    await application.run_polling()
-
-if __name__ == '__main__':
-    asyncio.run(main())
+    reply_markup = ReplyKeyboardMarkup(keyboard, resize_
