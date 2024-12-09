@@ -108,4 +108,38 @@ async def start(update: Update, context: ContextTypes.DEFAULT_TYPE) -> None:
         await update.message.reply_text("ليس لديك صلاحية للوصول إلى هذا البوت.")
         return
     keyboard = [[KeyboardButton("توقع")]]
-    reply_markup = ReplyKeyboardMarkup(keyboard, resize_
+    reply_markup = ReplyKeyboardMarkup(keyboard, resize_keyboard=True, one_time_keyboard=False)
+    await update.message.reply_text("مرحبًا! اضغط على الزر لتوقع النتيجة.", reply_markup=reply_markup)
+
+async def handle_prediction(update: Update, context: ContextTypes.DEFAULT_TYPE) -> None:
+    if update.message.from_user.id not in AUTHORIZED_USERS:
+        await update.message.reply_text("ليس لديك صلاحية للوصول إلى هذا البوت.")
+        return
+    if update.message.text == "توقع":
+        result = train()
+        await update.message.reply_text(result if result else "لا توجد بيانات كافية للتوقع.")
+
+# التنبؤ اليومي
+async def daily_prediction(application: Application) -> None:
+    for user_id in AUTHORIZED_USERS:
+        try:
+            result = train()
+            await application.bot.send_message(user_id, result if result else "لا توجد بيانات كافية للتوقع.")
+        except Exception as e:
+            logger.error(f"فشل في إرسال التوقع إلى {user_id}: {e}")
+
+# الوظيفة الرئيسية
+async def main():
+    application = Application.builder().token(TOKEN).build()
+    scheduler = AsyncIOScheduler()
+
+    scheduler.add_job(daily_prediction, CronTrigger(hour=8, minute=0, timezone="Asia/Baghdad"), args=[application])
+    scheduler.start()
+
+    application.add_handler(CommandHandler("start", start))
+    application.add_handler(MessageHandler(filters.TEXT & ~filters.COMMAND, handle_prediction))
+
+    await application.run_polling()
+
+if __name__ == '__main__':
+    asyncio.run(main())
