@@ -179,24 +179,31 @@ async def daily_prediction(cfg: DictConfig, application: Application) -> None:
 # تهيئة البوت مع الوظائف المقررة يوميًا
 @hydra.main(config_path="configs/hydra", config_name="train")  # تصحيح المسار هنا
 def main(cfg: DictConfig) -> None:
-    application = Application.builder().token(TOKEN).build()
+    # إنشاء حدث asyncio
+    async def run_all():
+        # إعداد Telegram bot
+        application = Application.builder().token(TOKEN).build()
 
-    # استخدام asyncio لتشغيل الوظائف في حلقة حدث
-    loop = asyncio.get_event_loop()
+        # إعداد الجدولة
+        scheduler = AsyncIOScheduler()
+        trigger = CronTrigger(hour=13, minute=41, second=30, timezone="Asia/Baghdad")
+        scheduler.add_job(daily_prediction, trigger, args=[cfg, application])
 
-    scheduler = AsyncIOScheduler()
-    trigger = CronTrigger(hour=13, minute=41, second=30, timezone="Asia/Baghdad")
-    scheduler.add_job(daily_prediction, trigger, args=[cfg, application])
+        # بدء جدولة المهام
+        scheduler.start()
 
-    # استخدام async loop لتشغيل scheduler
-    loop.create_task(scheduler.start())
-    application.add_handler(CommandHandler('start', start))
-    application.add_handler(MessageHandler(filters.TEXT & ~filters.COMMAND, partial(handle_prediction, cfg=cfg)))
-    
-    # تشغيل البوت بشكل غير متزامن
-    loop.run_until_complete(application.run_polling())
+        # إعداد Telegram Handlers
+        application.add_handler(CommandHandler('start', start))
+        application.add_handler(MessageHandler(filters.TEXT & ~filters.COMMAND, partial(handle_prediction, cfg=cfg)))
 
-if __name__ == '__main__':
-    flask_thread = Thread(target=app.run, kwargs={'host': '0.0.0.0', 'port': 8080})
+        # تشغيل البوت
+        await application.run_polling()
+
+    # تشغيل كل شيء داخل asyncio
+    asyncio.run(run_all())
+
+# تشغيل Flask في خيط منفصل
+if __name__ == "__main__":
+    flask_thread = Thread(target=app.run, kwargs={"host": "0.0.0.0", "port": 8080})
     flask_thread.start()
     main()
