@@ -1,3 +1,4 @@
+import asyncio
 from binance.client import Client
 import pandas as pd
 import pytz
