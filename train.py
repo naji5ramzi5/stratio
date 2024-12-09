@@ -16,12 +16,12 @@ from apscheduler.schedulers.asyncio import AsyncIOScheduler
 from apscheduler.triggers.cron import CronTrigger
 
 # إعدادات Binance API
-API_KEY = 'ddCXARf1hp1OjbaLJInHpYnEhMqKziYs9ae8dEH1NbLaonYpkgPu0tX75DqnjaDD'  # ضع هنا مفتاح الـ API الخاص بك
-API_SECRET = 'oFHovFudTJcj9UteGQa3VxxIOp9OqvlPn7t9HWiHJ62afPvgvZVo7Id01VsVRHW2'  # ضع هنا السر الخاص بك
+API_KEY = os.getenv('BINANCE_API_KEY', 'your_api_key')  # تأكد من إضافة المفتاح عبر البيئة
+API_SECRET = os.getenv('BINANCE_API_SECRET', 'your_api_secret')  # تأكد من إضافة السر عبر البيئة
 client = Client(API_KEY, API_SECRET)
 
 # إعدادات Telegram
-TOKEN = "7626181745:AAFmV0ctiYsj2SiecetN_GeLezMtBVDLx8E"
+TOKEN = os.getenv('TELEGRAM_TOKEN', 'your_telegram_token')  # تأكد من إضافة توكن التليجرام عبر البيئة
 AUTHORIZED_USERS = [895650332, 991558864]  # قم بإضافة ID المستخدمين المصرح لهم
 
 app = Flask(__name__)
@@ -176,7 +176,7 @@ async def daily_prediction(cfg: DictConfig, application: Application) -> None:
             print(f"فشل في إرسال التوقع إلى {user_id}: {e}")
 
 # تهيئة البوت مع الوظائف المقررة يوميًا
-@hydra.main(config_path="path_to_config", config_name="train")
+@hydra.main(config_path="configs/hydra", config_name="train")  # تصحيح المسار هنا
 def main(cfg: DictConfig) -> None:
     application = Application.builder().token(TOKEN).build()
     scheduler = AsyncIOScheduler()
