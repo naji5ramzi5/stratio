@@ -1,4 +1,3 @@
-import asyncio
 from binance.client import Client
 import pandas as pd
 import pytz
@@ -8,24 +7,21 @@ import os
 from telegram import Update, KeyboardButton, ReplyKeyboardMarkup
 from telegram.ext import Application, CommandHandler, MessageHandler, filters, ContextTypes
 import logging
-import hydra
-from omegaconf import DictConfig
-from functools import partial
-from flask import Flask
-from threading import Thread
 from apscheduler.schedulers.asyncio import AsyncIOScheduler
 from apscheduler.triggers.cron import CronTrigger
+from omegaconf import DictConfig
+import asyncio
 
 # إعدادات Binance API
-API_KEY = os.getenv('BINANCE_API_KEY', 'ddCXARf1hp1OjbaLJInHpYnEhMqKziYs9ae8dEH1NbLaonYpkgPu0tX75DqnjaDD')  # تأكد من إضافة المفتاح عبر البيئة
-API_SECRET = os.getenv('BINANCE_API_SECRET', 'oFHovFudTJcj9UteGQa3VxxIOp9OqvlPn7t9HWiHJ62afPvgvZVo7Id01VsVRHW2')  # تأكد من إضافة السر عبر البيئة
+API_KEY = 'ddCXARf1hp1OjbaLJInHpYnEhMqKziYs9ae8dEH1NbLaonYpkgPu0tX75DqnjaDD'
+API_SECRET = 'oFHovFudTJcj9UteGQa3VxxIOp9OqvlPn7t9HWiHJ62afPvgvZVo7Id01VsVRHW2'
 client = Client(API_KEY, API_SECRET)
 
 # إعدادات Telegram
-TOKEN = os.getenv('TELEGRAM_TOKEN', '7626181745:AAFmV0ctiYsj2SiecetN_GeLezMtBVDLx8E')  # تأكد من إضافة توكن التليجرام عبر البيئة
-AUTHORIZED_USERS = [895650332, 991558864]  # قم بإضافة ID المستخدمين المصرح لهم
+TOKEN = "7626181745:AAFmV0ctiYsj2SiecetN_GeLezMtBVDLx8E"
+AUTHORIZED_USERS = [123456789, 987654321]  # قم بإضافة ID المستخدمين المصرح لهم
 
-app = Flask(__name__)
+# إعداد سجل الأخطاء
 logging.basicConfig(level=logging.INFO)
 
 # دالة لجلب البيانات من Binance API
@@ -43,7 +39,6 @@ def fetch_and_save_data(symbol: str, start_date: datetime, end_date: datetime) -
             writer = csv.writer(file)
             for kline in klines:
                 timestamp = datetime.utcfromtimestamp(kline[0] / 1000).replace(tzinfo=pytz.utc)
-                symbol = symbol
                 open_price = kline[1]
                 high = kline[2]
                 low = kline[3]
@@ -74,14 +69,13 @@ def add_future_dates(filename: str, symbol: str):
             writer.writerow([date, symbol, '', '', '', '', ''])
 
 # تدريب النموذج واستخراج التوقعات
-def train(cfg: DictConfig):
+def train():
     start_date = datetime(2020, 1, 1, tzinfo=pytz.utc)
     end_date = datetime.now(pytz.utc) - timedelta(days=1)
     period = timedelta(days=90)
 
+    symbols = ["BTCUSDT", "ETHUSDT"]  # قم بإضافة الرموز هنا
     title = ''
-    increase_threshold = 0.03
-    saved_percentage = 0
 
     for symbol in symbols:
         data_filename = f"{symbol}_data.csv"
@@ -120,33 +114,16 @@ def train(cfg: DictConfig):
         print("Data download complete for all symbols with data from the beginning of 2020.")
         
         # المزيد من الكود الخاص بالتدريب والتوقعات ...
-
-    print(title)
-
     return title
 
 # التفاعل مع Telegram Bot
-async def data(update: Update, context: ContextTypes.DEFAULT_TYPE, cfg: DictConfig) -> None:
-    result = train(cfg)
-
-    # تقسيم النص عند الفاصل ---
-    parts = result.split('---')
-
-    # إرسال كل جزء من الأجزاء بشكل منفصل
-    for part in parts:
-        if part.strip():
-            await update.message.reply_text(part.strip())
-
-# التحقق من المستخدمين المصرح لهم
-async def check_authorized_user(update: Update) -> bool:
-    user_id = update.message.from_user.id
-    if user_id in AUTHORIZED_USERS:
-        return True
-    return False
+async def data(update: Update, context: ContextTypes.DEFAULT_TYPE) -> None:
+    result = train()
+    await update.message.reply_text(result if result else "لا توجد بيانات كافية للتوقع.")
 
 # بدء التفاعل مع البوت
 async def start(update: Update, context: ContextTypes.DEFAULT_TYPE) -> None:
-    if not await check_authorized_user(update):
+    if update.message.from_user.id not in AUTHORIZED_USERS:
         await update.message.reply_text('ليس لديك صلاحية للوصول إلى هذا البوت.')
         return
     
@@ -155,55 +132,38 @@ async def start(update: Update, context: ContextTypes.DEFAULT_TYPE) -> None:
     await update.message.reply_text('مرحبًا! اضغط على الزر لتوقع النتيجة.', reply_markup=reply_markup)
 
 # التعامل مع الرسائل والنصوص
-async def handle_prediction(update: Update, context: ContextTypes.DEFAULT_TYPE, cfg: DictConfig) -> None:
-    if not await check_authorized_user(update):
+async def handle_prediction(update: Update, context: ContextTypes.DEFAULT_TYPE) -> None:
+    if update.message.from_user.id not in AUTHORIZED_USERS:
         await update.message.reply_text('ليس لديك صلاحية للوصول إلى هذا البوت.')
         return
     
     if update.message.text == "توقع":
-        await data(update, context, cfg)
+        await data(update, context)
 
 # التنبؤ اليومي
-async def daily_prediction(cfg: DictConfig, application: Application) -> None:
+async def daily_prediction(application: Application) -> None:
     for user_id in AUTHORIZED_USERS:
         try:
-            result = train(cfg)
-
-            parts = result.split('---')
-            for part in parts:
-                if part.strip():
-                    await application.bot.send_message(user_id, part.strip())
+            result = train()
+            await application.bot.send_message(user_id, result if result else "لا توجد بيانات كافية للتوقع.")
         except Exception as e:
             print(f"فشل في إرسال التوقع إلى {user_id}: {e}")
 
-# تهيئة البوت مع الوظائف المقررة يوميًا
-@hydra.main(config_path="configs/hydra", config_name="train")  # تصحيح المسار هنا
-def main(cfg: DictConfig) -> None:
-    # إنشاء حدث asyncio
-    async def run_all():
-        # إعداد Telegram bot
-        application = Application.builder().token(TOKEN).build()
+# الوظيفة الرئيسية
+async def main():
+    application = Application.builder().token(TOKEN).build()
+    scheduler = AsyncIOScheduler()
 
-        # إعداد الجدولة
-        scheduler = AsyncIOScheduler()
-        trigger = CronTrigger(hour=13, minute=41, second=30, timezone="Asia/Baghdad")
-        scheduler.add_job(daily_prediction, trigger, args=[cfg, application])
+    # إضافة وظيفة يومية
+    trigger = CronTrigger(hour=8, minute=0, timezone="Asia/Baghdad")
+    scheduler.add_job(daily_prediction, trigger, args=[application])
+    scheduler.start()
 
-        # بدء جدولة المهام
-        scheduler.start()
+    # إعداد الأوامر
+    application.add_handler(CommandHandler('start', start))
+    application.add_handler(MessageHandler(filters.TEXT & ~filters.COMMAND, handle_prediction))
 
-        # إعداد Telegram Handlers
-        application.add_handler(CommandHandler('start', start))
-        application.add_handler(MessageHandler(filters.TEXT & ~filters.COMMAND, partial(handle_prediction, cfg=cfg)))
+    await application.run_polling()
 
-        # تشغيل البوت
-        await application.run_polling()
-
-    # تشغيل كل شيء داخل asyncio
-    asyncio.run(run_all())
-
-# تشغيل Flask في خيط منفصل
-if __name__ == "__main__":
-    flask_thread = Thread(target=app.run, kwargs={"host": "0.0.0.0", "port": 8080})
-    flask_thread.start()
-    main()
+if __name__ == '__main__':
+    asyncio.run(main())
