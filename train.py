@@ -16,12 +16,12 @@ from apscheduler.schedulers.asyncio import AsyncIOScheduler
 from apscheduler.triggers.cron import CronTrigger
 
 # إعدادات Binance API
-API_KEY = os.getenv('BINANCE_API_KEY', 'your_api_key')  # تأكد من إضافة المفتاح عبر البيئة
-API_SECRET = os.getenv('BINANCE_API_SECRET', 'your_api_secret')  # تأكد من إضافة السر عبر البيئة
+API_KEY = os.getenv('BINANCE_API_KEY', 'ddCXARf1hp1OjbaLJInHpYnEhMqKziYs9ae8dEH1NbLaonYpkgPu0tX75DqnjaDD')  # تأكد من إضافة المفتاح عبر البيئة
+API_SECRET = os.getenv('BINANCE_API_SECRET', 'oFHovFudTJcj9UteGQa3VxxIOp9OqvlPn7t9HWiHJ62afPvgvZVo7Id01VsVRHW2')  # تأكد من إضافة السر عبر البيئة
 client = Client(API_KEY, API_SECRET)
 
 # إعدادات Telegram
-TOKEN = os.getenv('TELEGRAM_TOKEN', 'your_telegram_token')  # تأكد من إضافة توكن التليجرام عبر البيئة
+TOKEN = os.getenv('TELEGRAM_TOKEN', '7626181745:AAFmV0ctiYsj2SiecetN_GeLezMtBVDLx8E')  # تأكد من إضافة توكن التليجرام عبر البيئة
 AUTHORIZED_USERS = [895650332, 991558864]  # قم بإضافة ID المستخدمين المصرح لهم
 
 app = Flask(__name__)
