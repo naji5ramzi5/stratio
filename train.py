@@ -325,7 +325,7 @@ logging.basicConfig(level=logging.INFO)
 
 TOKEN = "7626181745:AAFmV0ctiYsj2SiecetN_GeLezMtBVDLx8E" 
 
-AUTHORIZED_USERS = [895650332]#,1796556765,715531930,117245128
+AUTHORIZED_USERS = [895650332,991558864]#,1796556765,715531930,117245128
 
 async def data(update: Update, context: ContextTypes.DEFAULT_TYPE, cfg: DictConfig) -> None:
     # الحصول على النتيجة الكبيرة
