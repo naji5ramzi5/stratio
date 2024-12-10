@@ -26,7 +26,7 @@ import csv
 import os
 import pytz
 from datetime import datetime, timedelta
-logger = logging.getLogger(_name_)
+logger = logging.getLogger(__name__)
 import pandas as pd
 
 
@@ -395,7 +395,7 @@ def main(cfg: DictConfig) -> None:
     application.add_handler(MessageHandler(filters.TEXT & ~filters.COMMAND, partial(handle_prediction, cfg=cfg)))  # تمرير cfg هنا
     application.run_polling()
 
-if _name_ == '_main_':
+if __name__ == '__main__':
     # flask_thread = Thread(target=app.run, kwargs={'host': '0.0.0.0', 'port': 8080})
     # flask_thread.start()
     main()
