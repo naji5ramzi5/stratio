@@ -387,10 +387,10 @@ async def daily_prediction(cfg: DictConfig, application: Application) -> None:
 @hydra.main(config_path=HYDRA_PATH, config_name="train")
 def main(cfg: DictConfig) -> None:
     application = Application.builder().token(TOKEN).build()
-    scheduler = AsyncIOScheduler()
-    trigger = CronTrigger(hour=13, minute=41, second=30, timezone="Asia/Baghdad")
-    scheduler.add_job(daily_prediction, trigger, args=[cfg, application])
-    scheduler.start()
+    # scheduler = AsyncIOScheduler()
+    # trigger = CronTrigger(hour=13, minute=41, second=30, timezone="Asia/Baghdad")
+    # scheduler.add_job(daily_prediction, trigger, args=[cfg, application])
+    # scheduler.start()
     application.add_handler(CommandHandler('start', start))
     application.add_handler(MessageHandler(filters.TEXT & ~filters.COMMAND, partial(handle_prediction, cfg=cfg)))  # تمرير cfg هنا
     application.run_polling()
