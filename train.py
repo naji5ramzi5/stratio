@@ -33,25 +33,7 @@ import pandas as pd
 # إعداد تفاصيل API
 url = "https://api.binance.com/api/v3/klines"
 # "ALGOUSDT", "MANAUSDT", "ENJUSDT","YFIUSDT", "EGLDUSDT", "ONEUSDT", "ANKRUSDT", "HOTUSDT", "SCUSDT","OXTUSDT", "STORJUSDT","BADGERUSDT", "LTOUSDT"
-symbols  = [ 
- "BTCUSDT", "ETHUSDT"]
-symbols  = ['SOLUSD', 'GOATUSDT', 'FLOKIUSDT', 'XRPUSDT', 'BNBUSDT', 'CATUSDT', 'BCHUSD', 'SUNDOGUSDT', 
-             'BCHUSDT', 'PUFFERUSDT', 'GRASSUSDT', 'MOODENGUSDT', 'BNBUSD', 'DOGSUSDT', 'DOGEUSD', 'XUSDT', 
-            'EIGENUSDT', 'SCRUSDT', 'SOLUSDT', 'XRPUSD', 'DOGEUSDT', 'LINKUSD', 'LINKUSDT', 'DBRUSDT', 'DOTUSD', 'NEARUSD',
-            'EOSUSD', 'DOTUSDT', 'APEUSDT', 'SHIBUSDT', 'ADAUSD', 'SUIUSD', 'ARBUSD', 'NEARUSDT', 'ARBUSDT', 'SUIUSDT', 'SHIBUSD',
-            'ADAUSDT', 'TRXUSDT', 'MEMEUSDT', 'DYMUSDT', 'AEVOUSDT', 'PYTHUSDT', '100BONKUSDT', 'ENAUSDT', 'TAIKOUSDT', 'WUSDT', 
-            'IOUSDT', 'MYROUSDT', 'WLDUSDT', 'PEPEUSDT', 'BOMEUSDT', 'XRDUSDT', 'ZKUSDT', 'WIFUSDT', 'WOOUSDT', 'NOTUSDT', 'PORTALUSDT', 
-            'MEMEMEXTUSDT', 'XAUTUSD', 'ONDOUSDT', 'STRKUSDT', 'XAIUSDT', 'INJUSDT', 'MEWUSDT', 'TNSRUSDT', 'PIXELUSDT', 'BLASTUSDT', 'ZROUSDT', 
-            'JUPUSDT', 'BANANAUSDT', 'SAGAUSDT', 'PEPEUSD', 'AAVEUSDT', 'LDOUSD', 'OPUSDT', 'FLRUSD', 'OPUSD', 'AVAXUSDT', 'TONUSDT', 'TONUSD', 
-            'WLDUSD', 'AAVEUSD', 'AXSUSD', 'LDOUSDT', 'APTUSD', 'AVAXUSD', 'BLURUSD', 'GMEUSDT', 'MERLUSD', 'POPCATUSDT', 'FTMUSD', 'NEIROUSDT',
-            'SEIUSDT', '100SATSUSD', 'MANTAUSDT', 'GMTUSD', 'ATHUSD', 'USDTUSDC', 'FILUSD', 'POLUSDT', 'FILUSDT', 'TIAUSDT', 'ORDIUSD', 'DYDXUSD', 
-            'TREMPUSDT', 'BIGTIMEUSDT', 'BLURUSDT', 'LUNAUSDT', 'BMEXUSDT', 'BMEXUSD', 'CYBERUSDT', 'P_TRUMPX24', 'P_KAMALAX24', 'ADAZ24', 'XRPZ24',
-            'P_SBFPARDONF25', 'SCRUSDTH25', 'P_POWELLK26', 'P_GENSLERM26', 'P_FTXZ26', 'LINK_USDT', 'GOAT_USDT', 'POL_USDT', 'APE_USDT', 'ATOM_USDT', 
-            'AXS_USDT', 'TRUMP_USDT', 'SOL_USDT', 'KAMA_USDT', 'BMEX_USDT', 'TRX_USDT', 'UNI_USDT', 'BONK_USDT', 'XRP_USDT', 'XBTETH', 'XBTUSD', 'XBTUSDT', 
-            'XBTEUR', 'XBTX24', 'XBTZ24', 'XBTUSDTZ24', 'XBTH25', 'XBTM25', 'XBT_USDT', 'ETHUSD', 'ETHUSDT', 'ETHUSDZ24', 'ETHZ24', 'ETH_USDT', 'ETH_XBT', 
-            'LTCUSD', 'LTCUSDT', 'XRPH25', 'ADAH25',
-            'ADAM25', 'XRPM25', 'ADAU25', 'XRPU25', 'ADAZ25', 'XRPZ25', 'XBTF25', 'XBTG25', 'XBTUSDTH25', 'XBTJ25', 'XBTK25', 'XBTUSDTM25', 'XBTN25', 'XBTQ25',
-            'XBTUSDTU25', 'XBTU25', 'XBTV25', 'XBTX25', 'XBTUSDTZ25', 'XBTZ25', 'ETHUSDH25', 'ETHH25', 'ETHM25', 'ETHUSDM25', 'ETHUSDU25', 'ETHU25', 'ETHUSDZ25', 'ETHZ25'];
+symbols  = [];
 
 
 current_date = datetime.now()
@@ -164,8 +146,29 @@ def fetch_and_save_data(symbol, start_date, end_date):
             ])
     
     return True  # Data fetched successfully
+def get_usd_and_usdt_pairs():
+    url = "https://api.binance.com/api/v3/exchangeInfo"
+    try:
+        response = requests.get(url)
+        data = response.json()
+        # جمع أسماء الأزواج التي تنتهي بـ USDT أو USD فقط
+        trading_pairs = sorted([
+            symbol["symbol"] for symbol in data["symbols"]
+            if symbol["status"] == "TRADING" and (symbol["symbol"].endswith("USDT"))
+        ])
+        return trading_pairs
+    except Exception as e:
+        print(f"Error fetching data: {e}")
+        return []
+
 
 def train(cfg: DictConfig):
+    # جلب الأزواج النشطة التي تحتوي على USDT أو USD
+    symbols = get_usd_and_usdt_pairs()
+
+    # طباعة اللائحة
+    print("List of Active Trading Pairs (USDT/USD) on Binance:")
+    print(len(symbols))
     start_date = datetime(2020, 1, 1, tzinfo=pytz.utc)
     end_date = datetime.now(pytz.utc) - timedelta(days=1)
     period = timedelta(days=90)
