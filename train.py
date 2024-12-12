@@ -175,130 +175,134 @@ def train(cfg: DictConfig):
 
     title = ''
     increase_threshold = 0.03
-    saved_percentage=0
+    saved_percentage = 0
   
     for symbol in symbols:
-        # //
-        if os.path.exists(data_filename):
-            os.remove(data_filename)  # Delete the file if it exists
+        try:
+            # Check if file exists and delete it if necessary
+            if os.path.exists(data_filename):
+                os.remove(data_filename)  # Delete the file if it exists
 
-        # Write headers only when creating the file
-        with open(data_filename, 'a', newline='') as file:
-            writer = csv.writer(file)
-            writer.writerow(['timestamp', 'symbol', 'open', 'high', 'low', 'close', 'volume'])
+            # Write headers only when creating the file
+            with open(data_filename, 'a', newline='') as file:
+                writer = csv.writer(file)
+                writer.writerow(['timestamp', 'symbol', 'open', 'high', 'low', 'close', 'volume'])
 
-        current_start = start_date
-        data_available = False
+            current_start = start_date
+            data_available = False
 
-        while current_start < end_date:
-            current_end = min(current_start + period, end_date)
-            print(f"Fetching data for {symbol} from {current_start.date()} to {current_end.date()}")
-        
-            # Fetch data for each period
-            if fetch_and_save_data(symbol, current_start, current_end):
-                data_available = True  # Data fetched successfully for at least one period
+            while current_start < end_date:
+                current_end = min(current_start + period, end_date)
+                print(f"Fetching data for {symbol} from {current_start.date()} to {current_end.date()}")
 
-            current_start = current_end + timedelta(days=1)
-    
-        if not data_available:
-            print(f"Skipping {symbol} due to insufficient data.")
-            continue  # Skip symbol if no data is available
+                # Fetch data for each period
+                if fetch_and_save_data(symbol, current_start, current_end):
+                    data_available = True  # Data fetched successfully for at least one period
 
-   
-        yesterday_close, data_complete = check_and_delete_file(data_filename)
-        if not data_complete:
-            continue
-        # Add three future dates at the end of the file with the symbol
+                current_start = current_end + timedelta(days=1)
+            
+            if not data_available:
+                print(f"Skipping {symbol} due to insufficient data.")
+                continue  # Skip symbol if no data is available
 
-        add_future_dates(data_filename, symbol)
+            yesterday_close, data_complete = check_and_delete_file(data_filename)
+            if not data_complete:
+                continue
+            # Add three future dates at the end of the file with the symbol
+            add_future_dates(data_filename, symbol)
 
-        print("Data download complete for all symbols with data from the beginning of 2020.")
-        # //
-        if cfg.load_path is None and cfg.model is None:
-            msg = 'either specify a load_path or config a model.'
-            logger.error(msg)
-            raise Exception(msg)
+            print("Data download complete for all symbols with data from the beginning of 2020.")
+            
+            # Load dataset or model based on configuration
+            if cfg.load_path is None and cfg.model is None:
+                msg = 'either specify a load_path or config a model.'
+                logger.error(msg)
+                raise Exception(msg)
 
-        elif cfg.load_path is not None:
-            dataset_ = pd.read_csv(cfg.load_path)
-            if 'Date' not in dataset_.keys():
-                dataset_.rename(columns={'timestamp': 'Date'}, inplace=True)
-            if 'High' not in dataset_.keys():
-                dataset_.rename(columns={'high': 'High'}, inplace=True)
-            if 'Low' not in dataset_.keys():
-                dataset_.rename(columns={'low': 'Low'}, inplace=True)
+            elif cfg.load_path is not None:
+                dataset_ = pd.read_csv(cfg.load_path)
+                if 'Date' not in dataset_.keys():
+                    dataset_.rename(columns={'timestamp': 'Date'}, inplace=True)
+                if 'High' not in dataset_.keys():
+                    dataset_.rename(columns={'high': 'High'}, inplace=True)
+                if 'Low' not in dataset_.keys():
+                    dataset_.rename(columns={'low': 'Low'}, inplace=True)
 
-            dataset, profit_calculator = preprocess(dataset_, cfg, logger)
+                dataset, profit_calculator = preprocess(dataset_, cfg, logger)
 
-        elif cfg.model is not None:
-            dataset, profit_calculator = get_dataset(cfg.dataset_loader.name, cfg.dataset_loader.train_start_date,
-                                cfg.dataset_loader.valid_end_date, cfg)
+            elif cfg.model is not None:
+                dataset, profit_calculator = get_dataset(cfg.dataset_loader.name, cfg.dataset_loader.train_start_date,
+                                                        cfg.dataset_loader.valid_end_date, cfg)
 
-        cfg.save_dir = os.getcwd()
-        reporter = Reporter(cfg)
-        reporter.setup_saving_dirs(cfg.save_dir)
-        model = MODELS[cfg.model.type](cfg.model)
+            cfg.save_dir = os.getcwd()
+            reporter = Reporter(cfg)
+            reporter.setup_saving_dirs(cfg.save_dir)
+            model = MODELS[cfg.model.type](cfg.model)
 
-        dataset_for_profit = dataset.copy()
-        dataset_for_profit.drop(['prediction'], axis=1, inplace=True)
-        dataset.drop(['predicted_high', 'predicted_low'], axis=1, inplace=True)
-     
-        if cfg.validation_method == 'simple':
-            train_dataset = dataset[
-                (dataset['Date'] > cfg.dataset_loader.train_start_date) & (
-                            dataset['Date'] < cfg.dataset_loader.train_end_date)]
-            valid_dataset = dataset[
-                (dataset['Date'] > cfg.dataset_loader.valid_start_date) & (
-                            dataset['Date'] < cfg.dataset_loader.valid_end_date)]
-            Trainer(cfg, train_dataset, None, model).train()
-            mean_prediction = Evaluator(cfg, test_dataset=valid_dataset, model=model, reporter=reporter).evaluate()
-          
-        elif cfg.validation_method == 'cross_validation':
-            n_split = 3
-            tscv = TimeSeriesSplit(n_splits=n_split)
-
-            for train_index, test_index in tscv.split(dataset):
-                train_dataset, valid_dataset = dataset.iloc[train_index], dataset.iloc[test_index]
+            dataset_for_profit = dataset.copy()
+            dataset_for_profit.drop(['prediction'], axis=1, inplace=True)
+            dataset.drop(['predicted_high', 'predicted_low'], axis=1, inplace=True)
+         
+            if cfg.validation_method == 'simple':
+                train_dataset = dataset[ (dataset['Date'] > cfg.dataset_loader.train_start_date) & (dataset['Date'] < cfg.dataset_loader.train_end_date)]
+                valid_dataset = dataset[ (dataset['Date'] > cfg.dataset_loader.valid_start_date) & (dataset['Date'] < cfg.dataset_loader.valid_end_date)]
                 Trainer(cfg, train_dataset, None, model).train()
                 mean_prediction = Evaluator(cfg, test_dataset=valid_dataset, model=model, reporter=reporter).evaluate()
+              
+            elif cfg.validation_method == 'cross_validation':
+                n_split = 3
+                tscv = TimeSeriesSplit(n_splits=n_split)
 
-            reporter.add_average()
-        
-        x = ProfitCalculator(cfg, dataset_for_profit, profit_calculator, mean_prediction, reporter).profit_calculator()
-        predicted_high = x[0]['predicted_high'].iloc[0]
-        predicted_low = x[0]['predicted_low'].iloc[0]
-        predicted_mean = x[0]['predicted_mean'].iloc[0]
-        predicted_high_formated="{:.18f}".format(predicted_high)
-        predicted_low_formated="{:.18f}".format(predicted_low)
-        predicted_mean_formated="{:.18f}".format(predicted_mean)
-        increase = (predicted_mean - yesterday_close) / yesterday_close
-        if increase > increase_threshold:
-           saved_percentage = increase * 100
-        else:
-            continue 
-        predicted_low_finally=0
-        predicted_high_finally=0
-        if predicted_low_formated > predicted_high_formated:
-            predicted_low_finally=predicted_high_formated
-            predicted_high_finally=predicted_low_formated
-        else:
-            predicted_low_finally=predicted_low_formated
-            predicted_high_finally=predicted_high_formated
-        title += f'رمز العملة: {symbol}\n'
-        title += f'نسبة الزيادة المتوقعة: {round(saved_percentage, 1)}%\n'
-        title += f'اعلى سعر متوقع لليوم⬆️:\n {predicted_high_finally}\n'
-        title += f'اقل سعر متوقع لليوم⬇️:\n {predicted_low_finally}\n'
-        title += f'سعر الإغلاق المتوقع لليوم:\n {predicted_mean_formated}\n'
-        title += '---\n'
-        print('..............................d')
-        print(yesterday_close)
-        reporter.print_pretty_metrics(logger)
-        reporter.save_metrics()
+                for train_index, test_index in tscv.split(dataset):
+                    train_dataset, valid_dataset = dataset.iloc[train_index], dataset.iloc[test_index]
+                    Trainer(cfg, train_dataset, None, model).train()
+                    mean_prediction = Evaluator(cfg, test_dataset=valid_dataset, model=model, reporter=reporter).evaluate()
+
+                reporter.add_average()
+            
+            # Calculate profit and prediction data
+            x = ProfitCalculator(cfg, dataset_for_profit, profit_calculator, mean_prediction, reporter).profit_calculator()
+            predicted_high = x[0]['predicted_high'].iloc[0]
+            predicted_low = x[0]['predicted_low'].iloc[0]
+            predicted_mean = x[0]['predicted_mean'].iloc[0]
+            predicted_high_formated = "{:.18f}".format(predicted_high)
+            predicted_low_formated = "{:.18f}".format(predicted_low)
+            predicted_mean_formated = "{:.18f}".format(predicted_mean)
+            increase = (predicted_mean - yesterday_close) / yesterday_close
+            if increase > increase_threshold:
+                saved_percentage = increase * 100
+            else:
+                continue  # Skip this iteration if the increase is below the threshold
+            
+            predicted_low_finally = 0
+            predicted_high_finally = 0
+            if predicted_low_formated > predicted_high_formated:
+                predicted_low_finally = predicted_high_formated
+                predicted_high_finally = predicted_low_formated
+            else:
+                predicted_low_finally = predicted_low_formated
+                predicted_high_finally = predicted_high_formated
+
+            title += f'رمز العملة: {symbol}\n'
+            title += f'نسبة الزيادة المتوقعة: {round(saved_percentage, 1)}%\n'
+            title += f'اعلى سعر متوقع لليوم⬆️:\n {predicted_high_finally}\n'
+            title += f'اقل سعر متوقع لليوم⬇️:\n {predicted_low_finally}\n'
+            title += f'سعر الإغلاق المتوقع لليوم:\n {predicted_mean_formated}\n'
+            title += '---\n'
+            print('..............................d')
+            print(yesterday_close)
+            reporter.print_pretty_metrics(logger)
+            reporter.save_metrics()
+
+        except Exception as e:
+            print(f"Error occurred while processing symbol {symbol}: {str(e)}")
+            continue  # Continue to the next symbol if an error occurs
 
     # title += 'لا تجعل التنبؤات محور تداولك. ركز على التحليل العميق وإدارة المخاطر، واستند إلى البيانات والحقائق لاتخاذ قرارات مستنيرة.\n'
     print(title)
 
     return title  # Return the title or any other relevant data
+
 
 
 from telegram import Update, KeyboardButton, ReplyKeyboardMarkup
