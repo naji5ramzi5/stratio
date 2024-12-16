@@ -163,6 +163,16 @@ def get_usd_and_usdt_pairs():
 
 
 def train(cfg: DictConfig):
+    current_date = datetime.now()
+    data = {
+        "window_size": 5,
+        "train_start_date": "2020-01-01 13:30:00",  # تاريخ ثابت
+        "train_end_date": (current_date - timedelta(days=5)).strftime("%Y-%m-%d 09:30:00"),
+        "valid_start_date": (current_date - timedelta(days=5)).strftime("%Y-%m-%d 10:30:00"),
+        "valid_end_date": (current_date + timedelta(days=2)).strftime("%Y-%m-%d 10:30:00"),
+        "features": "Date, open, High, Low, close, volume",
+        "indicators_names": "rsi macd"
+    }
     # جلب الأزواج النشطة التي تحتوي على USDT أو USD
     symbols = get_usd_and_usdt_pairs()
 
