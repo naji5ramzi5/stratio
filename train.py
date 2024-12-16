@@ -389,15 +389,16 @@ async def daily_prediction(cfg: DictConfig, application: Application) -> None:
         except Exception as e:
             print(f"فشل في إرسال التوقع إلى {user_id}: {e}")
 
-
-
 @hydra.main(config_path=HYDRA_PATH, config_name="train")
 def main(cfg: DictConfig) -> None:
     application = Application.builder().token(TOKEN).build()
-    # scheduler = AsyncIOScheduler()
-    # trigger = CronTrigger(hour=13, minute=41, second=30, timezone="Asia/Baghdad")
-    # scheduler.add_job(daily_prediction, trigger, args=[cfg, application])
-    # scheduler.start()
+    scheduler = AsyncIOScheduler()
+
+    # جدولة تشغيل الدالة daily_prediction عند الساعة 7 صباحًا بتوقيت بغداد
+    trigger = CronTrigger(hour=7, minute=0, second=0, timezone="Asia/Baghdad")
+    scheduler.add_job(daily_prediction, trigger, args=[cfg, application])
+    scheduler.start()
+
     application.add_handler(CommandHandler('start', start))
     application.add_handler(MessageHandler(filters.TEXT & ~filters.COMMAND, partial(handle_prediction, cfg=cfg)))  # تمرير cfg هنا
     application.run_polling()
