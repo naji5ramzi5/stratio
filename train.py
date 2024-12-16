@@ -64,9 +64,19 @@ def check_and_delete_file(filename):
                 os.remove(filename)
                 return None, False
 
+            first_line = lines[0]  # قراءة أول سطر في الملف
             last_line = lines[-1]  # قراءة آخر سطر في الملف
+            
+            # تحويل التاريخ الأول والأخير
+            first_date = datetime.strptime(first_line.split(',')[0], '%Y-%m-%d %H:%M:%S%z')
             last_date = datetime.strptime(last_line.split(',')[0], '%Y-%m-%d %H:%M:%S%z')
             
+            # إذا كانت البيانات لا تبدأ من 1/1/2020 أو أن آخر سطر قديم جدًا
+            if first_date.date() < datetime(2020, 1, 1).date():
+                os.remove(filename)  # حذف الملف إذا كانت البيانات لا تبدأ من 1/1/2020
+                print(f"File {filename} deleted because it doesn't start from 01/01/2020.")
+                return None, False  # إرجاع None مع False للإشارة إلى أن البيانات غير كاملة
+
             # إذا كانت البيانات غير كاملة حتى تاريخ الأمس
             if last_date.date() < (datetime.now(pytz.utc).date() - timedelta(days=1)):
                 os.remove(filename)  # حذف الملف إذا كانت البيانات قديمة
