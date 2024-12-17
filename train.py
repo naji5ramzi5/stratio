@@ -56,40 +56,62 @@ with open("configs/hydra/dataset_loader/common.yaml", "w") as file:
 
 def check_and_delete_file(filename):
     try:
-        # فتح الملف والتحقق من آخر سطر
         with open(filename, 'r') as file:
             lines = file.readlines()
             if not lines:
                 print(f"No data in file {filename}.")
                 os.remove(filename)
                 return None, False
+            
+            # التحقق من وجود رأس (Header) وتجاهله
+            if lines[0].strip().startswith('timestamp'):  # إذا كان السطر الأول رأس
+                print(f"Header detected in file {filename}, skipping the first line.")
+                lines = lines[1:]
 
-            first_line = lines[0]  # قراءة أول سطر في الملف
-            last_line = lines[-1]  # قراءة آخر سطر في الملف
-            
-            # تحويل التاريخ الأول والأخير
-            first_date = datetime.strptime(first_line.split(',')[0], '%Y-%m-%d %H:%M:%S%z')
-            last_date = datetime.strptime(last_line.split(',')[0], '%Y-%m-%d %H:%M:%S%z')
-            
-            # إذا كانت البيانات لا تبدأ من 1/1/2020 أو أن آخر سطر قديم جدًا
+            # التحقق من وجود بيانات بعد إزالة الرأس
+            if not lines:
+                print(f"No valid data in file {filename} after removing header.")
+                os.remove(filename)
+                return None, False
+
+            # قراءة أول وآخر سطر
+            first_line = lines[0].strip()  # أول سطر بيانات
+            last_line = lines[-1].strip()  # آخر سطر بيانات
+
+            # تحويل التواريخ
+            try:
+                first_date = datetime.strptime(first_line.split(',')[0], '%Y-%m-%d %H:%M:%S%z')
+                last_date = datetime.strptime(last_line.split(',')[0], '%Y-%m-%d %H:%M:%S%z')
+            except ValueError as e:
+                print(f"Error parsing dates in file {filename}: {e}")
+                os.remove(filename)
+                return None, False
+
+            # التحقق من أن البيانات تبدأ من 1/1/2020
             if first_date.date() < datetime(2020, 1, 1).date():
-                os.remove(filename)  # حذف الملف إذا كانت البيانات لا تبدأ من 1/1/2020
+                os.remove(filename)
                 print(f"File {filename} deleted because it doesn't start from 01/01/2020.")
-                return None, False  # إرجاع None مع False للإشارة إلى أن البيانات غير كاملة
+                return None, False
 
-            # إذا كانت البيانات غير كاملة حتى تاريخ الأمس
+            # التحقق من أن البيانات تغطي حتى تاريخ الأمس
             if last_date.date() < (datetime.now(pytz.utc).date() - timedelta(days=1)):
-                os.remove(filename)  # حذف الملف إذا كانت البيانات قديمة
+                os.remove(filename)
                 print(f"File {filename} deleted because it doesn't cover up to yesterday.")
-                return None, False  # إرجاع None مع False للإشارة إلى أن البيانات ناقصة
+                return None, False
 
-            # إذا كانت البيانات كاملة حتى تاريخ الأمس، حفظ قيمة الإغلاق (close)
-            yesterday_close = float(last_line.split(',')[5])  # قيمة الإغلاق
-            return yesterday_close, True  # إرجاع قيمة الإغلاق وTrue للدلالة على أن البيانات كاملة
+            # استخراج قيمة الإغلاق (close) من آخر سطر
+            try:
+                yesterday_close = float(last_line.split(',')[5])
+            except (IndexError, ValueError) as e:
+                print(f"Error extracting close value from file {filename}: {e}")
+                os.remove(filename)
+                return None, False
+
+            return yesterday_close, True
 
     except Exception as e:
         print(f"An error occurred while checking file {filename}: {e}")
-        return None, False  # في حالة حدوث خطأ، إرجاع None وFalse
+        return None, False
 
 def add_future_dates(filename, symbol):
     today = datetime.now(pytz.utc).replace(hour=0, minute=0, second=0, microsecond=0)
