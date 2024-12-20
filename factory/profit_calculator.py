@@ -8,7 +8,7 @@ logger = logging.getLogger(__name__)
 from models import MODELS
 from factory.trainer import Trainer
 from backtest.strategies import Strategies
-
+from datetime import datetime, timedelta
 
 class ProfitCalculator:
     def __init__(self, args, dataset, profit_calculator, mean_prediction, reporter):
@@ -56,11 +56,11 @@ class ProfitCalculator:
 
     def split_the_dataset(self, dataset):
         train_dataset = dataset[
-            (dataset['Date'] > self.args.dataset_loader.train_start_date) & (
-                    dataset['Date'] < self.args.dataset_loader.train_end_date)]
+            (dataset['Date'] > "2022-01-01 13:30:00") & (
+                    dataset['Date'] < (datetime.now() - timedelta(days=5)).strftime("%Y-%m-%d 09:30:00"))]
         valid_dataset = dataset[
-            (dataset['Date'] > self.args.dataset_loader.valid_start_date) & (
-                    dataset['Date'] < self.args.dataset_loader.valid_end_date)]
+            (dataset['Date'] > (datetime.now() - timedelta(days=5)).strftime("%Y-%m-%d 10:30:00")) & (
+                    dataset['Date'] < (datetime.now() + timedelta(days=2)).strftime("%Y-%m-%d 10:30:00"))]
         return train_dataset, valid_dataset
 
     def low_calculator(self):
