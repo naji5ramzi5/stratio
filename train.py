@@ -36,21 +36,21 @@ url = "https://api.binance.com/api/v3/klines"
 symbols  = [];
 
 
-current_date = datetime.now()
+# current_date = datetime.now()
 
-data = {
-    "window_size": 5,
-    "train_start_date": "2020-01-01 13:30:00",  # تاريخ ثابت
-    "train_end_date": (current_date - timedelta(days=5)).strftime("%Y-%m-%d 09:30:00"),
-    "valid_start_date": (current_date - timedelta(days=5)).strftime("%Y-%m-%d 10:30:00"),
-    "valid_end_date": (current_date + timedelta(days=2)).strftime("%Y-%m-%d 10:30:00"),
-    "features": "Date, open, High, Low, close, volume",
-    "indicators_names": "rsi macd"
-}
+# data = {
+#     "window_size": 5,
+#     "train_start_date": "2020-01-01 13:30:00",  # تاريخ ثابت
+#     "train_end_date": (current_date - timedelta(days=5)).strftime("%Y-%m-%d 09:30:00"),
+#     "valid_start_date": (current_date - timedelta(days=5)).strftime("%Y-%m-%d 10:30:00"),
+#     "valid_end_date": (current_date + timedelta(days=2)).strftime("%Y-%m-%d 10:30:00"),
+#     "features": "Date, open, High, Low, close, volume",
+#     "indicators_names": "rsi macd"
+# }
 
-# كتابة البيانات إلى ملف YAML بدون علامات التنصيص
-with open("configs/hydra/dataset_loader/common.yaml", "w") as file:
-    yaml.dump(data, file, default_flow_style=False, allow_unicode=True, sort_keys=False)
+# # كتابة البيانات إلى ملف YAML بدون علامات التنصيص
+# with open("configs/hydra/dataset_loader/common.yaml", "w") as file:
+#     yaml.dump(data, file, default_flow_style=False, allow_unicode=True, sort_keys=False)
 
 
 
@@ -194,24 +194,14 @@ def get_usd_and_usdt_pairs():
         return []
 
 
-def train(cfg: DictConfig):
-    current_date = datetime.now()
-    data = {
-        "window_size": 5,
-        "train_start_date": "2020-01-01 13:30:00",  # تاريخ ثابت
-        "train_end_date": (current_date - timedelta(days=5)).strftime("%Y-%m-%d 09:30:00"),
-        "valid_start_date": (current_date - timedelta(days=5)).strftime("%Y-%m-%d 10:30:00"),
-        "valid_end_date": (current_date + timedelta(days=2)).strftime("%Y-%m-%d 10:30:00"),
-        "features": "Date, open, High, Low, close, volume",
-        "indicators_names": "rsi macd"
-    }
+def train(cfg: DictConfig): 
     # جلب الأزواج النشطة التي تحتوي على USDT أو USD
     symbols = get_usd_and_usdt_pairs()
 
     # طباعة اللائحة
     print("List of Active Trading Pairs (USDT/USD) on Binance:")
     print(len(symbols))
-    start_date = datetime(2020, 1, 1, tzinfo=pytz.utc)
+    start_date = datetime(2022, 1, 1, tzinfo=pytz.utc)
     end_date = datetime.now(pytz.utc) - timedelta(days=1)
     period = timedelta(days=90)
 
@@ -273,8 +263,8 @@ def train(cfg: DictConfig):
                 dataset, profit_calculator = preprocess(dataset_, cfg, logger)
 
             elif cfg.model is not None:
-                dataset, profit_calculator = get_dataset(cfg.dataset_loader.name, cfg.dataset_loader.train_start_date,
-                                                        cfg.dataset_loader.valid_end_date, cfg)
+                dataset, profit_calculator = get_dataset(cfg.dataset_loader.name, "2022-01-01 13:30:00",
+                                                        (datetime.now() + timedelta(days=2)).strftime("%Y-%m-%d 10:30:00"), cfg)
 
             cfg.save_dir = os.getcwd()
             reporter = Reporter(cfg)
@@ -286,8 +276,8 @@ def train(cfg: DictConfig):
             dataset.drop(['predicted_high', 'predicted_low'], axis=1, inplace=True)
          
             if cfg.validation_method == 'simple':
-                train_dataset = dataset[ (dataset['Date'] > cfg.dataset_loader.train_start_date) & (dataset['Date'] < cfg.dataset_loader.train_end_date)]
-                valid_dataset = dataset[ (dataset['Date'] > cfg.dataset_loader.valid_start_date) & (dataset['Date'] < cfg.dataset_loader.valid_end_date)]
+                train_dataset = dataset[ (dataset['Date'] > "2022-01-01 13:30:00") & (dataset['Date'] < (datetime.now() - timedelta(days=5)).strftime("%Y-%m-%d 09:30:00"))]
+                valid_dataset = dataset[ (dataset['Date'] > (datetime.now() - timedelta(days=5)).strftime("%Y-%m-%d 10:30:00")) & (dataset['Date'] < (datetime.now() + timedelta(days=2)).strftime("%Y-%m-%d 10:30:00"))]
                 Trainer(cfg, train_dataset, None, model).train()
                 mean_prediction = Evaluator(cfg, test_dataset=valid_dataset, model=model, reporter=reporter).evaluate()
               
