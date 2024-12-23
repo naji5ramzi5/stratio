@@ -211,29 +211,11 @@ def train(cfg: DictConfig):
   
     for symbol in symbols:
         try:
-            # التحقق من توفر البيانات قبل البدء في المعالجة
-            data_available = False
-            current_start = start_date
-            while current_start < end_date:
-                current_end = min(current_start + period, end_date)
-                print(f"Checking data for {symbol} from {current_start.date()} to {current_end.date()}")
-
-                # محاولة جلب البيانات للتحقق
-                if fetch_and_save_data(symbol, current_start, current_end):
-                    data_available = True
-                    break  # التوقف بمجرد التأكد من توفر البيانات
-                current_start = current_end + timedelta(days=1)
-
-            # الانتقال للعملة التالية إذا لم تتوفر بيانات
-            if not data_available:
-                print(f"Skipping {symbol} due to insufficient data since 2022.")
-                continue
-
-            # التحقق من وجود الملف وحذفه إذا كان موجودًا
+            # Check if file exists and delete it if necessary
             if os.path.exists(data_filename):
-                os.remove(data_filename)  # حذف الملف إذا كان موجودًا
+                os.remove(data_filename)  # Delete the file if it exists
 
-            # كتابة العناوين عند إنشاء الملف
+            # Write headers only when creating the file
             with open(data_filename, 'a', newline='') as file:
                 writer = csv.writer(file)
                 writer.writerow(['timestamp', 'symbol', 'open', 'high', 'low', 'close', 'volume'])
@@ -245,25 +227,25 @@ def train(cfg: DictConfig):
                 current_end = min(current_start + period, end_date)
                 print(f"Fetching data for {symbol} from {current_start.date()} to {current_end.date()}")
 
-                # جلب البيانات لكل فترة
+                # Fetch data for each period
                 if fetch_and_save_data(symbol, current_start, current_end):
-                    data_available = True
+                    data_available = True  # Data fetched successfully for at least one period
 
                 current_start = current_end + timedelta(days=1)
             
             if not data_available:
                 print(f"Skipping {symbol} due to insufficient data.")
-                continue
+                continue  # Skip symbol if no data is available
 
             yesterday_close, data_complete = check_and_delete_file(data_filename)
             if not data_complete:
                 continue
-            # إضافة تواريخ مستقبلية إلى الملف
+            # Add three future dates at the end of the file with the symbol
             add_future_dates(data_filename, symbol)
 
             print("Data download complete for all symbols with data from the beginning of 2020.")
             
-            # تحميل البيانات أو النموذج بناءً على التكوين
+            # Load dataset or model based on configuration
             if cfg.load_path is None and cfg.model is None:
                 msg = 'either specify a load_path or config a model.'
                 logger.error(msg)
@@ -310,30 +292,48 @@ def train(cfg: DictConfig):
 
                 reporter.add_average()
             
-            # حساب الأرباح والتنبؤات
+            # Calculate profit and prediction data
             x = ProfitCalculator(cfg, dataset_for_profit, profit_calculator, mean_prediction, reporter).profit_calculator()
             predicted_high = x[0]['predicted_high'].iloc[0]
             predicted_low = x[0]['predicted_low'].iloc[0]
             predicted_mean = x[0]['predicted_mean'].iloc[0]
+            predicted_high_formated = "{:.18f}".format(predicted_high)
+            predicted_low_formated = "{:.18f}".format(predicted_low)
+            predicted_mean_formated = "{:.18f}".format(predicted_mean)
             increase = (predicted_mean - yesterday_close) / yesterday_close
             if increase > increase_threshold:
                 saved_percentage = increase * 100
             else:
-                continue
+                continue  # Skip this iteration if the increase is below the threshold
             
+            predicted_low_finally = 0
+            predicted_high_finally = 0
+            if predicted_low_formated > predicted_high_formated:
+                predicted_low_finally = predicted_high_formated
+                predicted_high_finally = predicted_low_formated
+            else:
+                predicted_low_finally = predicted_low_formated
+                predicted_high_finally = predicted_high_formated
+
             title += f'رمز العملة: {symbol}\n'
             title += f'نسبة الزيادة المتوقعة: {round(saved_percentage, 1)}%\n'
+            title += f'اعلى سعر متوقع لليوم⬆️:\n {predicted_high_finally}\n'
+            title += f'اقل سعر متوقع لليوم⬇️:\n {predicted_low_finally}\n'
+            title += f'سعر الإغلاق المتوقع لليوم:\n {predicted_mean_formated}\n'
             title += '---\n'
-            print(title)
+            print('..............................d')
+            print(yesterday_close)
             reporter.print_pretty_metrics(logger)
             reporter.save_metrics()
 
         except Exception as e:
             print(f"Error occurred while processing symbol {symbol}: {str(e)}")
-            continue
+            continue  # Continue to the next symbol if an error occurs
 
+    # title += 'لا تجعل التنبؤات محور تداولك. ركز على التحليل العميق وإدارة المخاطر، واستند إلى البيانات والحقائق لاتخاذ قرارات مستنيرة.\n'
     print(title)
-    return title
+
+    return title  # Return the title or any other relevant data
 
 from telegram import Update, KeyboardButton, ReplyKeyboardMarkup
 from telegram.ext import Application, CommandHandler, MessageHandler, filters, ContextTypes
