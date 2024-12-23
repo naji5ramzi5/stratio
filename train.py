@@ -226,11 +226,12 @@ def train(cfg: DictConfig):
             while current_start < end_date:
                 current_end = min(current_start + period, end_date)
                 print(f"Fetching data for {symbol} from {current_start.date()} to {current_end.date()}")
-
+                
                 # Fetch data for each period
                 if fetch_and_save_data(symbol, current_start, current_end):
                     data_available = True  # Data fetched successfully for at least one period
-
+                if not data_available:
+                    break
                 current_start = current_end + timedelta(days=1)
             
             if not data_available:
