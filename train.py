@@ -18,6 +18,7 @@ import requests
 import csv
 import os
 import pytz
+import asyncio
 from datetime import datetime, timedelta
 from telegram import Update, KeyboardButton, ReplyKeyboardMarkup
 from telegram.ext import Application, CommandHandler, MessageHandler, filters, ContextTypes
@@ -267,6 +268,8 @@ def main(cfg: DictConfig) -> None:
     scheduler = AsyncIOScheduler(timezone="Asia/Baghdad")
     trigger = CronTrigger(hour=5, minute=0, second=0)  # تنفيذ عند الساعة 5:00 صباحًا
     scheduler.add_job(daily_prediction, trigger, args=[cfg, application])
+    loop = asyncio.new_event_loop()
+    asyncio.set_event_loop(loop)
     scheduler.start()
 
     application.add_handler(CommandHandler('start', start))
