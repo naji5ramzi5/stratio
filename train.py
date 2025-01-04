@@ -14,6 +14,7 @@ from flask import Flask
 from threading import Thread
 from apscheduler.schedulers.asyncio import AsyncIOScheduler
 from apscheduler.triggers.cron import CronTrigger
+from path_definition import HYDRA_PATH
 
 # إعداد تفاصيل API
 url = "https://api.binance.com/api/v3/klines"
@@ -315,7 +316,7 @@ async def handle_prediction(update: Update, context: ContextTypes.DEFAULT_TYPE, 
         await data(update, context, cfg)
 
 
-@hydra.main(config_path="config", config_name="train")
+@hydra.main(config_path=HYDRA_PATH, config_name="train")
 def main(cfg: DictConfig) -> None:
     application = Application.builder().token(TOKEN).build()
     application.add_handler(CommandHandler('start', start))
