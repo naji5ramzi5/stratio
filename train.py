@@ -17,7 +17,6 @@ from datetime import datetime, timedelta
 import requests
 import csv
 import pytz
-from datetime import datetime, timedelta
 from telegram import Update, KeyboardButton, ReplyKeyboardMarkup
 from telegram.ext import Application, CommandHandler, MessageHandler, filters, ContextTypes
 from flask import Flask
@@ -25,7 +24,8 @@ from threading import Thread
 from apscheduler.schedulers.asyncio import AsyncIOScheduler
 from apscheduler.triggers.cron import CronTrigger
 
-logger = logging.getLogger(__name__)
+# تعريف تطبيق Flask
+app = Flask(__name__)
 
 # إعداد تفاصيل API
 url = "https://api.binance.com/api/v3/klines"
@@ -149,16 +149,15 @@ def get_usd_and_usdt_pairs():
         response = requests.get(url)
         data = response.json()
         # جمع أسماء الأزواج التي تنتهي بـ USDT أو USD فقط
-        trading_pairs = sorted([
-            symbol["symbol"] for symbol in data["symbols"]
-            if symbol["status"] == "TRADING" and (symbol["symbol"].endswith("USDT"))
-        ])
+        trading_pairs = sorted([symbol["symbol"] for symbol in data["symbols"]
+                                if symbol["status"] == "TRADING" and (symbol["symbol"].endswith("USDT"))])
         return trading_pairs
     except Exception as e:
         print(f"Error fetching data: {e}")
         return []
 
 
+# وظائف التوقعات والردود للبوت
 async def data(update: Update, context: ContextTypes.DEFAULT_TYPE, cfg: DictConfig) -> None:
     result = train(cfg)
     parts = result.split('---')
@@ -206,10 +205,12 @@ async def daily_prediction(cfg: DictConfig, application: Application) -> None:
             print(f"فشل في إرسال التوقع إلى {user_id}: {e}")
 
 
+# تشغيل البوت وتحديد الجدولة
 @hydra.main(config_path=HYDRA_PATH, config_name="train")
 def main(cfg: DictConfig) -> None:
     application = Application.builder().token(TOKEN).build()
 
+    # تعيين جدولة لتشغيل التوقعات اليومية في الساعة 6 صباحاً بتوقيت العراق
     scheduler = AsyncIOScheduler()
     trigger = CronTrigger(hour=6, minute=0, second=0, timezone="Asia/Baghdad")
     scheduler.add_job(daily_prediction, trigger, args=[cfg, application])
@@ -221,6 +222,9 @@ def main(cfg: DictConfig) -> None:
 
 
 if __name__ == '__main__':
+    # تشغيل Flask في Thread منفصل
     flask_thread = Thread(target=app.run, kwargs={'host': '0.0.0.0', 'port': 8080})
     flask_thread.start()
-    main()
+
+    # تشغيل التطبيق الرئيسي
+    main(cfg)
