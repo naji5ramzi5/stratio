@@ -1,3 +1,5 @@
+from flask import Flask
+from threading import Thread
 import logging
 import os
 import hydra
@@ -20,8 +22,6 @@ import pytz
 from datetime import datetime, timedelta
 from telegram import Update, KeyboardButton, ReplyKeyboardMarkup
 from telegram.ext import Application, CommandHandler, MessageHandler, filters, ContextTypes
-from flask import Flask
-from threading import Thread
 from apscheduler.schedulers.asyncio import AsyncIOScheduler
 from apscheduler.triggers.cron import CronTrigger
 
@@ -35,6 +35,14 @@ data_folder = '/opt/render/project/src/data'
 if not os.path.exists(data_folder):
     os.makedirs(data_folder)
 data_filename = os.path.join(data_folder, 'data1.csv')
+
+
+# إضافة تعريف تطبيق Flask
+app = Flask(__name__)
+
+@app.route('/')
+def hello():
+    return "Hello, World!"
 
 
 def check_and_delete_file(filename):
