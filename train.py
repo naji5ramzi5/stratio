@@ -355,19 +355,49 @@ TOKEN = '7272871832:AAGa5-_FdFfziJqDG9pp4N9ljnZ2uyxslJ0'
 
 AUTHORIZED_USERS = [895650332,991558864,715531930,117245128,1796556765]#,1796556765,715531930,117245128
 
-async def data(update: Update, context: ContextTypes.DEFAULT_TYPE, cfg: DictConfig) -> None:
-    result = train(cfg)
-    parts = result.split('---')
-    for part in parts:
-        if part.strip():
-            await update.message.reply_text(part.strip())
+# تخزين النتيجة المحسوبة مسبقًا
+predicted_result = ""
 
+# دالة لحساب التوقع
+def calculate_prediction(cfg: DictConfig) -> str:
+    # دالة حساب التوقع هنا
+    result = train(cfg)  # يمكنك تعديلها بما يتناسب مع الكود الخاص بك
+    return result
+
+# دالة لإرسال النتيجة لجميع المستخدمين
+async def send_prediction_to_users(application: Application, result: str):
+    parts = result.split('---')
+    for user_id in AUTHORIZED_USERS:
+        try:
+            for part in parts:
+                if part.strip():
+                    await application.bot.send_message(user_id, part.strip())
+        except Exception as e:
+            print(f"فشل في إرسال التوقع إلى {user_id}: {e}")
+
+# دالة الجدولة اليومية
+async def daily_prediction(cfg: DictConfig, application: Application) -> None:
+    global predicted_result
+    # إذا كانت النتيجة لم يتم حسابها بعد
+    if not predicted_result:
+        predicted_result = calculate_prediction(cfg)
+    
+    await send_prediction_to_users(application, predicted_result)
+
+# الجدولة بشكل غير متزامن
+async def start_scheduler(scheduler):
+    scheduler.start()
+    while True:
+        await asyncio.sleep(1)  # هذا يجعل الجدولة تعمل بشكل مستمر
+
+# التحقق من صلاحية المستخدم
 async def check_authorized_user(update: Update) -> bool:
     user_id = update.message.from_user.id
     if user_id in AUTHORIZED_USERS:
         return True
     return False
 
+# دالة البدء
 async def start(update: Update, context: ContextTypes.DEFAULT_TYPE) -> None:
     if not await check_authorized_user(update):
         await update.message.reply_text('ليس لديك صلاحية للوصول إلى هذا البوت.')
@@ -377,36 +407,26 @@ async def start(update: Update, context: ContextTypes.DEFAULT_TYPE) -> None:
     reply_markup = ReplyKeyboardMarkup(keyboard, resize_keyboard=True, one_time_keyboard=False)
     await update.message.reply_text('مرحبًا! اضغط على الزر لتوقع النتيجة.', reply_markup=reply_markup)
 
+# دالة التعامل مع التوقع
 async def handle_prediction(update: Update, context: ContextTypes.DEFAULT_TYPE, cfg: DictConfig) -> None:
     if not await check_authorized_user(update):
         await update.message.reply_text('ليس لديك صلاحية للوصول إلى هذا البوت.')
         return
     
     if update.message.text == "توقع":
-        await data(update, context, cfg)
+        if predicted_result:  # تحقق إذا كانت النتيجة موجودة
+            await send_prediction_to_users(context.application, predicted_result)
+        else:
+            await update.message.reply_text("لم يتم حساب التوقع بعد.")
 
-async def daily_prediction(cfg: DictConfig, application: Application) -> None:
-    for user_id in AUTHORIZED_USERS:
-        try:
-            result = train(cfg)
-            parts = result.split('---')
-            for part in parts:
-                if part.strip():
-                    await application.bot.send_message(user_id, part.strip())
-        except Exception as e:
-            print(f"فشل في إرسال التوقع إلى {user_id}: {e}")
-
-async def start_scheduler(scheduler):
-    scheduler.start()
-    while True:
-        await asyncio.sleep(1)  # هذا يجعل الجدولة تعمل بشكل مستمر
-
+# دالة البداية
 @hydra.main(config_path=HYDRA_PATH, config_name="train")
 def main(cfg: DictConfig) -> None:
     application = Application.builder().token(TOKEN).build()
     
+    # الجدولة اليومية
     scheduler = AsyncIOScheduler()
-    trigger = CronTrigger(hour=23, minute=00, second=00, timezone="Asia/Baghdad")
+    trigger = CronTrigger(hour=13, minute=41, second=30, timezone="Asia/Baghdad")
     scheduler.add_job(daily_prediction, trigger, args=[cfg, application])
     
     loop = asyncio.get_event_loop()
