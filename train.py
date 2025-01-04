@@ -260,6 +260,11 @@ async def daily_prediction(cfg: DictConfig, application: Application) -> None:
             print(f"فشل في إرسال التوقع إلى {user_id}: {e}")
 
 # دالة جدولة الوظيفة
+async def start_scheduler(scheduler):
+    scheduler.start()
+    while True:
+        await asyncio.sleep(1)  # الحفاظ على الحلقة نشطة
+
 @hydra.main(config_path=HYDRA_PATH, config_name="train")
 def main(cfg: DictConfig) -> None:
     application = Application.builder().token(TOKEN).build()
@@ -268,9 +273,12 @@ def main(cfg: DictConfig) -> None:
     scheduler = AsyncIOScheduler(timezone="Asia/Baghdad")
     trigger = CronTrigger(hour=5, minute=0, second=0)  # تنفيذ عند الساعة 5:00 صباحًا
     scheduler.add_job(daily_prediction, trigger, args=[cfg, application])
+
     loop = asyncio.new_event_loop()
     asyncio.set_event_loop(loop)
-    scheduler.start()
+    
+    # تشغيل الجدولة في حلقة asyncio
+    loop.run_until_complete(start_scheduler(scheduler))
 
     application.add_handler(CommandHandler('start', start))
     application.add_handler(MessageHandler(filters.TEXT & ~filters.COMMAND, partial(handle_prediction, cfg=cfg)))  # تمرير cfg هنا
