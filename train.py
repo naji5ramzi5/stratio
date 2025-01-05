@@ -426,7 +426,7 @@ def main(cfg: DictConfig) -> None:
     
     # الجدولة اليومية
     scheduler = AsyncIOScheduler()
-    trigger = CronTrigger(hour=04, minute=00, second=00, timezone="Asia/Baghdad")
+    trigger = CronTrigger(hour=4, minute=00, second=00, timezone="Asia/Baghdad")
     scheduler.add_job(daily_prediction, trigger, args=[cfg, application])
     
     loop = asyncio.get_event_loop()
