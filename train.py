@@ -353,7 +353,7 @@ logging.basicConfig(level=logging.INFO)
 
 TOKEN = '7272871832:AAGa5-_FdFfziJqDG9pp4N9ljnZ2uyxslJ0'
 
-AUTHORIZED_USERS = [895650332,991558864,715531930,117245128,1796556765]#,1796556765,715531930,117245128
+AUTHORIZED_USERS = [895650332, 991558864, 715531930, 117245128, 1796556765]
 
 # تخزين النتيجة المحسوبة مسبقًا
 predicted_result = ""
@@ -375,27 +375,17 @@ async def send_prediction_to_users(application: Application, result: str):
         except Exception as e:
             print(f"فشل في إرسال التوقع إلى {user_id}: {e}")
 
-# دالة الجدولة اليومية
+# دالة الجدولة اليومية لتحديث التوقع
 async def daily_prediction(cfg: DictConfig, application: Application) -> None:
     global predicted_result
-    # إذا كانت النتيجة لم يتم حسابها بعد
-    if not predicted_result:
-        predicted_result = calculate_prediction(cfg)
-    
+    # حساب توقع جديد وتحديث المتغير
+    predicted_result = calculate_prediction(cfg)
     await send_prediction_to_users(application, predicted_result)
-
-# الجدولة بشكل غير متزامن
-async def start_scheduler(scheduler):
-    scheduler.start()
-    while True:
-        await asyncio.sleep(1)  # هذا يجعل الجدولة تعمل بشكل مستمر
 
 # التحقق من صلاحية المستخدم
 async def check_authorized_user(update: Update) -> bool:
     user_id = update.message.from_user.id
-    if user_id in AUTHORIZED_USERS:
-        return True
-    return False
+    return user_id in AUTHORIZED_USERS
 
 # دالة البدء
 async def start(update: Update, context: ContextTypes.DEFAULT_TYPE) -> None:
@@ -407,7 +397,7 @@ async def start(update: Update, context: ContextTypes.DEFAULT_TYPE) -> None:
     reply_markup = ReplyKeyboardMarkup(keyboard, resize_keyboard=True, one_time_keyboard=False)
     await update.message.reply_text('مرحبًا! اضغط على الزر لتوقع النتيجة.', reply_markup=reply_markup)
 
-# دالة التعامل مع التوقع
+# دالة التعامل مع التوقع عند الطلب
 async def handle_prediction(update: Update, context: ContextTypes.DEFAULT_TYPE, cfg: DictConfig) -> None:
     if not await check_authorized_user(update):
         await update.message.reply_text('ليس لديك صلاحية للوصول إلى هذا البوت.')
@@ -417,21 +407,23 @@ async def handle_prediction(update: Update, context: ContextTypes.DEFAULT_TYPE, 
         if predicted_result:  # تحقق إذا كانت النتيجة موجودة
             await send_prediction_to_users(context.application, predicted_result)
         else:
-            await update.message.reply_text("لم يتم حساب التوقع بعد.")
+            await update.message.reply_text("لم يتم حساب التوقع بعد. الرجاء المحاولة لاحقًا.")
 
 # دالة البداية
 @hydra.main(config_path=HYDRA_PATH, config_name="train")
 def main(cfg: DictConfig) -> None:
     application = Application.builder().token(TOKEN).build()
     
-    # الجدولة اليومية
+    # إعداد الجدولة اليومية
     scheduler = AsyncIOScheduler()
-    trigger = CronTrigger(hour=4, minute=00, second=00, timezone="Asia/Baghdad")
+    trigger = CronTrigger(hour=4, minute=0, second=0, timezone="Asia/Baghdad")
     scheduler.add_job(daily_prediction, trigger, args=[cfg, application])
     
+    # تشغيل الجدولة بشكل غير متزامن
     loop = asyncio.get_event_loop()
-    loop.run_until_complete(start_scheduler(scheduler))  # بدأنا الجدولة هنا
+    loop.run_until_complete(start_scheduler(scheduler))
 
+    # التعامل مع الأوامر والرسائل
     application.add_handler(CommandHandler('start', start))
     application.add_handler(MessageHandler(filters.TEXT & ~filters.COMMAND, partial(handle_prediction, cfg=cfg)))  
     application.run_polling()
