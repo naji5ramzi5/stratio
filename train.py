@@ -409,7 +409,11 @@ async def handle_prediction(update: Update, context: ContextTypes.DEFAULT_TYPE, 
         else:
             await update.message.reply_text("لم يتم حساب التوقع بعد. الرجاء المحاولة لاحقًا.")
 
-# دالة البداية
+async def start_scheduler(scheduler):
+    scheduler.start()
+    while True:
+        await asyncio.sleep(1)  # جعل الجدولة تعمل بشكل مستمر
+
 @hydra.main(config_path=HYDRA_PATH, config_name="train")
 def main(cfg: DictConfig) -> None:
     application = Application.builder().token(TOKEN).build()
@@ -419,9 +423,9 @@ def main(cfg: DictConfig) -> None:
     trigger = CronTrigger(hour=4, minute=0, second=0, timezone="Asia/Baghdad")
     scheduler.add_job(daily_prediction, trigger, args=[cfg, application])
     
-    # تشغيل الجدولة بشكل غير متزامن
+    # تشغيل الجدولة بشكل متزامن
     loop = asyncio.get_event_loop()
-    loop.run_until_complete(start_scheduler(scheduler))
+    loop.run_until_complete(start_scheduler(scheduler))  # بدء الجدولة هنا
 
     # التعامل مع الأوامر والرسائل
     application.add_handler(CommandHandler('start', start))
