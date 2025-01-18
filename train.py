@@ -26,7 +26,7 @@ import csv
 import os
 import pytz
 from datetime import datetime, timedelta
-logger = logging.getLogger(__name__)
+logger = logging.getLogger(_name_)
 import pandas as pd
 
 
@@ -53,75 +53,7 @@ symbols  = [];
 #     yaml.dump(data, file, default_flow_style=False, allow_unicode=True, sort_keys=False)
 
 
-import snscrape.modules.twitter as sntwitter
-from datetime import datetime
-from textblob import TextBlob
-from typing import Dict
 
-def analyze_sentiment_advanced(base_symbol: str, tweets_count: int = 100) -> Dict[str, str]:
-    """
-    دالة لتحليل مشاعر التغريدات المرتبطة بعملة معينة.
-    
-    Args:
-        base_symbol (str): رمز العملة (مثل BTCUSDT).
-        tweets_count (int): عدد التغريدات المطلوبة للتحليل.
-
-    Returns:
-        Dict[str, str]: نتيجة تحليل المشاعر باللغة العربية.
-    """
-    # تحديد تاريخ اليوم
-    today_date = datetime.now().strftime("%Y-%m-%d")
-    
-    # استعلام البحث في Twitter
-    query = f"({base_symbol} OR {base_symbol.lower()} OR ${base_symbol} OR #{base_symbol}) since:{today_date} until:{today_date}"
-
-    tweets = []
-    try:
-        # جلب التغريدات باستخدام snscrape
-        for tweet in sntwitter.TwitterSearchScraper(query).get_items():
-            if len(tweets) >= tweets_count:
-                break
-            tweets.append(tweet.content)
-    except Exception as e:
-        return {"خطأ": f"حدث خطأ أثناء جلب التغريدات: {e}"}
-
-    # التحقق من وجود تغريدات
-    if not tweets:
-        return {"نتيجة": "لم يتم العثور على تغريدات متعلقة بهذه العملة اليوم."}
-
-    # تحليل المشاعر لكل تغريدة
-    sentiments = {"إيجابي": 0, "سلبي": 0, "محايد": 0}
-    for tweet in tweets:
-        analysis = TextBlob(tweet)
-        polarity = analysis.sentiment.polarity
-        
-        # تصنيف المشاعر بناءً على القيم
-        if polarity > 0:
-            sentiments["إيجابي"] += 1
-        elif polarity < 0:
-            sentiments["سلبي"] += 1
-        else:
-            sentiments["محايد"] += 1
-
-    # التحقق من إجمالي التغريدات قبل حساب النسب
-    total = sum(sentiments.values())
-    if total == 0:
-        return {"نتيجة": "لم يتم العثور على مشاعر يمكن تحليلها في التغريدات."}
-
-    sentiments_percent = {k: f"{(v / total) * 100:.2f}%" for k, v in sentiments.items()}
-
-    # صياغة النتيجة النهائية
-    result = {
-        "العملة": base_symbol,
-        "التغريدات الكلية": f"{total}",
-        "نسبة المشاعر الإيجابية": sentiments_percent["إيجابي"],
-        "نسبة المشاعر السلبية": sentiments_percent["سلبي"],
-        "نسبة المشاعر المحايدة": sentiments_percent["محايد"],
-    }
-
-    return result
-
-    
 def check_and_delete_file(filename):
     try:
         with open(filename, 'r') as file:
@@ -390,26 +322,7 @@ def train(cfg: DictConfig):
             title += f'اقل سعر متوقع لليوم⬇️:\n {predicted_low_finally}\n'
             title += f'سعر الإغلاق المتوقع لليوم:\n {predicted_mean_formated}\n'
             title += '---\n'
-           # استدعاء تحليل المشاعر
-            title += '..............................d\n'
-            sentiment_result = analyze_sentiment_advanced(symbol, tweets_count=50)
-            if "خطأ" in sentiment_result:
-                sentiment_message = f"تحليل المشاعر: {sentiment_result['خطأ']}\n"
-            elif "نتيجة" in sentiment_result:
-                sentiment_message = f"تحليل المشاعر: {sentiment_result['نتيجة']}\n"
-            else:
-                sentiment_message = (
-                    f"تحليل المشاعر:\n"
-                    f"عدد التغريدات المحللة: {sentiment_result['التغريدات الكلية']}\n"
-                    f"نسبة المشاعر الإيجابية: {sentiment_result['نسبة المشاعر الإيجابية']}\n"
-                    f"نسبة المشاعر السلبية: {sentiment_result['نسبة المشاعر السلبية']}\n"
-                    f"نسبة المشاعر المحايدة: {sentiment_result['نسبة المشاعر المحايدة']}\n"
-                )
-            
-            # إضافة النتائج إلى الرسالة
-            title += sentiment_message
-            
-            # طباعة البيانات
+            print('..............................d')
             print(yesterday_close)
             reporter.print_pretty_metrics(logger)
             reporter.save_metrics()
@@ -434,14 +347,13 @@ from threading import Thread
 from apscheduler.schedulers.asyncio import AsyncIOScheduler
 from apscheduler.triggers.cron import CronTrigger
 
-app = Flask(__name__)
+app = Flask(_name_)
 
 logging.basicConfig(level=logging.INFO)
 
 TOKEN = '7272871832:AAGa5-_FdFfziJqDG9pp4N9ljnZ2uyxslJ0'
 
-# AUTHORIZED_USERS = [895650332, 991558864, 715531930, 117245128, 1796556765]
-AUTHORIZED_USERS = [991558864]
+AUTHORIZED_USERS = [895650332, 991558864, 715531930, 117245128, 1796556765]
 
 # تخزين النتيجة المحسوبة مسبقًا
 predicted_result = ""
@@ -508,7 +420,7 @@ def main(cfg: DictConfig) -> None:
     
     # إعداد الجدولة اليومية
     scheduler = AsyncIOScheduler()
-    trigger = CronTrigger(hour=15, minute=15, second=0, timezone="Asia/Baghdad")
+    trigger = CronTrigger(hour=4, minute=0, second=0, timezone="Asia/Baghdad")
     scheduler.add_job(daily_prediction, trigger, args=[cfg, application])
     
     # تشغيل الجدولة بشكل متزامن
@@ -520,7 +432,7 @@ def main(cfg: DictConfig) -> None:
     application.add_handler(MessageHandler(filters.TEXT & ~filters.COMMAND, partial(handle_prediction, cfg=cfg)))  
     application.run_polling()
 
-if __name__ == '__main__':
+if _name_ == '_main_':
     flask_thread = Thread(target=app.run, kwargs={'host': '0.0.0.0', 'port': 8080})
     flask_thread.start()
     main()
