@@ -26,3 +26,7 @@ ruamel.yaml
 flask
 apscheduler
 python-binance
+textblob==0.17.1
+vaderSentiment==3.3.2
+python-dotenv==1.0.0
+tweepy==4.10.1
