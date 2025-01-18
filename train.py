@@ -103,8 +103,11 @@ def analyze_sentiment_advanced(base_symbol: str, tweets_count: int = 100) -> Dic
         else:
             sentiments["محايد"] += 1
 
-    # حساب النسب المئوية
+    # التحقق من إجمالي التغريدات قبل حساب النسب
     total = sum(sentiments.values())
+    if total == 0:
+        return {"نتيجة": "لم يتم العثور على مشاعر يمكن تحليلها في التغريدات."}
+
     sentiments_percent = {k: f"{(v / total) * 100:.2f}%" for k, v in sentiments.items()}
 
     # صياغة النتيجة النهائية
@@ -117,6 +120,7 @@ def analyze_sentiment_advanced(base_symbol: str, tweets_count: int = 100) -> Dic
     }
 
     return result
+
     
 def check_and_delete_file(filename):
     try:
@@ -436,7 +440,8 @@ logging.basicConfig(level=logging.INFO)
 
 TOKEN = '7272871832:AAGa5-_FdFfziJqDG9pp4N9ljnZ2uyxslJ0'
 
-AUTHORIZED_USERS = [895650332, 991558864, 715531930, 117245128, 1796556765]
+# AUTHORIZED_USERS = [895650332, 991558864, 715531930, 117245128, 1796556765]
+AUTHORIZED_USERS = [991558864]
 
 # تخزين النتيجة المحسوبة مسبقًا
 predicted_result = ""
@@ -503,7 +508,7 @@ def main(cfg: DictConfig) -> None:
     
     # إعداد الجدولة اليومية
     scheduler = AsyncIOScheduler()
-    trigger = CronTrigger(hour=14, minute=15, second=0, timezone="Asia/Baghdad")
+    trigger = CronTrigger(hour=15, minute=15, second=0, timezone="Asia/Baghdad")
     scheduler.add_job(daily_prediction, trigger, args=[cfg, application])
     
     # تشغيل الجدولة بشكل متزامن
