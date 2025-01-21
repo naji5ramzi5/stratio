@@ -193,8 +193,11 @@ def get_usd_and_usdt_pairs():
         print(f"Error fetching data: {e}")
         return []
 
+from crypto_sentiment_analyzer import CryptoSentimentAnalyzer
 
 def train(cfg: DictConfig): 
+    analyzer = CryptoSentimentAnalyzer()
+
     # جلب الأزواج النشطة التي تحتوي على USDT أو USD
     symbols = get_usd_and_usdt_pairs()
 
@@ -322,6 +325,8 @@ def train(cfg: DictConfig):
             title += f'اقل سعر متوقع لليوم⬇️:\n {predicted_low_finally}\n'
             title += f'سعر الإغلاق المتوقع لليوم:\n {predicted_mean_formated}\n'
             title += '---\n'
+            sentiment_analysis = analyzer.analyze(symbol)
+            title += sentiment_analysis
             print('..............................d')
             print(yesterday_close)
             reporter.print_pretty_metrics(logger)
@@ -353,7 +358,8 @@ logging.basicConfig(level=logging.INFO)
 
 TOKEN = '7272871832:AAGa5-_FdFfziJqDG9pp4N9ljnZ2uyxslJ0'
 
-AUTHORIZED_USERS = [895650332, 991558864, 715531930, 117245128, 1796556765]
+# AUTHORIZED_USERS = [895650332, 991558864, 715531930, 117245128, 1796556765]
+AUTHORIZED_USERS = [991558864]
 
 # تخزين النتيجة المحسوبة مسبقًا
 predicted_result = ""
@@ -420,7 +426,7 @@ def main(cfg: DictConfig) -> None:
     
     # إعداد الجدولة اليومية
     scheduler = AsyncIOScheduler()
-    trigger = CronTrigger(hour=4, minute=0, second=0, timezone="Asia/Baghdad")
+    trigger = CronTrigger(hour=15, minute=30, second=0, timezone="Asia/Baghdad")
     scheduler.add_job(daily_prediction, trigger, args=[cfg, application])
     
     # تشغيل الجدولة بشكل متزامن
