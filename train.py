@@ -325,7 +325,7 @@ def train(cfg: DictConfig):
             title += f'اقل سعر متوقع لليوم⬇️:\n {predicted_low_finally}\n'
             title += f'سعر الإغلاق المتوقع لليوم:\n {predicted_mean_formated}\n'
             title += '---\n'
-            sentiment_analysis = analyzer.analyze(symbol)
+            sentiment_analysis = analyzer.get_sentiment_summary(symbol)
             title += sentiment_analysis
             print('..............................d')
             print(yesterday_close)
@@ -426,7 +426,7 @@ def main(cfg: DictConfig) -> None:
     
     # إعداد الجدولة اليومية
     scheduler = AsyncIOScheduler()
-    trigger = CronTrigger(hour=15, minute=30, second=0, timezone="Asia/Baghdad")
+    trigger = CronTrigger(hour=17, minute=30, second=0, timezone="Asia/Baghdad")
     scheduler.add_job(daily_prediction, trigger, args=[cfg, application])
     
     # تشغيل الجدولة بشكل متزامن
