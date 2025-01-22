@@ -321,9 +321,9 @@ def train(cfg: DictConfig):
 
             title += f'رمز العملة: {symbol}\n'
             title += f'نسبة الزيادة المتوقعة: {round(saved_percentage, 1)}%\n'
-            title += f'اعلى سعر متوقع لليوم⬆️:\n {predicted_high_finally}\n'
-            title += f'اقل سعر متوقع لليوم⬇️:\n {predicted_low_finally}\n'
-            title += f'سعر الإغلاق المتوقع لليوم:\n {predicted_mean_formated}\n'
+            title += f'اعلى سعر متوقع لليوم⬆️:\n {round(predicted_high_finally, 5)}\n'
+            title += f'اقل سعر متوقع لليوم⬇️:\n {round(predicted_low_finally, 5)}\n'
+            title += f'سعر الإغلاق المتوقع لليوم:\n {round(predicted_mean_formated, 5)}\n'
             title += '....................\n'
 
             sentiment_analysis = analyzer.get_sentiment_summary(symbol)
@@ -361,7 +361,7 @@ logging.basicConfig(level=logging.INFO)
 
 TOKEN = '7272871832:AAGa5-_FdFfziJqDG9pp4N9ljnZ2uyxslJ0'
 
-AUTHORIZED_USERS = [895650332, 991558864, 715531930, 117245128, 1796556765]
+AUTHORIZED_USERS = [895650332, 991558864, 715531930, 117245128, 1796556765,31128146]
 #AUTHORIZED_USERS = [991558864]
 
 # تخزين النتيجة المحسوبة مسبقًا
