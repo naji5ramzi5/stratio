@@ -321,9 +321,9 @@ def train(cfg: DictConfig):
 
             title += f'رمز العملة: {symbol}\n'
             title += f'نسبة الزيادة المتوقعة: {round(saved_percentage, 1)}%\n'
-            title += f'اعلى سعر متوقع لليوم⬆️:\n {round(predicted_high_finally, 5)}\n'
-            title += f'اقل سعر متوقع لليوم⬇️:\n {round(predicted_low_finally, 5)}\n'
-            title += f'سعر الإغلاق المتوقع لليوم:\n {round(predicted_mean_formated, 5)}\n'
+            title += f'اعلى سعر متوقع لليوم⬆️:\n {predicted_high_finally}\n'
+            title += f'اقل سعر متوقع لليوم⬇️:\n {predicted_low_finally}\n'
+            title += f'سعر الإغلاق المتوقع لليوم:\n {predicted_mean_formated}\n'
             title += '....................\n'
 
             sentiment_analysis = analyzer.get_sentiment_summary(symbol)
