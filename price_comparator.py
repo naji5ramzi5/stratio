@@ -9,7 +9,8 @@ from crypto_sentiment_analyzer import CryptoSentimentAnalyzer
 
 # متغيرات البوت والتحديث
 TOKEN = "YOUR_BOT_TOKEN"
-AUTHORIZED_USERS = [YOUR_USER_IDS]  # قائمة مع معرفات المستخدمين
+# AUTHORIZED_USERS = [895650332, 991558864, 715531930, 117245128, 1796556765,31128146]  
+AUTHORIZED_USERS = [991558864]  
 downSymbols = []  # مصفوفة لتخزين الرموز التي تم إخبارها بمستوى أدنى السعر
 
 scheduler = BackgroundScheduler()
