@@ -82,7 +82,8 @@ def compare_prices_and_send_notifications():
             message = (f"🎯 تم الوصول إلى أعلى سعر متوقع ل {symbol}!\n"
                        f"📈 السعر الحالي: {current_price}\n"
                        f"📈 أعلى سعر متوقع: {predicted_high}\n"
-                       f"🧐 المشاعر: {sentiment}")
+                       f"---------------------------\n"
+                       f": {sentiment}")
             send_to_users(message)
             downSymbols.remove(item)  # حذف العملة بعد تحقيق الهدف
 
