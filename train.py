@@ -347,6 +347,8 @@ def train(cfg: DictConfig):
 
     # title += 'لا تجعل التنبؤات محور تداولك. ركز على التحليل العميق وإدارة المخاطر، واستند إلى البيانات والحقائق لاتخاذ قرارات مستنيرة.\n'
     print(title)
+    global predicted_title
+    predicted_title = title
     start_price_comparison(title)
     return title  # Return the title or any other relevant data
 
