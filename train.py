@@ -53,7 +53,13 @@ symbols  = [];
 #     yaml.dump(data, file, default_flow_style=False, allow_unicode=True, sort_keys=False)
 
 
+from price_comparator import PriceComparator
 
+def start_price_comparison(title):
+    # إنشاء كائن من PriceComparator وتشغيل المقارنات
+    comparator = PriceComparator()
+    comparator.start_comparator(title)
+    
 def check_and_delete_file(filename):
     try:
         with open(filename, 'r') as file:
@@ -341,7 +347,7 @@ def train(cfg: DictConfig):
 
     # title += 'لا تجعل التنبؤات محور تداولك. ركز على التحليل العميق وإدارة المخاطر، واستند إلى البيانات والحقائق لاتخاذ قرارات مستنيرة.\n'
     print(title)
-
+    start_price_comparison(title)
     return title  # Return the title or any other relevant data
 
 from telegram import Update, KeyboardButton, ReplyKeyboardMarkup
