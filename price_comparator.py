@@ -66,7 +66,8 @@ def compare_prices_and_send_notifications():
             message = (f"⚠️ تم الوصول إلى أقل سعر متوقع ل {symbol}!\n"
                        f"📉 السعر الحالي: {current_price}\n"
                        f"📉 أقل سعر متوقع: {predicted_low}\n"
-                       f"🧐 المشاعر: {sentiment}")
+                       f"------------------------------\n"
+                       f" {sentiment}")
             send_to_users(message)
             downSymbols.append({'symbol': symbol, 'predicted_high': predicted_high})
 
