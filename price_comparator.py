@@ -1,120 +1,90 @@
-import re
+from apscheduler.schedulers.background import BackgroundScheduler
 import requests
-import time
-import asyncio
+import json
 from telegram import Bot
-from apscheduler.schedulers.asyncio import AsyncIOScheduler
+from telegram.ext import Updater
 
-# بيانات تيليجرام
-TOKEN = "7272871832:AAG...slJ0"  # ضع توكن البوت هنا
-CHAT_ID = 895650332  # ضع معرف المستخدم أو المجموعة هنا
+# إضافة مكتبة التحليل المشاعر
+from crypto_sentiment_analyzer import CryptoSentimentAnalyzer
 
-# رابط API Binance
-BINANCE_API_URL = "https://api.binance.com/api/v3/ticker/price"
+# متغيرات البوت والتحديث
+TOKEN = "YOUR_BOT_TOKEN"
+AUTHORIZED_USERS = [YOUR_USER_IDS]  # قائمة مع معرفات المستخدمين
+downSymbols = []  # مصفوفة لتخزين الرموز التي تم إخبارها بمستوى أدنى السعر
 
-# قائمة العملات التي انخفضت عن أقل سعر متوقع
-downSymbol = {}
+scheduler = BackgroundScheduler()
 
-async def send_telegram_message(message):
-    """
-    إرسال رسالة عبر بوت تيليجرام.
-    """
+def get_current_price(symbol: str) -> float:
+    """استرجاع السعر الحالي من باينانس"""
+    url = f'https://api.binance.com/api/v3/ticker/price?symbol={symbol}'
+    response = requests.get(url)
+    data = response.json()
+    return float(data['price'])
+
+def send_to_users(message: str):
+    """إرسال الرسالة لجميع المستخدمين"""
     bot = Bot(token=TOKEN)
-    await bot.send_message(chat_id=CHAT_ID, text=message)
+    for user_id in AUTHORIZED_USERS:
+        bot.send_message(chat_id=user_id, text=message)
 
-def get_binance_price(symbol: str):
-    """
-    جلب السعر الحالي للعملة من Binance API.
-    """
-    try:
-        response = requests.get(BINANCE_API_URL, params={"symbol": symbol})
-        data = response.json()
-        return float(data["price"])
-    except Exception as e:
-        print(f"❌ خطأ في جلب سعر {symbol} من Binance: {e}")
-        return None
+def get_sentiment_analysis(symbol: str) -> str:
+    """جلب المشاعر من ملف التحليل"""
+    analyzer = CryptoSentimentAnalyzer()
+    return analyzer.get_sentiment_summary(symbol)
 
-def extract_currency_data(title: str):
-    """
-    استخراج رموز العملات وأقل وأعلى الأسعار المتوقعة من النص.
-    """
-    currency_data = []
+def compare_prices_and_send_notifications():
+    """مقارنة الأسعار مع التوقعات وإرسال رسائل"""
+    global downSymbols
+    # هنا نقرأ المتغير title الذي يحتوي على التوقعات
+    title = '... your title data from training process ...'  # تأكد من تمرير البيانات من مكان ما
 
-    matches = re.findall(
-        r'رمز العملة: (\w+).*?اعلى سعر متوقع لليوم⬆️:\n (\d+\.\d+).*?اقل سعر متوقع لليوم⬇️:\n (\d+\.\d+)',
-        title, re.DOTALL
-    )
-
-    for match in matches:
-        symbol = match[0] + "USDT"  # تحويل الرمز إلى تنسيق Binance
-        predicted_high = float(match[1])
-        predicted_low = float(match[2])
-        currency_data.append({'symbol': symbol, 'predicted_high': predicted_high, 'predicted_low': predicted_low})
-
-    return currency_data
-
-async def check_prices(title: str):
-    """
-    مقارنة الأسعار الحالية مع التوقعات وإرسال تنبيهات عبر تيليجرام.
-    """
-    global downSymbol
-    report = "📊 **تحديث أسعار العملات** 📊\n\n"
-    currency_data = extract_currency_data(title)
-
-    for data in currency_data:
-        symbol = data['symbol']
-        predicted_high = data['predicted_high']
-        predicted_low = data['predicted_low']
-        current_price = get_binance_price(symbol)
-
-        if current_price is None:
-            report += f"⚠️ لم يتم العثور على السعر الحالي لـ {symbol}.\n"
+    # تقسيم التوقعات حسب العملة
+    predictions = title.split('---')
+    
+    for prediction in predictions:
+        if "رمز العملة" not in prediction:
             continue
 
-        # إذا كان السعر الحالي أقل من التوقع الأدنى
-        if current_price <= predicted_low and symbol not in downSymbol:
-            downSymbol[symbol] = predicted_high  # تخزين العملة مع أعلى سعر متوقع
-            message = f"🔴 {symbol} وصل إلى أقل سعر متوقع: {current_price} (📉 {predicted_low})"
-            await send_telegram_message(message)
+        # استخراج بيانات التوقع
+        symbol = ...  # استخراج رمز العملة من التوقع
+        predicted_low = ...  # استخراج أقل سعر متوقع
+        predicted_high = ...  # استخراج أعلى سعر متوقع
 
-        # إذا كانت العملة موجودة في downSymbol وارتفعت إلى أعلى سعر متوقع
-        elif symbol in downSymbol and current_price >= downSymbol[symbol]:
-            message = f"🟢 {symbol} ارتفع إلى أعلى سعر متوقع: {current_price} (📈 {downSymbol[symbol]})"
-            await send_telegram_message(message)
-            del downSymbol[symbol]  # إزالة العملة من القائمة
+        current_price = get_current_price(symbol)
 
-async def scheduled_task():
-    """
-    تشغيل المهمة كل 15 دقيقة.
-    """
-    title = """
-    رمز العملة: BTC
-    نسبة الزيادة المتوقعة: 2.5%
-    اعلى سعر متوقع لليوم⬆️:
-    48000.5
-    اقل سعر متوقع لليوم⬇️:
-    47000.2
-    سعر الإغلاق المتوقع لليوم:
-    47500.0
-    ....................
-    رمز العملة: ETH
-    نسبة الزيادة المتوقعة: 1.8%
-    اعلى سعر متوقع لليوم⬆️:
-    3200.0
-    اقل سعر متوقع لليوم⬇️:
-    3100.5
-    سعر الإغلاق المتوقع لليوم:
-    3150.3
-    ....................
-    """
+        # مقارنة مع أقل سعر
+        if current_price <= float(predicted_low):
+            sentiment = get_sentiment_analysis(symbol)
+            message = f"⚠️ تم الوصول إلى أقل سعر متوقع ل {symbol}!\n"
+            message += f"السعر الحالي: {current_price}\n"
+            message += f"أقل سعر متوقع: {predicted_low}\n"
+            message += f"المشاعر: {sentiment}"
 
-    await check_prices(title)
+            send_to_users(message)
+            downSymbols.append({'symbol': symbol, 'predicted_high': predicted_high})
 
-if __name__ == "__main__":
-    scheduler = AsyncIOScheduler()
-    scheduler.add_job(scheduled_task, "interval", minutes=15)
-    scheduler.start()
+    # مقارنة العملات في downSymbols مع أعلى سعر متوقع
+    for item in downSymbols:
+        symbol = item['symbol']
+        predicted_high = item['predicted_high']
 
-    print("✅ بدأ تشغيل البرنامج...")
-    loop = asyncio.get_event_loop()
-    loop.run_forever()
+        current_price = get_current_price(symbol)
+        if current_price >= float(predicted_high):
+            sentiment = get_sentiment_analysis(symbol)
+            message = f"🎯 تم الوصول إلى أعلى سعر متوقع ل {symbol}!\n"
+            message += f"السعر الحالي: {current_price}\n"
+            message += f"أعلى سعر متوقع: {predicted_high}\n"
+            message += f"المشاعر: {sentiment}"
+
+            send_to_users(message)
+            downSymbols = [x for x in downSymbols if x['symbol'] != symbol]  # إزالة العملة من القائمة بعد الوصول إلى أعلى سعر
+
+# جدولة المهمة لتعمل كل 15 دقيقة
+scheduler.add_job(compare_prices_and_send_notifications, 'interval', minutes=15)
+
+# بدء الجدولة
+scheduler.start()
+
+# التحقق من الجدولة في حلقة مستمرة
+while True:
+    pass
