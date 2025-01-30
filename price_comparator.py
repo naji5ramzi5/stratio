@@ -8,7 +8,7 @@ from telegram.ext import Updater
 from crypto_sentiment_analyzer import CryptoSentimentAnalyzer
 
 # متغيرات البوت والتحديث
-TOKEN = "YOUR_BOT_TOKEN"
+TOKEN = "7693311875:AAExOMjL65mRn76jlV_P2XKTchpb6BQMXs8"
 # AUTHORIZED_USERS = [895650332, 991558864, 715531930, 117245128, 1796556765,31128146]  
 AUTHORIZED_USERS = [991558864]  
 downSymbols = []  # مصفوفة لتخزين الرموز التي تم إخبارها بمستوى أدنى السعر
