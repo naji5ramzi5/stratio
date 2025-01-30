@@ -67,7 +67,6 @@ def compare_prices_and_send_notifications():
     for item in downSymbols:
         symbol = item['symbol']
         predicted_high = item['predicted_high']
-
         current_price = get_current_price(symbol)
         if current_price >= float(predicted_high):
             sentiment = get_sentiment_analysis(symbol)
