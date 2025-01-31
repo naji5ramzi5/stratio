@@ -1,13 +1,14 @@
 from apscheduler.schedulers.background import BackgroundScheduler
 import requests
-import json
-from telegram import Bot
+from telegram import Bot, Update
+from telegram.ext import Application, CommandHandler, MessageHandler, filters
 from crypto_sentiment_analyzer import CryptoSentimentAnalyzer
 import re
 from binance_liquidity import check_liquidity_and_price
-
+import asyncio
 
 class PriceComparator:
+    # توكن البوت الثاني
     TOKEN = "7693311875:AAExOMjL65mRn76jlV_P2XKTchpb6BQMXs8"
     AUTHORIZED_USERS = [991558864]  
 
@@ -106,3 +107,29 @@ class PriceComparator:
         print("[🚀] بدء الجدولة لمقارنة الأسعار...")
         self.scheduler.start()
         print("[✅] الجدولة قيد التشغيل بنجاح!")
+
+# بوت التليجرام الثاني
+async def start(update: Update, context):
+    await update.message.reply_text(f"مرحبًا، {update.effective_user.first_name}!")
+
+async def handle_message(update: Update, context):
+    await update.message.reply_text(f"لقد استلمت رسالتك: {update.message.text}")
+
+async def run_telegram_bot():
+    application = Application.builder().token(PriceComparator.TOKEN).build()
+
+    # إضافة معالج الأوامر والرسائل
+    application.add_handler(CommandHandler("start", start))
+    application.add_handler(MessageHandler(filters.TEXT & ~filters.COMMAND, handle_message))
+
+    # بدء البوت
+    await application.run_polling()
+
+# تشغيل البوت الثاني فقط
+if __name__ == "__main__":
+    # بدء الجدولة لمقارنة الأسعار
+    price_comparator = PriceComparator()
+    price_comparator.start_comparing()
+
+    # تشغيل البوت الثاني
+    asyncio.run(run_telegram_bot())
