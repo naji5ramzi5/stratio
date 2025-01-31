@@ -8,7 +8,6 @@ import asyncio
 from crypto_sentiment_analyzer import CryptoSentimentAnalyzer
 
 class PriceComparator:
-    # توكن البوت الثاني
     TOKEN = '7693311875:AAExOMjL65mRn76jlV_P2XKTchpb6BQMXs8'
     AUTHORIZED_USERS = [991558864, 895650332]
 
@@ -43,7 +42,10 @@ class PriceComparator:
             except Exception as e:
                 print(f"[❌] فشل إرسال الرسالة إلى {user_id}: {e}")
 
-    async def compare_prices_and_send_notifications(self):
+    def compare_prices_and_send_notifications(self):
+        asyncio.run(self._compare_prices_and_send_notifications())  # تشغيل `async` داخل `sync`
+
+    async def _compare_prices_and_send_notifications(self):
         analyzer = CryptoSentimentAnalyzer()
         print("[🔄] بدء مقارنة الأسعار...")
         if not self.predicted_title:
@@ -112,18 +114,13 @@ async def handle_message(update: Update, context):
 async def run_telegram_bot():
     application = Application.builder().token(PriceComparator.TOKEN).build()
 
-    # إضافة معالج الأوامر والرسائل
     application.add_handler(CommandHandler("start", start))
     application.add_handler(MessageHandler(filters.TEXT & ~filters.COMMAND, handle_message))
 
-    # بدء البوت
     await application.run_polling()
 
-# تشغيل البوت الثاني فقط
 if __name__ == "__main__":
     price_comparator = PriceComparator()
     price_comparator.start_comparing()
 
-    loop = asyncio.get_event_loop()
-    loop.create_task(price_comparator.compare_prices_and_send_notifications())  # تشغيل مقارنة الأسعار كـ `async`
-    loop.run_until_complete(run_telegram_bot())  # تشغيل بوت التليجرام
+    asyncio.run(run_telegram_bot())  # تشغيل بوت التليجرام بشكل متزامن
