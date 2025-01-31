@@ -437,7 +437,7 @@ def main(cfg: DictConfig) -> None:
     
     # إعداد الجدولة اليومية
     scheduler = AsyncIOScheduler()
-    trigger = CronTrigger(hour=22, minute=50, second=0, timezone="Asia/Baghdad")
+    trigger = CronTrigger(hour=00, minute=7, second=0, timezone="Asia/Baghdad")
     scheduler.add_job(daily_prediction, trigger, args=[cfg, application])
     
     # تشغيل الجدولة بشكل متزامن
