@@ -54,6 +54,7 @@ symbols  = [];
 
 
 from price_comparator import PriceComparator
+price_comparator = PriceComparator()
 
 def start_price_comparison(title):
     # إنشاء كائن من PriceComparator وتشغيل المقارنات
@@ -347,9 +348,8 @@ def train(cfg: DictConfig):
 
     # title += 'لا تجعل التنبؤات محور تداولك. ركز على التحليل العميق وإدارة المخاطر، واستند إلى البيانات والحقائق لاتخاذ قرارات مستنيرة.\n'
     print(title)
-    global predicted_title
-    predicted_title = title
-    start_price_comparison(title)
+    price_comparator.update_predictions(title)
+    price_comparator.start_comparing()
     return title  # Return the title or any other relevant data
 
 from telegram import Update, KeyboardButton, ReplyKeyboardMarkup
