@@ -6,11 +6,13 @@ from crypto_sentiment_analyzer import CryptoSentimentAnalyzer
 import re
 from binance_liquidity import check_liquidity_and_price
 import asyncio
+from crypto_sentiment_analyzer import CryptoSentimentAnalyzer
 
 class PriceComparator:
     # توكن البوت الثاني
     TOKEN = '7693311875:AAExOMjL65mRn76jlV_P2XKTchpb6BQMXs8'
     AUTHORIZED_USERS = [991558864,895650332]  
+    analyzer = CryptoSentimentAnalyzer()
 
     def __init__(self):
         print("[🔄] جاري تهيئة PriceComparator...")
@@ -76,7 +78,7 @@ class PriceComparator:
             if current_price <= predicted_low:
                 print(f"[⚠️] {symbol} وصل إلى أقل سعر متوقع! جاري إرسال إشعار...")
                 result = check_liquidity_and_price(symbol)
-                sentiment = self.get_sentiment_analysis(symbol)
+                sentiment = analyzer.get_sentiment_analysis(symbol)
                 message = f"⚠️ تم الوصول إلى أقل سعر متوقع ل {symbol}!"
                 asyncio.create_task(self.send_to_users(message))  # تشغيل الإرسال في الخلفية
                 self.downSymbols.append({'symbol': symbol, 'predicted_high': predicted_high})
@@ -88,7 +90,7 @@ class PriceComparator:
 
             if current_price and current_price >= predicted_high:
                 print(f"[🎯] {symbol} وصل إلى أعلى سعر متوقع! جاري إرسال إشعار...")
-                sentiment = self.get_sentiment_analysis(symbol)
+                sentiment = analyzer.get_sentiment_analysis(symbol)
                 result = check_liquidity_and_price(symbol)
                 message = f"🎯 تم الوصول إلى أعلى سعر متوقع ل {symbol}!"
                 asyncio.create_task(self.send_to_users(message))  # تشغيل الإرسال في الخلفية
