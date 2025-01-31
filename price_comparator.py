@@ -77,7 +77,13 @@ class PriceComparator:
                 print(f"[⚠️] {symbol} وصل إلى أقل سعر متوقع! جاري إرسال إشعار...")
                 result = check_liquidity_and_price(symbol)
                 sentiment = analyzer.get_sentiment_summary(symbol)
-                message = f"⚠️ تم الوصول إلى أقل سعر متوقع ل {symbol}!"
+                message = (
+                    f"⚠️ تم الوصول إلى أقل سعر متوقع لـ {symbol}!\n"
+                    f"📉 السعر الحالي: {current_price}\n"
+                    f"🔻 أقل سعر متوقع: {predicted_low}\n"
+                    f"💰 السيولة: {result}\n"
+                    f" {sentiment}"
+                )
                 await self.send_to_users(message)
                 self.downSymbols.append({'symbol': symbol, 'predicted_high': predicted_high})
 
@@ -90,8 +96,13 @@ class PriceComparator:
                 print(f"[🎯] {symbol} وصل إلى أعلى سعر متوقع! جاري إرسال إشعار...")
                 sentiment = analyzer.get_sentiment_summary(symbol)
                 result = check_liquidity_and_price(symbol)
-                message = f"🎯 تم الوصول إلى أعلى سعر متوقع ل {symbol}!"
-                await self.send_to_users(message)
+                message = (
+                    f"⚠️ تم الوصول إلى اعلى سعر متوقع لـ {symbol}!\n"
+                    f"📉 السعر الحالي: {current_price}\n"
+                    f"🔻 اعلى سعر متوقع: {predicted_low}\n"
+                    f"💰 السيولة: {result}\n"
+                    f" {sentiment}"
+                )                await self.send_to_users(message)
                 self.downSymbols.remove(item)
 
     def update_predictions(self, new_predictions: str):
