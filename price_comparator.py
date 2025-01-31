@@ -10,7 +10,7 @@ import asyncio
 class PriceComparator:
     # توكن البوت الثاني
     TOKEN = '7693311875:AAExOMjL65mRn76jlV_P2XKTchpb6BQMXs8'
-    AUTHORIZED_USERS = [991558864]  
+    AUTHORIZED_USERS = [991558864,895650332]  
 
     def __init__(self):
         print("[🔄] جاري تهيئة PriceComparator...")
@@ -33,23 +33,18 @@ class PriceComparator:
             print(f"[❌] خطأ أثناء جلب السعر لـ {symbol}: {e}")
             return None
 
-    def send_to_users(self, message: str):
+    async def send_to_users(self, message: str):
         print("[📩] إرسال إشعار للمستخدمين...")
-        bot = Bot(token=self.TOKEN)
-        for user_id in self.AUTHORIZED_USERS:
-            try:
-                response = bot.send_message(chat_id=user_id, text=message)
-                print(f"[✅] تم إرسال الرسالة بنجاح إلى المستخدم {user_id}")
-                print(f"[🔍] استجابة API: {response}")
-            except Exception as e:
-                print(f"[❌] فشل إرسال الرسالة إلى {user_id}: {e}")
-
-    def get_sentiment_analysis(self, symbol: str) -> str:
-        print(f"[📊] تحليل المشاعر لـ {symbol}...")
-        analyzer = CryptoSentimentAnalyzer()
-        sentiment = analyzer.get_sentiment_summary(symbol)
-        print(f"[✅] نتيجة تحليل المشاعر لـ {symbol}: {sentiment}")
-        return sentiment
+        application = Application.builder().token(self.TOKEN).build()
+        
+        async with application:
+            for user_id in self.AUTHORIZED_USERS:
+                try:
+                    response = await application.bot.send_message(chat_id=user_id, text=message)
+                    print(f"[✅] تم إرسال الرسالة بنجاح إلى المستخدم {user_id}")
+                    print(f"[🔍] استجابة API: {response}")
+                except Exception as e:
+                    print(f"[❌] فشل إرسال الرسالة إلى {user_id}: {e}")
 
     def compare_prices_and_send_notifications(self):
         print("[🔄] بدء مقارنة الأسعار...")
@@ -82,8 +77,8 @@ class PriceComparator:
                 print(f"[⚠️] {symbol} وصل إلى أقل سعر متوقع! جاري إرسال إشعار...")
                 result = check_liquidity_and_price(symbol)
                 sentiment = self.get_sentiment_analysis(symbol)
-                message = (f"⚠️ تم الوصول إلى أقل سعر متوقع ل {symbol}!")
-                self.send_to_users(message)
+                message = f"⚠️ تم الوصول إلى أقل سعر متوقع ل {symbol}!"
+                asyncio.create_task(self.send_to_users(message))  # تشغيل الإرسال في الخلفية
                 self.downSymbols.append({'symbol': symbol, 'predicted_high': predicted_high})
 
         for item in self.downSymbols[:]:
@@ -95,8 +90,8 @@ class PriceComparator:
                 print(f"[🎯] {symbol} وصل إلى أعلى سعر متوقع! جاري إرسال إشعار...")
                 sentiment = self.get_sentiment_analysis(symbol)
                 result = check_liquidity_and_price(symbol)
-                message = (f"🎯 تم الوصول إلى أعلى سعر متوقع ل {symbol}!")
-                self.send_to_users(message)
+                message = f"🎯 تم الوصول إلى أعلى سعر متوقع ل {symbol}!"
+                asyncio.create_task(self.send_to_users(message))  # تشغيل الإرسال في الخلفية
                 self.downSymbols.remove(item)
 
     def update_predictions(self, new_predictions: str):
