@@ -1,24 +1,24 @@
 from apscheduler.schedulers.background import BackgroundScheduler
 import requests
-from telegram import Bot, Update
+from telegram import Update
 from telegram.ext import Application, CommandHandler, MessageHandler, filters
-from crypto_sentiment_analyzer import CryptoSentimentAnalyzer
-import re
 from binance_liquidity import check_liquidity_and_price
+import re
 import asyncio
 from crypto_sentiment_analyzer import CryptoSentimentAnalyzer
 
 class PriceComparator:
     # توكن البوت الثاني
     TOKEN = '7693311875:AAExOMjL65mRn76jlV_P2XKTchpb6BQMXs8'
-    AUTHORIZED_USERS = [991558864,895650332]  
+    AUTHORIZED_USERS = [991558864, 895650332]
 
     def __init__(self):
         print("[🔄] جاري تهيئة PriceComparator...")
-        self.downSymbols = []  
-        self.predicted_title = None  
+        self.downSymbols = []
+        self.predicted_title = None
         self.scheduler = BackgroundScheduler()
         self.scheduler.add_job(self.compare_prices_and_send_notifications, 'interval', minutes=15)
+        self.application = Application.builder().token(self.TOKEN).build()
         print("[✅] تم تهيئة PriceComparator بنجاح!")
 
     def get_current_price(self, symbol: str) -> float:
@@ -36,18 +36,14 @@ class PriceComparator:
 
     async def send_to_users(self, message: str):
         print("[📩] إرسال إشعار للمستخدمين...")
-        application = Application.builder().token(self.TOKEN).build()
-        
-        async with application:
-            for user_id in self.AUTHORIZED_USERS:
-                try:
-                    response = await application.bot.send_message(chat_id=user_id, text=message)
-                    print(f"[✅] تم إرسال الرسالة بنجاح إلى المستخدم {user_id}")
-                    print(f"[🔍] استجابة API: {response}")
-                except Exception as e:
-                    print(f"[❌] فشل إرسال الرسالة إلى {user_id}: {e}")
+        for user_id in self.AUTHORIZED_USERS:
+            try:
+                await self.application.bot.send_message(chat_id=user_id, text=message)
+                print(f"[✅] تم إرسال الرسالة بنجاح إلى المستخدم {user_id}")
+            except Exception as e:
+                print(f"[❌] فشل إرسال الرسالة إلى {user_id}: {e}")
 
-    def compare_prices_and_send_notifications(self):
+    async def compare_prices_and_send_notifications(self):
         analyzer = CryptoSentimentAnalyzer()
         print("[🔄] بدء مقارنة الأسعار...")
         if not self.predicted_title:
@@ -70,7 +66,7 @@ class PriceComparator:
             symbol = match_symbol.group(1)
             predicted_low = float(match_low.group(1))
             predicted_high = float(match_high.group(1))
-            
+
             current_price = self.get_current_price(symbol)
             if current_price is None:
                 continue
@@ -80,7 +76,7 @@ class PriceComparator:
                 result = check_liquidity_and_price(symbol)
                 sentiment = analyzer.get_sentiment_summary(symbol)
                 message = f"⚠️ تم الوصول إلى أقل سعر متوقع ل {symbol}!"
-                asyncio.create_task(self.send_to_users(message))  # تشغيل الإرسال في الخلفية
+                await self.send_to_users(message)
                 self.downSymbols.append({'symbol': symbol, 'predicted_high': predicted_high})
 
         for item in self.downSymbols[:]:
@@ -93,7 +89,7 @@ class PriceComparator:
                 sentiment = analyzer.get_sentiment_summary(symbol)
                 result = check_liquidity_and_price(symbol)
                 message = f"🎯 تم الوصول إلى أعلى سعر متوقع ل {symbol}!"
-                asyncio.create_task(self.send_to_users(message))  # تشغيل الإرسال في الخلفية
+                await self.send_to_users(message)
                 self.downSymbols.remove(item)
 
     def update_predictions(self, new_predictions: str):
@@ -125,9 +121,9 @@ async def run_telegram_bot():
 
 # تشغيل البوت الثاني فقط
 if __name__ == "__main__":
-    # بدء الجدولة لمقارنة الأسعار
     price_comparator = PriceComparator()
     price_comparator.start_comparing()
 
-    # تشغيل البوت الثاني
-    asyncio.run(run_telegram_bot())
+    loop = asyncio.get_event_loop()
+    loop.create_task(price_comparator.compare_prices_and_send_notifications())  # تشغيل مقارنة الأسعار كـ `async`
+    loop.run_until_complete(run_telegram_bot())  # تشغيل بوت التليجرام
