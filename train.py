@@ -369,8 +369,8 @@ logging.basicConfig(level=logging.INFO)
 
 TOKEN = '7272871832:AAGa5-_FdFfziJqDG9pp4N9ljnZ2uyxslJ0'
 
-# AUTHORIZED_USERS = [895650332, 991558864, 715531930, 117245128, 1796556765,31128146]
-AUTHORIZED_USERS = [991558864,895650332]
+AUTHORIZED_USERS = [895650332, 991558864, 715531930, 117245128, 1796556765,31128146]
+# AUTHORIZED_USERS = [991558864,895650332]
 
 # تخزين النتيجة المحسوبة مسبقًا
 predicted_result = ""
@@ -437,7 +437,7 @@ def main(cfg: DictConfig) -> None:
     
     # إعداد الجدولة اليومية
     scheduler = AsyncIOScheduler()
-    trigger = CronTrigger(hour=1, minute=10, second=0, timezone="Asia/Baghdad")
+    trigger = CronTrigger(hour=5, minute=30, second=0, timezone="Asia/Baghdad")
     scheduler.add_job(daily_prediction, trigger, args=[cfg, application])
     
     # تشغيل الجدولة بشكل متزامن
