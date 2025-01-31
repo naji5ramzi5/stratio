@@ -78,7 +78,7 @@ class PriceComparator:
             if current_price <= predicted_low:
                 print(f"[⚠️] {symbol} وصل إلى أقل سعر متوقع! جاري إرسال إشعار...")
                 result = check_liquidity_and_price(symbol)
-                sentiment = analyzer.get_sentiment_analysis(symbol)
+                sentiment = analyzer.get_sentiment_summary(symbol)
                 message = f"⚠️ تم الوصول إلى أقل سعر متوقع ل {symbol}!"
                 asyncio.create_task(self.send_to_users(message))  # تشغيل الإرسال في الخلفية
                 self.downSymbols.append({'symbol': symbol, 'predicted_high': predicted_high})
@@ -90,7 +90,7 @@ class PriceComparator:
 
             if current_price and current_price >= predicted_high:
                 print(f"[🎯] {symbol} وصل إلى أعلى سعر متوقع! جاري إرسال إشعار...")
-                sentiment = analyzer.get_sentiment_analysis(symbol)
+                sentiment = analyzer.get_sentiment_summary(symbol)
                 result = check_liquidity_and_price(symbol)
                 message = f"🎯 تم الوصول إلى أعلى سعر متوقع ل {symbol}!"
                 asyncio.create_task(self.send_to_users(message))  # تشغيل الإرسال في الخلفية
