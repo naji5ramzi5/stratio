@@ -12,7 +12,6 @@ class PriceComparator:
     # توكن البوت الثاني
     TOKEN = '7693311875:AAExOMjL65mRn76jlV_P2XKTchpb6BQMXs8'
     AUTHORIZED_USERS = [991558864,895650332]  
-    analyzer = CryptoSentimentAnalyzer()
 
     def __init__(self):
         print("[🔄] جاري تهيئة PriceComparator...")
@@ -49,6 +48,7 @@ class PriceComparator:
                     print(f"[❌] فشل إرسال الرسالة إلى {user_id}: {e}")
 
     def compare_prices_and_send_notifications(self):
+        analyzer = CryptoSentimentAnalyzer()
         print("[🔄] بدء مقارنة الأسعار...")
         if not self.predicted_title:
             print("⚠️ لا توجد بيانات توقع بعد!")
