@@ -9,7 +9,7 @@ import asyncio
 
 class PriceComparator:
     # توكن البوت الثاني
-    TOKEN = "7693311875:AAExOMjL65mRn76jlV_P2XKTchpb6BQMXs8"
+    TOKEN = '7693311875:AAExOMjL65mRn76jlV_P2XKTchpb6BQMXs8'
     AUTHORIZED_USERS = [991558864]  
 
     def __init__(self):
@@ -38,8 +38,9 @@ class PriceComparator:
         bot = Bot(token=self.TOKEN)
         for user_id in self.AUTHORIZED_USERS:
             try:
-                bot.send_message(chat_id=user_id, text=message)
+                response = bot.send_message(chat_id=user_id, text=message)
                 print(f"[✅] تم إرسال الرسالة بنجاح إلى المستخدم {user_id}")
+                print(f"[🔍] استجابة API: {response}")
             except Exception as e:
                 print(f"[❌] فشل إرسال الرسالة إلى {user_id}: {e}")
 
