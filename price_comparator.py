@@ -84,11 +84,16 @@ def compare_prices_and_send_notifications():
 
         if current_price >= predicted_high:
             sentiment = get_sentiment_analysis(symbol)
+            result = check_liquidity_and_price(symbol)
+
             message = (f"🎯 تم الوصول إلى أعلى سعر متوقع ل {symbol}!\n"
                        f"📈 السعر الحالي: {current_price}\n"
                        f"📈 أعلى سعر متوقع: {predicted_high}\n"
                        f"---------------------------\n"
-                       f": {sentiment}")
+                       f": {sentiment}"
+                       f"------------------------------\n"
+                       f"السيولة\n"
+                       f" {result}")
             send_to_users(message)
             downSymbols.remove(item)  # حذف العملة بعد تحقيق الهدف
 
