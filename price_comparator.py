@@ -4,6 +4,7 @@ import json
 from telegram import Bot
 from crypto_sentiment_analyzer import CryptoSentimentAnalyzer
 import re
+from binance_liquidity import check_liquidity_and_price
 
 # 📌 متغيرات التوقعات والجدولة
 predicted_title = None  # سيتم تحديثه بعد تدريب النموذج
@@ -56,17 +57,22 @@ def compare_prices_and_send_notifications():
         symbol = match_symbol.group(1)
         predicted_low = float(match_low.group(1))
         predicted_high = float(match_high.group(1))
-
+        
         # 🔍 جلب السعر الحالي
         current_price = get_current_price(symbol)
 
         # 🟢 مقارنة مع أقل سعر متوقع
         if current_price <= predicted_low:
+            result = check_liquidity_and_price(symbol)
             sentiment = get_sentiment_analysis(symbol)
             message = (f"⚠️ تم الوصول إلى أقل سعر متوقع ل {symbol}!\n"
                        f"📉 السعر الحالي: {current_price}\n"
                        f"📉 أقل سعر متوقع: {predicted_low}\n"
                        f"------------------------------\n"
+                       f" {sentiment}\n")
+                       f"------------------------------\n"
+                       f"السيولة\n"
+
                        f" {sentiment}")
             send_to_users(message)
             downSymbols.append({'symbol': symbol, 'predicted_high': predicted_high})
