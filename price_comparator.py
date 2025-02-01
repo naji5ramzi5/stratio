@@ -102,7 +102,8 @@ class PriceComparator:
                     f"🔻 اعلى سعر متوقع: {predicted_low}\n"
                     f"💰 السيولة: {result}\n"
                     f" {sentiment}"
-                )                await self.send_to_users(message)
+                )               
+                await self.send_to_users(message)
                 self.downSymbols.remove(item)
 
     def update_predictions(self, new_predictions: str):
