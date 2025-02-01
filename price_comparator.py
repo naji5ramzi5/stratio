@@ -107,6 +107,8 @@ class PriceComparator:
                 )               
                 await self.send_to_users(message)
                 self.downSymbols.remove(item)
+        else:
+            print(f"[🔵] {symbol} لم يصل بعد إلى أعلى سعر متوقع. السعر الحالي: {current_price}, الهدف: {predicted_high}")
 
     def update_predictions(self, new_predictions: str):
         print("[🔄] تحديث بيانات التوقعات...")
