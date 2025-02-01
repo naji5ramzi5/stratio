@@ -13,7 +13,6 @@ class PriceComparator:
 
     def __init__(self):
         print("[🔄] جاري تهيئة PriceComparator...")
-        self.downSymbols = []
         self.predicted_title = None
         self.scheduler = BackgroundScheduler()
         self.scheduler.add_job(self.compare_prices_and_send_notifications, 'interval', minutes=15)
@@ -75,69 +74,48 @@ class PriceComparator:
             result = check_liquidity_and_price(symbol)
             sentiment = analyzer.get_sentiment_summary(symbol)
 
-            # تحديد العتبات القريبة
             lower_threshold = predicted_low * 1.2
             upper_threshold = predicted_high * 0.8
 
-            # إذا وصل السعر إلى أقل سعر متوقع
             if current_price <= predicted_low:
-                message = (f"🔴🔴🔴🔴🔴🔴🔴🔴\n"
+                message = (f"🔴🔴🔴🔴🔴🔴\n"
                            f"⚠️ تم الوصول إلى أقل سعر متوقع لـ {symbol}!\n"
                            f"📉 السعر الحالي: {current_price}\n"
                            f"🔻 أقل سعر متوقع: {predicted_low}\n"
-                           f"💰 السيولة: {result}\n"
-                           f"-------------------\n"
-                           f"📊 المشاعر: {sentiment}")
-                await self.send_to_users(message)
-                self.downSymbols.append({'symbol': symbol, 'predicted_high': predicted_high})
-        
-            # إذا اقترب السعر من أقل سعر متوقع
+                           f"💰 السيولة: {result}"
             elif current_price <= lower_threshold:
-                message = (f"🟡🟡🟡🟡🔴🔴🔴🔴\n"
+                message = (f"🟡🟡🟡🔴🔴🔴\n"
                            f"⚠️ السعر يقترب من أقل سعر متوقع لـ {symbol}!\n"
                            f"📉 السعر الحالي: {current_price}\n"
                            f"🔻 أقل سعر متوقع: {predicted_low}\n"
-                           f"💰 السيولة: {result}\n"
-                           f"-------------------\n"
-                           f"📊 المشاعر: {sentiment}")
-                await self.send_to_users(message)
-
-            # إذا وصل السعر إلى أعلى سعر متوقع
+                           f"💰 السيولة: {result}"
             elif current_price >= predicted_high:
-                message = (f"🟢🟢🟢🟢🟢🟢🟢🟢\n"
+                message = (f"🟢🟢🟢🟢🟢🟢\n"
                            f"⚠️ تم الوصول إلى أعلى سعر متوقع لـ {symbol}!\n"
-                           f"📈 السعر الحالي: {current_price}\n"
-                           f"🔺 أعلى سعر متوقع: {predicted_high}\n"
-                           f"💰 السيولة: {result}\n"
-                           f"-------------------\n"
-                           f"📊 المشاعر: {sentiment}")
-                await self.send_to_users(message)
-                self.downSymbols.remove({'symbol': symbol, 'predicted_high': predicted_high})
-
-            # إذا اقترب السعر من أعلى سعر متوقع
+                           f"📉 السعر الحالي: {current_price}\n"
+                           f"🔻 أعلى سعر متوقع: {predicted_high}\n"
+                           f"💰 السيولة: {result}"
             elif current_price >= upper_threshold:
-                message = (f"🟡🟡🟡🟡🟢🟢🟢🟢\n"
+                message = (f"🟡🟡🟡🟢🟢🟢\n"
                            f"⚠️ السعر يقترب من أعلى سعر متوقع لـ {symbol}!\n"
-                           f"📈 السعر الحالي: {current_price}\n"
-                           f"🔺 أعلى سعر متوقع: {predicted_high}\n"
-                           f"💰 السيولة: {result}\n"
-                           f"-------------------\n"
-                           f"📊 المشاعر: {sentiment}")
-                await self.send_to_users(message)
+                           f"📉 السعر الحالي: {current_price}\n"
+                           f"🔻 أعلى سعر متوقع: {predicted_high}\n"
+                           f"💰 السيولة: {result}"
+            else:
+                continue
+
+            await self.send_to_users(message)
 
     def update_predictions(self, new_predictions: str):
         print("[🔄] تحديث بيانات التوقعات...")
         self.predicted_title = new_predictions
-        self.downSymbols.clear()
-        print("[✅] تم تحديث بيانات التوقعات وإعادة تعيين القائمة!")
+        print("[✅] تم تحديث بيانات التوقعات!")
 
     def start_comparing(self):
         print("[🚀] بدء الجدولة لمقارنة الأسعار...")
         self.scheduler.start()
         print("[✅] الجدولة قيد التشغيل بنجاح!")
 
-
-# بوت التليجرام الثاني
 async def start(update: Update, context):
     await update.message.reply_text(f"مرحبًا، {update.effective_user.first_name}!")
 
@@ -146,14 +124,11 @@ async def handle_message(update: Update, context):
 
 async def run_telegram_bot():
     application = Application.builder().token(PriceComparator.TOKEN).build()
-
     application.add_handler(CommandHandler("start", start))
     application.add_handler(MessageHandler(filters.TEXT & ~filters.COMMAND, handle_message))
-
     await application.run_polling()
 
 if __name__ == "__main__":
     price_comparator = PriceComparator()
     price_comparator.start_comparing()
-
-    asyncio.run(run_telegram_bot())  # تشغيل بوت التليجرام بشكل متزامن
+    asyncio.run(run_telegram_bot())
