@@ -78,6 +78,7 @@ class PriceComparator:
                 result = check_liquidity_and_price(symbol)
                 sentiment = analyzer.get_sentiment_summary(symbol)
                 message = (
+                    f"🔴🔴🔴🔴🔴🔴🔴\n"
                     f"⚠️ تم الوصول إلى أقل سعر متوقع لـ {symbol}!\n"
                     f"📉 السعر الحالي: {current_price}\n"
                     f"🔻 أقل سعر متوقع: {predicted_low}\n"
@@ -97,6 +98,7 @@ class PriceComparator:
                 sentiment = analyzer.get_sentiment_summary(symbol)
                 result = check_liquidity_and_price(symbol)
                 message = (
+                    f"🟢🟢🟢🟢🟢🟢🟢🟢\n"
                     f"⚠️ تم الوصول إلى اعلى سعر متوقع لـ {symbol}!\n"
                     f"📉 السعر الحالي: {current_price}\n"
                     f"🔻 اعلى سعر متوقع: {predicted_low}\n"
