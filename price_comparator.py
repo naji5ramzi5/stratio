@@ -43,7 +43,7 @@ class PriceComparator:
                 print(f"[❌] فشل إرسال الرسالة إلى {user_id}: {e}")
 
     def compare_prices_and_send_notifications(self):
-        asyncio.run(self._compare_prices_and_send_notifications())  # تشغيل `async` داخل `sync`
+        asyncio.run(self._compare_prices_and_send_notifications())
 
     async def _compare_prices_and_send_notifications(self):
         analyzer = CryptoSentimentAnalyzer()
@@ -68,57 +68,74 @@ class PriceComparator:
             symbol = match_symbol.group(1)
             predicted_low = float(match_low.group(1))
             predicted_high = float(match_high.group(1))
-
             current_price = self.get_current_price(symbol)
             if current_price is None:
                 continue
 
+            result = check_liquidity_and_price(symbol)
+            sentiment = analyzer.get_sentiment_summary(symbol)
+
+            # تحديد العتبات القريبة
+            lower_threshold = predicted_low * 1.2
+            upper_threshold = predicted_high * 0.8
+
+            # إذا وصل السعر إلى أقل سعر متوقع
             if current_price <= predicted_low:
-                print(f"[⚠️] {symbol} وصل إلى أقل سعر متوقع! جاري إرسال إشعار...")
-                result = check_liquidity_and_price(symbol)
-                sentiment = analyzer.get_sentiment_summary(symbol)
-                message = (
-                    f"🔴🔴🔴🔴🔴🔴🔴\n"
-                    f"⚠️ تم الوصول إلى أقل سعر متوقع لـ {symbol}!\n"
-                    f"📉 السعر الحالي: {current_price}\n"
-                    f"🔻 أقل سعر متوقع: {predicted_low}\n"
-                    f"💰 السيولة: {result}\n"
-                    f" {sentiment}"
-                )
+                message = (f"🔴🔴🔴🔴🔴🔴🔴🔴\n"
+                           f"⚠️ تم الوصول إلى أقل سعر متوقع لـ {symbol}!\n"
+                           f"📉 السعر الحالي: {current_price}\n"
+                           f"🔻 أقل سعر متوقع: {predicted_low}\n"
+                           f"💰 السيولة: {result}\n"
+                           f"-------------------\n"
+                           f"📊 المشاعر: {sentiment}")
                 await self.send_to_users(message)
                 self.downSymbols.append({'symbol': symbol, 'predicted_high': predicted_high})
-
-        for item in self.downSymbols[:]:
-            symbol = item['symbol']
-            predicted_high = item['predicted_high']
-            current_price = self.get_current_price(symbol)
-
-            if current_price and current_price >= predicted_high:
-                print(f"[🎯] {symbol} وصل إلى أعلى سعر متوقع! جاري إرسال إشعار...")
-                sentiment = analyzer.get_sentiment_summary(symbol)
-                result = check_liquidity_and_price(symbol)
-                message = (
-                    f"🟢🟢🟢🟢🟢🟢🟢🟢\n"
-                    f"⚠️ تم الوصول إلى اعلى سعر متوقع لـ {symbol}!\n"
-                    f"📉 السعر الحالي: {current_price}\n"
-                    f"🔻 اعلى سعر متوقع: {predicted_low}\n"
-                    f"💰 السيولة: {result}\n"
-                    f" {sentiment}"
-                )               
+        
+            # إذا اقترب السعر من أقل سعر متوقع
+            elif current_price <= lower_threshold:
+                message = (f"🟡🟡🟡🟡🔴🔴🔴🔴\n"
+                           f"⚠️ السعر يقترب من أقل سعر متوقع لـ {symbol}!\n"
+                           f"📉 السعر الحالي: {current_price}\n"
+                           f"🔻 أقل سعر متوقع: {predicted_low}\n"
+                           f"💰 السيولة: {result}\n"
+                           f"-------------------\n"
+                           f"📊 المشاعر: {sentiment}")
                 await self.send_to_users(message)
-                self.downSymbols.remove(item)
-        else:
-            print(f"[🔵] {symbol} لم يصل بعد إلى أعلى سعر متوقع. السعر الحالي: {current_price}, الهدف: {predicted_high}")
+
+            # إذا وصل السعر إلى أعلى سعر متوقع
+            elif current_price >= predicted_high:
+                message = (f"🟢🟢🟢🟢🟢🟢🟢🟢\n"
+                           f"⚠️ تم الوصول إلى أعلى سعر متوقع لـ {symbol}!\n"
+                           f"📈 السعر الحالي: {current_price}\n"
+                           f"🔺 أعلى سعر متوقع: {predicted_high}\n"
+                           f"💰 السيولة: {result}\n"
+                           f"-------------------\n"
+                           f"📊 المشاعر: {sentiment}")
+                await self.send_to_users(message)
+                self.downSymbols.remove({'symbol': symbol, 'predicted_high': predicted_high})
+
+            # إذا اقترب السعر من أعلى سعر متوقع
+            elif current_price >= upper_threshold:
+                message = (f"🟡🟡🟡🟡🟢🟢🟢🟢\n"
+                           f"⚠️ السعر يقترب من أعلى سعر متوقع لـ {symbol}!\n"
+                           f"📈 السعر الحالي: {current_price}\n"
+                           f"🔺 أعلى سعر متوقع: {predicted_high}\n"
+                           f"💰 السيولة: {result}\n"
+                           f"-------------------\n"
+                           f"📊 المشاعر: {sentiment}")
+                await self.send_to_users(message)
 
     def update_predictions(self, new_predictions: str):
         print("[🔄] تحديث بيانات التوقعات...")
         self.predicted_title = new_predictions
-        print("[✅] تم تحديث بيانات التوقعات بنجاح!")
+        self.downSymbols.clear()
+        print("[✅] تم تحديث بيانات التوقعات وإعادة تعيين القائمة!")
 
     def start_comparing(self):
         print("[🚀] بدء الجدولة لمقارنة الأسعار...")
         self.scheduler.start()
         print("[✅] الجدولة قيد التشغيل بنجاح!")
+
 
 # بوت التليجرام الثاني
 async def start(update: Update, context):
