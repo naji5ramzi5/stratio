@@ -9,7 +9,8 @@ from crypto_sentiment_analyzer import CryptoSentimentAnalyzer
 
 class PriceComparator:
     TOKEN = '7693311875:AAExOMjL65mRn76jlV_P2XKTchpb6BQMXs8'
-    AUTHORIZED_USERS = [991558864, 895650332]
+    # AUTHORIZED_USERS = [991558864, 895650332]
+    AUTHORIZED_USERS = [895650332, 991558864, 715531930, 117245128, 1796556765,31128146]
 
     def __init__(self):
         print("[🔄] جاري تهيئة PriceComparator...")
