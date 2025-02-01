@@ -83,25 +83,25 @@ class PriceComparator:
                            f"⚠️ تم الوصول إلى أقل سعر متوقع لـ {symbol}!\n"
                            f"📉 السعر الحالي: {current_price}\n"
                            f"🔻 أقل سعر متوقع: {predicted_low}\n"
-                           f"💰 السيولة: {result}"
+                           f"💰 السيولة: {result}")
             elif current_price <= lower_threshold:
                 message = (f"🟡🟡🟡🔴🔴🔴\n"
                            f"⚠️ السعر يقترب من أقل سعر متوقع لـ {symbol}!\n"
                            f"📉 السعر الحالي: {current_price}\n"
                            f"🔻 أقل سعر متوقع: {predicted_low}\n"
-                           f"💰 السيولة: {result}"
+                           f"💰 السيولة: {result}")
             elif current_price >= predicted_high:
                 message = (f"🟢🟢🟢🟢🟢🟢\n"
                            f"⚠️ تم الوصول إلى أعلى سعر متوقع لـ {symbol}!\n"
                            f"📉 السعر الحالي: {current_price}\n"
                            f"🔻 أعلى سعر متوقع: {predicted_high}\n"
-                           f"💰 السيولة: {result}"
+                           f"💰 السيولة: {result}")
             elif current_price >= upper_threshold:
                 message = (f"🟡🟡🟡🟢🟢🟢\n"
                            f"⚠️ السعر يقترب من أعلى سعر متوقع لـ {symbol}!\n"
                            f"📉 السعر الحالي: {current_price}\n"
                            f"🔻 أعلى سعر متوقع: {predicted_high}\n"
-                           f"💰 السيولة: {result}"
+                           f"💰 السيولة: {result}")
             else:
                 continue
 
