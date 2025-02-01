@@ -3,7 +3,7 @@ from textblob import TextBlob
 
 class CryptoSentimentAnalyzer:
     NEWS_API_URL = "https://newsapi.org/v2/everything"
-    API_KEY = "99965f4995bc4ab99bf22d7b91f6f2f5"  # استبدل بمفتاح NewsAPI الخاص بك
+    API_KEY = "00b61f31bfce4f4282e44161fcadea48"  # استبدل بمفتاح NewsAPI الخاص بك
 
     def __init__(self):
         pass
