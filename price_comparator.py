@@ -73,7 +73,6 @@ class PriceComparator:
                 continue
 
             result = check_liquidity_and_price(symbol)
-            sentiment = analyzer.get_sentiment_summary(symbol)
 
             lower_threshold = predicted_low * 1.2
             upper_threshold = predicted_high * 0.8
