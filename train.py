@@ -441,8 +441,10 @@ def main(cfg: DictConfig) -> None:
     scheduler.add_job(daily_prediction, trigger, args=[cfg, application])
     
     # تشغيل الجدولة بشكل متزامن
-    loop = asyncio.get_event_loop()
-    loop.run_until_complete(start_scheduler(scheduler))  # بدء الجدولة هنا
+    # loop = asyncio.get_event_loop()
+    # loop.run_until_complete(start_scheduler(scheduler))  # بدء الجدولة هنا
+    scheduler.start()
+
 
     # التعامل مع الأوامر والرسائل
     application.add_handler(CommandHandler('start', start))
