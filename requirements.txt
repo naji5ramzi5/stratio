@@ -1,5 +1,5 @@
 pip==24.3.1
-backtesting~=0.2.2
+backtesting>=0.6.2
 bitmex~=0.2.2
 prophet
 hydra-core
