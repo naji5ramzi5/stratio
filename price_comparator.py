@@ -7,8 +7,13 @@ import re
 import asyncio
 from crypto_sentiment_analyzer import CryptoSentimentAnalyzer
 
+import os
+from dotenv import load_dotenv
+
+load_dotenv()
+
 class PriceComparator:
-    TOKEN = '7693311875:AAExOMjL65mRn76jlV_P2XKTchpb6BQMXs8'
+    TOKEN = os.getenv("TELEGRAM_COMPARATOR_TOKEN", "")
     # AUTHORIZED_USERS = [991558864, 895650332]
     AUTHORIZED_USERS = [895650332, 991558864, 715531930, 117245128, 1796556765,31128146]
 
@@ -19,6 +24,17 @@ class PriceComparator:
         self.scheduler.add_job(self.compare_prices_and_send_notifications, 'interval', minutes=15)
         self.application = Application.builder().token(self.TOKEN).build()
         print("[✅] تم تهيئة PriceComparator بنجاح!")
+
+    def start_comparator(self, title: str):
+        print("[🚀] تشغيل المقارنة وإعداد التوقعات...")
+        self.update_predictions(title)
+        try:
+            self.start_comparing()
+        except Exception as e:
+            print(f"[⚠️] الجدولة تعمل بالفعل أو فشل البدء: {e}")
+        # تشغيل مقارنة فورية في الخلفية
+        self.compare_prices_and_send_notifications()
+
 
     def get_current_price(self, symbol: str) -> float:
         print(f"[🔍] جلب السعر الحالي لـ {symbol}...")

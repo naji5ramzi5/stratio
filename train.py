@@ -30,34 +30,19 @@ logger = logging.getLogger(__name__)
 import pandas as pd
 
 
+from dotenv import load_dotenv
+load_dotenv()
+
+logger = logging.getLogger(__name__)
+
 # إعداد تفاصيل API
 url = "https://api.binance.com/api/v3/klines"
-# "ALGOUSDT", "MANAUSDT", "ENJUSDT","YFIUSDT", "EGLDUSDT", "ONEUSDT", "ANKRUSDT", "HOTUSDT", "SCUSDT","OXTUSDT", "STORJUSDT","BADGERUSDT", "LTOUSDT"
 symbols  = [];
-
-
-# current_date = datetime.now()
-
-# data = {
-#     "window_size": 5,
-#     "train_start_date": "2020-01-01 13:30:00",  # تاريخ ثابت
-#     "train_end_date": (current_date - timedelta(days=5)).strftime("%Y-%m-%d 09:30:00"),
-#     "valid_start_date": (current_date - timedelta(days=5)).strftime("%Y-%m-%d 10:30:00"),
-#     "valid_end_date": (current_date + timedelta(days=2)).strftime("%Y-%m-%d 10:30:00"),
-#     "features": "Date, open, High, Low, close, volume",
-#     "indicators_names": "rsi macd"
-# }
-
-# # كتابة البيانات إلى ملف YAML بدون علامات التنصيص
-# with open("configs/hydra/dataset_loader/common.yaml", "w") as file:
-#     yaml.dump(data, file, default_flow_style=False, allow_unicode=True, sort_keys=False)
-
 
 from price_comparator import PriceComparator
 price_comparator = PriceComparator()
 
 def start_price_comparison(title):
-    # إنشاء كائن من PriceComparator وتشغيل المقارنات
     comparator = PriceComparator()
     comparator.start_comparator(title)
     
@@ -70,22 +55,18 @@ def check_and_delete_file(filename):
                 os.remove(filename)
                 return None, False
             
-            # التحقق من وجود رأس (Header) وتجاهله
-            if lines[0].strip().startswith('timestamp'):  # إذا كان السطر الأول رأس
+            if lines[0].strip().startswith('timestamp'):
                 print(f"Header detected in file {filename}, skipping the first line.")
                 lines = lines[1:]
 
-            # التحقق من وجود بيانات بعد إزالة الرأس
             if not lines:
                 print(f"No valid data in file {filename} after removing header.")
                 os.remove(filename)
                 return None, False
 
-            # قراءة أول وآخر سطر
-            first_line = lines[0].strip()  # أول سطر بيانات
-            last_line = lines[-1].strip()  # آخر سطر بيانات
+            first_line = lines[0].strip()
+            last_line = lines[-1].strip()
 
-            # تحويل التواريخ
             try:
                 first_date = datetime.strptime(first_line.split(',')[0], '%Y-%m-%d %H:%M:%S%z')
                 last_date = datetime.strptime(last_line.split(',')[0], '%Y-%m-%d %H:%M:%S%z')
@@ -94,19 +75,16 @@ def check_and_delete_file(filename):
                 os.remove(filename)
                 return None, False
 
-            # التحقق من أن البيانات تبدأ من 1/1/2020
             if first_date.date() < datetime(2020, 1, 1).date():
                 os.remove(filename)
                 print(f"File {filename} deleted because it doesn't start from 01/01/2020.")
                 return None, False
 
-            # التحقق من أن البيانات تغطي حتى تاريخ الأمس
             if last_date.date() < (datetime.now(pytz.utc).date() - timedelta(days=1)):
                 os.remove(filename)
                 print(f"File {filename} deleted because it doesn't cover up to yesterday.")
                 return None, False
 
-            # استخراج قيمة الإغلاق (close) من آخر سطر
             try:
                 yesterday_close = float(last_line.split(',')[5])
             except (IndexError, ValueError) as e:
@@ -122,7 +100,7 @@ def check_and_delete_file(filename):
 
 def add_future_dates(filename, symbol):
     today = datetime.now(pytz.utc).replace(hour=0, minute=0, second=0, microsecond=0)
-    future_dates = [today + timedelta(days=i) for i in range(3)]  # today and the next two days
+    future_dates = [today + timedelta(days=i) for i in range(3)]
 
     with open(filename, 'a', newline='') as file:
         writer = csv.writer(file)
@@ -130,26 +108,17 @@ def add_future_dates(filename, symbol):
             formatted_date = future_date.strftime('%Y-%m-%d 00:00:00+00:00')
             writer.writerow([formatted_date, symbol,'1','1','1','1','1'])
 
-
-data_folder = '/opt/render/project/src/data'
-
+data_folder = os.path.join(os.getcwd(), 'data')
 if not os.path.exists(data_folder):
     os.makedirs(data_folder)
 
-data_filename = os.path.join(data_folder,'data1.csv')
+data_filename = os.path.join(data_folder, 'data1.csv')
 
 def fetch_and_save_data(symbol, start_date, end_date):
-    url = "https://api.binance.com/api/v3/klines"  # Add API URL here
-    # params = {
-    #     'symbol': symbol,
-    #     'interval': '1d',
-    #     'startTime': int(start_date.timestamp() * 1000),
-    #     'endTime': int(end_date.timestamp() * 1000)
-    # }
-
-    # //
-    API_KEY = 'ddCXARf1hp1OjbaLJInHpYnEhMqKziYs9ae8dEH1NbLaonYpkgPu0tX75DqnjaDD'
-    API_SECRET = 'oFHovFudTJcj9UteGQa3VxxIOp9OqvlPn7t9HWiHJ62afPvgvZVo7Id01VsVRHW2'
+    url = "https://api.binance.com/api/v3/klines"
+    
+    API_KEY = os.getenv("BINANCE_API_KEY", "")
+    API_SECRET = os.getenv("BINANCE_API_SECRET", "")
 
     params = {
         "symbol": symbol,
@@ -160,22 +129,20 @@ def fetch_and_save_data(symbol, start_date, end_date):
     }
     headers = {"X-MBX-APIKEY": API_KEY}
     
-    response = requests.get(url, params=params, headers=headers)
-
-    # //
-    
-    response = requests.get(url, params=params)
-    data = response.json()
+    try:
+        response = requests.get(url, params=params, headers=headers)
+        data = response.json()
+    except Exception as e:
+        print(f"Error fetching data from Binance: {e}")
+        return False
 
     if isinstance(data, dict) and 'code' in data and data['code'] == -1121: 
         return False
     
-    # Check if data is available
     if not data:
         print(f"No data available for {symbol} from {start_date.date()}")
-        return False  # No data for this symbol
+        return False
 
-    # Write data to the file
     with open(data_filename, 'a', newline='') as file:
         writer = csv.writer(file)
         for entry in data:
@@ -184,7 +151,7 @@ def fetch_and_save_data(symbol, start_date, end_date):
                 timestamp, symbol, entry[1], entry[2], entry[3], entry[4], entry[5]
             ])
     
-    return True  # Data fetched successfully
+    return True
 def get_usd_and_usdt_pairs():
     url = "https://api.binance.com/api/v3/exchangeInfo"
     try:
@@ -201,12 +168,50 @@ def get_usd_and_usdt_pairs():
         return []
 
 from crypto_sentiment_analyzer import CryptoSentimentAnalyzer
+import json
+import threading
 
-def train(cfg: DictConfig): 
+global_cfg = None
+
+def save_prediction_to_json(symbol, yesterday_close, predicted_high, predicted_low, predicted_mean, increase_percentage, sentiment):
+    filename = "predictions.json"
+    predictions = []
+    if os.path.exists(filename):
+        try:
+            with open(filename, "r", encoding="utf-8") as f:
+                predictions = json.load(f)
+        except Exception as e:
+            print(f"Error loading predictions.json: {e}")
+            predictions = []
+            
+    # Remove older prediction for this symbol if it exists
+    predictions = [p for p in predictions if p["symbol"].upper() != symbol.upper()]
+    
+    predictions.append({
+        "symbol": symbol.upper(),
+        "yesterday_close": yesterday_close,
+        "predicted_high": predicted_high,
+        "predicted_low": predicted_low,
+        "predicted_mean": predicted_mean,
+        "increase_percentage": increase_percentage,
+        "timestamp": datetime.now().strftime("%Y-%m-%d %H:%M:%S"),
+        "sentiment": sentiment
+    })
+    
+    try:
+        with open(filename, "w", encoding="utf-8") as f:
+            json.dump(predictions, f, ensure_ascii=False, indent=4)
+    except Exception as e:
+        print(f"Error writing to predictions.json: {e}")
+
+def train(cfg: DictConfig, target_symbols=None): 
     analyzer = CryptoSentimentAnalyzer()
 
-    # جلب الأزواج النشطة التي تحتوي على USDT أو USD
-    symbols = get_usd_and_usdt_pairs()
+    # جلب الأزواج النشطة التي تحتوي على USDT أو USD أو استخدام العملات المحددة
+    if target_symbols is not None:
+        symbols = [s.strip().upper() for s in target_symbols]
+    else:
+        symbols = get_usd_and_usdt_pairs()
 
     # طباعة اللائحة
     print("List of Active Trading Pairs (USDT/USD) on Binance:")
@@ -312,10 +317,9 @@ def train(cfg: DictConfig):
             predicted_low_formated = "{:.18f}".format(predicted_low)
             predicted_mean_formated = "{:.18f}".format(predicted_mean)
             increase = (predicted_mean - yesterday_close) / yesterday_close
-            if increase > increase_threshold:
-                saved_percentage = increase * 100
-            else:
-                continue  # Skip this iteration if the increase is below the threshold
+            
+            # Save it anyway for UI display
+            saved_percentage = increase * 100
             
             predicted_low_finally = 0
             predicted_high_finally = 0
@@ -326,16 +330,29 @@ def train(cfg: DictConfig):
                 predicted_low_finally = predicted_low_formated
                 predicted_high_finally = predicted_high_formated
 
-            title += f'رمز العملة: {symbol}\n'
-            title += f'نسبة الزيادة المتوقعة: {round(saved_percentage, 1)}%\n'
-            title += f'اعلى سعر متوقع لليوم⬆️:\n {predicted_high_finally}\n'
-            title += f'اقل سعر متوقع لليوم⬇️:\n {predicted_low_finally}\n'
-            title += f'سعر الإغلاق المتوقع لليوم:\n {predicted_mean_formated}\n'
-            title += '....................\n'
-
             sentiment_analysis = analyzer.get_sentiment_summary(symbol)
-            title += sentiment_analysis
-            title += '---\n'
+            
+            # Save prediction to JSON file
+            save_prediction_to_json(
+                symbol=symbol,
+                yesterday_close=yesterday_close,
+                predicted_high=predicted_high_finally,
+                predicted_low=predicted_low_finally,
+                predicted_mean=predicted_mean_formated,
+                increase_percentage=round(saved_percentage, 1),
+                sentiment=sentiment_analysis.replace("تحليل المشاعر:\n", "").strip()
+            )
+
+            # Build alert message if it exceeds threshold
+            if increase > increase_threshold:
+                title += f'رمز العملة: {symbol}\n'
+                title += f'نسبة الزيادة المتوقعة: {round(saved_percentage, 1)}%\n'
+                title += f'اعلى سعر متوقع لليوم⬆️:\n {predicted_high_finally}\n'
+                title += f'اقل سعر متوقع لليوم⬇️:\n {predicted_low_finally}\n'
+                title += f'سعر الإغلاق المتوقع لليوم:\n {predicted_mean_formated}\n'
+                title += '....................\n'
+                title += sentiment_analysis
+                title += '---\n'
 
             print('..............................d')
             print(yesterday_close)
@@ -344,13 +361,13 @@ def train(cfg: DictConfig):
 
         except Exception as e:
             print(f"Error occurred while processing symbol {symbol}: {str(e)}")
-            continue  # Continue to the next symbol if an error occurs
+            continue
 
-    # title += 'لا تجعل التنبؤات محور تداولك. ركز على التحليل العميق وإدارة المخاطر، واستند إلى البيانات والحقائق لاتخاذ قرارات مستنيرة.\n'
-    print(title)
-    price_comparator.update_predictions(title)
-    price_comparator.start_comparing()
-    return title  # Return the title or any other relevant data
+    if title:
+        print(title)
+        price_comparator.update_predictions(title)
+        price_comparator.start_comparing()
+    return title
 
 from telegram import Update, KeyboardButton, ReplyKeyboardMarkup
 from telegram.ext import Application, CommandHandler, MessageHandler, filters, ContextTypes
@@ -358,31 +375,55 @@ import logging
 import hydra
 from omegaconf import DictConfig
 from functools import partial
-from flask import Flask
+from flask import Flask, jsonify, request
 from threading import Thread
 from apscheduler.schedulers.asyncio import AsyncIOScheduler
 from apscheduler.triggers.cron import CronTrigger
+import concurrent.futures
 
 app = Flask(__name__)
 
 logging.basicConfig(level=logging.INFO)
 
-TOKEN = '7272871832:AAGa5-_FdFfziJqDG9pp4N9ljnZ2uyxslJ0'
+TOKEN = os.getenv("TELEGRAM_PREDICTION_TOKEN", '7272871832:AAGa5-_FdFfziJqDG9pp4N9ljnZ2uyxslJ0')
+AUTHORIZED_USERS = [895650332, 991558864, 715531930, 117245128, 1796556765, 31128146]
 
-AUTHORIZED_USERS = [895650332, 991558864, 715531930, 117245128, 1796556765,31128146]
-# AUTHORIZED_USERS = [991558864,895650332]
-
-# تخزين النتيجة المحسوبة مسبقًا
 predicted_result = ""
+training_lock = threading.Lock()
+training_status = {
+    "status": "idle",
+    "current_symbol": "",
+    "progress": "",
+    "error": ""
+}
 
-# دالة لحساب التوقع
+# Run prediction worker in background thread
+def run_prediction_worker(cfg, symbols_to_train):
+    global training_status
+    with training_lock:
+        training_status["status"] = "running"
+        training_status["error"] = ""
+        try:
+            for i, sym in enumerate(symbols_to_train):
+                training_status["current_symbol"] = sym
+                training_status["progress"] = f"جاري توقع العملة {sym} ({i+1}/{len(symbols_to_train)})..."
+                train(cfg, target_symbols=[sym])
+            training_status["status"] = "completed"
+            training_status["progress"] = "اكتمل التوقع بنجاح!"
+            training_status["current_symbol"] = ""
+        except Exception as e:
+            training_status["status"] = "failed"
+            training_status["error"] = str(e)
+            training_status["progress"] = f"فشل التوقع: {str(e)}"
+            training_status["current_symbol"] = ""
+
 def calculate_prediction(cfg: DictConfig) -> str:
-    # دالة حساب التوقع هنا
-    result = train(cfg)  # يمكنك تعديلها بما يتناسب مع الكود الخاص بك
+    result = train(cfg)
     return result
 
-# دالة لإرسال النتيجة لجميع المستخدمين
 async def send_prediction_to_users(application: Application, result: str):
+    if not result:
+        return
     parts = result.split('---')
     for user_id in AUTHORIZED_USERS:
         try:
@@ -392,19 +433,19 @@ async def send_prediction_to_users(application: Application, result: str):
         except Exception as e:
             print(f"فشل في إرسال التوقع إلى {user_id}: {e}")
 
-# دالة الجدولة اليومية لتحديث التوقع
 async def daily_prediction(cfg: DictConfig, application: Application) -> None:
     global predicted_result
-    # حساب توقع جديد وتحديث المتغير
-    predicted_result = calculate_prediction(cfg)
+    print("[🔄] Daily prediction triggered in background...")
+    # Run in thread executor to prevent blocking
+    loop = asyncio.get_running_loop()
+    with concurrent.futures.ThreadPoolExecutor() as pool:
+        predicted_result = await loop.run_in_executor(pool, calculate_prediction, cfg)
     await send_prediction_to_users(application, predicted_result)
 
-# التحقق من صلاحية المستخدم
 async def check_authorized_user(update: Update) -> bool:
     user_id = update.message.from_user.id
     return user_id in AUTHORIZED_USERS
 
-# دالة البدء
 async def start(update: Update, context: ContextTypes.DEFAULT_TYPE) -> None:
     if not await check_authorized_user(update):
         await update.message.reply_text('ليس لديك صلاحية للوصول إلى هذا البوت.')
@@ -414,44 +455,189 @@ async def start(update: Update, context: ContextTypes.DEFAULT_TYPE) -> None:
     reply_markup = ReplyKeyboardMarkup(keyboard, resize_keyboard=True, one_time_keyboard=False)
     await update.message.reply_text('مرحبًا! اضغط على الزر لتوقع النتيجة.', reply_markup=reply_markup)
 
-# دالة التعامل مع التوقع عند الطلب
 async def handle_prediction(update: Update, context: ContextTypes.DEFAULT_TYPE, cfg: DictConfig) -> None:
     if not await check_authorized_user(update):
         await update.message.reply_text('ليس لديك صلاحية للوصول إلى هذا البوت.')
         return
     
     if update.message.text == "توقع":
-        if predicted_result:  # تحقق إذا كانت النتيجة موجودة
+        if predicted_result:
             await send_prediction_to_users(context.application, predicted_result)
         else:
             await update.message.reply_text("لم يتم حساب التوقع بعد. الرجاء المحاولة لاحقًا.")
 
-async def start_scheduler(scheduler):
-    scheduler.start()
-    while True:
-        await asyncio.sleep(1)  # جعل الجدولة تعمل بشكل مستمر
+# Flask Endpoints for Dashboard API
+@app.route('/')
+def home():
+    try:
+        with open("templates/index.html", "r", encoding="utf-8") as f:
+            return f.read()
+    except Exception as e:
+        return f"Error loading index.html: {str(e)}", 500
+
+@app.route('/api/symbols')
+def api_symbols():
+    try:
+        symbols = get_usd_and_usdt_pairs()
+        return jsonify(symbols)
+    except Exception as e:
+        return jsonify({"error": str(e)}), 500
+
+@app.route('/api/predictions')
+def api_predictions():
+    filename = "predictions.json"
+    if os.path.exists(filename):
+        try:
+            with open(filename, "r", encoding="utf-8") as f:
+                data = json.load(f)
+                return jsonify(data)
+        except Exception as e:
+            return jsonify([])
+    return jsonify([])
+
+@app.route('/api/status')
+def api_status():
+    global training_status
+    return jsonify(training_status)
+
+@app.route('/api/run_prediction', methods=['POST'])
+def api_run_prediction():
+    global training_status
+    if training_status["status"] == "running":
+        return jsonify({"success": False, "message": "يوجد عملية توقع قيد التشغيل بالفعل."}), 400
+        
+    data = request.json or {}
+    symbols_to_train = data.get("symbols", [])
+    if not symbols_to_train:
+        return jsonify({"success": False, "message": "لم يتم تحديد أي عملات لتوقعها."}), 400
+        
+    t = Thread(target=run_prediction_worker, args=(global_cfg, symbols_to_train))
+    t.start()
+    return jsonify({"success": True, "message": "بدأت عملية التوقع في الخلفية."})
+
+@app.route('/api/liquidity', methods=['GET'])
+def api_liquidity():
+    symbol = request.args.get("symbol", "").upper()
+    if not symbol:
+        return jsonify({"error": "Symbol is required"}), 400
+    try:
+        from binance_liquidity import check_liquidity_and_price, get_orderbook_liquidity
+        liq_msg = check_liquidity_and_price(symbol)
+        ob = get_orderbook_liquidity(symbol)
+        return jsonify({
+            "symbol": symbol,
+            "message": liq_msg,
+            "order_book": ob
+        })
+    except Exception as e:
+        return jsonify({"error": str(e)}), 500
+
+@app.route('/api/send_telegram', methods=['POST'])
+def api_send_telegram():
+    data = request.json or {}
+    symbol = data.get("symbol", "").upper()
+    
+    filename = "predictions.json"
+    if not os.path.exists(filename):
+        return jsonify({"success": False, "message": "لا توجد توقعات متاحة لإرسالها."}), 400
+        
+    try:
+        with open(filename, "r", encoding="utf-8") as f:
+            predictions = json.load(f)
+    except Exception as e:
+        return jsonify({"success": False, "message": f"فشل قراءة التوقعات: {e}"}), 500
+        
+    selected_prediction = None
+    if symbol:
+        for p in predictions:
+            if p["symbol"].upper() == symbol:
+                selected_prediction = p
+                break
+    else:
+        if predictions:
+            selected_prediction = predictions[-1]
+            
+    if not selected_prediction:
+        return jsonify({"success": False, "message": "لم يتم العثور على التوقع المطلوب."}), 404
+        
+    title = ""
+    title += f"رمز العملة: {selected_prediction['symbol']}\n"
+    title += f"نسبة الزيادة المتوقعة: {selected_prediction['increase_percentage']}%\n"
+    title += f"اعلى سعر متوقع لليوم⬆️:\n {selected_prediction['predicted_high']}\n"
+    title += f"اقل سعر متوقع لليوم⬇️:\n {selected_prediction['predicted_low']}\n"
+    title += f"سعر الإغلاق المتوقع لليوم:\n {selected_prediction['predicted_mean']}\n"
+    title += '....................\n'
+    title += f"تحليل المشاعر:\n{selected_prediction['sentiment']}\n"
+    
+    try:
+        token = os.getenv("TELEGRAM_PREDICTION_TOKEN", TOKEN)
+        chat_ids = AUTHORIZED_USERS
+        
+        import requests
+        parts = title.split('---')
+        for user_id in chat_ids:
+            for part in parts:
+                if part.strip():
+                    url = f"https://api.telegram.org/bot{token}/sendMessage"
+                    requests.post(url, json={"chat_id": user_id, "text": part.strip()})
+                    
+        return jsonify({"success": True, "message": f"تم إرسال التوقع للعملة {selected_prediction['symbol']} إلى تلغرام بنجاح."})
+    except Exception as e:
+        return jsonify({"success": False, "message": f"فشل إرسال التلغرام: {str(e)}"}), 500
+
+@app.route('/api/settings', methods=['POST'])
+def api_settings():
+    data = request.json or {}
+    env_keys = {
+        "BINANCE_API_KEY": data.get("binance_api_key"),
+        "BINANCE_API_SECRET": data.get("binance_api_secret"),
+        "TELEGRAM_PREDICTION_TOKEN": data.get("telegram_prediction_token"),
+        "TELEGRAM_COMPARATOR_TOKEN": data.get("telegram_comparator_token"),
+        "NEWS_API_KEY": data.get("news_api_key")
+    }
+    
+    current_env = {}
+    if os.path.exists(".env"):
+        with open(".env", "r", encoding="utf-8") as f:
+            for line in f:
+                if "=" in line:
+                    parts = line.strip().split("=", 1)
+                    current_env[parts[0]] = parts[1]
+                    
+    for k, v in env_keys.items():
+        if v:
+            current_env[k] = v
+            
+    try:
+        with open(".env", "w", encoding="utf-8") as f:
+            for k, v in current_env.items():
+                f.write(f"{k}={v}\n")
+        load_dotenv(override=True)
+        return jsonify({"success": True, "message": "تم تحديث الإعدادات وحفظها في .env بنجاح."})
+    except Exception as e:
+        return jsonify({"success": False, "message": f"فشل حفظ الإعدادات: {e}"}), 500
 
 @hydra.main(config_path=HYDRA_PATH, config_name="train")
 def main(cfg: DictConfig) -> None:
+    global global_cfg
+    global_cfg = cfg
+    
     application = Application.builder().token(TOKEN).build()
     
-    # إعداد الجدولة اليومية
     scheduler = AsyncIOScheduler()
     trigger = CronTrigger(hour=5, minute=30, second=0, timezone="Asia/Baghdad")
     scheduler.add_job(daily_prediction, trigger, args=[cfg, application])
-    
-    # تشغيل الجدولة بشكل متزامن
-    # loop = asyncio.get_event_loop()
-    # loop.run_until_complete(start_scheduler(scheduler))  # بدء الجدولة هنا
     scheduler.start()
 
-
-    # التعامل مع الأوامر والرسائل
     application.add_handler(CommandHandler('start', start))
-    application.add_handler(MessageHandler(filters.TEXT & ~filters.COMMAND, partial(handle_prediction, cfg=cfg)))  
+    application.add_handler(MessageHandler(filters.TEXT & ~filters.COMMAND, partial(handle_prediction, cfg=cfg)))
+    
+    # Run Telegram bot in polling
     application.run_polling()
 
 if __name__ == '__main__':
+    # Start Flask server
     flask_thread = Thread(target=app.run, kwargs={'host': '0.0.0.0', 'port': 8080})
+    flask_thread.daemon = True
     flask_thread.start()
     main()

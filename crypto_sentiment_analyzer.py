@@ -1,12 +1,16 @@
+import os
 import requests
 from textblob import TextBlob
+from dotenv import load_dotenv
+
+load_dotenv()
 
 class CryptoSentimentAnalyzer:
     NEWS_API_URL = "https://newsapi.org/v2/everything"
-    API_KEY = "5c09530ca24f4251940216dc2d9be275"  # استبدل بمفتاح NewsAPI الخاص بك
 
     def __init__(self):
-        pass
+        self.API_KEY = os.getenv("NEWS_API_KEY", "")
+
 
     def fetch_news(self, crypto_pair):
         """

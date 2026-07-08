@@ -1,0 +1,992 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>StratoCrypto Dashboard | لوحة التحكم</title>
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&family=Outfit:wght@400;600;800&family=Cairo:wght@400;600;700&display=swap" rel="stylesheet">
+    <!-- FontAwesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- ApexCharts -->
+    <script src="https://cdn.jsdelivr.net/npm/apexcharts"></script>
+    <style>
+        :root {
+            --bg-primary: #0b0f19;
+            --bg-secondary: rgba(17, 24, 39, 0.7);
+            --border-color: rgba(255, 255, 255, 0.08);
+            --accent-glow: rgba(0, 242, 254, 0.15);
+            --color-primary: #00f2fe;
+            --color-secondary: #4facfe;
+            --color-success: #00e676;
+            --color-danger: #ff1744;
+            --color-warning: #ffea00;
+            --text-main: #f3f4f6;
+            --text-muted: #9ca3af;
+            --font-family: 'Cairo', 'Inter', sans-serif;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            background-color: var(--bg-primary);
+            background-image: radial-gradient(circle at 10% 20%, rgba(0, 242, 254, 0.05) 0%, transparent 40%),
+                              radial-gradient(circle at 90% 80%, rgba(79, 172, 254, 0.05) 0%, transparent 40%);
+            background-attachment: fixed;
+            color: var(--text-main);
+            font-family: var(--font-family);
+            min-height: 100vh;
+            overflow-x: hidden;
+        }
+
+        /* Layout */
+        .app-container {
+            display: flex;
+            min-height: 100vh;
+        }
+
+        /* Sidebar Styling */
+        .sidebar {
+            width: 280px;
+            background: rgba(10, 15, 30, 0.85);
+            backdrop-filter: blur(12px);
+            border-left: 1px solid var(--border-color);
+            padding: 30px 20px;
+            display: flex;
+            flex-direction: column;
+            gap: 40px;
+            z-index: 100;
+            position: fixed;
+            height: 100vh;
+            right: 0;
+            top: 0;
+        }
+
+        .logo-area {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .logo-icon {
+            background: linear-gradient(135deg, var(--color-primary), var(--color-secondary));
+            width: 45px;
+            height: 45px;
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 22px;
+            color: #000;
+            box-shadow: 0 0 15px var(--color-primary);
+        }
+
+        .logo-text {
+            font-family: 'Outfit', sans-serif;
+            font-size: 22px;
+            font-weight: 800;
+            background: linear-gradient(to right, #00f2fe, #4facfe);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            letter-spacing: 0.5px;
+        }
+
+        .nav-links {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+
+        .nav-item {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            padding: 14px 18px;
+            border-radius: 10px;
+            color: var(--text-muted);
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            cursor: pointer;
+            border: 1px solid transparent;
+        }
+
+        .nav-item:hover, .nav-item.active {
+            background: rgba(0, 242, 254, 0.08);
+            color: var(--color-primary);
+            border-color: rgba(0, 242, 254, 0.2);
+            box-shadow: 0 0 10px var(--accent-glow);
+        }
+
+        .nav-item i {
+            font-size: 18px;
+        }
+
+        /* Main Content Styling */
+        .main-content {
+            margin-right: 280px;
+            width: calc(100% - 280px);
+            padding: 40px;
+            display: flex;
+            flex-direction: column;
+            gap: 30px;
+        }
+
+        /* Header Styling */
+        .header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background: var(--bg-secondary);
+            backdrop-filter: blur(10px);
+            padding: 20px 30px;
+            border-radius: 16px;
+            border: 1px solid var(--border-color);
+        }
+
+        .header-title h1 {
+            font-size: 24px;
+            font-weight: 700;
+        }
+
+        .header-title p {
+            color: var(--text-muted);
+            font-size: 14px;
+            margin-top: 5px;
+        }
+
+        .connection-status {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            background: rgba(0, 230, 118, 0.1);
+            color: var(--color-success);
+            padding: 8px 16px;
+            border-radius: 30px;
+            font-size: 13px;
+            font-weight: 600;
+            border: 1px solid rgba(0, 230, 118, 0.2);
+        }
+
+        .status-dot {
+            width: 8px;
+            height: 8px;
+            background: var(--color-success);
+            border-radius: 50%;
+            box-shadow: 0 0 10px var(--color-success);
+        }
+
+        /* Cards Grid */
+        .grid-layout {
+            display: grid;
+            grid-template-columns: repeat(12, 1fr);
+            gap: 25px;
+        }
+
+        .card {
+            background: var(--bg-secondary);
+            backdrop-filter: blur(10px);
+            border-radius: 16px;
+            border: 1px solid var(--border-color);
+            padding: 25px;
+            box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.3);
+            transition: transform 0.3s ease;
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+        }
+
+        .card-title {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 20px;
+            border-bottom: 1px solid var(--border-color);
+            padding-bottom: 15px;
+        }
+
+        .card-title h3 {
+            font-size: 18px;
+            font-weight: 700;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .card-title i {
+            color: var(--color-primary);
+        }
+
+        /* Form Inputs */
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            font-size: 14px;
+            color: var(--text-muted);
+            font-weight: 600;
+        }
+
+        .form-control {
+            width: 100%;
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid var(--border-color);
+            padding: 12px 16px;
+            border-radius: 10px;
+            color: var(--text-main);
+            font-family: var(--font-family);
+            font-size: 14px;
+            transition: all 0.3s ease;
+        }
+
+        .form-control:focus {
+            border-color: var(--color-primary);
+            box-shadow: 0 0 10px var(--accent-glow);
+            outline: none;
+        }
+
+        /* Buttons */
+        .btn {
+            background: linear-gradient(135deg, var(--color-primary), var(--color-secondary));
+            border: none;
+            padding: 14px 24px;
+            border-radius: 10px;
+            color: #000;
+            font-weight: 700;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            font-family: var(--font-family);
+            font-size: 15px;
+            box-shadow: 0 4px 15px rgba(0, 242, 254, 0.2);
+        }
+
+        .btn:hover {
+            opacity: 0.9;
+            box-shadow: 0 4px 20px rgba(0, 242, 254, 0.4);
+            transform: translateY(-2px);
+        }
+
+        .btn-secondary {
+            background: rgba(255, 255, 255, 0.08);
+            color: var(--text-main);
+            border: 1px solid var(--border-color);
+            box-shadow: none;
+        }
+
+        .btn-secondary:hover {
+            background: rgba(255, 255, 255, 0.15);
+            color: var(--color-primary);
+            box-shadow: none;
+        }
+
+        /* Status Section */
+        .status-container {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+
+        .status-item {
+            display: flex;
+            justify-content: space-between;
+            padding: 12px 15px;
+            background: rgba(255, 255, 255, 0.03);
+            border-radius: 10px;
+            border: 1px solid var(--border-color);
+        }
+
+        .progress-bar-container {
+            width: 100%;
+            height: 8px;
+            background: rgba(255, 255, 255, 0.08);
+            border-radius: 10px;
+            overflow: hidden;
+            margin-top: 10px;
+        }
+
+        .progress-bar {
+            height: 100%;
+            background: linear-gradient(to left, var(--color-primary), var(--color-secondary));
+            width: 0%;
+            transition: width 0.4s ease;
+        }
+
+        /* Liquidity Speedometer and details */
+        .liquidity-grid {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+
+        .liquidity-badge {
+            font-weight: 700;
+            padding: 5px 12px;
+            border-radius: 6px;
+            font-size: 13px;
+        }
+
+        .liquidity-danger {
+            background: rgba(255, 23, 68, 0.15);
+            color: var(--color-danger);
+            border: 1px solid rgba(255, 23, 68, 0.3);
+        }
+
+        .liquidity-success {
+            background: rgba(0, 230, 118, 0.15);
+            color: var(--color-success);
+            border: 1px solid rgba(0, 230, 118, 0.3);
+        }
+
+        /* Table Styling */
+        .table-container {
+            overflow-x: auto;
+            width: 100%;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            text-align: right;
+        }
+
+        th, td {
+            padding: 16px 20px;
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        th {
+            color: var(--text-muted);
+            font-weight: 600;
+            font-size: 13px;
+            text-transform: uppercase;
+        }
+
+        td {
+            font-size: 14px;
+        }
+
+        tr:hover {
+            background: rgba(255, 255, 255, 0.02);
+        }
+
+        .coin-name-cell {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            font-weight: 700;
+        }
+
+        .coin-icon {
+            width: 30px;
+            height: 30px;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.1);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            color: var(--color-primary);
+        }
+
+        /* Filter Pills */
+        .filter-container {
+            display: flex;
+            gap: 10px;
+            flex-wrap: wrap;
+            margin-bottom: 20px;
+        }
+
+        .filter-pill {
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid var(--border-color);
+            padding: 8px 16px;
+            border-radius: 30px;
+            font-size: 13px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .filter-pill.active {
+            background: var(--color-primary);
+            color: #000;
+            border-color: var(--color-primary);
+            font-weight: 700;
+        }
+
+        /* Settings CSS */
+        .settings-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 20px;
+        }
+
+        @media (max-width: 1024px) {
+            .sidebar {
+                display: none;
+            }
+            .main-content {
+                margin-right: 0;
+                width: 100%;
+                padding: 20px;
+            }
+            .settings-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="app-container">
+        <!-- Sidebar -->
+        <aside class="sidebar">
+            <div class="logo-area">
+                <div class="logo-icon"><i class="fa-solid fa-chart-line"></i></div>
+                <div class="logo-text">StratoCrypto</div>
+            </div>
+            <nav class="nav-links">
+                <a class="nav-item active" onclick="switchTab('dashboard')">
+                    <i class="fa-solid fa-gauge"></i>
+                    <span>لوحة التحكم الرئيسية</span>
+                </a>
+                <a class="nav-item" onclick="switchTab('predict')">
+                    <i class="fa-solid fa-brain"></i>
+                    <span>التنبؤ والتحليل</span>
+                </a>
+                <a class="nav-item" onclick="switchTab('settings')">
+                    <i class="fa-solid fa-gears"></i>
+                    <span>مفاتيح الإعدادات API</span>
+                </a>
+            </nav>
+        </aside>
+
+        <!-- Main Content -->
+        <main class="main-content">
+            <!-- Header -->
+            <header class="header">
+                <div class="header-title">
+                    <h1 id="page-title">لوحة التحكم الرئيسية</h1>
+                    <p id="page-subtitle">نظرة عامة على أداء السوق وتوقعات الأسعار اللحظية</p>
+                </div>
+                <div class="connection-status">
+                    <div class="status-dot"></div>
+                    <span>Binance API متصل</span>
+                </div>
+            </header>
+
+            <!-- TAB 1: Dashboard -->
+            <div id="tab-dashboard" class="tab-content grid-layout">
+                <!-- Predictions Log / Coins List -->
+                <div class="card" style="grid-column: span 8;">
+                    <div class="card-title">
+                        <h3><i class="fa-solid fa-list-check"></i> قائمة توقعات العملات الأخيرة</h3>
+                        <button class="btn btn-secondary" onclick="loadPredictions()"><i class="fa-solid fa-arrows-rotate"></i> تحديث</button>
+                    </div>
+                    <div class="filter-container" id="symbols-filter">
+                        <span class="filter-pill active" onclick="filterPredictions('ALL')">الكل</span>
+                        <!-- Filter pills will be dynamically populated -->
+                    </div>
+                    <div class="table-container">
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>الرمز</th>
+                                    <th>سعر إغلاق الأمس</th>
+                                    <th>أعلى سعر متوقع</th>
+                                    <th>أقل سعر متوقع</th>
+                                    <th>الزيادة المتوقعة</th>
+                                    <th>المشاعر</th>
+                                    <th>التحكم والتليغرام</th>
+                                </tr>
+                            </thead>
+                            <tbody id="predictions-table-body">
+                                <tr>
+                                    <td colspan="7" style="text-align: center; color: var(--text-muted);">جاري تحميل البيانات...</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+
+                <!-- Live Liquidity Panel -->
+                <div class="card" style="grid-column: span 4;">
+                    <div class="card-title">
+                        <h3><i class="fa-solid fa-droplet"></i> تفاصيل السيولة اللحظية</h3>
+                    </div>
+                    <div class="form-group">
+                        <label for="liquidity-symbol-select">اختر العملة لفحص سيولتها:</label>
+                        <select class="form-control" id="liquidity-symbol-select" onchange="checkLiquidity(this.value)">
+                            <option value="">-- اختر عملة --</option>
+                        </select>
+                    </div>
+                    <div id="liquidity-details" class="liquidity-grid" style="display: none;">
+                        <div class="status-item">
+                            <span>الحالة العامة</span>
+                            <span id="liq-status-badge" class="liquidity-badge">جاري الفحص</span>
+                        </div>
+                        <div class="status-item">
+                            <span>سحب الحجم (15m)</span>
+                            <span id="liq-volume-drop" style="font-weight: bold;">0.00%</span>
+                        </div>
+                        <div class="status-item">
+                            <span>عمق جدار الطلبات</span>
+                            <span id="liq-imbalance" style="font-weight: bold;">0.0%</span>
+                        </div>
+                        <div class="status-item">
+                            <span>اتجاه السيولة</span>
+                            <span id="liq-imbalance-desc" style="color: var(--color-primary);">متوازن</span>
+                        </div>
+                        <div class="status-item">
+                            <span>الفارق (Spread)</span>
+                            <span id="liq-spread" style="font-weight: bold;">0.00%</span>
+                        </div>
+                    </div>
+                    <div id="liquidity-placeholder" style="text-align: center; padding: 40px 0; color: var(--text-muted);">
+                        <i class="fa-solid fa-chart-bar" style="font-size: 48px; margin-bottom: 15px; opacity: 0.5;"></i>
+                        <p>اختر عملة من القائمة لعرض مؤشرات السيولة العميقة.</p>
+                    </div>
+                </div>
+
+                <!-- Main Chart -->
+                <div class="card" style="grid-column: span 12;">
+                    <div class="card-title">
+                        <h3><i class="fa-solid fa-chart-area"></i> مخطط توقعات الأسعار (مقارنة المديات المتوقعة)</h3>
+                    </div>
+                    <div id="prediction-chart"></div>
+                </div>
+            </div>
+
+            <!-- TAB 2: Predict Control -->
+            <div id="tab-predict" class="tab-content grid-layout" style="display: none;">
+                <!-- Control Panel -->
+                <div class="card" style="grid-column: span 6;">
+                    <div class="card-title">
+                        <h3><i class="fa-solid fa-play"></i> تشغيل التنبؤ بالعملات</h3>
+                    </div>
+                    <div class="form-group">
+                        <label for="predict-symbols-select">اختر العملات الرقمية التي ترغب في توقعها:</label>
+                        <select class="form-control" id="predict-symbols-select" style="height: 150px;" multiple>
+                            <!-- Dynamically loaded -->
+                        </select>
+                        <p style="font-size: 12px; color: var(--text-muted); margin-top: 5px;">يمكنك اختيار عملات متعددة بالضغط المستمر على زر Ctrl أو Shift.</p>
+                    </div>
+                    <button class="btn" style="width: 100%;" onclick="runPrediction()">
+                        <i class="fa-solid fa-bolt"></i> ابدأ التوقع والتحليل الآن
+                    </button>
+                </div>
+
+                <!-- Progress / Status Card -->
+                <div class="card" style="grid-column: span 6;">
+                    <div class="card-title">
+                        <h3><i class="fa-solid fa-spinner"></i> حالة خادم التوقع والتدريب الخلفي</h3>
+                    </div>
+                    <div class="status-container">
+                        <div class="status-item">
+                            <span>حالة التشغيل</span>
+                            <span id="running-status" style="font-weight: bold; color: var(--color-success);">Idle (جاهز)</span>
+                        </div>
+                        <div class="status-item">
+                            <span>العملة الجاري تحليلها حالياً</span>
+                            <span id="running-current-symbol" style="font-weight: bold;">--</span>
+                        </div>
+                        <div class="status-item">
+                            <span>التفاصيل والتقدم</span>
+                            <span id="running-progress">لا توجد عمليات نشطة حالياً.</span>
+                        </div>
+                        <div class="progress-bar-container">
+                            <div class="progress-bar" id="running-progress-bar"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- TAB 3: Settings -->
+            <div id="tab-settings" class="tab-content grid-layout" style="display: none;">
+                <div class="card" style="grid-column: span 12;">
+                    <div class="card-title">
+                        <h3><i class="fa-solid fa-key"></i> إدارة مفاتيح API وبيانات بوت تلغرام</h3>
+                    </div>
+                    <div class="settings-grid">
+                        <div class="form-group">
+                            <label>Binance API Key (مفتاح API الخاص بـ بايننس)</label>
+                            <input type="password" class="form-control" id="sett-binance-key" placeholder="••••••••••••••••">
+                        </div>
+                        <div class="form-group">
+                            <label>Binance API Secret (المفتاح السري لـ بايننس)</label>
+                            <input type="password" class="form-control" id="sett-binance-secret" placeholder="••••••••••••••••">
+                        </div>
+                        <div class="form-group">
+                            <label>Telegram Prediction Bot Token (رمز بوت توقعات التلغرام)</label>
+                            <input type="text" class="form-control" id="sett-tele-pred-token" placeholder="7272871832:AAGa5-...">
+                        </div>
+                        <div class="form-group">
+                            <label>Telegram Comparator Bot Token (رمز بوت مقارنة الأسعار)</label>
+                            <input type="text" class="form-control" id="sett-tele-comp-token" placeholder="7693311875:AAExOM...">
+                        </div>
+                        <div class="form-group" style="grid-column: span 2;">
+                            <label>NewsAPI Key (مفتاح جلب الأخبار للتحليل العاطفي)</label>
+                            <input type="text" class="form-control" id="sett-news-key" placeholder="5c09530ca24f...">
+                        </div>
+                    </div>
+                    <div style="margin-top: 25px; display: flex; justify-content: flex-end;">
+                        <button class="btn" onclick="saveSettings()"><i class="fa-solid fa-floppy-disk"></i> حفظ الإعدادات في ملف .env المحلي</button>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <!-- Script Logic -->
+    <script>
+        let currentTab = 'dashboard';
+        let allPredictions = [];
+        let activeFilter = 'ALL';
+        let chart = null;
+
+        // Document Ready
+        document.addEventListener('DOMContentLoaded', () => {
+            loadSymbols();
+            loadPredictions();
+            // Start status polling
+            setInterval(checkRunningStatus, 3000);
+        });
+
+        function switchTab(tabId) {
+            document.querySelectorAll('.tab-content').forEach(el => el.style.display = 'none');
+            document.querySelectorAll('.nav-item').forEach(el => el.classList.remove('active'));
+            
+            // Switch tabs
+            if (tabId === 'dashboard') {
+                document.getElementById('tab-dashboard').style.display = 'grid';
+                document.querySelector('[onclick="switchTab(\'dashboard\')"]').classList.add('active');
+                document.getElementById('page-title').innerText = 'لوحة التحكم الرئيسية';
+                document.getElementById('page-subtitle').innerText = 'نظرة عامة على أداء السوق وتوقعات الأسعار اللحظية';
+            } else if (tabId === 'predict') {
+                document.getElementById('tab-predict').style.display = 'grid';
+                document.querySelector('[onclick="switchTab(\'predict\')"]').classList.add('active');
+                document.getElementById('page-title').innerText = 'التنبؤ والتحليل والتحكم';
+                document.getElementById('page-subtitle').innerText = 'تشغيل النماذج الفنية وتوقع أسعار العملات الرقمية يدوياً';
+            } else if (tabId === 'settings') {
+                document.getElementById('tab-settings').style.display = 'grid';
+                document.querySelector('[onclick="switchTab(\'settings\')"]').classList.add('active');
+                document.getElementById('page-title').innerText = 'الإعدادات ومفاتيح الربط';
+                document.getElementById('page-subtitle').innerText = 'إدارة وتحديث التوكنات البرمجية وحفظها في بيئة آمنة';
+            }
+        }
+
+        // Load Binance Symbols list
+        function loadSymbols() {
+            fetch('/api/symbols')
+                .then(res => res.json())
+                .then(data => {
+                    const predictSelect = document.getElementById('predict-symbols-select');
+                    const liqSelect = document.getElementById('liquidity-symbol-select');
+                    predictSelect.innerHTML = '';
+                    liqSelect.innerHTML = '<option value="">-- اختر عملة --</option>';
+
+                    data.forEach(sym => {
+                        predictSelect.innerHTML += `<option value="${sym}">${sym}</option>`;
+                        liqSelect.innerHTML += `<option value="${sym}">${sym}</option>`;
+                    });
+                })
+                .catch(err => console.error('Error loading symbols:', err));
+        }
+
+        // Fetch predictions log
+        function loadPredictions() {
+            fetch('/api/predictions')
+                .then(res => res.json())
+                .then(data => {
+                    allPredictions = data;
+                    renderPredictionsTable();
+                    renderChart();
+                    updateFilterPills();
+                })
+                .catch(err => console.error('Error loading predictions:', err));
+        }
+
+        // Update active coins filters
+        function updateFilterPills() {
+            const filterContainer = document.getElementById('symbols-filter');
+            filterContainer.innerHTML = `<span class="filter-pill ${activeFilter === 'ALL' ? 'active' : ''}" onclick="filterPredictions('ALL')">الكل</span>`;
+            
+            const uniqueSymbols = [...new Set(allPredictions.map(p => p.symbol))];
+            uniqueSymbols.forEach(sym => {
+                filterContainer.innerHTML += `<span class="filter-pill ${activeFilter === sym ? 'active' : ''}" onclick="filterPredictions('${sym}')">${sym}</span>`;
+            });
+        }
+
+        function filterPredictions(sym) {
+            activeFilter = sym;
+            updateFilterPills();
+            renderPredictionsTable();
+        }
+
+        // Render predictions table
+        function renderPredictionsTable() {
+            const tbody = document.getElementById('predictions-table-body');
+            tbody.innerHTML = '';
+
+            const filteredData = activeFilter === 'ALL' ? allPredictions : allPredictions.filter(p => p.symbol === activeFilter);
+
+            if (filteredData.length === 0) {
+                tbody.innerHTML = `<tr><td colspan="7" style="text-align: center; color: var(--text-muted);">لا توجد تنبؤات محفوظة حالياً لهذه الفئة.</td></tr>`;
+                return;
+            }
+
+            filteredData.forEach(p => {
+                const badgeClass = p.increase_percentage > 3 ? 'liquidity-success' : 'liquidity-danger';
+                tbody.innerHTML += `
+                    <tr>
+                        <td>
+                            <div class="coin-name-cell">
+                                <div class="coin-icon">${p.symbol.slice(0, 3)}</div>
+                                <div>
+                                    <span style="font-weight: 700;">${p.symbol}</span><br>
+                                    <span style="font-size: 11px; color: var(--text-muted);">${p.timestamp}</span>
+                                </div>
+                            </div>
+                        </td>
+                        <td style="font-family: monospace;">${parseFloat(p.yesterday_close).toFixed(6)}</td>
+                        <td style="font-family: monospace; color: var(--color-success); font-weight: bold;">${parseFloat(p.predicted_high).toFixed(6)}</td>
+                        <td style="font-family: monospace; color: var(--color-danger); font-weight: bold;">${parseFloat(p.predicted_low).toFixed(6)}</td>
+                        <td>
+                            <span class="liquidity-badge ${badgeClass}">${p.increase_percentage}%</span>
+                        </td>
+                        <td style="font-size: 12px; max-width: 150px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis;" title="${p.sentiment}">
+                            ${p.sentiment}
+                        </td>
+                        <td>
+                            <div style="display: flex; gap: 8px;">
+                                <button class="btn btn-secondary" style="padding: 6px 12px; font-size: 12px;" onclick="sendTelegram('${p.symbol}')">
+                                    <i class="fa-brands fa-telegram" style="color: #00f2fe;"></i> إرسال لتلغرام
+                                </button>
+                                <button class="btn btn-secondary" style="padding: 6px 12px; font-size: 12px;" onclick="checkLiquidity('${p.symbol}')">
+                                    <i class="fa-solid fa-chart-pie"></i> فحص السيولة
+                                </button>
+                            </div>
+                        </td>
+                    </tr>
+                `;
+            });
+        }
+
+        // Render predictions chart comparison
+        function renderChart() {
+            if (allPredictions.length === 0) return;
+
+            const categories = allPredictions.map(p => p.symbol);
+            const highPrices = allPredictions.map(p => parseFloat(p.predicted_high));
+            const lowPrices = allPredictions.map(p => parseFloat(p.predicted_low));
+            const meanPrices = allPredictions.map(p => parseFloat(p.predicted_mean));
+            const closePrices = allPredictions.map(p => parseFloat(p.yesterday_close));
+
+            const options = {
+                series: [
+                    { name: 'سعر إغلاق الأمس', data: closePrices },
+                    { name: 'أقل سعر متوقع', data: lowPrices },
+                    { name: 'سعر الإغلاق المتوقع', data: meanPrices },
+                    { name: 'أعلى سعر متوقع', data: highPrices }
+                ],
+                chart: {
+                    type: 'bar',
+                    height: 350,
+                    background: 'transparent',
+                    foreColor: '#9ca3af',
+                    toolbar: { show: true }
+                },
+                colors: ['#9ca3af', '#ff1744', '#4facfe', '#00e676'],
+                plotOptions: {
+                    bar: {
+                        horizontal: false,
+                        columnWidth: '55%',
+                        endingShape: 'rounded'
+                    },
+                },
+                dataLabels: { enabled: false },
+                stroke: { show: true, width: 2, colors: ['transparent'] },
+                xaxis: {
+                    categories: categories,
+                    labels: { style: { colors: '#9ca3af' } }
+                },
+                yaxis: {
+                    title: { text: 'السعر بالـ USD', style: { color: '#9ca3af' } }
+                },
+                fill: { opacity: 0.85 },
+                tooltip: {
+                    y: {
+                        formatter: function (val) {
+                            return "$ " + val.toFixed(6);
+                        }
+                    }
+                },
+                legend: {
+                    position: 'top',
+                    horizontalAlign: 'center'
+                }
+            };
+
+            if (chart) chart.destroy();
+            chart = new ApexCharts(document.querySelector("#prediction-chart"), options);
+            chart.render();
+        }
+
+        // Live Liquidity checker API Call
+        function checkLiquidity(symbol) {
+            if (!symbol) return;
+            
+            document.getElementById('liquidity-placeholder').style.display = 'none';
+            document.getElementById('liquidity-details').style.display = 'flex';
+            
+            // Set select input value just in case
+            document.getElementById('liquidity-symbol-select').value = symbol;
+
+            fetch(`/api/liquidity?symbol=${symbol}`)
+                .then(res => res.json())
+                .then(data => {
+                    if (data.error) {
+                        alert(`حدث خطأ أثناء جلب السيولة للعملة: ${data.error}`);
+                        return;
+                    }
+                    
+                    const ob = data.order_book;
+                    const cleanMessage = data.message.split('\n')[0]; // First line is text description
+                    const volumeDrop = data.message.match(/سحب الحجم:\s*([\d.-]+)%/);
+                    
+                    document.getElementById('liq-volume-drop').innerText = volumeDrop ? `${volumeDrop[1]}%` : '--';
+                    document.getElementById('liq-imbalance').innerText = ob.imbalance;
+                    document.getElementById('liq-imbalance-desc').innerText = ob.imbalance_desc;
+                    document.getElementById('liq-spread').innerText = ob.spread_percentage;
+
+                    const badge = document.getElementById('liq-status-badge');
+                    badge.innerText = cleanMessage;
+                    if (cleanMessage.includes('كبير')) {
+                        badge.className = 'liquidity-badge liquidity-danger';
+                    } else {
+                        badge.className = 'liquidity-badge liquidity-success';
+                    }
+                })
+                .catch(err => console.error('Error checking liquidity:', err));
+        }
+
+        // Trigger manual telegram alerts
+        function sendTelegram(symbol) {
+            fetch('/api/send_telegram', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ symbol: symbol })
+            })
+            .then(res => res.json())
+            .then(data => {
+                alert(data.message);
+            })
+            .catch(err => {
+                console.error('Error sending telegram:', err);
+                alert('فشل إرسال التنبيه للتليغرام.');
+            });
+        }
+
+        // Trigger backend prediction process
+        function runPrediction() {
+            const selectEl = document.getElementById('predict-symbols-select');
+            const selectedSymbols = Array.from(selectEl.selectedOptions).map(opt => opt.value);
+            
+            if (selectedSymbols.length === 0) {
+                alert('الرجاء اختيار عملة واحدة على الأقل للتنبؤ بها.');
+                return;
+            }
+
+            fetch('/api/run_prediction', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ symbols: selectedSymbols })
+            })
+            .then(res => res.json())
+            .then(data => {
+                if (data.success) {
+                    alert('بدأ تشغيل التوقع بنجاح في الخلفية. يمكنك متابعة حالة التقدم.');
+                    switchTab('predict');
+                } else {
+                    alert(`فشل بدء التوقع: ${data.message}`);
+                }
+            })
+            .catch(err => console.error('Error running prediction:', err));
+        }
+
+        // Check running training status
+        function checkRunningStatus() {
+            fetch('/api/status')
+                .then(res => res.json())
+                .then(data => {
+                    const statusEl = document.getElementById('running-status');
+                    const symbolEl = document.getElementById('running-current-symbol');
+                    const progressEl = document.getElementById('running-progress');
+                    const barEl = document.getElementById('running-progress-bar');
+
+                    statusEl.innerText = data.status.toUpperCase();
+                    symbolEl.innerText = data.current_symbol || '--';
+                    progressEl.innerText = data.progress || 'لا توجد عمليات تنبؤ في الخلفية حالياً.';
+                    
+                    if (data.status === 'running') {
+                        statusEl.style.color = 'var(--color-warning)';
+                        barEl.style.width = '70%';
+                    } else if (data.status === 'completed') {
+                        statusEl.style.color = 'var(--color-success)';
+                        barEl.style.width = '100%';
+                        // Reload data to reflect latest predictions
+                        loadPredictions();
+                    } else if (data.status === 'failed') {
+                        statusEl.style.color = 'var(--color-danger)';
+                        barEl.style.width = '0%';
+                        progressEl.innerText = `خطأ: ${data.error}`;
+                    } else {
+                        statusEl.style.color = 'var(--color-secondary)';
+                        barEl.style.width = '0%';
+                    }
+                })
+                .catch(err => console.error('Error checking status:', err));
+        }
+
+        // Save keys in .env
+        function saveSettings() {
+            const data = {
+                binance_api_key: document.getElementById('sett-binance-key').value,
+                binance_api_secret: document.getElementById('sett-binance-secret').value,
+                telegram_prediction_token: document.getElementById('sett-tele-pred-token').value,
+                telegram_comparator_token: document.getElementById('sett-tele-comp-token').value,
+                news_api_key: document.getElementById('sett-news-key').value
+            };
+
+            fetch('/api/settings', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify(data)
+            })
+            .then(res => res.json())
+            .then(data => {
+                alert(data.message);
+                if (data.success) {
+                    // Reset placeholders
+                    document.getElementById('sett-binance-key').value = '';
+                    document.getElementById('sett-binance-secret').value = '';
+                }
+            })
+            .catch(err => {
+                console.error('Error saving settings:', err);
+                alert('فشل حفظ الإعدادات.');
+            });
+        }
+    </script>
+</body>
+</html>

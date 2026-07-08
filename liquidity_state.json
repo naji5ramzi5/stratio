@@ -1,0 +1,1888 @@
+{
+  "0GUSDT": {
+    "imbalance_pct": 39.33,
+    "spread_pct": 0.4587
+  },
+  "1000CATUSDT": {
+    "imbalance_pct": 5.1,
+    "spread_pct": 0.7813
+  },
+  "1000CHEEMSUSDT": {
+    "imbalance_pct": 4.69,
+    "spread_pct": 0.2114
+  },
+  "1000SATSUSDT": {
+    "imbalance_pct": 41.35,
+    "spread_pct": 0.2125
+  },
+  "1INCHUSDT": {
+    "imbalance_pct": 40.49,
+    "spread_pct": 0.1466
+  },
+  "1MBABYDOGEUSDT": {
+    "imbalance_pct": 41.73,
+    "spread_pct": 0.1371
+  },
+  "2ZUSDT": {
+    "imbalance_pct": 21.11,
+    "spread_pct": 0.08
+  },
+  "AAVEUSDT": {
+    "imbalance_pct": 12.63,
+    "spread_pct": 0.0111,
+    "timestamp": "2026-07-08T02:47:35.029537+03:00"
+  },
+  "ACEUSDT": {
+    "imbalance_pct": 15.59,
+    "spread_pct": 0.2729
+  },
+  "ACHUSDT": {
+    "imbalance_pct": 29.77,
+    "spread_pct": 0.2262
+  },
+  "ACMUSDT": {
+    "imbalance_pct": 48.56,
+    "spread_pct": 0.339
+  },
+  "ACTUSDT": {
+    "imbalance_pct": 14.43,
+    "spread_pct": 0.1003,
+    "timestamp": "2026-07-01T05:01:23.341649+03:00"
+  },
+  "ACXUSDT": {
+    "imbalance_pct": 23.64,
+    "spread_pct": 0.1167
+  },
+  "ADAUSDT": {
+    "imbalance_pct": 6.2,
+    "spread_pct": 0.0573,
+    "timestamp": "2026-07-08T02:47:36.325547+03:00"
+  },
+  "ADXUSDT": {
+    "imbalance_pct": -43.64,
+    "spread_pct": 0.3683
+  },
+  "AEURUSDT": {
+    "imbalance_pct": -10.8,
+    "spread_pct": 0.0448
+  },
+  "AEVOUSDT": {
+    "imbalance_pct": 8.32,
+    "spread_pct": 0.1677
+  },
+  "AGLDUSDT": {
+    "imbalance_pct": 4.22,
+    "spread_pct": 0.0522,
+    "timestamp": "2026-06-30T12:03:30.231068+03:00"
+  },
+  "AIGENSYNUSDT": {
+    "imbalance_pct": 0.68,
+    "spread_pct": 0.0374,
+    "timestamp": "2026-07-08T02:47:36.562762+03:00"
+  },
+  "AIUSDT": {
+    "imbalance_pct": 11.54,
+    "spread_pct": 0.4184,
+    "timestamp": "2026-07-01T05:26:08.992879+03:00"
+  },
+  "AIXBTUSDT": {
+    "imbalance_pct": 27.81,
+    "spread_pct": 0.0529
+  },
+  "ALCXUSDT": {
+    "imbalance_pct": -9.57,
+    "spread_pct": 0.4673
+  },
+  "ALGOUSDT": {
+    "imbalance_pct": 10.48,
+    "spread_pct": 0.1129
+  },
+  "ALICEUSDT": {
+    "imbalance_pct": 43.2,
+    "spread_pct": 0.166,
+    "timestamp": "2026-06-30T10:23:04.392261+03:00"
+  },
+  "ALLOUSDT": {
+    "imbalance_pct": 37.42,
+    "spread_pct": 0.0494,
+    "timestamp": "2026-07-08T02:47:36.614586+03:00"
+  },
+  "ALPINEUSDT": {
+    "imbalance_pct": -8.17,
+    "spread_pct": 0.3236
+  },
+  "ALTUSDT": {
+    "imbalance_pct": -5.69,
+    "spread_pct": 0.1767
+  },
+  "AMPUSDT": {
+    "imbalance_pct": -0.76,
+    "spread_pct": 0.2179
+  },
+  "ANIMEUSDT": {
+    "imbalance_pct": -0.37,
+    "spread_pct": 0.3663
+  },
+  "ANKRUSDT": {
+    "imbalance_pct": -10.95,
+    "spread_pct": 0.2841
+  },
+  "APEUSDT": {
+    "imbalance_pct": 7.2,
+    "spread_pct": 0.0729
+  },
+  "API3USDT": {
+    "imbalance_pct": 13.83,
+    "spread_pct": 0.0901
+  },
+  "APTUSDT": {
+    "imbalance_pct": 25.5,
+    "spread_pct": 0.1739
+  },
+  "ARBUSDT": {
+    "imbalance_pct": 17.81,
+    "spread_pct": 0.1297,
+    "timestamp": "2026-07-03T01:27:37.093746+03:00"
+  },
+  "ARDRUSDT": {
+    "imbalance_pct": -3.34,
+    "spread_pct": 0.7179
+  },
+  "ARKMUSDT": {
+    "imbalance_pct": -36.05,
+    "spread_pct": 0.0882
+  },
+  "ARKUSDT": {
+    "imbalance_pct": 33.21,
+    "spread_pct": 0.1867
+  },
+  "ARPAUSDT": {
+    "imbalance_pct": 34.08,
+    "spread_pct": 0.2541
+  },
+  "ARUSDT": {
+    "imbalance_pct": 60.33,
+    "spread_pct": 0.0543
+  },
+  "ASRUSDT": {
+    "imbalance_pct": 13.51,
+    "spread_pct": 0.1176
+  },
+  "ASTERUSDT": {
+    "imbalance_pct": 7.86,
+    "spread_pct": 0.157,
+    "timestamp": "2026-07-03T01:27:40.682286+03:00"
+  },
+  "ASTRUSDT": {
+    "imbalance_pct": 34.67,
+    "spread_pct": 0.0789
+  },
+  "ATMUSDT": {
+    "imbalance_pct": 58.03,
+    "spread_pct": 0.0477,
+    "timestamp": "2026-06-29T06:18:03.158800+03:00"
+  },
+  "ATOMUSDT": {
+    "imbalance_pct": 9.33,
+    "spread_pct": 0.0632
+  },
+  "ATUSDT": {
+    "imbalance_pct": 61.17,
+    "spread_pct": 0.138
+  },
+  "AUCTIONUSDT": {
+    "imbalance_pct": 0.09,
+    "spread_pct": 0.3086
+  },
+  "AUDIOUSDT": {
+    "imbalance_pct": 4.91,
+    "spread_pct": 0.1521
+  },
+  "AUSDT": {
+    "imbalance_pct": 24.04,
+    "spread_pct": 0.1661
+  },
+  "AVAUSDT": {
+    "imbalance_pct": -4.4,
+    "spread_pct": 0.1787
+  },
+  "AVAXUSDT": {
+    "imbalance_pct": -8.08,
+    "spread_pct": 0.0149,
+    "timestamp": "2026-07-08T02:47:36.509676+03:00"
+  },
+  "AVNTUSDT": {
+    "imbalance_pct": 29.31,
+    "spread_pct": 0.1081
+  },
+  "AWEUSDT": {
+    "imbalance_pct": -11.64,
+    "spread_pct": 0.1147
+  },
+  "AXLUSDT": {
+    "imbalance_pct": 40.04,
+    "spread_pct": 0.2387
+  },
+  "AXSUSDT": {
+    "imbalance_pct": 26.74,
+    "spread_pct": 0.1005
+  },
+  "BABYUSDT": {
+    "imbalance_pct": -3.07,
+    "spread_pct": 0.0787
+  },
+  "BANANAS31USDT": {
+    "imbalance_pct": -68.04,
+    "spread_pct": 0.0479
+  },
+  "BANANAUSDT": {
+    "imbalance_pct": 29.91,
+    "spread_pct": 0.0891,
+    "timestamp": "2026-07-08T02:47:38.123405+03:00"
+  },
+  "BANDUSDT": {
+    "imbalance_pct": -10.2,
+    "spread_pct": 0.0694
+  },
+  "BANKUSDT": {
+    "imbalance_pct": -4.76,
+    "spread_pct": 0.2755
+  },
+  "BARDUSDT": {
+    "imbalance_pct": 58.34,
+    "spread_pct": 0.0748
+  },
+  "BARUSDT": {
+    "imbalance_pct": -10.93,
+    "spread_pct": 0.3704
+  },
+  "BATUSDT": {
+    "imbalance_pct": -0.59,
+    "spread_pct": 0.1202
+  },
+  "BBUSDT": {
+    "imbalance_pct": -14.52,
+    "spread_pct": 0.5128
+  },
+  "BCHUSDT": {
+    "imbalance_pct": -5.81,
+    "spread_pct": 0.0417,
+    "timestamp": "2026-07-08T02:47:39.549861+03:00"
+  },
+  "BEAMXUSDT": {
+    "imbalance_pct": 9.86,
+    "spread_pct": 0.0767
+  },
+  "BELUSDT": {
+    "imbalance_pct": 29.23,
+    "spread_pct": 0.1825
+  },
+  "BERAUSDT": {
+    "imbalance_pct": 26.67,
+    "spread_pct": 0.4762
+  },
+  "BFUSDUSDT": {
+    "imbalance_pct": -3.08,
+    "spread_pct": 0.01
+  },
+  "BICOUSDT": {
+    "imbalance_pct": 2.9,
+    "spread_pct": 0.1048
+  },
+  "BIGTIMEUSDT": {
+    "imbalance_pct": 15.77,
+    "spread_pct": 0.267
+  },
+  "BIOUSDT": {
+    "imbalance_pct": 10.81,
+    "spread_pct": 0.034,
+    "timestamp": "2026-07-01T21:45:05.731003+03:00"
+  },
+  "BLURUSDT": {
+    "imbalance_pct": 30.11,
+    "spread_pct": 0.0495,
+    "timestamp": "2026-07-08T02:47:39.465645+03:00"
+  },
+  "BMTUSDT": {
+    "imbalance_pct": 28.99,
+    "spread_pct": 0.0844
+  },
+  "BNBUSDT": {
+    "imbalance_pct": 12.03,
+    "spread_pct": 0.0017,
+    "timestamp": "2026-07-08T02:47:39.694623+03:00"
+  },
+  "BNSOLUSDT": {
+    "imbalance_pct": 52.25,
+    "spread_pct": 0.1248
+  },
+  "BNTUSDT": {
+    "imbalance_pct": -24.56,
+    "spread_pct": 0.1593
+  },
+  "BOMEUSDT": {
+    "imbalance_pct": 29.37,
+    "spread_pct": 0.0243
+  },
+  "BONKUSDT": {
+    "imbalance_pct": 18.82,
+    "spread_pct": 0.2404,
+    "timestamp": "2026-07-08T02:47:39.400878+03:00"
+  },
+  "BREVUSDT": {
+    "imbalance_pct": 32.0,
+    "spread_pct": 0.1106,
+    "timestamp": "2026-07-03T01:27:40.866011+03:00"
+  },
+  "BROCCOLI714USDT": {
+    "imbalance_pct": 9.07,
+    "spread_pct": 0.1712
+  },
+  "BTCUSDT": {
+    "imbalance_pct": -13.4,
+    "spread_pct": 0.0,
+    "timestamp": "2026-07-08T02:47:41.193558+03:00"
+  },
+  "BTTCUSDT": {
+    "imbalance_pct": 18.42,
+    "spread_pct": 3.7037
+  },
+  "C98USDT": {
+    "imbalance_pct": 9.61,
+    "spread_pct": 0.1585
+  },
+  "CAKEUSDT": {
+    "imbalance_pct": 8.71,
+    "spread_pct": 0.074
+  },
+  "CATIUSDT": {
+    "imbalance_pct": -58.05,
+    "spread_pct": 0.1008
+  },
+  "CELOUSDT": {
+    "imbalance_pct": 4.19,
+    "spread_pct": 0.0744,
+    "timestamp": "2026-07-02T05:56:58.111538+03:00"
+  },
+  "CELRUSDT": {
+    "imbalance_pct": 2.71,
+    "spread_pct": 0.2139
+  },
+  "CETUSUSDT": {
+    "imbalance_pct": 50.27,
+    "spread_pct": 0.1195
+  },
+  "CFGUSDT": {
+    "imbalance_pct": 2.67,
+    "spread_pct": 0.0518
+  },
+  "CFXUSDT": {
+    "imbalance_pct": 23.89,
+    "spread_pct": 0.0709
+  },
+  "CGPTUSDT": {
+    "imbalance_pct": 34.5,
+    "spread_pct": 0.1085
+  },
+  "CHIPUSDT": {
+    "imbalance_pct": 11.27,
+    "spread_pct": 0.1163,
+    "timestamp": "2026-07-08T02:47:42.070019+03:00"
+  },
+  "CHRUSDT": {
+    "imbalance_pct": -41.98,
+    "spread_pct": 0.2076
+  },
+  "CHZUSDT": {
+    "imbalance_pct": 30.05,
+    "spread_pct": 0.0558,
+    "timestamp": "2026-07-01T07:55:12.461389+03:00"
+  },
+  "CITYUSDT": {
+    "imbalance_pct": 4.06,
+    "spread_pct": 0.2674
+  },
+  "CKBUSDT": {
+    "imbalance_pct": 70.38,
+    "spread_pct": 0.2153
+  },
+  "COMPUSDT": {
+    "imbalance_pct": 14.58,
+    "spread_pct": 0.0638
+  },
+  "COOKIEUSDT": {
+    "imbalance_pct": -19.38,
+    "spread_pct": 1.1364,
+    "timestamp": "2026-06-29T14:27:41.597876+03:00"
+  },
+  "COSUSDT": {
+    "imbalance_pct": 62.83,
+    "spread_pct": 0.7435
+  },
+  "COTIUSDT": {
+    "imbalance_pct": 15.91,
+    "spread_pct": 0.237
+  },
+  "COWUSDT": {
+    "imbalance_pct": -14.86,
+    "spread_pct": 0.1364
+  },
+  "CRCLBUSDT": {
+    "imbalance_pct": 11.97,
+    "spread_pct": 0.1984,
+    "timestamp": "2026-07-08T02:47:42.128971+03:00"
+  },
+  "CRVUSDT": {
+    "imbalance_pct": 36.42,
+    "spread_pct": 0.0524
+  },
+  "CTKUSDT": {
+    "imbalance_pct": -9.69,
+    "spread_pct": 0.1845
+  },
+  "CTSIUSDT": {
+    "imbalance_pct": 34.05,
+    "spread_pct": 0.2272
+  },
+  "CUSDT": {
+    "imbalance_pct": 20.91,
+    "spread_pct": 0.1304
+  },
+  "CVCUSDT": {
+    "imbalance_pct": -4.86,
+    "spread_pct": 0.2294
+  },
+  "CVXUSDT": {
+    "imbalance_pct": 55.25,
+    "spread_pct": 0.1828
+  },
+  "CYBERUSDT": {
+    "imbalance_pct": 12.96,
+    "spread_pct": 0.2933
+  },
+  "DASHUSDT": {
+    "imbalance_pct": 47.51,
+    "spread_pct": 0.0564,
+    "timestamp": "2026-07-08T02:47:42.361872+03:00"
+  },
+  "DCRUSDT": {
+    "imbalance_pct": 9.44,
+    "spread_pct": 0.1797
+  },
+  "DEXEUSDT": {
+    "imbalance_pct": 8.45,
+    "spread_pct": 0.0346,
+    "timestamp": "2026-07-08T02:47:42.309707+03:00"
+  },
+  "DGBUSDT": {
+    "imbalance_pct": -12.08,
+    "spread_pct": 0.8368
+  },
+  "DIAUSDT": {
+    "imbalance_pct": -43.79,
+    "spread_pct": 0.2874
+  },
+  "DODOUSDT": {
+    "imbalance_pct": -23.4,
+    "spread_pct": 0.2231
+  },
+  "DOGEUSDT": {
+    "imbalance_pct": 6.64,
+    "spread_pct": 0.0135,
+    "timestamp": "2026-07-08T02:47:43.908892+03:00"
+  },
+  "DOGSUSDT": {
+    "imbalance_pct": 21.71,
+    "spread_pct": 0.0265
+  },
+  "DOLOUSDT": {
+    "imbalance_pct": -27.74,
+    "spread_pct": 0.0871
+  },
+  "DOTUSDT": {
+    "imbalance_pct": 28.71,
+    "spread_pct": 0.1174,
+    "timestamp": "2026-07-08T02:47:44.813015+03:00"
+  },
+  "DUSDT": {
+    "imbalance_pct": 54.02,
+    "spread_pct": 0.641
+  },
+  "DUSKUSDT": {
+    "imbalance_pct": 32.89,
+    "spread_pct": 0.1292
+  },
+  "DYDXUSDT": {
+    "imbalance_pct": 9.37,
+    "spread_pct": 0.0548,
+    "timestamp": "2026-07-03T01:27:46.935462+03:00"
+  },
+  "DYMUSDT": {
+    "imbalance_pct": 29.33,
+    "spread_pct": 0.128
+  },
+  "EDENUSDT": {
+    "imbalance_pct": -12.92,
+    "spread_pct": 0.1178
+  },
+  "EDUUSDT": {
+    "imbalance_pct": 22.43,
+    "spread_pct": 0.3236
+  },
+  "EGLDUSDT": {
+    "imbalance_pct": 32.46,
+    "spread_pct": 0.3937
+  },
+  "EIGENUSDT": {
+    "imbalance_pct": 19.85,
+    "spread_pct": 0.0854
+  },
+  "ENAUSDT": {
+    "imbalance_pct": 13.12,
+    "spread_pct": 0.1312,
+    "timestamp": "2026-07-08T02:47:44.994865+03:00"
+  },
+  "ENJUSDT": {
+    "imbalance_pct": 19.07,
+    "spread_pct": 0.0692
+  },
+  "ENSOUSDT": {
+    "imbalance_pct": 8.71,
+    "spread_pct": 0.165
+  },
+  "ENSUSDT": {
+    "imbalance_pct": 28.46,
+    "spread_pct": 0.2427
+  },
+  "EPICUSDT": {
+    "imbalance_pct": -37.31,
+    "spread_pct": 0.5814,
+    "timestamp": "2026-07-08T02:47:45.047842+03:00"
+  },
+  "ERAUSDT": {
+    "imbalance_pct": 0.56,
+    "spread_pct": 0.1233
+  },
+  "ESPUSDT": {
+    "imbalance_pct": 2.15,
+    "spread_pct": 0.0151,
+    "timestamp": "2026-07-01T16:34:26.437006+03:00"
+  },
+  "ETCUSDT": {
+    "imbalance_pct": 17.57,
+    "spread_pct": 0.1422
+  },
+  "ETHFIUSDT": {
+    "imbalance_pct": 15.81,
+    "spread_pct": 0.2967
+  },
+  "ETHUSDT": {
+    "imbalance_pct": -13.72,
+    "spread_pct": 0.0006,
+    "timestamp": "2026-07-08T02:47:45.383781+03:00"
+  },
+  "EULUSDT": {
+    "imbalance_pct": 33.24,
+    "spread_pct": 0.1998
+  },
+  "EURIUSDT": {
+    "imbalance_pct": -54.59,
+    "spread_pct": 0.0351
+  },
+  "EURUSDT": {
+    "imbalance_pct": -2.38,
+    "spread_pct": 0.0088,
+    "timestamp": "2026-07-08T02:47:47.123904+03:00"
+  },
+  "FDUSDUSDT": {
+    "imbalance_pct": -52.5,
+    "spread_pct": 0.01,
+    "timestamp": "2026-07-08T02:47:47.962802+03:00"
+  },
+  "FETUSDT": {
+    "imbalance_pct": -2.31,
+    "spread_pct": 0.0611,
+    "timestamp": "2026-07-08T02:47:47.841562+03:00"
+  },
+  "FFUSDT": {
+    "imbalance_pct": 1.2,
+    "spread_pct": 0.0451
+  },
+  "FIDAUSDT": {
+    "imbalance_pct": 37.32,
+    "spread_pct": 0.0916
+  },
+  "FILUSDT": {
+    "imbalance_pct": 17.4,
+    "spread_pct": 0.1299,
+    "timestamp": "2026-07-03T01:27:51.169167+03:00"
+  },
+  "FLOKIUSDT": {
+    "imbalance_pct": 18.14,
+    "spread_pct": 0.0462
+  },
+  "FLOWUSDT": {
+    "imbalance_pct": -23.69,
+    "spread_pct": 0.074
+  },
+  "FLUXUSDT": {
+    "imbalance_pct": 4.24,
+    "spread_pct": 0.4484
+  },
+  "FOGOUSDT": {
+    "imbalance_pct": 28.35,
+    "spread_pct": 0.1119
+  },
+  "FORMUSDT": {
+    "imbalance_pct": 4.85,
+    "spread_pct": 0.0944
+  },
+  "FRAXUSDT": {
+    "imbalance_pct": -32.42,
+    "spread_pct": 0.1284
+  },
+  "FTTUSDT": {
+    "imbalance_pct": 7.64,
+    "spread_pct": 0.5539
+  },
+  "FUSDT": {
+    "imbalance_pct": 44.97,
+    "spread_pct": 0.3003
+  },
+  "GALAUSDT": {
+    "imbalance_pct": 5.89,
+    "spread_pct": 0.0439
+  },
+  "GASUSDT": {
+    "imbalance_pct": 8.14,
+    "spread_pct": 0.0881,
+    "timestamp": "2026-06-29T14:27:46.962803+03:00"
+  },
+  "GENIUSUSDT": {
+    "imbalance_pct": 7.58,
+    "spread_pct": 0.1313
+  },
+  "GIGGLEUSDT": {
+    "imbalance_pct": -3.88,
+    "spread_pct": 0.0404
+  },
+  "GLMRUSDT": {
+    "imbalance_pct": 14.23,
+    "spread_pct": 1.1765
+  },
+  "GLMUSDT": {
+    "imbalance_pct": 46.68,
+    "spread_pct": 0.1028
+  },
+  "GMTUSDT": {
+    "imbalance_pct": 15.41,
+    "spread_pct": 0.1321
+  },
+  "GMXUSDT": {
+    "imbalance_pct": 5.98,
+    "spread_pct": 0.1845
+  },
+  "GNOUSDT": {
+    "imbalance_pct": 40.44,
+    "spread_pct": 0.1122
+  },
+  "GNSUSDT": {
+    "imbalance_pct": -30.45,
+    "spread_pct": 0.3899
+  },
+  "GPSUSDT": {
+    "imbalance_pct": 31.33,
+    "spread_pct": 0.1111
+  },
+  "GRTUSDT": {
+    "imbalance_pct": 26.13,
+    "spread_pct": 0.1133
+  },
+  "GTCUSDT": {
+    "imbalance_pct": -0.56,
+    "spread_pct": 1.4493
+  },
+  "GUNUSDT": {
+    "imbalance_pct": 45.83,
+    "spread_pct": 0.2257
+  },
+  "GUSDT": {
+    "imbalance_pct": 32.05,
+    "spread_pct": 0.2933,
+    "timestamp": "2026-06-30T10:23:12.341002+03:00"
+  },
+  "HAEDALUSDT": {
+    "imbalance_pct": 1.78,
+    "spread_pct": 0.1259
+  },
+  "HBARUSDT": {
+    "imbalance_pct": -18.55,
+    "spread_pct": 0.0141,
+    "timestamp": "2026-07-08T02:47:48.185262+03:00"
+  },
+  "HEIUSDT": {
+    "imbalance_pct": 6.43,
+    "spread_pct": 0.0735,
+    "timestamp": "2026-07-01T11:20:07.761891+03:00"
+  },
+  "HEMIUSDT": {
+    "imbalance_pct": 25.41,
+    "spread_pct": 0.2062,
+    "timestamp": "2026-07-03T01:27:52.249490+03:00"
+  },
+  "HFTUSDT": {
+    "imbalance_pct": 13.51,
+    "spread_pct": 1.1494
+  },
+  "HIGHUSDT": {
+    "imbalance_pct": 58.62,
+    "spread_pct": 2.7027
+  },
+  "HIVEUSDT": {
+    "imbalance_pct": 59.37,
+    "spread_pct": 0.1942
+  },
+  "HMSTRUSDT": {
+    "imbalance_pct": 15.57,
+    "spread_pct": 0.1144,
+    "timestamp": "2026-07-08T02:47:49.744976+03:00"
+  },
+  "HOLOUSDT": {
+    "imbalance_pct": 15.6,
+    "spread_pct": 0.1471
+  },
+  "HOMEUSDT": {
+    "imbalance_pct": 10.66,
+    "spread_pct": 0.1088
+  },
+  "HOTUSDT": {
+    "imbalance_pct": 32.25,
+    "spread_pct": 0.3215
+  },
+  "HUMAUSDT": {
+    "imbalance_pct": -4.12,
+    "spread_pct": 0.0896
+  },
+  "HYPERUSDT": {
+    "imbalance_pct": -1.51,
+    "spread_pct": 0.1272,
+    "timestamp": "2026-07-01T12:25:31.321323+03:00"
+  },
+  "ICPUSDT": {
+    "imbalance_pct": 25.59,
+    "spread_pct": 0.0457,
+    "timestamp": "2026-07-03T01:27:53.778986+03:00"
+  },
+  "ICXUSDT": {
+    "imbalance_pct": -5.92,
+    "spread_pct": 0.4032
+  },
+  "IDUSDT": {
+    "imbalance_pct": 44.53,
+    "spread_pct": 0.2849
+  },
+  "ILVUSDT": {
+    "imbalance_pct": 12.07,
+    "spread_pct": 0.3472
+  },
+  "IMXUSDT": {
+    "imbalance_pct": -9.17,
+    "spread_pct": 0.0822
+  },
+  "INITUSDT": {
+    "imbalance_pct": 25.05,
+    "spread_pct": 0.1912
+  },
+  "INJUSDT": {
+    "imbalance_pct": -4.2,
+    "spread_pct": 0.0217,
+    "timestamp": "2026-07-03T01:27:55.799700+03:00"
+  },
+  "IOSTUSDT": {
+    "imbalance_pct": 9.59,
+    "spread_pct": 0.1406
+  },
+  "IOTAUSDT": {
+    "imbalance_pct": 11.88,
+    "spread_pct": 0.2817
+  },
+  "IOTXUSDT": {
+    "imbalance_pct": -29.8,
+    "spread_pct": 0.3571
+  },
+  "IOUSDT": {
+    "imbalance_pct": -8.72,
+    "spread_pct": 0.0584
+  },
+  "IQUSDT": {
+    "imbalance_pct": 40.87,
+    "spread_pct": 0.1348
+  },
+  "JASMYUSDT": {
+    "imbalance_pct": -16.89,
+    "spread_pct": 0.2299
+  },
+  "JOEUSDT": {
+    "imbalance_pct": -44.65,
+    "spread_pct": 0.3509
+  },
+  "JSTUSDT": {
+    "imbalance_pct": -16.69,
+    "spread_pct": 0.0227
+  },
+  "JTOUSDT": {
+    "imbalance_pct": 5.58,
+    "spread_pct": 0.0543,
+    "timestamp": "2026-07-08T02:47:50.806172+03:00"
+  },
+  "JUPUSDT": {
+    "imbalance_pct": 7.1,
+    "spread_pct": 0.0408,
+    "timestamp": "2026-07-03T01:27:56.036719+03:00"
+  },
+  "JUVUSDT": {
+    "imbalance_pct": -2.6,
+    "spread_pct": 0.3155
+  },
+  "KAIAUSDT": {
+    "imbalance_pct": 9.72,
+    "spread_pct": 0.2899
+  },
+  "KAITOUSDT": {
+    "imbalance_pct": -30.28,
+    "spread_pct": 0.0342,
+    "timestamp": "2026-07-03T01:27:55.888879+03:00"
+  },
+  "KATUSDT": {
+    "imbalance_pct": -0.95,
+    "spread_pct": 0.2053
+  },
+  "KAVAUSDT": {
+    "imbalance_pct": 4.8,
+    "spread_pct": 0.141
+  },
+  "KERNELUSDT": {
+    "imbalance_pct": 41.08,
+    "spread_pct": 0.2571
+  },
+  "KGSTUSDT": {
+    "imbalance_pct": -5.67,
+    "spread_pct": 0.0087
+  },
+  "KITEUSDT": {
+    "imbalance_pct": 2.84,
+    "spread_pct": 0.0835,
+    "timestamp": "2026-06-29T08:58:57.489813+03:00"
+  },
+  "KMNOUSDT": {
+    "imbalance_pct": 32.59,
+    "spread_pct": 0.0496
+  },
+  "KNCUSDT": {
+    "imbalance_pct": -21.1,
+    "spread_pct": 0.092
+  },
+  "KSMUSDT": {
+    "imbalance_pct": 27.97,
+    "spread_pct": 0.3311
+  },
+  "LAUSDT": {
+    "imbalance_pct": 58.55,
+    "spread_pct": 0.161
+  },
+  "LAYERUSDT": {
+    "imbalance_pct": 23.02,
+    "spread_pct": 0.1515
+  },
+  "LAZIOUSDT": {
+    "imbalance_pct": 12.61,
+    "spread_pct": 0.2558
+  },
+  "LDOUSDT": {
+    "imbalance_pct": -0.65,
+    "spread_pct": 0.032,
+    "timestamp": "2026-07-08T02:47:50.916249+03:00"
+  },
+  "LINEAUSDT": {
+    "imbalance_pct": 22.82,
+    "spread_pct": 0.0438
+  },
+  "LINKUSDT": {
+    "imbalance_pct": 18.41,
+    "spread_pct": 0.0127,
+    "timestamp": "2026-07-08T02:47:50.624548+03:00"
+  },
+  "LISTAUSDT": {
+    "imbalance_pct": 18.89,
+    "spread_pct": 0.2146
+  },
+  "LPTUSDT": {
+    "imbalance_pct": 68.21,
+    "spread_pct": 0.1284
+  },
+  "LQTYUSDT": {
+    "imbalance_pct": 5.12,
+    "spread_pct": 0.5435
+  },
+  "LSKUSDT": {
+    "imbalance_pct": -8.28,
+    "spread_pct": 0.3425
+  },
+  "LTCUSDT": {
+    "imbalance_pct": 15.45,
+    "spread_pct": 0.0227,
+    "timestamp": "2026-07-08T02:47:50.861173+03:00"
+  },
+  "LUMIAUSDT": {
+    "imbalance_pct": 41.94,
+    "spread_pct": 0.1771
+  },
+  "LUNAUSDT": {
+    "imbalance_pct": 20.32,
+    "spread_pct": 0.2092
+  },
+  "LUNCUSDT": {
+    "imbalance_pct": 11.02,
+    "spread_pct": 0.0976
+  },
+  "MAGICUSDT": {
+    "imbalance_pct": -22.2,
+    "spread_pct": 0.4566,
+    "timestamp": "2026-06-29T17:45:26.100001+03:00"
+  },
+  "MANAUSDT": {
+    "imbalance_pct": 4.92,
+    "spread_pct": 0.1558
+  },
+  "MANTAUSDT": {
+    "imbalance_pct": 29.59,
+    "spread_pct": 0.0771,
+    "timestamp": "2026-07-01T05:26:21.637478+03:00"
+  },
+  "MANTRAUSDT": {
+    "imbalance_pct": 77.14,
+    "spread_pct": 0.1506
+  },
+  "MASKUSDT": {
+    "imbalance_pct": 21.73,
+    "spread_pct": 0.2646
+  },
+  "MAVUSDT": {
+    "imbalance_pct": -16.12,
+    "spread_pct": 0.2151
+  },
+  "MBLUSDT": {
+    "imbalance_pct": -56.02,
+    "spread_pct": 0.299
+  },
+  "MBOXUSDT": {
+    "imbalance_pct": 48.84,
+    "spread_pct": 4.3478
+  },
+  "MEGAUSDT": {
+    "imbalance_pct": 2.38,
+    "spread_pct": 0.0213,
+    "timestamp": "2026-07-01T14:29:51.684689+03:00"
+  },
+  "MEMEUSDT": {
+    "imbalance_pct": 30.33,
+    "spread_pct": 0.1689
+  },
+  "METISUSDT": {
+    "imbalance_pct": -5.69,
+    "spread_pct": 0.3663
+  },
+  "METUSDT": {
+    "imbalance_pct": 0.35,
+    "spread_pct": 0.1956
+  },
+  "MEUSDT": {
+    "imbalance_pct": 59.49,
+    "spread_pct": 0.1883,
+    "timestamp": "2026-07-03T01:27:58.932096+03:00"
+  },
+  "MINAUSDT": {
+    "imbalance_pct": 10.85,
+    "spread_pct": 0.2611
+  },
+  "MIRAUSDT": {
+    "imbalance_pct": 15.5,
+    "spread_pct": 0.2387
+  },
+  "MITOUSDT": {
+    "imbalance_pct": 24.41,
+    "spread_pct": 0.0834
+  },
+  "MMTUSDT": {
+    "imbalance_pct": 17.74,
+    "spread_pct": 0.0592
+  },
+  "MORPHOUSDT": {
+    "imbalance_pct": 1.31,
+    "spread_pct": 0.0947,
+    "timestamp": "2026-07-02T21:21:39.222581+03:00"
+  },
+  "MOVEUSDT": {
+    "imbalance_pct": 9.79,
+    "spread_pct": 0.885
+  },
+  "MOVRUSDT": {
+    "imbalance_pct": 72.27,
+    "spread_pct": 0.0841
+  },
+  "MTLUSDT": {
+    "imbalance_pct": -11.57,
+    "spread_pct": 0.4237
+  },
+  "MUBARAKUSDT": {
+    "imbalance_pct": 20.69,
+    "spread_pct": 0.2008
+  },
+  "MUBUSDT": {
+    "imbalance_pct": 18.5,
+    "spread_pct": 0.024,
+    "timestamp": "2026-07-08T02:47:52.371894+03:00"
+  },
+  "NEARUSDT": {
+    "imbalance_pct": 14.06,
+    "spread_pct": 0.0506,
+    "timestamp": "2026-07-08T02:47:53.241865+03:00"
+  },
+  "NEIROUSDT": {
+    "imbalance_pct": 7.6,
+    "spread_pct": 0.0165
+  },
+  "NEOUSDT": {
+    "imbalance_pct": 9.4,
+    "spread_pct": 0.0524
+  },
+  "NEWTUSDT": {
+    "imbalance_pct": 4.43,
+    "spread_pct": 0.211
+  },
+  "NEXOUSDT": {
+    "imbalance_pct": 37.18,
+    "spread_pct": 0.1387
+  },
+  "NFPUSDT": {
+    "imbalance_pct": -14.24,
+    "spread_pct": 0.3831,
+    "timestamp": "2026-07-03T01:27:59.960933+03:00"
+  },
+  "NIGHTUSDT": {
+    "imbalance_pct": 13.89,
+    "spread_pct": 0.0334
+  },
+  "NILUSDT": {
+    "imbalance_pct": 30.63,
+    "spread_pct": 0.1207
+  },
+  "NMRUSDT": {
+    "imbalance_pct": 36.12,
+    "spread_pct": 0.1174
+  },
+  "NOMUSDT": {
+    "imbalance_pct": 0.88,
+    "spread_pct": 0.5814,
+    "timestamp": "2026-07-03T01:28:01.610706+03:00"
+  },
+  "NOTUSDT": {
+    "imbalance_pct": 17.24,
+    "spread_pct": 0.2639
+  },
+  "NVDABUSDT": {
+    "imbalance_pct": -63.05,
+    "spread_pct": 0.0776
+  },
+  "NXPCUSDT": {
+    "imbalance_pct": 20.76,
+    "spread_pct": 0.0766
+  },
+  "OGNUSDT": {
+    "imbalance_pct": -40.05,
+    "spread_pct": 0.2022
+  },
+  "OGUSDT": {
+    "imbalance_pct": 2.97,
+    "spread_pct": 0.0401
+  },
+  "ONDOUSDT": {
+    "imbalance_pct": 30.11,
+    "spread_pct": 0.0304,
+    "timestamp": "2026-07-08T02:47:53.473510+03:00"
+  },
+  "ONEUSDT": {
+    "imbalance_pct": -34.64,
+    "spread_pct": 0.813
+  },
+  "ONGUSDT": {
+    "imbalance_pct": -11.46,
+    "spread_pct": 0.0877
+  },
+  "ONTUSDT": {
+    "imbalance_pct": 15.52,
+    "spread_pct": 0.0948
+  },
+  "OPENUSDT": {
+    "imbalance_pct": 32.81,
+    "spread_pct": 0.0617
+  },
+  "OPGUSDT": {
+    "imbalance_pct": 36.09,
+    "spread_pct": 0.156,
+    "timestamp": "2026-07-08T02:47:53.409125+03:00"
+  },
+  "OPNUSDT": {
+    "imbalance_pct": 17.13,
+    "spread_pct": 0.1538
+  },
+  "OPUSDT": {
+    "imbalance_pct": 8.21,
+    "spread_pct": 0.1002
+  },
+  "ORCAUSDT": {
+    "imbalance_pct": 18.63,
+    "spread_pct": 0.0857
+  },
+  "ORDIUSDT": {
+    "imbalance_pct": 63.2,
+    "spread_pct": 0.0292,
+    "timestamp": "2026-07-02T04:00:32.226054+03:00"
+  },
+  "OSMOUSDT": {
+    "imbalance_pct": 73.05,
+    "spread_pct": 0.2793
+  },
+  "PARTIUSDT": {
+    "imbalance_pct": 25.83,
+    "spread_pct": 0.2083
+  },
+  "PAXGUSDT": {
+    "imbalance_pct": -16.95,
+    "spread_pct": 0.0002,
+    "timestamp": "2026-07-08T02:47:53.563023+03:00"
+  },
+  "PENDLEUSDT": {
+    "imbalance_pct": 11.38,
+    "spread_pct": 0.0662,
+    "timestamp": "2026-07-03T01:28:02.110285+03:00"
+  },
+  "PENGUUSDT": {
+    "imbalance_pct": 10.71,
+    "spread_pct": 0.0159,
+    "timestamp": "2026-07-03T01:28:03.019854+03:00"
+  },
+  "PEOPLEUSDT": {
+    "imbalance_pct": 31.8,
+    "spread_pct": 0.1996
+  },
+  "PEPEUSDT": {
+    "imbalance_pct": -13.36,
+    "spread_pct": 0.3745,
+    "timestamp": "2026-07-08T02:47:55.194456+03:00"
+  },
+  "PHAUSDT": {
+    "imbalance_pct": -12.87,
+    "spread_pct": 0.3257
+  },
+  "PIVXUSDT": {
+    "imbalance_pct": 21.24,
+    "spread_pct": 0.7212
+  },
+  "PIXELUSDT": {
+    "imbalance_pct": 11.55,
+    "spread_pct": 0.2092
+  },
+  "PLUMEUSDT": {
+    "imbalance_pct": 24.9,
+    "spread_pct": 0.1026
+  },
+  "PNUTUSDT": {
+    "imbalance_pct": 61.47,
+    "spread_pct": 0.2309
+  },
+  "POLUSDT": {
+    "imbalance_pct": 7.9,
+    "spread_pct": 0.0141
+  },
+  "POLYXUSDT": {
+    "imbalance_pct": 75.64,
+    "spread_pct": 0.5464
+  },
+  "PONDUSDT": {
+    "imbalance_pct": -45.61,
+    "spread_pct": 0.7813,
+    "timestamp": "2026-07-02T23:49:02.868345+03:00"
+  },
+  "PORTALUSDT": {
+    "imbalance_pct": 23.19,
+    "spread_pct": 0.0801
+  },
+  "PORTOUSDT": {
+    "imbalance_pct": -35.53,
+    "spread_pct": 0.4474
+  },
+  "POWRUSDT": {
+    "imbalance_pct": 3.32,
+    "spread_pct": 0.3503,
+    "timestamp": "2026-06-29T08:34:13.353773+03:00"
+  },
+  "PROMUSDT": {
+    "imbalance_pct": -42.55,
+    "spread_pct": 0.366
+  },
+  "PROVEUSDT": {
+    "imbalance_pct": -13.53,
+    "spread_pct": 0.1053
+  },
+  "PSGUSDT": {
+    "imbalance_pct": 71.7,
+    "spread_pct": 0.3711
+  },
+  "PUMPUSDT": {
+    "imbalance_pct": 25.74,
+    "spread_pct": 0.0638,
+    "timestamp": "2026-07-08T02:47:55.915757+03:00"
+  },
+  "PUNDIXUSDT": {
+    "imbalance_pct": 12.67,
+    "spread_pct": 0.235
+  },
+  "PYRUSDT": {
+    "imbalance_pct": -7.87,
+    "spread_pct": 0.6173
+  },
+  "PYTHUSDT": {
+    "imbalance_pct": 31.64,
+    "spread_pct": 0.0257,
+    "timestamp": "2026-07-02T23:49:03.285754+03:00"
+  },
+  "QIUSDT": {
+    "imbalance_pct": -0.64,
+    "spread_pct": 0.9009
+  },
+  "QKCUSDT": {
+    "imbalance_pct": 71.86,
+    "spread_pct": 0.6061
+  },
+  "QNTUSDT": {
+    "imbalance_pct": -27.14,
+    "spread_pct": 0.0617
+  },
+  "QTUMUSDT": {
+    "imbalance_pct": 27.8,
+    "spread_pct": 0.1451
+  },
+  "QUICKUSDT": {
+    "imbalance_pct": 28.91,
+    "spread_pct": 0.2646
+  },
+  "RADUSDT": {
+    "imbalance_pct": -3.71,
+    "spread_pct": 0.4739
+  },
+  "RAREUSDT": {
+    "imbalance_pct": 2.39,
+    "spread_pct": 0.8264
+  },
+  "RAYUSDT": {
+    "imbalance_pct": 17.28,
+    "spread_pct": 0.049
+  },
+  "REDUSDT": {
+    "imbalance_pct": 17.93,
+    "spread_pct": 0.1116
+  },
+  "RENDERUSDT": {
+    "imbalance_pct": 27.43,
+    "spread_pct": 0.0651
+  },
+  "REQUSDT": {
+    "imbalance_pct": 49.95,
+    "spread_pct": 0.3731
+  },
+  "RESOLVUSDT": {
+    "imbalance_pct": -7.95,
+    "spread_pct": 0.4695,
+    "timestamp": "2026-07-02T04:29:43.350037+03:00"
+  },
+  "REZUSDT": {
+    "imbalance_pct": 37.23,
+    "spread_pct": 0.1653
+  },
+  "RIFUSDT": {
+    "imbalance_pct": -23.85,
+    "spread_pct": 0.2035,
+    "timestamp": "2026-07-03T01:28:05.377920+03:00"
+  },
+  "RLCUSDT": {
+    "imbalance_pct": 51.17,
+    "spread_pct": 0.1393
+  },
+  "RLUSDUSDT": {
+    "imbalance_pct": 10.3,
+    "spread_pct": 0.01,
+    "timestamp": "2026-07-08T02:47:56.116455+03:00"
+  },
+  "ROBOUSDT": {
+    "imbalance_pct": 18.62,
+    "spread_pct": 0.1174
+  },
+  "RONINUSDT": {
+    "imbalance_pct": 12.22,
+    "spread_pct": 0.1776
+  },
+  "ROSEUSDT": {
+    "imbalance_pct": 26.46,
+    "spread_pct": 0.1698
+  },
+  "RPLUSDT": {
+    "imbalance_pct": 24.16,
+    "spread_pct": 0.7194
+  },
+  "RSRUSDT": {
+    "imbalance_pct": 5.35,
+    "spread_pct": 0.0876
+  },
+  "RUNEUSDT": {
+    "imbalance_pct": 11.76,
+    "spread_pct": 0.2584
+  },
+  "RVNUSDT": {
+    "imbalance_pct": 5.62,
+    "spread_pct": 0.2532
+  },
+  "SAGAUSDT": {
+    "imbalance_pct": 9.46,
+    "spread_pct": 0.1523
+  },
+  "SAHARAUSDT": {
+    "imbalance_pct": 56.87,
+    "spread_pct": 0.0913
+  },
+  "SANDUSDT": {
+    "imbalance_pct": 12.39,
+    "spread_pct": 0.0215
+  },
+  "SANTOSUSDT": {
+    "imbalance_pct": 52.22,
+    "spread_pct": 0.1812
+  },
+  "SAPIENUSDT": {
+    "imbalance_pct": 7.25,
+    "spread_pct": 0.1368
+  },
+  "SCRTUSDT": {
+    "imbalance_pct": 23.04,
+    "spread_pct": 0.1992
+  },
+  "SCRUSDT": {
+    "imbalance_pct": -75.08,
+    "spread_pct": 0.0726
+  },
+  "SCUSDT": {
+    "imbalance_pct": 17.39,
+    "spread_pct": 0.1553
+  },
+  "SEIUSDT": {
+    "imbalance_pct": 28.76,
+    "spread_pct": 0.0203
+  },
+  "SENTUSDT": {
+    "imbalance_pct": 29.3,
+    "spread_pct": 0.072,
+    "timestamp": "2026-07-08T02:47:56.168816+03:00"
+  },
+  "SFPUSDT": {
+    "imbalance_pct": 19.31,
+    "spread_pct": 0.1432
+  },
+  "SHELLUSDT": {
+    "imbalance_pct": -10.8,
+    "spread_pct": 0.4695
+  },
+  "SHIBUSDT": {
+    "imbalance_pct": 7.31,
+    "spread_pct": 0.2398
+  },
+  "SIGNUSDT": {
+    "imbalance_pct": 41.85,
+    "spread_pct": 0.1205
+  },
+  "SKLUSDT": {
+    "imbalance_pct": 0.54,
+    "spread_pct": 0.2857
+  },
+  "SKYUSDT": {
+    "imbalance_pct": 34.09,
+    "spread_pct": 0.0202
+  },
+  "SLPUSDT": {
+    "imbalance_pct": 10.61,
+    "spread_pct": 0.211,
+    "timestamp": "2026-07-02T22:50:11.810159+03:00"
+  },
+  "SNDKBUSDT": {
+    "imbalance_pct": 1.04,
+    "spread_pct": 0.0316,
+    "timestamp": "2026-07-08T02:47:57.782724+03:00"
+  },
+  "SNXUSDT": {
+    "imbalance_pct": 16.45,
+    "spread_pct": 0.4545
+  },
+  "SOLUSDT": {
+    "imbalance_pct": 38.86,
+    "spread_pct": 0.0124,
+    "timestamp": "2026-07-08T02:47:59.015965+03:00"
+  },
+  "SOLVUSDT": {
+    "imbalance_pct": 31.67,
+    "spread_pct": 0.3472
+  },
+  "SOMIUSDT": {
+    "imbalance_pct": 43.56,
+    "spread_pct": 0.2008
+  },
+  "SOPHUSDT": {
+    "imbalance_pct": 57.9,
+    "spread_pct": 0.2105
+  },
+  "SPCXBUSDT": {
+    "imbalance_pct": 8.67,
+    "spread_pct": 0.0066,
+    "timestamp": "2026-07-08T02:47:58.935164+03:00"
+  },
+  "SPELLUSDT": {
+    "imbalance_pct": 35.32,
+    "spread_pct": 0.1833,
+    "timestamp": "2026-07-08T02:47:58.732652+03:00"
+  },
+  "SPKUSDT": {
+    "imbalance_pct": -30.97,
+    "spread_pct": 0.0118
+  },
+  "SSVUSDT": {
+    "imbalance_pct": 6.08,
+    "spread_pct": 0.2005
+  },
+  "STEEMUSDT": {
+    "imbalance_pct": 39.03,
+    "spread_pct": 0.3186
+  },
+  "STGUSDT": {
+    "imbalance_pct": 17.76,
+    "spread_pct": 0.0599
+  },
+  "STORJUSDT": {
+    "imbalance_pct": 20.92,
+    "spread_pct": 0.2685
+  },
+  "STOUSDT": {
+    "imbalance_pct": 40.0,
+    "spread_pct": 0.2222
+  },
+  "STRAXUSDT": {
+    "imbalance_pct": 15.18,
+    "spread_pct": 0.1944
+  },
+  "STRKUSDT": {
+    "imbalance_pct": 27.1,
+    "spread_pct": 0.3425
+  },
+  "STXUSDT": {
+    "imbalance_pct": -4.7,
+    "spread_pct": 0.1205
+  },
+  "SUIUSDT": {
+    "imbalance_pct": 28.12,
+    "spread_pct": 0.0137,
+    "timestamp": "2026-07-08T02:47:58.784905+03:00"
+  },
+  "SUNUSDT": {
+    "imbalance_pct": 19.44,
+    "spread_pct": 0.0595
+  },
+  "SUPERUSDT": {
+    "imbalance_pct": 1.51,
+    "spread_pct": 0.2339
+  },
+  "SUSDT": {
+    "imbalance_pct": 27.55,
+    "spread_pct": 0.0394,
+    "timestamp": "2026-06-29T17:45:33.634055+03:00"
+  },
+  "SUSHIUSDT": {
+    "imbalance_pct": 18.79,
+    "spread_pct": 0.0669
+  },
+  "SXTUSDT": {
+    "imbalance_pct": 23.36,
+    "spread_pct": 0.1504
+  },
+  "SYNUSDT": {
+    "imbalance_pct": 17.18,
+    "spread_pct": 0.0615,
+    "timestamp": "2026-07-08T02:48:00.381936+03:00"
+  },
+  "SYRUPUSDT": {
+    "imbalance_pct": 31.21,
+    "spread_pct": 0.0731
+  },
+  "TAOUSDT": {
+    "imbalance_pct": 17.74,
+    "spread_pct": 0.0472,
+    "timestamp": "2026-07-08T02:48:01.518641+03:00"
+  },
+  "TFUELUSDT": {
+    "imbalance_pct": -26.34,
+    "spread_pct": 0.2535
+  },
+  "THETAUSDT": {
+    "imbalance_pct": 9.76,
+    "spread_pct": 0.2292
+  },
+  "THEUSDT": {
+    "imbalance_pct": 27.96,
+    "spread_pct": 0.1445,
+    "timestamp": "2026-07-03T01:28:10.600895+03:00"
+  },
+  "TIAUSDT": {
+    "imbalance_pct": -0.77,
+    "spread_pct": 0.0266,
+    "timestamp": "2026-07-01T12:25:42.379710+03:00"
+  },
+  "TKOUSDT": {
+    "imbalance_pct": 18.96,
+    "spread_pct": 0.4255
+  },
+  "TLMUSDT": {
+    "imbalance_pct": 36.22,
+    "spread_pct": 0.0778,
+    "timestamp": "2026-07-08T02:48:01.968707+03:00"
+  },
+  "TNSRUSDT": {
+    "imbalance_pct": -1.15,
+    "spread_pct": 0.2976
+  },
+  "TONUSDT": {
+    "imbalance_pct": 0,
+    "spread_pct": 0,
+    "timestamp": "2026-07-08T02:48:01.753901+03:00"
+  },
+  "TOWNSUSDT": {
+    "imbalance_pct": 30.41,
+    "spread_pct": 0.5236
+  },
+  "TRBUSDT": {
+    "imbalance_pct": -50.02,
+    "spread_pct": 0.0737
+  },
+  "TREEUSDT": {
+    "imbalance_pct": 22.64,
+    "spread_pct": 0.2392
+  },
+  "TRUMPUSDT": {
+    "imbalance_pct": 0.46,
+    "spread_pct": 0.0607,
+    "timestamp": "2026-07-08T02:48:02.211065+03:00"
+  },
+  "TRXUSDT": {
+    "imbalance_pct": 31.98,
+    "spread_pct": 0.0301,
+    "timestamp": "2026-07-08T02:48:04.007800+03:00"
+  },
+  "TSLABUSDT": {
+    "imbalance_pct": 70.51,
+    "spread_pct": 0.0867
+  },
+  "TSTUSDT": {
+    "imbalance_pct": -6.03,
+    "spread_pct": 0.1889
+  },
+  "TURBOUSDT": {
+    "imbalance_pct": 49.34,
+    "spread_pct": 0.2237
+  },
+  "TURTLEUSDT": {
+    "imbalance_pct": 11.25,
+    "spread_pct": 0.2994
+  },
+  "TUSDT": {
+    "imbalance_pct": 30.97,
+    "spread_pct": 0.2907
+  },
+  "TUSDUSDT": {
+    "imbalance_pct": 78.99,
+    "spread_pct": 0.01
+  },
+  "TUTUSDT": {
+    "imbalance_pct": 2.18,
+    "spread_pct": 0.1919
+  },
+  "TWTUSDT": {
+    "imbalance_pct": 29.27,
+    "spread_pct": 0.2011
+  },
+  "UMAUSDT": {
+    "imbalance_pct": 5.0,
+    "spread_pct": 0.2618
+  },
+  "UNIUSDT": {
+    "imbalance_pct": -0.02,
+    "spread_pct": 0.0313,
+    "timestamp": "2026-07-08T02:48:04.492961+03:00"
+  },
+  "USD1USDT": {
+    "imbalance_pct": 3.05,
+    "spread_pct": 0.001,
+    "timestamp": "2026-07-08T02:48:04.418990+03:00"
+  },
+  "USDCUSDT": {
+    "imbalance_pct": 58.03,
+    "spread_pct": 0.001,
+    "timestamp": "2026-07-08T02:48:04.598435+03:00"
+  },
+  "USDEUSDT": {
+    "imbalance_pct": -63.57,
+    "spread_pct": 0.01,
+    "timestamp": "2026-07-03T01:28:15.153404+03:00"
+  },
+  "USDPUSDT": {
+    "imbalance_pct": 22.07,
+    "spread_pct": 0.01
+  },
+  "USDSUSDT": {
+    "imbalance_pct": -10.13,
+    "spread_pct": 0.01
+  },
+  "USTCUSDT": {
+    "imbalance_pct": -2.02,
+    "spread_pct": 0.1825
+  },
+  "USUALUSDT": {
+    "imbalance_pct": 2.25,
+    "spread_pct": 0.2176
+  },
+  "UUSDT": {
+    "imbalance_pct": 18.09,
+    "spread_pct": 0.01,
+    "timestamp": "2026-07-08T02:48:06.897644+03:00"
+  },
+  "VANAUSDT": {
+    "imbalance_pct": 7.94,
+    "spread_pct": 0.0909
+  },
+  "VANRYUSDT": {
+    "imbalance_pct": 28.65,
+    "spread_pct": 0.0784,
+    "timestamp": "2026-07-08T02:48:07.116804+03:00"
+  },
+  "VELODROMEUSDT": {
+    "imbalance_pct": 13.55,
+    "spread_pct": 0.1575
+  },
+  "VETUSDT": {
+    "imbalance_pct": 19.4,
+    "spread_pct": 0.0443
+  },
+  "VICUSDT": {
+    "imbalance_pct": 36.15,
+    "spread_pct": 0.2519
+  },
+  "VIRTUALUSDT": {
+    "imbalance_pct": 14.29,
+    "spread_pct": 0.0375
+  },
+  "VTHOUSDT": {
+    "imbalance_pct": 13.95,
+    "spread_pct": 0.277
+  },
+  "WALUSDT": {
+    "imbalance_pct": 29.29,
+    "spread_pct": 0.3135
+  },
+  "WAXPUSDT": {
+    "imbalance_pct": 15.48,
+    "spread_pct": 0.2494
+  },
+  "WBETHUSDT": {
+    "imbalance_pct": -8.45,
+    "spread_pct": 0.2214
+  },
+  "WBTCUSDT": {
+    "imbalance_pct": -13.35,
+    "spread_pct": 0.0559
+  },
+  "WCTUSDT": {
+    "imbalance_pct": 15.57,
+    "spread_pct": 0.0475
+  },
+  "WIFUSDT": {
+    "imbalance_pct": 9.15,
+    "spread_pct": 0.0559,
+    "timestamp": "2026-06-29T17:45:39.732758+03:00"
+  },
+  "WINUSDT": {
+    "imbalance_pct": -88.89,
+    "spread_pct": 0.3415
+  },
+  "WLDUSDT": {
+    "imbalance_pct": 29.76,
+    "spread_pct": 0.0262,
+    "timestamp": "2026-07-08T02:48:07.358942+03:00"
+  },
+  "WLFIUSDT": {
+    "imbalance_pct": -26.42,
+    "spread_pct": 0.1712,
+    "timestamp": "2026-07-08T02:48:07.298816+03:00"
+  },
+  "WOOUSDT": {
+    "imbalance_pct": -20.13,
+    "spread_pct": 0.093
+  },
+  "WUSDT": {
+    "imbalance_pct": 5.12,
+    "spread_pct": 0.2128
+  },
+  "XAIUSDT": {
+    "imbalance_pct": 34.65,
+    "spread_pct": 0.1401
+  },
+  "XAUTUSDT": {
+    "imbalance_pct": -16.93,
+    "spread_pct": 0.0002,
+    "timestamp": "2026-07-08T02:48:07.527963+03:00"
+  },
+  "XECUSDT": {
+    "imbalance_pct": 27.39,
+    "spread_pct": 0.3795
+  },
+  "XLMUSDT": {
+    "imbalance_pct": 11.76,
+    "spread_pct": 0.053,
+    "timestamp": "2026-07-08T02:48:09.527467+03:00"
+  },
+  "XNOUSDT": {
+    "imbalance_pct": 25.98,
+    "spread_pct": 0.9494
+  },
+  "XPLUSDT": {
+    "imbalance_pct": 6.9,
+    "spread_pct": 0.0201,
+    "timestamp": "2026-07-08T02:48:09.750341+03:00"
+  },
+  "XRPUSDT": {
+    "imbalance_pct": 16.69,
+    "spread_pct": 0.009,
+    "timestamp": "2026-07-08T02:48:10.043373+03:00"
+  },
+  "XTZUSDT": {
+    "imbalance_pct": -11.61,
+    "spread_pct": 0.095
+  },
+  "XUSDUSDT": {
+    "imbalance_pct": -23.51,
+    "spread_pct": 0.01,
+    "timestamp": "2026-07-08T02:48:09.948023+03:00"
+  },
+  "XVGUSDT": {
+    "imbalance_pct": -8.41,
+    "spread_pct": 0.357
+  },
+  "XVSUSDT": {
+    "imbalance_pct": -22.0,
+    "spread_pct": 0.4065
+  },
+  "YBUSDT": {
+    "imbalance_pct": 8.42,
+    "spread_pct": 0.146
+  },
+  "YFIUSDT": {
+    "imbalance_pct": 14.22,
+    "spread_pct": 0.0918,
+    "timestamp": "2026-07-08T02:48:10.117308+03:00"
+  },
+  "YGGUSDT": {
+    "imbalance_pct": 21.24,
+    "spread_pct": 0.0445
+  },
+  "ZAMAUSDT": {
+    "imbalance_pct": 9.89,
+    "spread_pct": 0.0324
+  },
+  "ZBTUSDT": {
+    "imbalance_pct": -12.37,
+    "spread_pct": 0.0693,
+    "timestamp": "2026-07-03T01:28:19.995816+03:00"
+  },
+  "ZECUSDT": {
+    "imbalance_pct": -1.33,
+    "spread_pct": 0.0021,
+    "timestamp": "2026-07-08T02:48:12.141445+03:00"
+  },
+  "ZENUSDT": {
+    "imbalance_pct": 33.07,
+    "spread_pct": 0.0496
+  },
+  "ZILUSDT": {
+    "imbalance_pct": 12.78,
+    "spread_pct": 0.339
+  },
+  "ZKCUSDT": {
+    "imbalance_pct": 10.53,
+    "spread_pct": 0.2299
+  },
+  "ZKPUSDT": {
+    "imbalance_pct": 39.28,
+    "spread_pct": 0.2155
+  },
+  "ZKUSDT": {
+    "imbalance_pct": 21.21,
+    "spread_pct": 0.0998
+  },
+  "ZROUSDT": {
+    "imbalance_pct": 30.27,
+    "spread_pct": 0.1295
+  },
+  "ZRXUSDT": {
+    "imbalance_pct": 47.03,
+    "spread_pct": 0.1242
+  },
+  "币安人生USDT": {
+    "imbalance_pct": 28.53,
+    "spread_pct": 0.0563,
+    "timestamp": "2026-07-08T02:48:12.350814+03:00"
+  },
+  "UTKUSDT": {
+    "imbalance_pct": 0,
+    "spread_pct": 0,
+    "timestamp": "2026-07-08T02:48:04.849848+03:00"
+  },
+  "REUSDT": {
+    "imbalance_pct": 12.05,
+    "spread_pct": 0.0159,
+    "timestamp": "2026-07-08T02:47:56.023071+03:00"
+  },
+  "AMDBUSDT": {
+    "imbalance_pct": -8.85,
+    "spread_pct": 0.1813
+  },
+  "EWYBUSDT": {
+    "imbalance_pct": -81.81,
+    "spread_pct": 0.1177
+  },
+  "INTCBUSDT": {
+    "imbalance_pct": 7.46,
+    "spread_pct": 0.1251
+  },
+  "MSTRBUSDT": {
+    "imbalance_pct": -93.38,
+    "spread_pct": 0.0123
+  },
+  "GRAMUSDT": {
+    "imbalance_pct": 14.26,
+    "spread_pct": 0.0616,
+    "timestamp": "2026-07-08T02:47:48.044590+03:00"
+  }
+}
