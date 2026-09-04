@@ -1,18 +1,17 @@
-# Minimal requirements for 24/7 bots (fits 256MB RAM)
+# Ultra-minimal for 256MB - no heavy ML/CUDA
 requests
 python-telegram-bot
 pyTelegramBotAPI
 python-dotenv
 pytz
-pandas
-numpy
-scikit-learn
-scipy
-xgboost
-optuna
 flask
 apscheduler
 python-binance
 textblob
 vaderSentiment
 tqdm
+# Light ML only (no xgboost/cuda)
+pandas
+numpy
+scikit-learn
+scipy
