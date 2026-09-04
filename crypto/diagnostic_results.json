@@ -1,0 +1,19 @@
+{
+  "period": "2026-06-29 to 2026-08-07",
+  "total_trades": 508,
+  "wins": 336,
+  "losses": 172,
+  "win_rate": 0.6614173228346457,
+  "gross_pnl_no_costs": -27.03,
+  "total_fees": 373.46,
+  "net_pnl": -400.49,
+  "exit_reasons": {
+    "profit": 336,
+    "stoploss": 172
+  },
+  "avg_win_pct": 0.429,
+  "avg_loss_pct": -0.891,
+  "trades_per_day": 72.6,
+  "avg_entry_z": 4.77,
+  "avg_hold_bars": 2.4
+}

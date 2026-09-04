@@ -1,0 +1,127 @@
+{
+  "capital": 10000,
+  "positions": [
+    {
+      "pair": "CRVUSDT/FLOKIUSDT",
+      "tf": "5m",
+      "size_pct": 5.0,
+      "usd": 500.0,
+      "sharpe": 23.94,
+      "win_rate": 1.0,
+      "n_trades": 7,
+      "edge_score": 6.688
+    },
+    {
+      "pair": "1000SATSUSDT/SHIBUSDT",
+      "tf": "1d",
+      "size_pct": 5.0,
+      "usd": 500.0,
+      "sharpe": 55.74,
+      "win_rate": 0.83,
+      "n_trades": 6,
+      "edge_score": 6.523
+    },
+    {
+      "pair": "1000SATSUSDT/ATOMUSDT",
+      "tf": "1d",
+      "size_pct": 5.0,
+      "usd": 500.0,
+      "sharpe": 33.84,
+      "win_rate": 1.0,
+      "n_trades": 5,
+      "edge_score": 6.362
+    },
+    {
+      "pair": "FLOKIUSDT/SUIUSDT",
+      "tf": "1d",
+      "size_pct": 5.0,
+      "usd": 500.0,
+      "sharpe": 30.95,
+      "win_rate": 0.86,
+      "n_trades": 7,
+      "edge_score": 6.195
+    },
+    {
+      "pair": "BONKUSDT/XRPUSDT",
+      "tf": "4h",
+      "size_pct": 5.0,
+      "usd": 500.0,
+      "sharpe": 16.86,
+      "win_rate": 0.6,
+      "n_trades": 25,
+      "edge_score": 5.635
+    },
+    {
+      "pair": "CRVUSDT/LDOUSDT",
+      "tf": "4h",
+      "size_pct": 5.0,
+      "usd": 500.0,
+      "sharpe": 53.28,
+      "win_rate": 0.42,
+      "n_trades": 24,
+      "edge_score": 5.4
+    },
+    {
+      "pair": "SEIUSDT/SHIBUSDT",
+      "tf": "4h",
+      "size_pct": 5.0,
+      "usd": 500.0,
+      "sharpe": 16.89,
+      "win_rate": 0.55,
+      "n_trades": 29,
+      "edge_score": 5.395
+    },
+    {
+      "pair": "DOGEUSDT/SUIUSDT",
+      "tf": "4h",
+      "size_pct": 5.0,
+      "usd": 500.0,
+      "sharpe": 24.3,
+      "win_rate": 0.45,
+      "n_trades": 31,
+      "edge_score": 5.039
+    },
+    {
+      "pair": "1000SATSUSDT/DOTUSDT",
+      "tf": "1h",
+      "size_pct": 5.0,
+      "usd": 500.0,
+      "sharpe": 6.9,
+      "win_rate": 0.62,
+      "n_trades": 34,
+      "edge_score": 4.556
+    },
+    {
+      "pair": "1000SATSUSDT/SOLUSDT",
+      "tf": "1h",
+      "size_pct": 5.0,
+      "usd": 500.0,
+      "sharpe": 8.13,
+      "win_rate": 0.57,
+      "n_trades": 28,
+      "edge_score": 4.245
+    },
+    {
+      "pair": "1000SATSUSDT/AAVEUSDT",
+      "tf": "1h",
+      "size_pct": 5.0,
+      "usd": 500.0,
+      "sharpe": 9.71,
+      "win_rate": 0.54,
+      "n_trades": 26,
+      "edge_score": 4.22
+    },
+    {
+      "pair": "DOGEUSDT/WLDUSDT",
+      "tf": "1d",
+      "size_pct": 5.0,
+      "usd": 500.0,
+      "sharpe": 13.63,
+      "win_rate": 0.5,
+      "n_trades": 22,
+      "edge_score": 4.206
+    }
+  ],
+  "total_exposure": 0.6,
+  "cash": 0.4
+}

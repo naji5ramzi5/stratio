@@ -1,0 +1,262 @@
+{
+  "generated": "2026-08-08T13:42:09+00:00",
+  "min_sharpe": 1.0,
+  "min_windows": 2,
+  "source": "pairs_robust.json",
+  "pairs": [
+    {
+      "pair": "NEARUSDT/SNXUSDT",
+      "windows": {
+        "w2500": [
+          13.5,
+          3
+        ],
+        "w3000": [
+          13.5,
+          3
+        ],
+        "w3500": [
+          13.5,
+          3
+        ]
+      },
+      "mean_sharpe": 13.5
+    },
+    {
+      "pair": "RUNEUSDT/SNXUSDT",
+      "windows": {
+        "w3000": [
+          3.83,
+          17
+        ],
+        "w3500": [
+          3.83,
+          17
+        ]
+      },
+      "mean_sharpe": 3.83
+    },
+    {
+      "pair": "1000SATSUSDT/XRPUSDT",
+      "windows": {
+        "w2500": [
+          3.5,
+          2
+        ],
+        "w3000": [
+          1.1,
+          5
+        ],
+        "w3500": [
+          2.84,
+          5
+        ]
+      },
+      "mean_sharpe": 2.48
+    },
+    {
+      "pair": "1000SATSUSDT/ADAUSDT",
+      "windows": {
+        "w2500": [
+          3.15,
+          2
+        ],
+        "w3000": [
+          1.42,
+          5
+        ],
+        "w3500": [
+          2.66,
+          2
+        ]
+      },
+      "mean_sharpe": 2.41
+    },
+    {
+      "pair": "FLOKIUSDT/SHIBUSDT",
+      "windows": {
+        "w2500": [
+          2.41,
+          4
+        ],
+        "w3000": [
+          2.41,
+          4
+        ],
+        "w3500": [
+          2.41,
+          4
+        ]
+      },
+      "mean_sharpe": 2.41
+    },
+    {
+      "pair": "ETCUSDT/FILUSDT",
+      "windows": {
+        "w2500": [
+          1.79,
+          4
+        ],
+        "w3000": [
+          1.63,
+          4
+        ],
+        "w3500": [
+          2.0,
+          6
+        ]
+      },
+      "mean_sharpe": 1.81
+    },
+    {
+      "pair": "ETCUSDT/OPUSDT",
+      "windows": {
+        "w2500": [
+          2.04,
+          2
+        ],
+        "w3000": [
+          1.55,
+          3
+        ],
+        "w3500": [
+          1.05,
+          3
+        ]
+      },
+      "mean_sharpe": 1.55
+    },
+    {
+      "pair": "APTUSDT/FILUSDT",
+      "windows": {
+        "w2500": [
+          1.45,
+          1
+        ],
+        "w3000": [
+          1.76,
+          2
+        ],
+        "w3500": [
+          1.23,
+          1
+        ]
+      },
+      "mean_sharpe": 1.48
+    },
+    {
+      "pair": "1000SATSUSDT/SHIBUSDT",
+      "windows": {
+        "w3000": [
+          1.46,
+          20
+        ],
+        "w3500": [
+          1.46,
+          20
+        ]
+      },
+      "mean_sharpe": 1.46
+    },
+    {
+      "pair": "ARBUSDT/LTCUSDT",
+      "windows": {
+        "w2500": [
+          1.94,
+          8
+        ],
+        "w3000": [
+          1.2,
+          50
+        ],
+        "w3500": [
+          1.2,
+          50
+        ]
+      },
+      "mean_sharpe": 1.45
+    },
+    {
+      "pair": "1000SATSUSDT/AVAXUSDT",
+      "windows": {
+        "w2500": [
+          2.4,
+          1
+        ],
+        "w3000": [
+          1.02,
+          4
+        ],
+        "w3500": [
+          0.87,
+          3
+        ]
+      },
+      "mean_sharpe": 1.43
+    },
+    {
+      "pair": "1000SATSUSDT/LTCUSDT",
+      "windows": {
+        "w2500": [
+          2.12,
+          3
+        ],
+        "w3000": [
+          0.76,
+          7
+        ],
+        "w3500": [
+          0.79,
+          4
+        ]
+      },
+      "mean_sharpe": 1.22
+    },
+    {
+      "pair": "NEARUSDT/PEPEUSDT",
+      "windows": {
+        "w2500": [
+          1.12,
+          19
+        ],
+        "w3000": [
+          1.12,
+          19
+        ],
+        "w3500": [
+          1.12,
+          19
+        ]
+      },
+      "mean_sharpe": 1.12
+    },
+    {
+      "pair": "1000SATSUSDT/PEPEUSDT",
+      "windows": {
+        "w3000": [
+          0.24,
+          6
+        ],
+        "w3500": [
+          1.75,
+          4
+        ]
+      },
+      "mean_sharpe": 1.0
+    },
+    {
+      "pair": "ARBUSDT/SOLUSDT",
+      "windows": {
+        "w3000": [
+          0.68,
+          42
+        ],
+        "w3500": [
+          0.68,
+          42
+        ]
+      },
+      "mean_sharpe": 0.68
+    }
+  ]
+}

@@ -1,0 +1,46 @@
+pip==24.3.1
+backtesting>=0.6.2
+bitmex~=0.2.2
+prophet
+hydra-core
+jsonlines
+jupyter
+matplotlib
+numpy
+omegaconf
+orbit-ml
+pandas
+pytz
+pillow
+scikit-learn
+scipy
+seaborn
+statsmodels
+tqdm
+numba
+xgboost
+
+# Vectorized backtesting engine (drop-in for the slow loop backtester)
+vectorbt>=1.1.0
+
+# Foundation time-series models (Chronos-2 + TimesFM 2.5) - zero-shot ensemble members
+chronos-forecasting>=2.3.1
+timesfm>=2.0.2
+torch
+
+# Reinforcement learning trading layer (FinRL_Crypto PPO fork + stable-baselines3)
+stable-baselines3>=2.9.0
+optuna>=4.9.0
+
+
+python-telegram-bot
+ruamel.yaml
+flask
+apscheduler
+python-binance
+textblob==0.17.1
+vaderSentiment==3.3.2
+python-dotenv==1.0.0
+tweepy==4.10.1
+snscrape==0.5.0.20230113
+python-binance

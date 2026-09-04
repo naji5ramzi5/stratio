@@ -1,0 +1,56 @@
+{
+  "start_usd": 0.9,
+  "target_usd": 408000.0,
+  "hours": 48,
+  "scenarios": [
+    [
+      1,
+      2880,
+      45.325964782678696
+    ],
+    [
+      2,
+      5760,
+      22.63735988820459
+    ],
+    [
+      5,
+      14400,
+      9.048801967952436
+    ],
+    [
+      10,
+      28800,
+      4.52337793657831
+    ],
+    [
+      30,
+      86400,
+      1.5075653587737214
+    ],
+    [
+      60,
+      172800,
+      0.7537542721114399
+    ],
+    [
+      120,
+      345600,
+      0.3768700345041509
+    ],
+    [
+      600,
+      1728000,
+      0.07537287067815868
+    ]
+  ],
+  "fee_bps": 30.0,
+  "verdict": "CLAIM NOT REPRODUCIBLE UNDER CURRENT MARKET CONDITIONS",
+  "evidence": [
+    "No net-positive cycle edge measured in 15.7M real quote buckets over 16 days",
+    "0/2 cycles produced any executable trade after 30bps taker fees",
+    "Spot-futures basis never exceeded +10bps and required 30bps round-trip costs",
+    "Required per-cycle return at even 1 trade/minute is 188bps \u2014 6x the measured cost floor",
+    "Min-order-size constraints prevent $0.90 capital from deploying on BTC/ETH pairs"
+  ]
+}

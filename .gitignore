@@ -1,0 +1,23 @@
+# shell redirect junk
+nul2
+nul3
+nul4
+*.log
+analysis_*.txt
+test_output.txt
+
+# local env
+.env
+# Large data - not needed for live bots
+crypto/arbitrage/data/
+crypto/market_events/cache/
+crypto/ppo_models/
+crypto/logs/
+*.log
+crypto/market_cache.json
+crypto/models/*.bak*
+crypto/models/*.pkl.bak*
+__pycache__/
+*.pyc
+.venv/
+venv/

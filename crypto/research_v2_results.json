@@ -1,0 +1,36 @@
+{
+  "development": {
+    "strategy": "RESEARCH_V2",
+    "period": "2026-06-29 to 2026-07-20",
+    "trades": 10,
+    "wins": 7,
+    "losses": 3,
+    "win_rate": 0.7,
+    "gross_profit": 7.79,
+    "gross_loss": 7.89,
+    "net_pnl": -0.1,
+    "return_pct": -0.0,
+    "profit_factor": 0.99,
+    "max_drawdown_pct": -0.03,
+    "regime_counts": {
+      "MEAN_REVERTING": 319
+    }
+  },
+  "oos": {
+    "strategy": "RESEARCH_V2",
+    "period": "2026-07-20 to 2026-08-07",
+    "trades": 99,
+    "wins": 42,
+    "losses": 57,
+    "win_rate": 0.424,
+    "gross_profit": 24.61,
+    "gross_loss": 154.1,
+    "net_pnl": -129.49,
+    "return_pct": -1.29,
+    "profit_factor": 0.16,
+    "max_drawdown_pct": -1.3,
+    "regime_counts": {
+      "MEAN_REVERTING": 307
+    }
+  }
+}

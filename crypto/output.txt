@@ -1,0 +1,9 @@
+=== PHASE 2 RESEARCH ===
+Traceback (most recent call last):
+  File "C:\Users\IRAQ SOFT\Desktop\stratocrypto\crypto\market_events\research\run_research.py", line 381, in <module>
+    sys.exit(main())
+             ~~~~^^
+  File "C:\Users\IRAQ SOFT\Desktop\stratocrypto\crypto\market_events\research\run_research.py", line 68, in main
+    store = EventStore(DEFAULT_ROOT)
+            ^^^^^^^^^^
+NameError: name 'EventStore' is not defined

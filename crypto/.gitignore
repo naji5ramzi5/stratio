@@ -1,0 +1,41 @@
+# ── Secrets ────────────────────────────────────────────────
+.env
+.env.*
+
+# ── Python ─────────────────────────────────────────────────
+__pycache__/
+*.py[cod]
+*.egg-info/
+.venv/
+venv/
+.pytest_cache/
+.mypy_cache/
+
+# ── Runtime state / logs (generated, machine-local) ────────
+*.log
+predictions.json
+prediction_history.json
+prediction_accuracy.json
+liquidity_state.json
+liquidity_log.json
+smart_money_log.json
+paper_trading.json
+training_buffer.json
+
+# ── Generated model artifacts ──────────────────────────────
+models/*.pkl
+models/calibration.json
+ppo_models/
+*.pth
+*.pt
+*.onnx
+
+# ── Data caches / downloads ────────────────────────────────
+data/
+*-data.csv
+
+# ── IDE / OS ───────────────────────────────────────────────
+.vscode/
+.idea/
+Thumbs.db
+.DS_Store

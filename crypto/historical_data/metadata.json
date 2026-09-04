@@ -1,0 +1,101 @@
+{
+  "download_time": "2026-08-09T13:11:52.590581+00:00",
+  "symbols": [
+    "BTCUSDT",
+    "ETHUSDT",
+    "BNBUSDT",
+    "SOLUSDT",
+    "XRPUSDT",
+    "DOGEUSDT",
+    "ADAUSDT",
+    "LTCUSDT",
+    "LINKUSDT",
+    "DOTUSDT"
+  ],
+  "timeframes": [
+    "1h"
+  ],
+  "lookback_days": 150,
+  "data": {
+    "BTCUSDT_1h": {
+      "file": "historical_data/BTCUSDT_1h.json",
+      "count": 1000,
+      "start_ts": 1782684000000,
+      "end_ts": 1786280400000,
+      "start_date": "2026-06-28T22:00:00+00:00",
+      "end_date": "2026-08-09T13:00:00+00:00"
+    },
+    "ETHUSDT_1h": {
+      "file": "historical_data/ETHUSDT_1h.json",
+      "count": 1000,
+      "start_ts": 1782684000000,
+      "end_ts": 1786280400000,
+      "start_date": "2026-06-28T22:00:00+00:00",
+      "end_date": "2026-08-09T13:00:00+00:00"
+    },
+    "BNBUSDT_1h": {
+      "file": "historical_data/BNBUSDT_1h.json",
+      "count": 1000,
+      "start_ts": 1782684000000,
+      "end_ts": 1786280400000,
+      "start_date": "2026-06-28T22:00:00+00:00",
+      "end_date": "2026-08-09T13:00:00+00:00"
+    },
+    "SOLUSDT_1h": {
+      "file": "historical_data/SOLUSDT_1h.json",
+      "count": 1000,
+      "start_ts": 1782684000000,
+      "end_ts": 1786280400000,
+      "start_date": "2026-06-28T22:00:00+00:00",
+      "end_date": "2026-08-09T13:00:00+00:00"
+    },
+    "XRPUSDT_1h": {
+      "file": "historical_data/XRPUSDT_1h.json",
+      "count": 1000,
+      "start_ts": 1782684000000,
+      "end_ts": 1786280400000,
+      "start_date": "2026-06-28T22:00:00+00:00",
+      "end_date": "2026-08-09T13:00:00+00:00"
+    },
+    "DOGEUSDT_1h": {
+      "file": "historical_data/DOGEUSDT_1h.json",
+      "count": 1000,
+      "start_ts": 1782684000000,
+      "end_ts": 1786280400000,
+      "start_date": "2026-06-28T22:00:00+00:00",
+      "end_date": "2026-08-09T13:00:00+00:00"
+    },
+    "ADAUSDT_1h": {
+      "file": "historical_data/ADAUSDT_1h.json",
+      "count": 1000,
+      "start_ts": 1782684000000,
+      "end_ts": 1786280400000,
+      "start_date": "2026-06-28T22:00:00+00:00",
+      "end_date": "2026-08-09T13:00:00+00:00"
+    },
+    "LTCUSDT_1h": {
+      "file": "historical_data/LTCUSDT_1h.json",
+      "count": 1000,
+      "start_ts": 1782684000000,
+      "end_ts": 1786280400000,
+      "start_date": "2026-06-28T22:00:00+00:00",
+      "end_date": "2026-08-09T13:00:00+00:00"
+    },
+    "LINKUSDT_1h": {
+      "file": "historical_data/LINKUSDT_1h.json",
+      "count": 1000,
+      "start_ts": 1782684000000,
+      "end_ts": 1786280400000,
+      "start_date": "2026-06-28T22:00:00+00:00",
+      "end_date": "2026-08-09T13:00:00+00:00"
+    },
+    "DOTUSDT_1h": {
+      "file": "historical_data/DOTUSDT_1h.json",
+      "count": 1000,
+      "start_ts": 1782684000000,
+      "end_ts": 1786280400000,
+      "start_date": "2026-06-28T22:00:00+00:00",
+      "end_date": "2026-08-09T13:00:00+00:00"
+    }
+  }
+}

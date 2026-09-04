@@ -1,0 +1,105 @@
+{
+  "updated_utc": "2026-08-07T22:18:38+00:00",
+  "method": "walk_forward OOS, per-fold train-only hedge/coint/z-baseline, 25bps total round-trip per leg pair",
+  "pairs": {
+    "BTCUSDT/LINKUSDT": {
+      "cointegrated": true,
+      "folds": 10,
+      "ret_pct": 3.68,
+      "ann_pct": 9.23,
+      "sharpe": 0.49,
+      "maxDD_pct": -13.8,
+      "trades": 3,
+      "win_rate_pct": 100.0,
+      "bars_traded": 453
+    },
+    "BTCUSDT/LTCUSDT": {
+      "cointegrated": true,
+      "folds": 10,
+      "ret_pct": 19.82,
+      "ann_pct": 49.61,
+      "sharpe": 2.47,
+      "maxDD_pct": -9.45,
+      "trades": 3,
+      "win_rate_pct": 100.0,
+      "bars_traded": 120
+    },
+    "BNBUSDT/XRPUSDT": {
+      "cointegrated": true,
+      "folds": 10,
+      "ret_pct": -1.63,
+      "ann_pct": -4.07,
+      "sharpe": -0.52,
+      "maxDD_pct": -5.65,
+      "trades": 1,
+      "win_rate_pct": 0.0,
+      "bars_traded": 242
+    },
+    "BNBUSDT/DOGEUSDT": {
+      "cointegrated": false,
+      "folds": 10,
+      "ret_pct": 0.0,
+      "ann_pct": 0.0,
+      "sharpe": 0.0,
+      "maxDD_pct": 0.0,
+      "trades": 0,
+      "win_rate_pct": 0.0,
+      "bars_traded": 0
+    },
+    "BNBUSDT/DOTUSDT": {
+      "cointegrated": false,
+      "folds": 10,
+      "ret_pct": 0.0,
+      "ann_pct": 0.0,
+      "sharpe": 0.0,
+      "maxDD_pct": 0.0,
+      "trades": 0,
+      "win_rate_pct": 0.0,
+      "bars_traded": 0
+    },
+    "BNBUSDT/FILUSDT": {
+      "cointegrated": false,
+      "folds": 10,
+      "ret_pct": 0.0,
+      "ann_pct": 0.0,
+      "sharpe": 0.0,
+      "maxDD_pct": 0.0,
+      "trades": 0,
+      "win_rate_pct": 0.0,
+      "bars_traded": 0
+    },
+    "LINKUSDT/LTCUSDT": {
+      "cointegrated": true,
+      "folds": 10,
+      "ret_pct": -5.25,
+      "ann_pct": -13.15,
+      "sharpe": -1.0,
+      "maxDD_pct": -9.73,
+      "trades": 5,
+      "win_rate_pct": 80.0,
+      "bars_traded": 382
+    },
+    "LTCUSDT/FILUSDT": {
+      "cointegrated": true,
+      "folds": 10,
+      "ret_pct": -5.21,
+      "ann_pct": -13.06,
+      "sharpe": -1.1,
+      "maxDD_pct": -8.58,
+      "trades": 6,
+      "win_rate_pct": 50.0,
+      "bars_traded": 373
+    },
+    "FILUSDT/TRXUSDT": {
+      "cointegrated": false,
+      "folds": 10,
+      "ret_pct": 0.0,
+      "ann_pct": 0.0,
+      "sharpe": 0.0,
+      "maxDD_pct": 0.0,
+      "trades": 0,
+      "win_rate_pct": 0.0,
+      "bars_traded": 0
+    }
+  }
+}

@@ -1,0 +1,19 @@
+{
+  "buckets": 12952975,
+  "fee_net_bps": 5.999999999999999,
+  "net_bps_mean": -8.4801,
+  "net_bps_std": 7.1908,
+  "pct_positive": 11.6255,
+  "buckets_ge_2.0bps": 584211,
+  "pct_ge_2.0bps": 4.51025,
+  "buckets_ge_5.0bps": 116043,
+  "pct_ge_5.0bps": 0.89588,
+  "buckets_ge_8.0bps": 21307,
+  "pct_ge_8.0bps": 0.1645,
+  "buckets_ge_10.0bps": 7356,
+  "pct_ge_10.0bps": 0.05679,
+  "buckets_ge_15.0bps": 366,
+  "pct_ge_15.0bps": 0.00283,
+  "p99": 4.802,
+  "max": 16.295
+}

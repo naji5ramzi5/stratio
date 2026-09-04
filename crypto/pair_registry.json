@@ -1,0 +1,2219 @@
+{
+  "updated": "2026-08-08T22:58:14+00:00",
+  "pairs": {
+    "CRVUSDT/FLOKIUSDT@5m": {
+      "pair": "CRVUSDT/FLOKIUSDT",
+      "timeframe": "5m",
+      "state": "active",
+      "metrics": {
+        "cointegration_pvalue": 1.0,
+        "hedge_ratio": 1.0,
+        "hedge_ratio_stability": 0.0,
+        "half_life": 0.0,
+        "spread_variance": 0.0,
+        "zscore_divergence": 0.0,
+        "residual_stationarity": 0.0,
+        "last_update": "2026-08-08T22:58:14+00:00"
+      },
+      "performance": {
+        "sharpe": 23.94,
+        "win_rate": 1.0,
+        "n_trades": 7
+      },
+      "discovery_date": "2026-08-08T22:39:40+00:00",
+      "last_trade_date": "",
+      "degradation_count": 0,
+      "notes": [
+        "validated score=100",
+        "activated score=100"
+      ]
+    },
+    "1000SATSUSDT/SHIBUSDT@1d": {
+      "pair": "1000SATSUSDT/SHIBUSDT",
+      "timeframe": "1d",
+      "state": "active",
+      "metrics": {
+        "cointegration_pvalue": 1.0,
+        "hedge_ratio": 1.0,
+        "hedge_ratio_stability": 0.0,
+        "half_life": 0.0,
+        "spread_variance": 0.0,
+        "zscore_divergence": 0.0,
+        "residual_stationarity": 0.0,
+        "last_update": "2026-08-08T22:58:14+00:00"
+      },
+      "performance": {
+        "sharpe": 55.74,
+        "win_rate": 0.83,
+        "n_trades": 6
+      },
+      "discovery_date": "2026-08-08T22:39:40+00:00",
+      "last_trade_date": "",
+      "degradation_count": 0,
+      "notes": [
+        "validated score=100",
+        "activated score=100"
+      ]
+    },
+    "1000SATSUSDT/ATOMUSDT@1d": {
+      "pair": "1000SATSUSDT/ATOMUSDT",
+      "timeframe": "1d",
+      "state": "active",
+      "metrics": {
+        "cointegration_pvalue": 1.0,
+        "hedge_ratio": 1.0,
+        "hedge_ratio_stability": 0.0,
+        "half_life": 0.0,
+        "spread_variance": 0.0,
+        "zscore_divergence": 0.0,
+        "residual_stationarity": 0.0,
+        "last_update": "2026-08-08T22:58:14+00:00"
+      },
+      "performance": {
+        "sharpe": 33.84,
+        "win_rate": 1.0,
+        "n_trades": 5
+      },
+      "discovery_date": "2026-08-08T22:39:40+00:00",
+      "last_trade_date": "",
+      "degradation_count": 0,
+      "notes": [
+        "validated score=100",
+        "activated score=100"
+      ]
+    },
+    "FLOKIUSDT/SUIUSDT@1d": {
+      "pair": "FLOKIUSDT/SUIUSDT",
+      "timeframe": "1d",
+      "state": "active",
+      "metrics": {
+        "cointegration_pvalue": 1.0,
+        "hedge_ratio": 1.0,
+        "hedge_ratio_stability": 0.0,
+        "half_life": 0.0,
+        "spread_variance": 0.0,
+        "zscore_divergence": 0.0,
+        "residual_stationarity": 0.0,
+        "last_update": "2026-08-08T22:58:14+00:00"
+      },
+      "performance": {
+        "sharpe": 30.95,
+        "win_rate": 0.86,
+        "n_trades": 7
+      },
+      "discovery_date": "2026-08-08T22:39:40+00:00",
+      "last_trade_date": "",
+      "degradation_count": 0,
+      "notes": [
+        "validated score=100",
+        "activated score=100"
+      ]
+    },
+    "BONKUSDT/XRPUSDT@4h": {
+      "pair": "BONKUSDT/XRPUSDT",
+      "timeframe": "4h",
+      "state": "active",
+      "metrics": {
+        "cointegration_pvalue": 1.0,
+        "hedge_ratio": 1.0,
+        "hedge_ratio_stability": 0.0,
+        "half_life": 0.0,
+        "spread_variance": 0.0,
+        "zscore_divergence": 0.0,
+        "residual_stationarity": 0.0,
+        "last_update": "2026-08-08T22:58:14+00:00"
+      },
+      "performance": {
+        "sharpe": 16.86,
+        "win_rate": 0.6,
+        "n_trades": 25
+      },
+      "discovery_date": "2026-08-08T22:39:40+00:00",
+      "last_trade_date": "",
+      "degradation_count": 0,
+      "notes": [
+        "validated score=100",
+        "activated score=100"
+      ]
+    },
+    "CRVUSDT/LDOUSDT@4h": {
+      "pair": "CRVUSDT/LDOUSDT",
+      "timeframe": "4h",
+      "state": "active",
+      "metrics": {
+        "cointegration_pvalue": 1.0,
+        "hedge_ratio": 1.0,
+        "hedge_ratio_stability": 0.0,
+        "half_life": 0.0,
+        "spread_variance": 0.0,
+        "zscore_divergence": 0.0,
+        "residual_stationarity": 0.0,
+        "last_update": "2026-08-08T22:58:14+00:00"
+      },
+      "performance": {
+        "sharpe": 53.28,
+        "win_rate": 0.42,
+        "n_trades": 24
+      },
+      "discovery_date": "2026-08-08T22:39:40+00:00",
+      "last_trade_date": "",
+      "degradation_count": 0,
+      "notes": [
+        "validated score=100",
+        "activated score=100"
+      ]
+    },
+    "SEIUSDT/SHIBUSDT@4h": {
+      "pair": "SEIUSDT/SHIBUSDT",
+      "timeframe": "4h",
+      "state": "active",
+      "metrics": {
+        "cointegration_pvalue": 1.0,
+        "hedge_ratio": 1.0,
+        "hedge_ratio_stability": 0.0,
+        "half_life": 0.0,
+        "spread_variance": 0.0,
+        "zscore_divergence": 0.0,
+        "residual_stationarity": 0.0,
+        "last_update": "2026-08-08T22:58:14+00:00"
+      },
+      "performance": {
+        "sharpe": 16.89,
+        "win_rate": 0.55,
+        "n_trades": 29
+      },
+      "discovery_date": "2026-08-08T22:39:40+00:00",
+      "last_trade_date": "",
+      "degradation_count": 0,
+      "notes": [
+        "validated score=100",
+        "activated score=100"
+      ]
+    },
+    "DOGEUSDT/SUIUSDT@4h": {
+      "pair": "DOGEUSDT/SUIUSDT",
+      "timeframe": "4h",
+      "state": "active",
+      "metrics": {
+        "cointegration_pvalue": 1.0,
+        "hedge_ratio": 1.0,
+        "hedge_ratio_stability": 0.0,
+        "half_life": 0.0,
+        "spread_variance": 0.0,
+        "zscore_divergence": 0.0,
+        "residual_stationarity": 0.0,
+        "last_update": "2026-08-08T22:58:14+00:00"
+      },
+      "performance": {
+        "sharpe": 24.3,
+        "win_rate": 0.45,
+        "n_trades": 31
+      },
+      "discovery_date": "2026-08-08T22:39:40+00:00",
+      "last_trade_date": "",
+      "degradation_count": 0,
+      "notes": [
+        "validated score=100",
+        "activated score=100"
+      ]
+    },
+    "1000SATSUSDT/DOTUSDT@1h": {
+      "pair": "1000SATSUSDT/DOTUSDT",
+      "timeframe": "1h",
+      "state": "active",
+      "metrics": {
+        "cointegration_pvalue": 1.0,
+        "hedge_ratio": 1.0,
+        "hedge_ratio_stability": 0.0,
+        "half_life": 0.0,
+        "spread_variance": 0.0,
+        "zscore_divergence": 0.0,
+        "residual_stationarity": 0.0,
+        "last_update": "2026-08-08T22:58:14+00:00"
+      },
+      "performance": {
+        "sharpe": 6.9,
+        "win_rate": 0.62,
+        "n_trades": 34
+      },
+      "discovery_date": "2026-08-08T22:39:40+00:00",
+      "last_trade_date": "",
+      "degradation_count": 0,
+      "notes": [
+        "validated score=100",
+        "activated score=100"
+      ]
+    },
+    "1000SATSUSDT/SOLUSDT@1h": {
+      "pair": "1000SATSUSDT/SOLUSDT",
+      "timeframe": "1h",
+      "state": "active",
+      "metrics": {
+        "cointegration_pvalue": 1.0,
+        "hedge_ratio": 1.0,
+        "hedge_ratio_stability": 0.0,
+        "half_life": 0.0,
+        "spread_variance": 0.0,
+        "zscore_divergence": 0.0,
+        "residual_stationarity": 0.0,
+        "last_update": "2026-08-08T22:58:14+00:00"
+      },
+      "performance": {
+        "sharpe": 8.13,
+        "win_rate": 0.57,
+        "n_trades": 28
+      },
+      "discovery_date": "2026-08-08T22:39:40+00:00",
+      "last_trade_date": "",
+      "degradation_count": 0,
+      "notes": [
+        "validated score=100",
+        "activated score=100"
+      ]
+    },
+    "1000SATSUSDT/AAVEUSDT@1h": {
+      "pair": "1000SATSUSDT/AAVEUSDT",
+      "timeframe": "1h",
+      "state": "active",
+      "metrics": {
+        "cointegration_pvalue": 1.0,
+        "hedge_ratio": 1.0,
+        "hedge_ratio_stability": 0.0,
+        "half_life": 0.0,
+        "spread_variance": 0.0,
+        "zscore_divergence": 0.0,
+        "residual_stationarity": 0.0,
+        "last_update": "2026-08-08T22:58:14+00:00"
+      },
+      "performance": {
+        "sharpe": 9.71,
+        "win_rate": 0.54,
+        "n_trades": 26
+      },
+      "discovery_date": "2026-08-08T22:39:40+00:00",
+      "last_trade_date": "",
+      "degradation_count": 0,
+      "notes": [
+        "validated score=100",
+        "activated score=100"
+      ]
+    },
+    "DOGEUSDT/WLDUSDT@1d": {
+      "pair": "DOGEUSDT/WLDUSDT",
+      "timeframe": "1d",
+      "state": "active",
+      "metrics": {
+        "cointegration_pvalue": 1.0,
+        "hedge_ratio": 1.0,
+        "hedge_ratio_stability": 0.0,
+        "half_life": 0.0,
+        "spread_variance": 0.0,
+        "zscore_divergence": 0.0,
+        "residual_stationarity": 0.0,
+        "last_update": "2026-08-08T22:58:14+00:00"
+      },
+      "performance": {
+        "sharpe": 13.63,
+        "win_rate": 0.5,
+        "n_trades": 22
+      },
+      "discovery_date": "2026-08-08T22:39:40+00:00",
+      "last_trade_date": "",
+      "degradation_count": 0,
+      "notes": [
+        "validated score=100",
+        "activated score=100"
+      ]
+    },
+    "BONKUSDT/FILUSDT@5m": {
+      "pair": "BONKUSDT/FILUSDT",
+      "timeframe": "5m",
+      "state": "active",
+      "metrics": {
+        "cointegration_pvalue": 1.0,
+        "hedge_ratio": 1.0,
+        "hedge_ratio_stability": 0.0,
+        "half_life": 0.0,
+        "spread_variance": 0.0,
+        "zscore_divergence": 0.0,
+        "residual_stationarity": 0.0,
+        "last_update": "2026-08-08T22:58:14+00:00"
+      },
+      "performance": {
+        "sharpe": 6.93,
+        "win_rate": 0.62,
+        "n_trades": 24
+      },
+      "discovery_date": "2026-08-08T22:39:40+00:00",
+      "last_trade_date": "",
+      "degradation_count": 0,
+      "notes": [
+        "validated score=100",
+        "activated score=100"
+      ]
+    },
+    "DOGEUSDT/FILUSDT@4h": {
+      "pair": "DOGEUSDT/FILUSDT",
+      "timeframe": "4h",
+      "state": "active",
+      "metrics": {
+        "cointegration_pvalue": 1.0,
+        "hedge_ratio": 1.0,
+        "hedge_ratio_stability": 0.0,
+        "half_life": 0.0,
+        "spread_variance": 0.0,
+        "zscore_divergence": 0.0,
+        "residual_stationarity": 0.0,
+        "last_update": "2026-08-08T22:58:14+00:00"
+      },
+      "performance": {
+        "sharpe": 11.42,
+        "win_rate": 0.83,
+        "n_trades": 6
+      },
+      "discovery_date": "2026-08-08T22:39:40+00:00",
+      "last_trade_date": "",
+      "degradation_count": 0,
+      "notes": [
+        "validated score=100",
+        "activated score=100"
+      ]
+    },
+    "1000SATSUSDT/XRPUSDT@4h": {
+      "pair": "1000SATSUSDT/XRPUSDT",
+      "timeframe": "4h",
+      "state": "active",
+      "metrics": {
+        "cointegration_pvalue": 1.0,
+        "hedge_ratio": 1.0,
+        "hedge_ratio_stability": 0.0,
+        "half_life": 0.0,
+        "spread_variance": 0.0,
+        "zscore_divergence": 0.0,
+        "residual_stationarity": 0.0,
+        "last_update": "2026-08-08T22:58:14+00:00"
+      },
+      "performance": {
+        "sharpe": 6.59,
+        "win_rate": 0.54,
+        "n_trades": 39
+      },
+      "discovery_date": "2026-08-08T22:39:40+00:00",
+      "last_trade_date": "",
+      "degradation_count": 0,
+      "notes": [
+        "validated score=100",
+        "activated score=100"
+      ]
+    },
+    "1000SATSUSDT/AVAXUSDT@1h": {
+      "pair": "1000SATSUSDT/AVAXUSDT",
+      "timeframe": "1h",
+      "state": "active",
+      "metrics": {
+        "cointegration_pvalue": 1.0,
+        "hedge_ratio": 1.0,
+        "hedge_ratio_stability": 0.0,
+        "half_life": 0.0,
+        "spread_variance": 0.0,
+        "zscore_divergence": 0.0,
+        "residual_stationarity": 0.0,
+        "last_update": "2026-08-08T22:58:14+00:00"
+      },
+      "performance": {
+        "sharpe": 10.24,
+        "win_rate": 0.5,
+        "n_trades": 26
+      },
+      "discovery_date": "2026-08-08T22:39:40+00:00",
+      "last_trade_date": "",
+      "degradation_count": 0,
+      "notes": [
+        "validated score=100",
+        "activated score=100"
+      ]
+    },
+    "GALAUSDT/WLDUSDT@4h": {
+      "pair": "GALAUSDT/WLDUSDT",
+      "timeframe": "4h",
+      "state": "active",
+      "metrics": {
+        "cointegration_pvalue": 1.0,
+        "hedge_ratio": 1.0,
+        "hedge_ratio_stability": 0.0,
+        "half_life": 0.0,
+        "spread_variance": 0.0,
+        "zscore_divergence": 0.0,
+        "residual_stationarity": 0.0,
+        "last_update": "2026-08-08T22:58:14+00:00"
+      },
+      "performance": {
+        "sharpe": 9.64,
+        "win_rate": 0.45,
+        "n_trades": 38
+      },
+      "discovery_date": "2026-08-08T22:39:40+00:00",
+      "last_trade_date": "",
+      "degradation_count": 0,
+      "notes": [
+        "validated score=100",
+        "activated score=100"
+      ]
+    },
+    "AVAXUSDT/CRVUSDT@4h": {
+      "pair": "AVAXUSDT/CRVUSDT",
+      "timeframe": "4h",
+      "state": "active",
+      "metrics": {
+        "cointegration_pvalue": 1.0,
+        "hedge_ratio": 1.0,
+        "hedge_ratio_stability": 0.0,
+        "half_life": 0.0,
+        "spread_variance": 0.0,
+        "zscore_divergence": 0.0,
+        "residual_stationarity": 0.0,
+        "last_update": "2026-08-08T22:58:14+00:00"
+      },
+      "performance": {
+        "sharpe": 5.52,
+        "win_rate": 0.62,
+        "n_trades": 26
+      },
+      "discovery_date": "2026-08-08T22:39:40+00:00",
+      "last_trade_date": "",
+      "degradation_count": 0,
+      "notes": [
+        "validated score=100",
+        "activated score=100"
+      ]
+    },
+    "1000SATSUSDT/GALAUSDT@4h": {
+      "pair": "1000SATSUSDT/GALAUSDT",
+      "timeframe": "4h",
+      "state": "active",
+      "metrics": {
+        "cointegration_pvalue": 1.0,
+        "hedge_ratio": 1.0,
+        "hedge_ratio_stability": 0.0,
+        "half_life": 0.0,
+        "spread_variance": 0.0,
+        "zscore_divergence": 0.0,
+        "residual_stationarity": 0.0,
+        "last_update": "2026-08-08T22:58:14+00:00"
+      },
+      "performance": {
+        "sharpe": 5.27,
+        "win_rate": 0.6,
+        "n_trades": 30
+      },
+      "discovery_date": "2026-08-08T22:39:40+00:00",
+      "last_trade_date": "",
+      "degradation_count": 0,
+      "notes": [
+        "validated score=100",
+        "activated score=100"
+      ]
+    },
+    "FILUSDT/XRPUSDT@4h": {
+      "pair": "FILUSDT/XRPUSDT",
+      "timeframe": "4h",
+      "state": "active",
+      "metrics": {
+        "cointegration_pvalue": 1.0,
+        "hedge_ratio": 1.0,
+        "hedge_ratio_stability": 0.0,
+        "half_life": 0.0,
+        "spread_variance": 0.0,
+        "zscore_divergence": 0.0,
+        "residual_stationarity": 0.0,
+        "last_update": "2026-08-08T22:58:14+00:00"
+      },
+      "performance": {
+        "sharpe": 6.65,
+        "win_rate": 0.61,
+        "n_trades": 18
+      },
+      "discovery_date": "2026-08-08T22:39:40+00:00",
+      "last_trade_date": "",
+      "degradation_count": 0,
+      "notes": [
+        "validated score=100",
+        "activated score=100"
+      ]
+    },
+    "1000SATSUSDT/LTCUSDT@1h": {
+      "pair": "1000SATSUSDT/LTCUSDT",
+      "timeframe": "1h",
+      "state": "active",
+      "metrics": {
+        "cointegration_pvalue": 1.0,
+        "hedge_ratio": 1.0,
+        "hedge_ratio_stability": 0.0,
+        "half_life": 0.0,
+        "spread_variance": 0.0,
+        "zscore_divergence": 0.0,
+        "residual_stationarity": 0.0,
+        "last_update": "2026-08-08T22:58:14+00:00"
+      },
+      "performance": {
+        "sharpe": 5.99,
+        "win_rate": 0.53,
+        "n_trades": 32
+      },
+      "discovery_date": "2026-08-08T22:39:40+00:00",
+      "last_trade_date": "",
+      "degradation_count": 0,
+      "notes": [
+        "validated score=100",
+        "activated score=100"
+      ]
+    },
+    "BNBUSDT/SOLUSDT@4h": {
+      "pair": "BNBUSDT/SOLUSDT",
+      "timeframe": "4h",
+      "state": "active",
+      "metrics": {
+        "cointegration_pvalue": 1.0,
+        "hedge_ratio": 1.0,
+        "hedge_ratio_stability": 0.0,
+        "half_life": 0.0,
+        "spread_variance": 0.0,
+        "zscore_divergence": 0.0,
+        "residual_stationarity": 0.0,
+        "last_update": "2026-08-08T22:58:14+00:00"
+      },
+      "performance": {
+        "sharpe": 13.89,
+        "win_rate": 0.67,
+        "n_trades": 6
+      },
+      "discovery_date": "2026-08-08T22:39:40+00:00",
+      "last_trade_date": "",
+      "degradation_count": 0,
+      "notes": [
+        "validated score=100",
+        "activated score=100"
+      ]
+    },
+    "GALAUSDT/SEIUSDT@4h": {
+      "pair": "GALAUSDT/SEIUSDT",
+      "timeframe": "4h",
+      "state": "active",
+      "metrics": {
+        "cointegration_pvalue": 1.0,
+        "hedge_ratio": 1.0,
+        "hedge_ratio_stability": 0.0,
+        "half_life": 0.0,
+        "spread_variance": 0.0,
+        "zscore_divergence": 0.0,
+        "residual_stationarity": 0.0,
+        "last_update": "2026-08-08T22:58:14+00:00"
+      },
+      "performance": {
+        "sharpe": 3.78,
+        "win_rate": 0.63,
+        "n_trades": 30
+      },
+      "discovery_date": "2026-08-08T22:39:40+00:00",
+      "last_trade_date": "",
+      "degradation_count": 0,
+      "notes": [
+        "validated score=100",
+        "activated score=100"
+      ]
+    },
+    "1000SATSUSDT/TRXUSDT@1h": {
+      "pair": "1000SATSUSDT/TRXUSDT",
+      "timeframe": "1h",
+      "state": "active",
+      "metrics": {
+        "cointegration_pvalue": 1.0,
+        "hedge_ratio": 1.0,
+        "hedge_ratio_stability": 0.0,
+        "half_life": 0.0,
+        "spread_variance": 0.0,
+        "zscore_divergence": 0.0,
+        "residual_stationarity": 0.0,
+        "last_update": "2026-08-08T22:58:14+00:00"
+      },
+      "performance": {
+        "sharpe": 4.52,
+        "win_rate": 0.45,
+        "n_trades": 80
+      },
+      "discovery_date": "2026-08-08T22:39:40+00:00",
+      "last_trade_date": "",
+      "degradation_count": 0,
+      "notes": [
+        "validated score=100",
+        "activated score=100"
+      ]
+    },
+    "1000SATSUSDT/XRPUSDT@1h": {
+      "pair": "1000SATSUSDT/XRPUSDT",
+      "timeframe": "1h",
+      "state": "active",
+      "metrics": {
+        "cointegration_pvalue": 1.0,
+        "hedge_ratio": 1.0,
+        "hedge_ratio_stability": 0.0,
+        "half_life": 0.0,
+        "spread_variance": 0.0,
+        "zscore_divergence": 0.0,
+        "residual_stationarity": 0.0,
+        "last_update": "2026-08-08T22:58:14+00:00"
+      },
+      "performance": {
+        "sharpe": 4.24,
+        "win_rate": 0.52,
+        "n_trades": 48
+      },
+      "discovery_date": "2026-08-08T22:39:40+00:00",
+      "last_trade_date": "",
+      "degradation_count": 0,
+      "notes": [
+        "validated score=100",
+        "activated score=100"
+      ]
+    },
+    "ADAUSDT/SNXUSDT@1h": {
+      "pair": "ADAUSDT/SNXUSDT",
+      "timeframe": "1h",
+      "state": "active",
+      "metrics": {
+        "cointegration_pvalue": 1.0,
+        "hedge_ratio": 1.0,
+        "hedge_ratio_stability": 0.0,
+        "half_life": 0.0,
+        "spread_variance": 0.0,
+        "zscore_divergence": 0.0,
+        "residual_stationarity": 0.0,
+        "last_update": "2026-08-08T22:58:14+00:00"
+      },
+      "performance": {
+        "sharpe": 6.31,
+        "win_rate": 0.44,
+        "n_trades": 43
+      },
+      "discovery_date": "2026-08-08T22:39:40+00:00",
+      "last_trade_date": "",
+      "degradation_count": 0,
+      "notes": [
+        "validated score=100",
+        "activated score=100"
+      ]
+    },
+    "1000SATSUSDT/APTUSDT@1h": {
+      "pair": "1000SATSUSDT/APTUSDT",
+      "timeframe": "1h",
+      "state": "active",
+      "metrics": {
+        "cointegration_pvalue": 1.0,
+        "hedge_ratio": 1.0,
+        "hedge_ratio_stability": 0.0,
+        "half_life": 0.0,
+        "spread_variance": 0.0,
+        "zscore_divergence": 0.0,
+        "residual_stationarity": 0.0,
+        "last_update": "2026-08-08T22:58:14+00:00"
+      },
+      "performance": {
+        "sharpe": 3.84,
+        "win_rate": 0.58,
+        "n_trades": 36
+      },
+      "discovery_date": "2026-08-08T22:39:40+00:00",
+      "last_trade_date": "",
+      "degradation_count": 0,
+      "notes": [
+        "validated score=100",
+        "activated score=100"
+      ]
+    },
+    "SNXUSDT/XRPUSDT@1h": {
+      "pair": "SNXUSDT/XRPUSDT",
+      "timeframe": "1h",
+      "state": "active",
+      "metrics": {
+        "cointegration_pvalue": 1.0,
+        "hedge_ratio": 1.0,
+        "hedge_ratio_stability": 0.0,
+        "half_life": 0.0,
+        "spread_variance": 0.0,
+        "zscore_divergence": 0.0,
+        "residual_stationarity": 0.0,
+        "last_update": "2026-08-08T22:58:14+00:00"
+      },
+      "performance": {
+        "sharpe": 5.3,
+        "win_rate": 1.0,
+        "n_trades": 5
+      },
+      "discovery_date": "2026-08-08T22:39:40+00:00",
+      "last_trade_date": "",
+      "degradation_count": 0,
+      "notes": [
+        "validated score=100",
+        "activated score=100"
+      ]
+    },
+    "CRVUSDT/WLDUSDT@4h": {
+      "pair": "CRVUSDT/WLDUSDT",
+      "timeframe": "4h",
+      "state": "active",
+      "metrics": {
+        "cointegration_pvalue": 1.0,
+        "hedge_ratio": 1.0,
+        "hedge_ratio_stability": 0.0,
+        "half_life": 0.0,
+        "spread_variance": 0.0,
+        "zscore_divergence": 0.0,
+        "residual_stationarity": 0.0,
+        "last_update": "2026-08-08T22:58:14+00:00"
+      },
+      "performance": {
+        "sharpe": 6.17,
+        "win_rate": 0.45,
+        "n_trades": 38
+      },
+      "discovery_date": "2026-08-08T22:39:40+00:00",
+      "last_trade_date": "",
+      "degradation_count": 0,
+      "notes": [
+        "validated score=100",
+        "activated score=100"
+      ]
+    },
+    "DOGEUSDT/INJUSDT@4h": {
+      "pair": "DOGEUSDT/INJUSDT",
+      "timeframe": "4h",
+      "state": "active",
+      "metrics": {
+        "cointegration_pvalue": 1.0,
+        "hedge_ratio": 1.0,
+        "hedge_ratio_stability": 0.0,
+        "half_life": 0.0,
+        "spread_variance": 0.0,
+        "zscore_divergence": 0.0,
+        "residual_stationarity": 0.0,
+        "last_update": "2026-08-08T22:58:14+00:00"
+      },
+      "performance": {
+        "sharpe": 3.52,
+        "win_rate": 0.62,
+        "n_trades": 29
+      },
+      "discovery_date": "2026-08-08T22:39:40+00:00",
+      "last_trade_date": "",
+      "degradation_count": 0,
+      "notes": [
+        "validated score=100",
+        "activated score=100"
+      ]
+    },
+    "1000SATSUSDT/BCHUSDT@1h": {
+      "pair": "1000SATSUSDT/BCHUSDT",
+      "timeframe": "1h",
+      "state": "active",
+      "metrics": {
+        "cointegration_pvalue": 1.0,
+        "hedge_ratio": 1.0,
+        "hedge_ratio_stability": 0.0,
+        "half_life": 0.0,
+        "spread_variance": 0.0,
+        "zscore_divergence": 0.0,
+        "residual_stationarity": 0.0,
+        "last_update": "2026-08-08T22:58:14+00:00"
+      },
+      "performance": {
+        "sharpe": 6.24,
+        "win_rate": 0.48,
+        "n_trades": 27
+      },
+      "discovery_date": "2026-08-08T22:39:40+00:00",
+      "last_trade_date": "",
+      "degradation_count": 0,
+      "notes": [
+        "validated score=100",
+        "activated score=100"
+      ]
+    },
+    "ADAUSDT/SEIUSDT@4h": {
+      "pair": "ADAUSDT/SEIUSDT",
+      "timeframe": "4h",
+      "state": "active",
+      "metrics": {
+        "cointegration_pvalue": 1.0,
+        "hedge_ratio": 1.0,
+        "hedge_ratio_stability": 0.0,
+        "half_life": 0.0,
+        "spread_variance": 0.0,
+        "zscore_divergence": 0.0,
+        "residual_stationarity": 0.0,
+        "last_update": "2026-08-08T22:58:14+00:00"
+      },
+      "performance": {
+        "sharpe": 5.46,
+        "win_rate": 0.52,
+        "n_trades": 25
+      },
+      "discovery_date": "2026-08-08T22:39:40+00:00",
+      "last_trade_date": "",
+      "degradation_count": 0,
+      "notes": [
+        "validated score=100",
+        "activated score=100"
+      ]
+    },
+    "1000SATSUSDT/SEIUSDT@4h": {
+      "pair": "1000SATSUSDT/SEIUSDT",
+      "timeframe": "4h",
+      "state": "active",
+      "metrics": {
+        "cointegration_pvalue": 1.0,
+        "hedge_ratio": 1.0,
+        "hedge_ratio_stability": 0.0,
+        "half_life": 0.0,
+        "spread_variance": 0.0,
+        "zscore_divergence": 0.0,
+        "residual_stationarity": 0.0,
+        "last_update": "2026-08-08T22:58:14+00:00"
+      },
+      "performance": {
+        "sharpe": 5.24,
+        "win_rate": 0.55,
+        "n_trades": 20
+      },
+      "discovery_date": "2026-08-08T22:39:40+00:00",
+      "last_trade_date": "",
+      "degradation_count": 0,
+      "notes": [
+        "validated score=100",
+        "activated score=100"
+      ]
+    },
+    "1000SATSUSDT/UNIUSDT@1h": {
+      "pair": "1000SATSUSDT/UNIUSDT",
+      "timeframe": "1h",
+      "state": "active",
+      "metrics": {
+        "cointegration_pvalue": 1.0,
+        "hedge_ratio": 1.0,
+        "hedge_ratio_stability": 0.0,
+        "half_life": 0.0,
+        "spread_variance": 0.0,
+        "zscore_divergence": 0.0,
+        "residual_stationarity": 0.0,
+        "last_update": "2026-08-08T22:58:14+00:00"
+      },
+      "performance": {
+        "sharpe": 4.27,
+        "win_rate": 0.46,
+        "n_trades": 48
+      },
+      "discovery_date": "2026-08-08T22:39:40+00:00",
+      "last_trade_date": "",
+      "degradation_count": 0,
+      "notes": [
+        "validated score=100",
+        "activated score=100"
+      ]
+    },
+    "FILUSDT/SNXUSDT@1h": {
+      "pair": "FILUSDT/SNXUSDT",
+      "timeframe": "1h",
+      "state": "active",
+      "metrics": {
+        "cointegration_pvalue": 1.0,
+        "hedge_ratio": 1.0,
+        "hedge_ratio_stability": 0.0,
+        "half_life": 0.0,
+        "spread_variance": 0.0,
+        "zscore_divergence": 0.0,
+        "residual_stationarity": 0.0,
+        "last_update": "2026-08-08T22:58:14+00:00"
+      },
+      "performance": {
+        "sharpe": 4.67,
+        "win_rate": 0.46,
+        "n_trades": 39
+      },
+      "discovery_date": "2026-08-08T22:39:40+00:00",
+      "last_trade_date": "",
+      "degradation_count": 0,
+      "notes": [
+        "validated score=100",
+        "activated score=100"
+      ]
+    },
+    "STXUSDT/WLDUSDT@4h": {
+      "pair": "STXUSDT/WLDUSDT",
+      "timeframe": "4h",
+      "state": "active",
+      "metrics": {
+        "cointegration_pvalue": 1.0,
+        "hedge_ratio": 1.0,
+        "hedge_ratio_stability": 0.0,
+        "half_life": 0.0,
+        "spread_variance": 0.0,
+        "zscore_divergence": 0.0,
+        "residual_stationarity": 0.0,
+        "last_update": "2026-08-08T22:58:14+00:00"
+      },
+      "performance": {
+        "sharpe": 3.52,
+        "win_rate": 0.53,
+        "n_trades": 38
+      },
+      "discovery_date": "2026-08-08T22:39:40+00:00",
+      "last_trade_date": "",
+      "degradation_count": 0,
+      "notes": [
+        "validated score=100",
+        "activated score=100"
+      ]
+    },
+    "BONKUSDT/LTCUSDT@5m": {
+      "pair": "BONKUSDT/LTCUSDT",
+      "timeframe": "5m",
+      "state": "active",
+      "metrics": {
+        "cointegration_pvalue": 1.0,
+        "hedge_ratio": 1.0,
+        "hedge_ratio_stability": 0.0,
+        "half_life": 0.0,
+        "spread_variance": 0.0,
+        "zscore_divergence": 0.0,
+        "residual_stationarity": 0.0,
+        "last_update": "2026-08-08T22:58:14+00:00"
+      },
+      "performance": {
+        "sharpe": 4.88,
+        "win_rate": 0.5,
+        "n_trades": 26
+      },
+      "discovery_date": "2026-08-08T22:39:40+00:00",
+      "last_trade_date": "",
+      "degradation_count": 0,
+      "notes": [
+        "validated score=100",
+        "activated score=100"
+      ]
+    },
+    "1000SATSUSDT/COMPUSDT@1h": {
+      "pair": "1000SATSUSDT/COMPUSDT",
+      "timeframe": "1h",
+      "state": "active",
+      "metrics": {
+        "cointegration_pvalue": 1.0,
+        "hedge_ratio": 1.0,
+        "hedge_ratio_stability": 0.0,
+        "half_life": 0.0,
+        "spread_variance": 0.0,
+        "zscore_divergence": 0.0,
+        "residual_stationarity": 0.0,
+        "last_update": "2026-08-08T22:58:14+00:00"
+      },
+      "performance": {
+        "sharpe": 5.11,
+        "win_rate": 0.45,
+        "n_trades": 29
+      },
+      "discovery_date": "2026-08-08T22:39:40+00:00",
+      "last_trade_date": "",
+      "degradation_count": 0,
+      "notes": [
+        "validated score=100",
+        "activated score=100"
+      ]
+    },
+    "SHIBUSDT/WLDUSDT@4h": {
+      "pair": "SHIBUSDT/WLDUSDT",
+      "timeframe": "4h",
+      "state": "active",
+      "metrics": {
+        "cointegration_pvalue": 1.0,
+        "hedge_ratio": 1.0,
+        "hedge_ratio_stability": 0.0,
+        "half_life": 0.0,
+        "spread_variance": 0.0,
+        "zscore_divergence": 0.0,
+        "residual_stationarity": 0.0,
+        "last_update": "2026-08-08T22:58:14+00:00"
+      },
+      "performance": {
+        "sharpe": 2.83,
+        "win_rate": 0.88,
+        "n_trades": 8
+      },
+      "discovery_date": "2026-08-08T22:39:40+00:00",
+      "last_trade_date": "",
+      "degradation_count": 0,
+      "notes": [
+        "validated score=95",
+        "activated score=95"
+      ]
+    },
+    "1000SATSUSDT/ADAUSDT@1h": {
+      "pair": "1000SATSUSDT/ADAUSDT",
+      "timeframe": "1h",
+      "state": "active",
+      "metrics": {
+        "cointegration_pvalue": 1.0,
+        "hedge_ratio": 1.0,
+        "hedge_ratio_stability": 0.0,
+        "half_life": 0.0,
+        "spread_variance": 0.0,
+        "zscore_divergence": 0.0,
+        "residual_stationarity": 0.0,
+        "last_update": "2026-08-08T22:58:14+00:00"
+      },
+      "performance": {
+        "sharpe": 3.43,
+        "win_rate": 0.58,
+        "n_trades": 19
+      },
+      "discovery_date": "2026-08-08T22:39:40+00:00",
+      "last_trade_date": "",
+      "degradation_count": 0,
+      "notes": [
+        "validated score=100",
+        "activated score=100"
+      ]
+    },
+    "AVAXUSDT/DOGEUSDT@4h": {
+      "pair": "AVAXUSDT/DOGEUSDT",
+      "timeframe": "4h",
+      "state": "active",
+      "metrics": {
+        "cointegration_pvalue": 1.0,
+        "hedge_ratio": 1.0,
+        "hedge_ratio_stability": 0.0,
+        "half_life": 0.0,
+        "spread_variance": 0.0,
+        "zscore_divergence": 0.0,
+        "residual_stationarity": 0.0,
+        "last_update": "2026-08-08T22:58:14+00:00"
+      },
+      "performance": {
+        "sharpe": 3.83,
+        "win_rate": 0.62,
+        "n_trades": 13
+      },
+      "discovery_date": "2026-08-08T22:39:40+00:00",
+      "last_trade_date": "",
+      "degradation_count": 0,
+      "notes": [
+        "validated score=100",
+        "activated score=100"
+      ]
+    },
+    "BONKUSDT/BTCUSDT@5m": {
+      "pair": "BONKUSDT/BTCUSDT",
+      "timeframe": "5m",
+      "state": "active",
+      "metrics": {
+        "cointegration_pvalue": 1.0,
+        "hedge_ratio": 1.0,
+        "hedge_ratio_stability": 0.0,
+        "half_life": 0.0,
+        "spread_variance": 0.0,
+        "zscore_divergence": 0.0,
+        "residual_stationarity": 0.0,
+        "last_update": "2026-08-08T22:58:14+00:00"
+      },
+      "performance": {
+        "sharpe": 4.98,
+        "win_rate": 0.44,
+        "n_trades": 25
+      },
+      "discovery_date": "2026-08-08T22:39:40+00:00",
+      "last_trade_date": "",
+      "degradation_count": 0,
+      "notes": [
+        "validated score=100",
+        "activated score=100"
+      ]
+    },
+    "AVAXUSDT/SOLUSDT@1h": {
+      "pair": "AVAXUSDT/SOLUSDT",
+      "timeframe": "1h",
+      "state": "active",
+      "metrics": {
+        "cointegration_pvalue": 1.0,
+        "hedge_ratio": 1.0,
+        "hedge_ratio_stability": 0.0,
+        "half_life": 0.0,
+        "spread_variance": 0.0,
+        "zscore_divergence": 0.0,
+        "residual_stationarity": 0.0,
+        "last_update": "2026-08-08T22:58:14+00:00"
+      },
+      "performance": {
+        "sharpe": 4.82,
+        "win_rate": 0.42,
+        "n_trades": 31
+      },
+      "discovery_date": "2026-08-08T22:39:40+00:00",
+      "last_trade_date": "",
+      "degradation_count": 0,
+      "notes": [
+        "validated score=100",
+        "activated score=100"
+      ]
+    },
+    "BONKUSDT/STXUSDT@5m": {
+      "pair": "BONKUSDT/STXUSDT",
+      "timeframe": "5m",
+      "state": "active",
+      "metrics": {
+        "cointegration_pvalue": 1.0,
+        "hedge_ratio": 1.0,
+        "hedge_ratio_stability": 0.0,
+        "half_life": 0.0,
+        "spread_variance": 0.0,
+        "zscore_divergence": 0.0,
+        "residual_stationarity": 0.0,
+        "last_update": "2026-08-08T22:58:14+00:00"
+      },
+      "performance": {
+        "sharpe": 3.22,
+        "win_rate": 0.52,
+        "n_trades": 29
+      },
+      "discovery_date": "2026-08-08T22:39:40+00:00",
+      "last_trade_date": "",
+      "degradation_count": 0,
+      "notes": [
+        "validated score=100",
+        "activated score=100"
+      ]
+    },
+    "BONKUSDT/STXUSDT@1h": {
+      "pair": "BONKUSDT/STXUSDT",
+      "timeframe": "1h",
+      "state": "active",
+      "metrics": {
+        "cointegration_pvalue": 1.0,
+        "hedge_ratio": 1.0,
+        "hedge_ratio_stability": 0.0,
+        "half_life": 0.0,
+        "spread_variance": 0.0,
+        "zscore_divergence": 0.0,
+        "residual_stationarity": 0.0,
+        "last_update": "2026-08-08T22:58:14+00:00"
+      },
+      "performance": {
+        "sharpe": 3.42,
+        "win_rate": 0.46,
+        "n_trades": 37
+      },
+      "discovery_date": "2026-08-08T22:39:40+00:00",
+      "last_trade_date": "",
+      "degradation_count": 0,
+      "notes": [
+        "validated score=100",
+        "activated score=100"
+      ]
+    },
+    "1000SATSUSDT/CRVUSDT@1h": {
+      "pair": "1000SATSUSDT/CRVUSDT",
+      "timeframe": "1h",
+      "state": "active",
+      "metrics": {
+        "cointegration_pvalue": 1.0,
+        "hedge_ratio": 1.0,
+        "hedge_ratio_stability": 0.0,
+        "half_life": 0.0,
+        "spread_variance": 0.0,
+        "zscore_divergence": 0.0,
+        "residual_stationarity": 0.0,
+        "last_update": "2026-08-08T22:58:14+00:00"
+      },
+      "performance": {
+        "sharpe": 2.73,
+        "win_rate": 0.46,
+        "n_trades": 50
+      },
+      "discovery_date": "2026-08-08T22:39:40+00:00",
+      "last_trade_date": "",
+      "degradation_count": 0,
+      "notes": [
+        "validated score=95",
+        "activated score=95"
+      ]
+    },
+    "1000SATSUSDT/RUNEUSDT@1d": {
+      "pair": "1000SATSUSDT/RUNEUSDT",
+      "timeframe": "1d",
+      "state": "active",
+      "metrics": {
+        "cointegration_pvalue": 1.0,
+        "hedge_ratio": 1.0,
+        "hedge_ratio_stability": 0.0,
+        "half_life": 0.0,
+        "spread_variance": 0.0,
+        "zscore_divergence": 0.0,
+        "residual_stationarity": 0.0,
+        "last_update": "2026-08-08T22:58:14+00:00"
+      },
+      "performance": {
+        "sharpe": 4.61,
+        "win_rate": 0.62,
+        "n_trades": 8
+      },
+      "discovery_date": "2026-08-08T22:39:40+00:00",
+      "last_trade_date": "",
+      "degradation_count": 0,
+      "notes": [
+        "validated score=100",
+        "activated score=100"
+      ]
+    },
+    "BONKUSDT/FLOKIUSDT@4h": {
+      "pair": "BONKUSDT/FLOKIUSDT",
+      "timeframe": "4h",
+      "state": "active",
+      "metrics": {
+        "cointegration_pvalue": 1.0,
+        "hedge_ratio": 1.0,
+        "hedge_ratio_stability": 0.0,
+        "half_life": 0.0,
+        "spread_variance": 0.0,
+        "zscore_divergence": 0.0,
+        "residual_stationarity": 0.0,
+        "last_update": "2026-08-08T22:58:14+00:00"
+      },
+      "performance": {
+        "sharpe": 5.17,
+        "win_rate": 0.41,
+        "n_trades": 22
+      },
+      "discovery_date": "2026-08-08T22:39:40+00:00",
+      "last_trade_date": "",
+      "degradation_count": 0,
+      "notes": [
+        "validated score=100",
+        "activated score=100"
+      ]
+    },
+    "ARBUSDT/FLOKIUSDT@4h": {
+      "pair": "ARBUSDT/FLOKIUSDT",
+      "timeframe": "4h",
+      "state": "active",
+      "metrics": {
+        "cointegration_pvalue": 1.0,
+        "hedge_ratio": 1.0,
+        "hedge_ratio_stability": 0.0,
+        "half_life": 0.0,
+        "spread_variance": 0.0,
+        "zscore_divergence": 0.0,
+        "residual_stationarity": 0.0,
+        "last_update": "2026-08-08T22:58:14+00:00"
+      },
+      "performance": {
+        "sharpe": 4.36,
+        "win_rate": 0.45,
+        "n_trades": 20
+      },
+      "discovery_date": "2026-08-08T22:39:40+00:00",
+      "last_trade_date": "",
+      "degradation_count": 0,
+      "notes": [
+        "validated score=100",
+        "activated score=100"
+      ]
+    },
+    "BONKUSDT/TRXUSDT@5m": {
+      "pair": "BONKUSDT/TRXUSDT",
+      "timeframe": "5m",
+      "state": "active",
+      "metrics": {
+        "cointegration_pvalue": 1.0,
+        "hedge_ratio": 1.0,
+        "hedge_ratio_stability": 0.0,
+        "half_life": 0.0,
+        "spread_variance": 0.0,
+        "zscore_divergence": 0.0,
+        "residual_stationarity": 0.0,
+        "last_update": "2026-08-08T22:58:14+00:00"
+      },
+      "performance": {
+        "sharpe": 4.38,
+        "win_rate": 0.41,
+        "n_trades": 22
+      },
+      "discovery_date": "2026-08-08T22:39:40+00:00",
+      "last_trade_date": "",
+      "degradation_count": 0,
+      "notes": [
+        "validated score=100",
+        "activated score=100"
+      ]
+    },
+    "SNXUSDT/SUIUSDT@5m": {
+      "pair": "SNXUSDT/SUIUSDT",
+      "timeframe": "5m",
+      "state": "active",
+      "metrics": {
+        "cointegration_pvalue": 1.0,
+        "hedge_ratio": 1.0,
+        "hedge_ratio_stability": 0.0,
+        "half_life": 0.0,
+        "spread_variance": 0.0,
+        "zscore_divergence": 0.0,
+        "residual_stationarity": 0.0,
+        "last_update": "2026-08-08T22:58:14+00:00"
+      },
+      "performance": {
+        "sharpe": 4.29,
+        "win_rate": 0.44,
+        "n_trades": 18
+      },
+      "discovery_date": "2026-08-08T22:39:40+00:00",
+      "last_trade_date": "",
+      "degradation_count": 0,
+      "notes": [
+        "validated score=100",
+        "activated score=100"
+      ]
+    },
+    "BONKUSDT/ETHUSDT@5m": {
+      "pair": "BONKUSDT/ETHUSDT",
+      "timeframe": "5m",
+      "state": "active",
+      "metrics": {
+        "cointegration_pvalue": 1.0,
+        "hedge_ratio": 1.0,
+        "hedge_ratio_stability": 0.0,
+        "half_life": 0.0,
+        "spread_variance": 0.0,
+        "zscore_divergence": 0.0,
+        "residual_stationarity": 0.0,
+        "last_update": "2026-08-08T22:58:14+00:00"
+      },
+      "performance": {
+        "sharpe": 4.37,
+        "win_rate": 0.4,
+        "n_trades": 20
+      },
+      "discovery_date": "2026-08-08T22:39:40+00:00",
+      "last_trade_date": "",
+      "degradation_count": 0,
+      "notes": [
+        "validated score=100",
+        "activated score=100"
+      ]
+    },
+    "AVAXUSDT/SEIUSDT@4h": {
+      "pair": "AVAXUSDT/SEIUSDT",
+      "timeframe": "4h",
+      "state": "active",
+      "metrics": {
+        "cointegration_pvalue": 1.0,
+        "hedge_ratio": 1.0,
+        "hedge_ratio_stability": 0.0,
+        "half_life": 0.0,
+        "spread_variance": 0.0,
+        "zscore_divergence": 0.0,
+        "residual_stationarity": 0.0,
+        "last_update": "2026-08-08T22:58:14+00:00"
+      },
+      "performance": {
+        "sharpe": 2.39,
+        "win_rate": 0.83,
+        "n_trades": 6
+      },
+      "discovery_date": "2026-08-08T22:39:40+00:00",
+      "last_trade_date": "",
+      "degradation_count": 0,
+      "notes": [
+        "validated score=95",
+        "activated score=95"
+      ]
+    },
+    "FILUSDT/PEPEUSDT@5m": {
+      "pair": "FILUSDT/PEPEUSDT",
+      "timeframe": "5m",
+      "state": "active",
+      "metrics": {
+        "cointegration_pvalue": 1.0,
+        "hedge_ratio": 1.0,
+        "hedge_ratio_stability": 0.0,
+        "half_life": 0.0,
+        "spread_variance": 0.0,
+        "zscore_divergence": 0.0,
+        "residual_stationarity": 0.0,
+        "last_update": "2026-08-08T22:58:14+00:00"
+      },
+      "performance": {
+        "sharpe": 2.88,
+        "win_rate": 0.8,
+        "n_trades": 5
+      },
+      "discovery_date": "2026-08-08T22:39:40+00:00",
+      "last_trade_date": "",
+      "degradation_count": 0,
+      "notes": [
+        "validated score=95",
+        "activated score=95"
+      ]
+    },
+    "FLOKIUSDT/SOLUSDT@5m": {
+      "pair": "FLOKIUSDT/SOLUSDT",
+      "timeframe": "5m",
+      "state": "active",
+      "metrics": {
+        "cointegration_pvalue": 1.0,
+        "hedge_ratio": 1.0,
+        "hedge_ratio_stability": 0.0,
+        "half_life": 0.0,
+        "spread_variance": 0.0,
+        "zscore_divergence": 0.0,
+        "residual_stationarity": 0.0,
+        "last_update": "2026-08-08T22:58:14+00:00"
+      },
+      "performance": {
+        "sharpe": 5.03,
+        "win_rate": 0.6,
+        "n_trades": 5
+      },
+      "discovery_date": "2026-08-08T22:39:40+00:00",
+      "last_trade_date": "",
+      "degradation_count": 0,
+      "notes": [
+        "validated score=100",
+        "activated score=100"
+      ]
+    },
+    "FLOKIUSDT/SUIUSDT@4h": {
+      "pair": "FLOKIUSDT/SUIUSDT",
+      "timeframe": "4h",
+      "state": "active",
+      "metrics": {
+        "cointegration_pvalue": 1.0,
+        "hedge_ratio": 1.0,
+        "hedge_ratio_stability": 0.0,
+        "half_life": 0.0,
+        "spread_variance": 0.0,
+        "zscore_divergence": 0.0,
+        "residual_stationarity": 0.0,
+        "last_update": "2026-08-08T22:58:14+00:00"
+      },
+      "performance": {
+        "sharpe": 2.66,
+        "win_rate": 0.5,
+        "n_trades": 18
+      },
+      "discovery_date": "2026-08-08T22:39:40+00:00",
+      "last_trade_date": "",
+      "degradation_count": 0,
+      "notes": [
+        "validated score=90",
+        "activated score=90"
+      ]
+    },
+    "BONKUSDT/INJUSDT@4h": {
+      "pair": "BONKUSDT/INJUSDT",
+      "timeframe": "4h",
+      "state": "active",
+      "metrics": {
+        "cointegration_pvalue": 1.0,
+        "hedge_ratio": 1.0,
+        "hedge_ratio_stability": 0.0,
+        "half_life": 0.0,
+        "spread_variance": 0.0,
+        "zscore_divergence": 0.0,
+        "residual_stationarity": 0.0,
+        "last_update": "2026-08-08T22:58:14+00:00"
+      },
+      "performance": {
+        "sharpe": 3.37,
+        "win_rate": 0.42,
+        "n_trades": 19
+      },
+      "discovery_date": "2026-08-08T22:39:40+00:00",
+      "last_trade_date": "",
+      "degradation_count": 0,
+      "notes": [
+        "validated score=100",
+        "activated score=100"
+      ]
+    },
+    "ATOMUSDT/STXUSDT@4h": {
+      "pair": "ATOMUSDT/STXUSDT",
+      "timeframe": "4h",
+      "state": "active",
+      "metrics": {
+        "cointegration_pvalue": 1.0,
+        "hedge_ratio": 1.0,
+        "hedge_ratio_stability": 0.0,
+        "half_life": 0.0,
+        "spread_variance": 0.0,
+        "zscore_divergence": 0.0,
+        "residual_stationarity": 0.0,
+        "last_update": "2026-08-08T22:58:14+00:00"
+      },
+      "performance": {
+        "sharpe": 4.39,
+        "win_rate": 0.5,
+        "n_trades": 8
+      },
+      "discovery_date": "2026-08-08T22:39:40+00:00",
+      "last_trade_date": "",
+      "degradation_count": 0,
+      "notes": [
+        "validated score=95",
+        "activated score=95"
+      ]
+    },
+    "1000SATSUSDT/LINKUSDT@1h": {
+      "pair": "1000SATSUSDT/LINKUSDT",
+      "timeframe": "1h",
+      "state": "active",
+      "metrics": {
+        "cointegration_pvalue": 1.0,
+        "hedge_ratio": 1.0,
+        "hedge_ratio_stability": 0.0,
+        "half_life": 0.0,
+        "spread_variance": 0.0,
+        "zscore_divergence": 0.0,
+        "residual_stationarity": 0.0,
+        "last_update": "2026-08-08T22:58:14+00:00"
+      },
+      "performance": {
+        "sharpe": 1.93,
+        "win_rate": 0.46,
+        "n_trades": 39
+      },
+      "discovery_date": "2026-08-08T22:39:40+00:00",
+      "last_trade_date": "",
+      "degradation_count": 0,
+      "notes": [
+        "validated score=95",
+        "activated score=95"
+      ]
+    },
+    "1000SATSUSDT/ARBUSDT@4h": {
+      "pair": "1000SATSUSDT/ARBUSDT",
+      "timeframe": "4h",
+      "state": "active",
+      "metrics": {
+        "cointegration_pvalue": 1.0,
+        "hedge_ratio": 1.0,
+        "hedge_ratio_stability": 0.0,
+        "half_life": 0.0,
+        "spread_variance": 0.0,
+        "zscore_divergence": 0.0,
+        "residual_stationarity": 0.0,
+        "last_update": "2026-08-08T22:58:14+00:00"
+      },
+      "performance": {
+        "sharpe": 1.55,
+        "win_rate": 0.57,
+        "n_trades": 28
+      },
+      "discovery_date": "2026-08-08T22:39:40+00:00",
+      "last_trade_date": "",
+      "degradation_count": 0,
+      "notes": [
+        "validated score=95",
+        "activated score=95"
+      ]
+    },
+    "1000SATSUSDT/COMPUSDT@4h": {
+      "pair": "1000SATSUSDT/COMPUSDT",
+      "timeframe": "4h",
+      "state": "active",
+      "metrics": {
+        "cointegration_pvalue": 1.0,
+        "hedge_ratio": 1.0,
+        "hedge_ratio_stability": 0.0,
+        "half_life": 0.0,
+        "spread_variance": 0.0,
+        "zscore_divergence": 0.0,
+        "residual_stationarity": 0.0,
+        "last_update": "2026-08-08T22:58:14+00:00"
+      },
+      "performance": {
+        "sharpe": 3.51,
+        "win_rate": 0.5,
+        "n_trades": 8
+      },
+      "discovery_date": "2026-08-08T22:39:40+00:00",
+      "last_trade_date": "",
+      "degradation_count": 0,
+      "notes": [
+        "validated score=95",
+        "activated score=95"
+      ]
+    },
+    "SNXUSDT/WLDUSDT@4h": {
+      "pair": "SNXUSDT/WLDUSDT",
+      "timeframe": "4h",
+      "state": "active",
+      "metrics": {
+        "cointegration_pvalue": 1.0,
+        "hedge_ratio": 1.0,
+        "hedge_ratio_stability": 0.0,
+        "half_life": 0.0,
+        "spread_variance": 0.0,
+        "zscore_divergence": 0.0,
+        "residual_stationarity": 0.0,
+        "last_update": "2026-08-08T22:58:14+00:00"
+      },
+      "performance": {
+        "sharpe": 4.46,
+        "win_rate": 0.5,
+        "n_trades": 6
+      },
+      "discovery_date": "2026-08-08T22:39:40+00:00",
+      "last_trade_date": "",
+      "degradation_count": 0,
+      "notes": [
+        "validated score=95",
+        "activated score=95"
+      ]
+    },
+    "1000SATSUSDT/SEIUSDT@1h": {
+      "pair": "1000SATSUSDT/SEIUSDT",
+      "timeframe": "1h",
+      "state": "active",
+      "metrics": {
+        "cointegration_pvalue": 1.0,
+        "hedge_ratio": 1.0,
+        "hedge_ratio_stability": 0.0,
+        "half_life": 0.0,
+        "spread_variance": 0.0,
+        "zscore_divergence": 0.0,
+        "residual_stationarity": 0.0,
+        "last_update": "2026-08-08T22:58:14+00:00"
+      },
+      "performance": {
+        "sharpe": 1.27,
+        "win_rate": 0.44,
+        "n_trades": 68
+      },
+      "discovery_date": "2026-08-08T22:39:40+00:00",
+      "last_trade_date": "",
+      "degradation_count": 0,
+      "notes": [
+        "validated score=85",
+        "activated score=85"
+      ]
+    },
+    "1000SATSUSDT/INJUSDT@5m": {
+      "pair": "1000SATSUSDT/INJUSDT",
+      "timeframe": "5m",
+      "state": "active",
+      "metrics": {
+        "cointegration_pvalue": 1.0,
+        "hedge_ratio": 1.0,
+        "hedge_ratio_stability": 0.0,
+        "half_life": 0.0,
+        "spread_variance": 0.0,
+        "zscore_divergence": 0.0,
+        "residual_stationarity": 0.0,
+        "last_update": "2026-08-08T22:58:14+00:00"
+      },
+      "performance": {
+        "sharpe": 2.01,
+        "win_rate": 0.62,
+        "n_trades": 8
+      },
+      "discovery_date": "2026-08-08T22:39:40+00:00",
+      "last_trade_date": "",
+      "degradation_count": 0,
+      "notes": [
+        "validated score=95",
+        "activated score=95"
+      ]
+    },
+    "1000SATSUSDT/BTCUSDT@1h": {
+      "pair": "1000SATSUSDT/BTCUSDT",
+      "timeframe": "1h",
+      "state": "active",
+      "metrics": {
+        "cointegration_pvalue": 1.0,
+        "hedge_ratio": 1.0,
+        "hedge_ratio_stability": 0.0,
+        "half_life": 0.0,
+        "spread_variance": 0.0,
+        "zscore_divergence": 0.0,
+        "residual_stationarity": 0.0,
+        "last_update": "2026-08-08T22:58:14+00:00"
+      },
+      "performance": {
+        "sharpe": 1.33,
+        "win_rate": 0.52,
+        "n_trades": 29
+      },
+      "discovery_date": "2026-08-08T22:39:40+00:00",
+      "last_trade_date": "",
+      "degradation_count": 0,
+      "notes": [
+        "validated score=85",
+        "activated score=85"
+      ]
+    },
+    "BNBUSDT/CRVUSDT@1d": {
+      "pair": "BNBUSDT/CRVUSDT",
+      "timeframe": "1d",
+      "state": "active",
+      "metrics": {
+        "cointegration_pvalue": 1.0,
+        "hedge_ratio": 1.0,
+        "hedge_ratio_stability": 0.0,
+        "half_life": 0.0,
+        "spread_variance": 0.0,
+        "zscore_divergence": 0.0,
+        "residual_stationarity": 0.0,
+        "last_update": "2026-08-08T22:58:14+00:00"
+      },
+      "performance": {
+        "sharpe": 1.62,
+        "win_rate": 0.67,
+        "n_trades": 9
+      },
+      "discovery_date": "2026-08-08T22:39:40+00:00",
+      "last_trade_date": "",
+      "degradation_count": 0,
+      "notes": [
+        "validated score=95",
+        "activated score=95"
+      ]
+    },
+    "LDOUSDT/XRPUSDT@4h": {
+      "pair": "LDOUSDT/XRPUSDT",
+      "timeframe": "4h",
+      "state": "active",
+      "metrics": {
+        "cointegration_pvalue": 1.0,
+        "hedge_ratio": 1.0,
+        "hedge_ratio_stability": 0.0,
+        "half_life": 0.0,
+        "spread_variance": 0.0,
+        "zscore_divergence": 0.0,
+        "residual_stationarity": 0.0,
+        "last_update": "2026-08-08T22:58:14+00:00"
+      },
+      "performance": {
+        "sharpe": 2.91,
+        "win_rate": 0.6,
+        "n_trades": 5
+      },
+      "discovery_date": "2026-08-08T22:39:40+00:00",
+      "last_trade_date": "",
+      "degradation_count": 0,
+      "notes": [
+        "validated score=90",
+        "activated score=90"
+      ]
+    },
+    "SEIUSDT/WLDUSDT@4h": {
+      "pair": "SEIUSDT/WLDUSDT",
+      "timeframe": "4h",
+      "state": "active",
+      "metrics": {
+        "cointegration_pvalue": 1.0,
+        "hedge_ratio": 1.0,
+        "hedge_ratio_stability": 0.0,
+        "half_life": 0.0,
+        "spread_variance": 0.0,
+        "zscore_divergence": 0.0,
+        "residual_stationarity": 0.0,
+        "last_update": "2026-08-08T22:58:14+00:00"
+      },
+      "performance": {
+        "sharpe": 2.34,
+        "win_rate": 0.57,
+        "n_trades": 7
+      },
+      "discovery_date": "2026-08-08T22:39:40+00:00",
+      "last_trade_date": "",
+      "degradation_count": 0,
+      "notes": [
+        "validated score=90",
+        "activated score=90"
+      ]
+    },
+    "FLOKIUSDT/LDOUSDT@4h": {
+      "pair": "FLOKIUSDT/LDOUSDT",
+      "timeframe": "4h",
+      "state": "active",
+      "metrics": {
+        "cointegration_pvalue": 1.0,
+        "hedge_ratio": 1.0,
+        "hedge_ratio_stability": 0.0,
+        "half_life": 0.0,
+        "spread_variance": 0.0,
+        "zscore_divergence": 0.0,
+        "residual_stationarity": 0.0,
+        "last_update": "2026-08-08T22:58:14+00:00"
+      },
+      "performance": {
+        "sharpe": 2.61,
+        "win_rate": 0.6,
+        "n_trades": 5
+      },
+      "discovery_date": "2026-08-08T22:39:40+00:00",
+      "last_trade_date": "",
+      "degradation_count": 0,
+      "notes": [
+        "validated score=90",
+        "activated score=90"
+      ]
+    },
+    "APTUSDT/SEIUSDT@1d": {
+      "pair": "APTUSDT/SEIUSDT",
+      "timeframe": "1d",
+      "state": "active",
+      "metrics": {
+        "cointegration_pvalue": 1.0,
+        "hedge_ratio": 1.0,
+        "hedge_ratio_stability": 0.0,
+        "half_life": 0.0,
+        "spread_variance": 0.0,
+        "zscore_divergence": 0.0,
+        "residual_stationarity": 0.0,
+        "last_update": "2026-08-08T22:58:14+00:00"
+      },
+      "performance": {
+        "sharpe": 1.28,
+        "win_rate": 0.48,
+        "n_trades": 31
+      },
+      "discovery_date": "2026-08-08T22:39:40+00:00",
+      "last_trade_date": "",
+      "degradation_count": 0,
+      "notes": [
+        "validated score=85",
+        "activated score=85"
+      ]
+    },
+    "AVAXUSDT/XRPUSDT@4h": {
+      "pair": "AVAXUSDT/XRPUSDT",
+      "timeframe": "4h",
+      "state": "active",
+      "metrics": {
+        "cointegration_pvalue": 1.0,
+        "hedge_ratio": 1.0,
+        "hedge_ratio_stability": 0.0,
+        "half_life": 0.0,
+        "spread_variance": 0.0,
+        "zscore_divergence": 0.0,
+        "residual_stationarity": 0.0,
+        "last_update": "2026-08-08T22:58:14+00:00"
+      },
+      "performance": {
+        "sharpe": 1.76,
+        "win_rate": 0.67,
+        "n_trades": 6
+      },
+      "discovery_date": "2026-08-08T22:39:40+00:00",
+      "last_trade_date": "",
+      "degradation_count": 0,
+      "notes": [
+        "validated score=95",
+        "activated score=95"
+      ]
+    },
+    "BONKUSDT/LDOUSDT@4h": {
+      "pair": "BONKUSDT/LDOUSDT",
+      "timeframe": "4h",
+      "state": "active",
+      "metrics": {
+        "cointegration_pvalue": 1.0,
+        "hedge_ratio": 1.0,
+        "hedge_ratio_stability": 0.0,
+        "half_life": 0.0,
+        "spread_variance": 0.0,
+        "zscore_divergence": 0.0,
+        "residual_stationarity": 0.0,
+        "last_update": "2026-08-08T22:58:14+00:00"
+      },
+      "performance": {
+        "sharpe": 2.03,
+        "win_rate": 0.57,
+        "n_trades": 7
+      },
+      "discovery_date": "2026-08-08T22:39:40+00:00",
+      "last_trade_date": "",
+      "degradation_count": 0,
+      "notes": [
+        "validated score=90",
+        "activated score=90"
+      ]
+    },
+    "DOTUSDT/JUPUSDT@1d": {
+      "pair": "DOTUSDT/JUPUSDT",
+      "timeframe": "1d",
+      "state": "active",
+      "metrics": {
+        "cointegration_pvalue": 1.0,
+        "hedge_ratio": 1.0,
+        "hedge_ratio_stability": 0.0,
+        "half_life": 0.0,
+        "spread_variance": 0.0,
+        "zscore_divergence": 0.0,
+        "residual_stationarity": 0.0,
+        "last_update": "2026-08-08T22:58:14+00:00"
+      },
+      "performance": {
+        "sharpe": 2.8,
+        "win_rate": 0.5,
+        "n_trades": 6
+      },
+      "discovery_date": "2026-08-08T22:39:40+00:00",
+      "last_trade_date": "",
+      "degradation_count": 0,
+      "notes": [
+        "validated score=85",
+        "activated score=85"
+      ]
+    },
+    "ADAUSDT/CRVUSDT@4h": {
+      "pair": "ADAUSDT/CRVUSDT",
+      "timeframe": "4h",
+      "state": "active",
+      "metrics": {
+        "cointegration_pvalue": 1.0,
+        "hedge_ratio": 1.0,
+        "hedge_ratio_stability": 0.0,
+        "half_life": 0.0,
+        "spread_variance": 0.0,
+        "zscore_divergence": 0.0,
+        "residual_stationarity": 0.0,
+        "last_update": "2026-08-08T22:58:14+00:00"
+      },
+      "performance": {
+        "sharpe": 2.23,
+        "win_rate": 0.6,
+        "n_trades": 5
+      },
+      "discovery_date": "2026-08-08T22:39:40+00:00",
+      "last_trade_date": "",
+      "degradation_count": 0,
+      "notes": [
+        "validated score=90",
+        "activated score=90"
+      ]
+    },
+    "ETCUSDT/LINKUSDT@1h": {
+      "pair": "ETCUSDT/LINKUSDT",
+      "timeframe": "1h",
+      "state": "active",
+      "metrics": {
+        "cointegration_pvalue": 1.0,
+        "hedge_ratio": 1.0,
+        "hedge_ratio_stability": 0.0,
+        "half_life": 0.0,
+        "spread_variance": 0.0,
+        "zscore_divergence": 0.0,
+        "residual_stationarity": 0.0,
+        "last_update": "2026-08-08T22:58:14+00:00"
+      },
+      "performance": {
+        "sharpe": 1.64,
+        "win_rate": 0.6,
+        "n_trades": 5
+      },
+      "discovery_date": "2026-08-08T22:39:40+00:00",
+      "last_trade_date": "",
+      "degradation_count": 0,
+      "notes": [
+        "validated score=90",
+        "activated score=90"
+      ]
+    },
+    "INJUSDT/SEIUSDT@4h": {
+      "pair": "INJUSDT/SEIUSDT",
+      "timeframe": "4h",
+      "state": "active",
+      "metrics": {
+        "cointegration_pvalue": 1.0,
+        "hedge_ratio": 1.0,
+        "hedge_ratio_stability": 0.0,
+        "half_life": 0.0,
+        "spread_variance": 0.0,
+        "zscore_divergence": 0.0,
+        "residual_stationarity": 0.0,
+        "last_update": "2026-08-08T22:58:14+00:00"
+      },
+      "performance": {
+        "sharpe": 1.14,
+        "win_rate": 0.41,
+        "n_trades": 17
+      },
+      "discovery_date": "2026-08-08T22:39:40+00:00",
+      "last_trade_date": "",
+      "degradation_count": 0,
+      "notes": [
+        "validated score=80",
+        "activated score=80"
+      ]
+    },
+    "INJUSDT/WLDUSDT@4h": {
+      "pair": "INJUSDT/WLDUSDT",
+      "timeframe": "4h",
+      "state": "active",
+      "metrics": {
+        "cointegration_pvalue": 1.0,
+        "hedge_ratio": 1.0,
+        "hedge_ratio_stability": 0.0,
+        "half_life": 0.0,
+        "spread_variance": 0.0,
+        "zscore_divergence": 0.0,
+        "residual_stationarity": 0.0,
+        "last_update": "2026-08-08T22:58:14+00:00"
+      },
+      "performance": {
+        "sharpe": 1.64,
+        "win_rate": 0.43,
+        "n_trades": 7
+      },
+      "discovery_date": "2026-08-08T22:39:40+00:00",
+      "last_trade_date": "",
+      "degradation_count": 0,
+      "notes": [
+        "validated score=85",
+        "activated score=85"
+      ]
+    },
+    "BONKUSDT/DOTUSDT@5m": {
+      "pair": "BONKUSDT/DOTUSDT",
+      "timeframe": "5m",
+      "state": "active",
+      "metrics": {
+        "cointegration_pvalue": 1.0,
+        "hedge_ratio": 1.0,
+        "hedge_ratio_stability": 0.0,
+        "half_life": 0.0,
+        "spread_variance": 0.0,
+        "zscore_divergence": 0.0,
+        "residual_stationarity": 0.0,
+        "last_update": "2026-08-08T22:58:14+00:00"
+      },
+      "performance": {
+        "sharpe": 0.71,
+        "win_rate": 0.42,
+        "n_trades": 31
+      },
+      "discovery_date": "2026-08-08T22:39:40+00:00",
+      "last_trade_date": "",
+      "degradation_count": 0,
+      "notes": [
+        "validated score=85",
+        "activated score=85"
+      ]
+    },
+    "CRVUSDT/DOTUSDT@15m": {
+      "pair": "CRVUSDT/DOTUSDT",
+      "timeframe": "15m",
+      "state": "active",
+      "metrics": {
+        "cointegration_pvalue": 1.0,
+        "hedge_ratio": 1.0,
+        "hedge_ratio_stability": 0.0,
+        "half_life": 0.0,
+        "spread_variance": 0.0,
+        "zscore_divergence": 0.0,
+        "residual_stationarity": 0.0,
+        "last_update": "2026-08-08T22:58:14+00:00"
+      },
+      "performance": {
+        "sharpe": 0.88,
+        "win_rate": 0.44,
+        "n_trades": 9
+      },
+      "discovery_date": "2026-08-08T22:39:40+00:00",
+      "last_trade_date": "",
+      "degradation_count": 0,
+      "notes": [
+        "validated score=75",
+        "activated score=75"
+      ]
+    },
+    "ETCUSDT/XRPUSDT@4h": {
+      "pair": "ETCUSDT/XRPUSDT",
+      "timeframe": "4h",
+      "state": "active",
+      "metrics": {
+        "cointegration_pvalue": 1.0,
+        "hedge_ratio": 1.0,
+        "hedge_ratio_stability": 0.0,
+        "half_life": 0.0,
+        "spread_variance": 0.0,
+        "zscore_divergence": 0.0,
+        "residual_stationarity": 0.0,
+        "last_update": "2026-08-08T22:58:14+00:00"
+      },
+      "performance": {
+        "sharpe": 0.56,
+        "win_rate": 0.45,
+        "n_trades": 22
+      },
+      "discovery_date": "2026-08-08T22:39:40+00:00",
+      "last_trade_date": "",
+      "degradation_count": 0,
+      "notes": [
+        "validated score=80",
+        "activated score=80"
+      ]
+    },
+    "AAVEUSDT/SNXUSDT@5m": {
+      "pair": "AAVEUSDT/SNXUSDT",
+      "timeframe": "5m",
+      "state": "active",
+      "metrics": {
+        "cointegration_pvalue": 1.0,
+        "hedge_ratio": 1.0,
+        "hedge_ratio_stability": 0.0,
+        "half_life": 0.0,
+        "spread_variance": 0.0,
+        "zscore_divergence": 0.0,
+        "residual_stationarity": 0.0,
+        "last_update": "2026-08-08T22:58:14+00:00"
+      },
+      "performance": {
+        "sharpe": 0.98,
+        "win_rate": 0.4,
+        "n_trades": 5
+      },
+      "discovery_date": "2026-08-08T22:39:40+00:00",
+      "last_trade_date": "",
+      "degradation_count": 0,
+      "notes": [
+        "validated score=75",
+        "activated score=75"
+      ]
+    },
+    "PEPEUSDT/STXUSDT@1d": {
+      "pair": "PEPEUSDT/STXUSDT",
+      "timeframe": "1d",
+      "state": "active",
+      "metrics": {
+        "cointegration_pvalue": 1.0,
+        "hedge_ratio": 1.0,
+        "hedge_ratio_stability": 0.0,
+        "half_life": 0.0,
+        "spread_variance": 0.0,
+        "zscore_divergence": 0.0,
+        "residual_stationarity": 0.0,
+        "last_update": "2026-08-08T22:58:14+00:00"
+      },
+      "performance": {
+        "sharpe": 0.65,
+        "win_rate": 0.43,
+        "n_trades": 7
+      },
+      "discovery_date": "2026-08-08T22:39:40+00:00",
+      "last_trade_date": "",
+      "degradation_count": 0,
+      "notes": [
+        "validated score=75",
+        "activated score=75"
+      ]
+    }
+  }
+}

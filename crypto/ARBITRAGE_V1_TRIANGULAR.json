@@ -1,0 +1,84 @@
+{
+  "fee_net_bps": 30.0,
+  "days": [
+    "2026-07-25",
+    "2026-07-26",
+    "2026-07-27",
+    "2026-07-28",
+    "2026-07-29",
+    "2026-07-30",
+    "2026-07-31",
+    "2026-08-01",
+    "2026-08-02",
+    "2026-08-03",
+    "2026-08-04",
+    "2026-08-05",
+    "2026-08-06",
+    "2026-08-07",
+    "2026-08-08",
+    "2026-08-09"
+  ],
+  "notional_usd": 100.0,
+  "results": {
+    "BTC_ETH_lat0": {
+      "trades": 0,
+      "candidates": 1,
+      "net_pnl_usd": 0.0,
+      "net_bps": 0.0
+    },
+    "BTC_ETH_lat50": {
+      "trades": 0,
+      "candidates": 1,
+      "net_pnl_usd": 0.0,
+      "net_bps": 0.0
+    },
+    "BTC_ETH_lat100": {
+      "trades": 0,
+      "candidates": 1,
+      "net_pnl_usd": 0.0,
+      "net_bps": 0.0
+    },
+    "BTC_ETH_lat250": {
+      "trades": 0,
+      "candidates": 0,
+      "net_pnl_usd": 0.0,
+      "net_bps": 0.0
+    },
+    "BTC_ETH_lat500": {
+      "trades": 0,
+      "candidates": 0,
+      "net_pnl_usd": 0.0,
+      "net_bps": 0.0
+    },
+    "BTC_BNB_lat0": {
+      "trades": 0,
+      "candidates": 0,
+      "net_pnl_usd": 0.0,
+      "net_bps": 0.0
+    },
+    "BTC_BNB_lat50": {
+      "trades": 0,
+      "candidates": 0,
+      "net_pnl_usd": 0.0,
+      "net_bps": 0.0
+    },
+    "BTC_BNB_lat100": {
+      "trades": 0,
+      "candidates": 0,
+      "net_pnl_usd": 0.0,
+      "net_bps": 0.0
+    },
+    "BTC_BNB_lat250": {
+      "trades": 0,
+      "candidates": 0,
+      "net_pnl_usd": 0.0,
+      "net_bps": 0.0
+    },
+    "BTC_BNB_lat500": {
+      "trades": 0,
+      "candidates": 0,
+      "net_pnl_usd": 0.0,
+      "net_bps": 0.0
+    }
+  }
+}

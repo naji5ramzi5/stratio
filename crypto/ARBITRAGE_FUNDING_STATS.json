@@ -1,0 +1,74 @@
+{
+  "BTCUSDT": {
+    "rows": 500,
+    "mean_bps_8h": 0.174,
+    "std_bps": 0.472,
+    "pct_positive": 66.6,
+    "pct_negative": 33.4,
+    "min_bps": -1.23,
+    "max_bps": 1.0,
+    "annual_apr_pct": 1.91,
+    "pct_ge_5bps": 0.0,
+    "pct_ge_10bps": 0.0
+  },
+  "ETHUSDT": {
+    "rows": 500,
+    "mean_bps_8h": 0.11,
+    "std_bps": 0.511,
+    "pct_positive": 64.6,
+    "pct_negative": 35.4,
+    "min_bps": -2.3,
+    "max_bps": 1.0,
+    "annual_apr_pct": 1.21,
+    "pct_ge_5bps": 0.0,
+    "pct_ge_10bps": 0.0
+  },
+  "BNBUSDT": {
+    "rows": 500,
+    "mean_bps_8h": 0.259,
+    "std_bps": 0.398,
+    "pct_positive": 47.0,
+    "pct_negative": 1.2,
+    "min_bps": -1.27,
+    "max_bps": 1.96,
+    "annual_apr_pct": 2.83,
+    "pct_ge_5bps": 0.0,
+    "pct_ge_10bps": 0.0
+  },
+  "SOLUSDT": {
+    "rows": 500,
+    "mean_bps_8h": -0.105,
+    "std_bps": 0.85,
+    "pct_positive": 50.0,
+    "pct_negative": 50.0,
+    "min_bps": -3.98,
+    "max_bps": 1.0,
+    "annual_apr_pct": -1.15,
+    "pct_ge_5bps": 0.0,
+    "pct_ge_10bps": 0.0
+  },
+  "XRPUSDT": {
+    "rows": 500,
+    "mean_bps_8h": -0.084,
+    "std_bps": 0.662,
+    "pct_positive": 47.6,
+    "pct_negative": 52.4,
+    "min_bps": -2.9,
+    "max_bps": 1.0,
+    "annual_apr_pct": -0.92,
+    "pct_ge_5bps": 0.0,
+    "pct_ge_10bps": 0.0
+  },
+  "DOGEUSDT": {
+    "rows": 500,
+    "mean_bps_8h": 0.232,
+    "std_bps": 0.644,
+    "pct_positive": 64.6,
+    "pct_negative": 35.4,
+    "min_bps": -1.84,
+    "max_bps": 1.0,
+    "annual_apr_pct": 2.54,
+    "pct_ge_5bps": 0.0,
+    "pct_ge_10bps": 0.0
+  }
+}

@@ -1,0 +1,47 @@
+{
+  "strategy_version": "pairs_v2",
+  "git_hash": "69bc6ff4b706",
+  "created_at": "2026-08-11T17:05:53+00:00",
+  "pair_universe": 82,
+  "timeframes": [
+    "5m",
+    "15m",
+    "1h",
+    "4h",
+    "1d"
+  ],
+  "parameters": {
+    "z_entry": 2.0,
+    "z_exit": 0.5,
+    "z_stop": 3.5,
+    "max_hold_bars": {
+      "5m": 288,
+      "15m": 96,
+      "1h": 168,
+      "4h": 42,
+      "1d": 14
+    },
+    "cost_bps": 25.0
+  },
+  "fees_bps": 20.0,
+  "slippage_bps": 5.0,
+  "risk_parameters": {
+    "max_position_pct": 0.05,
+    "max_portfolio_exposure_pct": 0.6,
+    "max_drawdown_pct": 15.0,
+    "daily_loss_limit_pct": 3.0,
+    "weekly_loss_limit_pct": 7.0,
+    "consecutive_loss_limit": 5,
+    "vol_scaling_enabled": true
+  },
+  "oos_results": {
+    "n_pairs_tested": 1596,
+    "n_pairs_selected": 82,
+    "mean_sharpe": 7.0,
+    "median_sharpe": 4.36,
+    "max_sharpe": 55.74,
+    "min_sharpe": 0.56,
+    "mean_win_rate": 0.558,
+    "total_trades": 1803
+  }
+}
