@@ -65,22 +65,32 @@ except Exception as e:
 
 # ── 3. Tokens ────────────────────────────────────────────────────────────────
 section("3. TELEGRAM TOKENS")
-token_keys = [
-    "TELEGRAM_BOT_TOKEN",
+# The four sending bots are the hard requirement.  TELEGRAM_BOT_TOKEN is only a
+# fallback for them, and the channel id can come from either variable.
+required = [
     "TELEGRAM_PREDICTION_TOKEN",   # Bot 1
     "TELEGRAM_LIQUIDITY_TOKEN",    # Bot 2
     "TELEGRAM_PREDICTOR_TOKEN",    # Bot 3
     "BOT4_TOKEN",                  # Bot 4 (Boss)
-    "ADMIN_CHAT_ID",
 ]
 missing = []
-for k in token_keys:
+for k in required:
     v = os.getenv(k, "")
     if v:
         line(PASS, k, v[:4] + "..." + v[-4:])
     else:
         line(FAIL, k, "MISSING")
         missing.append(k)
+
+master = os.getenv("TELEGRAM_BOT_TOKEN", "")
+line(PASS if master else WARN, "TELEGRAM_BOT_TOKEN",
+     (master[:4] + "..." + master[-4:]) if master else
+     "not set (only a fallback; per-bot tokens above are what matter)")
+
+chat = os.getenv("ADMIN_CHAT_ID", "") or os.getenv("TELEGRAM_ADMIN_CHAT_ID", "")
+line(PASS if chat else WARN, "ADMIN_CHAT_ID",
+     chat if chat else "not set (code falls back to -1004373560971)")
+
 if missing:
     print("\n  >> Fix: add these keys to crypto/.env on the server.")
 
@@ -108,8 +118,18 @@ section("5. BINANCE MARKET DATA")
 try:
     import requests
     url = "https://data-api.binance.vision/api/v3/ticker/24hr"
-    t0 = time.time()
-    r = requests.get(url, timeout=12)
+    r, last_err = None, None
+    for attempt in range(3):
+        t0 = time.time()
+        try:
+            r = requests.get(url, timeout=12)
+            break
+        except Exception as e:
+            last_err = e
+            print(f"  attempt {attempt + 1}/3 failed: {e!r}")
+            time.sleep(2)
+    if r is None:
+        raise last_err or RuntimeError("no response")
     dt = round(time.time() - t0, 2)
     print(f"  GET {url} -> {r.status_code} in {dt}s ({len(r.content)} bytes)")
     if r.status_code == 200:
@@ -188,12 +208,13 @@ if os.path.exists(hist_path):
         if fresh:
             line(PASS, "Bot4 cache", f"{fresh} fresh predictions")
         else:
-            line(FAIL, "Bot4 cache",
-                 "0 fresh predictions -> Bot 4 has nothing to scan (this is the Boss bug)")
+            line(WARN, "Bot4 cache",
+                 "0 fresh predictions -> Bot 4 will use its live fallback")
     except Exception as e:
         line(FAIL, "read prediction_history.json", repr(e))
 else:
-    line(FAIL, "prediction_history.json", "MISSING")
+    line(WARN, "prediction_history.json",
+         "MISSING (normal on a fresh clone; Bot 4 will compute live fallback)")
 
 # ── 9. Foundation models ─────────────────────────────────────────────────────
 section("9. FOUNDATION MODELS (heavy; keep OFF on small VPS)")
@@ -224,6 +245,30 @@ if os.path.isdir(models_dir):
         line(PASS if ok else WARN, name, size if ok else f"MISSING — {why}")
 else:
     line(WARN, "models/ folder", "MISSING — predictions will run uncalibrated")
+
+# ── 11. Confidence gate ──────────────────────────────────────────────────────
+section("11. CONFIDENCE GATE (why Boss may only ever say 'no signals')")
+# predictor.py only sets confidence_available=True after 30 verified outcomes
+# exist in prediction_accuracy.json.  Without it decision_engine can never
+# return TRADE_READY — the bot is silent by design, not by accident.
+acc_path = os.path.join(HERE, "prediction_accuracy.json")
+n_ver = 0
+if os.path.exists(acc_path):
+    try:
+        acc = json.load(open(acc_path, encoding="utf-8"))
+        preds = acc.get("predictions", []) if isinstance(acc, dict) else acc
+        n_ver = sum(1 for p in preds if p.get("verified"))
+        print(f"  prediction_accuracy.json: {len(preds):,} records, {n_ver:,} verified")
+    except Exception as e:
+        line(FAIL, "prediction_accuracy.json", repr(e))
+else:
+    line(WARN, "prediction_accuracy.json", "MISSING -> 0 verified samples")
+if n_ver >= 30:
+    line(PASS, "confidence gate", f"{n_ver} verified -> calibrated confidence available")
+else:
+    line(WARN, "confidence gate",
+         f"{n_ver} verified (need 30) -> Boss can only send 'no signals', "
+         f"never TRADE_READY")
 
 # ── Summary ──────────────────────────────────────────────────────────────────
 section("SUMMARY")
