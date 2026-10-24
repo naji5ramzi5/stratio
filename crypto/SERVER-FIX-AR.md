@@ -45,6 +45,7 @@
 advanced_bot.py
 prediction_tracker.py
 diagnose_live.py
+verify_bots.py
 test_boss.py
 accuracy_report.py
 server.env.example
@@ -106,6 +107,18 @@ python3 test_boss.py
 - `401` → التوكن غلط.
 - `403` → البوت مو أدمن/مو عضو في القناة.
 - `400 chat not found` → `ADMIN_CHAT_ID` غلط.
+
+### د-2. تحقق من البوتات الأربعة وصلاحيات القناة (لا يرسل شيئاً)
+```bash
+python3 verify_bots.py          # فحص فقط
+python3 verify_bots.py --send   # + رسالة تجريبية واحدة من البوس
+```
+يطبع لك اسم كل بوت، وهل البوس أدمن في القناة ويقدر ينشر:
+```
+[ OK ] Bot 4 (Boss)  @bossbtc2_bot
+[ OK ] -100... getChat -> <اسم القناة> [channel]
+       Boss status=administrator can_post=True -> CAN POST
+```
 
 ### هـ. شغّل البوتات
 ```bash

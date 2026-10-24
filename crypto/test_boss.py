@@ -26,7 +26,7 @@ load_dotenv()
 import requests
 
 TOKEN = os.getenv("BOT4_TOKEN", "")
-ADMIN = os.getenv("ADMIN_CHAT_ID", "")
+ADMIN = os.getenv("ADMIN_CHAT_ID", "") or os.getenv("TELEGRAM_ADMIN_CHAT_ID", "")
 CHANNEL_FALLBACK = "-1004373560971"
 
 
