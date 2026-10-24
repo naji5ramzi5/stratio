@@ -1,0 +1,55 @@
+{
+  "version": "1.0.0",
+  "lastScanned": 1792799205275,
+  "projectRoot": "c:\\Users\\IRAQ SOFT\\Desktop\\stratocrypto",
+  "techStack": {
+    "languages": [],
+    "frameworks": [],
+    "packageManager": null,
+    "runtime": null
+  },
+  "build": {
+    "buildCommand": null,
+    "testCommand": null,
+    "lintCommand": null,
+    "devCommand": null,
+    "scripts": {}
+  },
+  "conventions": {
+    "namingStyle": null,
+    "importStyle": null,
+    "testPattern": null,
+    "fileOrganization": null
+  },
+  "structure": {
+    "isMonorepo": false,
+    "workspaces": [],
+    "mainDirectories": [],
+    "gitBranches": null
+  },
+  "customNotes": [],
+  "directoryMap": {
+    "crypto": {
+      "path": "crypto",
+      "purpose": null,
+      "fileCount": 165,
+      "lastAccessed": 1792799204857,
+      "keyFiles": [
+        "advanced_bot.log",
+        "advanced_bot.log.1",
+        "advanced_bot.log.2",
+        "advanced_bot.py",
+        "alerting.py"
+      ]
+    },
+    "research_data": {
+      "path": "research_data",
+      "purpose": null,
+      "fileCount": 0,
+      "lastAccessed": 1792799204861,
+      "keyFiles": []
+    }
+  },
+  "hotPaths": [],
+  "userDirectives": []
+}

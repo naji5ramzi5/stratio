@@ -21,3 +21,7 @@ __pycache__/
 *.pyc
 .venv/
 venv/
+
+env_variables.txt
+.env
+*.env
