@@ -1,0 +1,50 @@
+[
+  {
+    "name": "DEV_1",
+    "trades": 83,
+    "wins": 34,
+    "losses": 49,
+    "win_rate": 0.41,
+    "gross_profit": 25.23,
+    "gross_loss": 108.19,
+    "net_pnl": -82.96,
+    "return_pct": -0.83,
+    "profit_factor": 0.23
+  },
+  {
+    "name": "DEV_2",
+    "trades": 502,
+    "wins": 226,
+    "losses": 276,
+    "win_rate": 0.45,
+    "gross_profit": 211.14,
+    "gross_loss": 651.9,
+    "net_pnl": -440.76,
+    "return_pct": -4.41,
+    "profit_factor": 0.32
+  },
+  {
+    "name": "OOS_1",
+    "trades": 523,
+    "wins": 231,
+    "losses": 292,
+    "win_rate": 0.442,
+    "gross_profit": 224.88,
+    "gross_loss": 666.69,
+    "net_pnl": -441.82,
+    "return_pct": -4.42,
+    "profit_factor": 0.34
+  },
+  {
+    "name": "OOS_2",
+    "trades": 437,
+    "wins": 216,
+    "losses": 221,
+    "win_rate": 0.494,
+    "gross_profit": 251.54,
+    "gross_loss": 652.9,
+    "net_pnl": -401.36,
+    "return_pct": -4.01,
+    "profit_factor": 0.39
+  }
+]

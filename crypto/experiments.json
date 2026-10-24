@@ -1,0 +1,31 @@
+{
+  "updated": "2026-08-08T23:32:58+00:00",
+  "experiments": [
+    {
+      "experiment_id": "a015588ecc31",
+      "timestamp": "2026-08-08T23:32:58+00:00",
+      "strategy_version": "pairs_v2",
+      "git_hash": "",
+      "dataset": "",
+      "pair_universe": "",
+      "timeframe": "",
+      "parameters": {
+        "z_entry": 2.0,
+        "z_exit": 0.5,
+        "cost_bps": 25
+      },
+      "fees_bps": 20.0,
+      "slippage_bps": 5.0,
+      "training_period": "",
+      "oos_period": "",
+      "n_pairs_tested": 1500,
+      "n_pairs_selected": 82,
+      "metrics": {
+        "sharpe_ratio": 4.2,
+        "win_rate": 0.55,
+        "max_dd": 8.5
+      },
+      "notes": ""
+    }
+  ]
+}

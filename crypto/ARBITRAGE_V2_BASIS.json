@@ -1,0 +1,48 @@
+{
+  "days": [
+    "2026-07-25",
+    "2026-07-26",
+    "2026-07-27",
+    "2026-07-28",
+    "2026-07-29",
+    "2026-07-30",
+    "2026-07-31",
+    "2026-08-01",
+    "2026-08-02",
+    "2026-08-03",
+    "2026-08-04",
+    "2026-08-05",
+    "2026-08-06",
+    "2026-08-07",
+    "2026-08-08",
+    "2026-08-09"
+  ],
+  "results": {
+    "BTCUSDT": {
+      "buckets": 1357435,
+      "mean_bps": -4.413,
+      "std_bps": 0.663,
+      "pct_time_basis_ge_10bps": 0.0,
+      "pct_time_basis_ge_25bps": 0.0,
+      "min_bps": -16.378,
+      "max_bps": 0.957,
+      "trades": 1,
+      "trades_net_bps_mean": -15.734,
+      "trades_net_bps_positive": 0,
+      "net_pnl_usd_total": -0.16,
+      "avg_hold_seconds": 3.0,
+      "open_avg_bps": -16.378,
+      "close_avg_bps": -2.112
+    },
+    "ETHUSDT": {
+      "buckets": 1321178,
+      "mean_bps": -4.631,
+      "std_bps": 0.667,
+      "pct_time_basis_ge_10bps": 0.0,
+      "pct_time_basis_ge_25bps": 0.0,
+      "min_bps": -10.203,
+      "max_bps": 4.752,
+      "trades": 0
+    }
+  }
+}

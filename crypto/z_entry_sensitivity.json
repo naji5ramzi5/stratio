@@ -1,0 +1,72 @@
+[
+  {
+    "z_entry": 1.5,
+    "trades": 593,
+    "win_rate": 0.666,
+    "gross_pnl": -36.28,
+    "net_pnl": -471.05,
+    "profit_factor": 0.93,
+    "avg_win": 0.408,
+    "avg_loss": -0.877
+  },
+  {
+    "z_entry": 1.8,
+    "trades": 543,
+    "win_rate": 0.67,
+    "gross_pnl": -18.4,
+    "net_pnl": -417.72,
+    "profit_factor": 0.96,
+    "avg_win": 0.418,
+    "avg_loss": -0.885
+  },
+  {
+    "z_entry": 2.0,
+    "trades": 508,
+    "win_rate": 0.661,
+    "gross_pnl": -27.03,
+    "net_pnl": -400.77,
+    "profit_factor": 0.94,
+    "avg_win": 0.429,
+    "avg_loss": -0.891
+  },
+  {
+    "z_entry": 2.2,
+    "trades": 476,
+    "win_rate": 0.664,
+    "gross_pnl": -25.63,
+    "net_pnl": -376.34,
+    "profit_factor": 0.94,
+    "avg_win": 0.431,
+    "avg_loss": -0.906
+  },
+  {
+    "z_entry": 2.5,
+    "trades": 431,
+    "win_rate": 0.661,
+    "gross_pnl": -25.15,
+    "net_pnl": -343.26,
+    "profit_factor": 0.94,
+    "avg_win": 0.436,
+    "avg_loss": -0.91
+  },
+  {
+    "z_entry": 3.0,
+    "trades": 355,
+    "win_rate": 0.656,
+    "gross_pnl": -34.64,
+    "net_pnl": -297.12,
+    "profit_factor": 0.9,
+    "avg_win": 0.448,
+    "avg_loss": -0.952
+  },
+  {
+    "z_entry": 3.5,
+    "trades": 285,
+    "win_rate": 0.642,
+    "gross_pnl": -36.91,
+    "net_pnl": -248.07,
+    "profit_factor": 0.88,
+    "avg_win": 0.481,
+    "avg_loss": -0.985
+  }
+]

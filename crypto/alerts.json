@@ -1,0 +1,55 @@
+{
+  "updated": "2026-08-08T23:40:13+00:00",
+  "alerts": [
+    {
+      "alert_id": "pair_1786232334",
+      "timestamp": "2026-08-08T23:38:53+00:00",
+      "severity": "info",
+      "category": "pair",
+      "title": "New quality pair: BTCUSDT/LTCUSDT",
+      "message": "Discovered high-quality pair BTCUSDT/LTCUSDT (score=95)",
+      "context": {
+        "pair": "BTCUSDT/LTCUSDT",
+        "score": 95
+      },
+      "acknowledged": false
+    },
+    {
+      "alert_id": "pair_1786232334",
+      "timestamp": "2026-08-08T23:38:53+00:00",
+      "severity": "warning",
+      "category": "pair",
+      "title": "Pair degraded: ETHUSDT/XRPUSDT",
+      "message": "Pair ETHUSDT/XRPUSDT degraded (score=45): z-score divergence",
+      "context": {
+        "pair": "ETHUSDT/XRPUSDT",
+        "score": 45,
+        "reason": "z-score divergence"
+      },
+      "acknowledged": false
+    },
+    {
+      "alert_id": "risk_1786232334",
+      "timestamp": "2026-08-08T23:38:53+00:00",
+      "severity": "warning",
+      "category": "risk",
+      "title": "Drawdown warning: 12.5%",
+      "message": "Drawdown 12.5% approaching limit 15.0%",
+      "context": {
+        "drawdown_pct": 12.5,
+        "limit_pct": 15.0
+      },
+      "acknowledged": false
+    },
+    {
+      "alert_id": "execution_1786232414",
+      "timestamp": "2026-08-08T23:40:13+00:00",
+      "severity": "info",
+      "category": "execution",
+      "title": "Trade executed",
+      "message": "Executed BTCUSDT/LTCUSDT size=4.2%",
+      "context": {},
+      "acknowledged": false
+    }
+  ]
+}

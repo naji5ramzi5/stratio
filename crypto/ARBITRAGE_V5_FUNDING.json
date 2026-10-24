@@ -1,0 +1,287 @@
+{
+  "round_trip_cost_bps": 30.0,
+  "results": {
+    "BTCUSDT": {
+      "stats": {
+        "rows": 500,
+        "days": 166.7,
+        "mean_bps_8h": 0.174,
+        "annual_apr_pct": 1.91,
+        "pct_positive": 66.6,
+        "max_bps": 1.0,
+        "min_bps": -1.23
+      },
+      "trades": {
+        "thr3_0": {
+          "trades": 0,
+          "net_pnl_usd_total": 0.0
+        },
+        "thr1_0": {
+          "trades": 3,
+          "profitable": 1,
+          "net_bps_mean": -3.927,
+          "net_bps_total": -11.782,
+          "net_pnl_usd_total": -0.12,
+          "avg_hold_days": 13.89,
+          "avg_payments": 41.7,
+          "avg_funding_bps": 26.073
+        },
+        "thr0_any": {
+          "trades": 13,
+          "profitable": 2,
+          "net_bps_mean": -20.342,
+          "net_bps_total": -264.447,
+          "net_pnl_usd_total": -2.64,
+          "avg_hold_days": 5.77,
+          "avg_payments": 17.3,
+          "avg_funding_bps": 9.658
+        },
+        "always": {
+          "trades": 168,
+          "profitable": 2,
+          "net_bps_mean": -29.481,
+          "net_bps_total": -4952.805,
+          "net_pnl_usd_total": -49.53,
+          "avg_hold_days": 0.99,
+          "avg_payments": 3.0,
+          "avg_funding_bps": 0.519
+        }
+      }
+    },
+    "ETHUSDT": {
+      "stats": {
+        "rows": 500,
+        "days": 166.7,
+        "mean_bps_8h": 0.11,
+        "annual_apr_pct": 1.21,
+        "pct_positive": 64.6,
+        "max_bps": 1.0,
+        "min_bps": -2.3
+      },
+      "trades": {
+        "thr3_0": {
+          "trades": 0,
+          "net_pnl_usd_total": 0.0
+        },
+        "thr1_0": {
+          "trades": 9,
+          "profitable": 0,
+          "net_bps_mean": -22.108,
+          "net_bps_total": -198.976,
+          "net_pnl_usd_total": -1.99,
+          "avg_hold_days": 5.04,
+          "avg_payments": 15.1,
+          "avg_funding_bps": 7.892
+        },
+        "thr0_any": {
+          "trades": 24,
+          "profitable": 1,
+          "net_bps_mean": -25.423,
+          "net_bps_total": -610.153,
+          "net_pnl_usd_total": -6.1,
+          "avg_hold_days": 3.11,
+          "avg_payments": 9.3,
+          "avg_funding_bps": 4.577
+        },
+        "always": {
+          "trades": 178,
+          "profitable": 1,
+          "net_bps_mean": -29.69,
+          "net_bps_total": -5284.904,
+          "net_pnl_usd_total": -52.85,
+          "avg_hold_days": 0.93,
+          "avg_payments": 2.8,
+          "avg_funding_bps": 0.31
+        }
+      }
+    },
+    "BNBUSDT": {
+      "stats": {
+        "rows": 500,
+        "days": 166.7,
+        "mean_bps_8h": 0.259,
+        "annual_apr_pct": 2.83,
+        "pct_positive": 47.0,
+        "max_bps": 1.96,
+        "min_bps": -1.27
+      },
+      "trades": {
+        "thr3_0": {
+          "trades": 0,
+          "net_pnl_usd_total": 0.0
+        },
+        "thr1_0": {
+          "trades": 17,
+          "profitable": 0,
+          "net_bps_mean": -25.362,
+          "net_bps_total": -431.152,
+          "net_pnl_usd_total": -4.31,
+          "avg_hold_days": 2.08,
+          "avg_payments": 6.2,
+          "avg_funding_bps": 4.638
+        },
+        "thr0_any": {
+          "trades": 40,
+          "profitable": 0,
+          "net_bps_mean": -27.046,
+          "net_bps_total": -1081.831,
+          "net_pnl_usd_total": -10.82,
+          "avg_hold_days": 1.47,
+          "avg_payments": 4.4,
+          "avg_funding_bps": 2.954
+        },
+        "always": {
+          "trades": 265,
+          "profitable": 0,
+          "net_bps_mean": -29.512,
+          "net_bps_total": -7820.604,
+          "net_pnl_usd_total": -78.21,
+          "avg_hold_days": 0.63,
+          "avg_payments": 1.9,
+          "avg_funding_bps": 0.488
+        }
+      }
+    },
+    "SOLUSDT": {
+      "stats": {
+        "rows": 500,
+        "days": 166.7,
+        "mean_bps_8h": -0.105,
+        "annual_apr_pct": -1.15,
+        "pct_positive": 50.0,
+        "max_bps": 1.0,
+        "min_bps": -3.98
+      },
+      "trades": {
+        "thr3_0": {
+          "trades": 0,
+          "net_pnl_usd_total": 0.0
+        },
+        "thr1_0": {
+          "trades": 25,
+          "profitable": 0,
+          "net_bps_mean": -27.144,
+          "net_bps_total": -678.607,
+          "net_pnl_usd_total": -6.79,
+          "avg_hold_days": 1.29,
+          "avg_payments": 3.9,
+          "avg_funding_bps": 2.856
+        },
+        "thr0_any": {
+          "trades": 47,
+          "profitable": 0,
+          "net_bps_mean": -27.493,
+          "net_bps_total": -1292.171,
+          "net_pnl_usd_total": -12.92,
+          "avg_hold_days": 1.26,
+          "avg_payments": 3.8,
+          "avg_funding_bps": 2.507
+        },
+        "always": {
+          "trades": 251,
+          "profitable": 0,
+          "net_bps_mean": -30.21,
+          "net_bps_total": -7582.696,
+          "net_pnl_usd_total": -75.83,
+          "avg_hold_days": 0.66,
+          "avg_payments": 2.0,
+          "avg_funding_bps": -0.21
+        }
+      }
+    },
+    "XRPUSDT": {
+      "stats": {
+        "rows": 500,
+        "days": 166.7,
+        "mean_bps_8h": -0.084,
+        "annual_apr_pct": -0.92,
+        "pct_positive": 47.6,
+        "max_bps": 1.0,
+        "min_bps": -2.9
+      },
+      "trades": {
+        "thr3_0": {
+          "trades": 0,
+          "net_pnl_usd_total": 0.0
+        },
+        "thr1_0": {
+          "trades": 16,
+          "profitable": 0,
+          "net_bps_mean": -27.497,
+          "net_bps_total": -439.953,
+          "net_pnl_usd_total": -4.4,
+          "avg_hold_days": 1.27,
+          "avg_payments": 3.8,
+          "avg_funding_bps": 2.503
+        },
+        "thr0_any": {
+          "trades": 42,
+          "profitable": 0,
+          "net_bps_mean": -27.947,
+          "net_bps_total": -1173.755,
+          "net_pnl_usd_total": -11.74,
+          "avg_hold_days": 1.13,
+          "avg_payments": 3.4,
+          "avg_funding_bps": 2.053
+        },
+        "always": {
+          "trades": 262,
+          "profitable": 0,
+          "net_bps_mean": -30.16,
+          "net_bps_total": -7901.929,
+          "net_pnl_usd_total": -79.02,
+          "avg_hold_days": 0.63,
+          "avg_payments": 1.9,
+          "avg_funding_bps": -0.16
+        }
+      }
+    },
+    "DOGEUSDT": {
+      "stats": {
+        "rows": 500,
+        "days": 166.7,
+        "mean_bps_8h": 0.232,
+        "annual_apr_pct": 2.54,
+        "pct_positive": 64.6,
+        "max_bps": 1.0,
+        "min_bps": -1.84
+      },
+      "trades": {
+        "thr3_0": {
+          "trades": 0,
+          "net_pnl_usd_total": 0.0
+        },
+        "thr1_0": {
+          "trades": 35,
+          "profitable": 0,
+          "net_bps_mean": -26.307,
+          "net_bps_total": -920.733,
+          "net_pnl_usd_total": -9.21,
+          "avg_hold_days": 1.52,
+          "avg_payments": 4.6,
+          "avg_funding_bps": 3.693
+        },
+        "thr0_any": {
+          "trades": 57,
+          "profitable": 0,
+          "net_bps_mean": -26.68,
+          "net_bps_total": -1520.759,
+          "net_pnl_usd_total": -15.21,
+          "avg_hold_days": 1.55,
+          "avg_payments": 4.6,
+          "avg_funding_bps": 3.32
+        },
+        "always": {
+          "trades": 177,
+          "profitable": 0,
+          "net_bps_mean": -29.345,
+          "net_bps_total": -5193.999,
+          "net_pnl_usd_total": -51.94,
+          "avg_hold_days": 0.94,
+          "avg_payments": 2.8,
+          "avg_funding_bps": 0.655
+        }
+      }
+    }
+  }
+}

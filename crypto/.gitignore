@@ -1,0 +1,60 @@
+# ── Secrets ────────────────────────────────────────────────
+.env
+.env.*
+
+# ── Python ─────────────────────────────────────────────────
+__pycache__/
+*.py[cod]
+*.egg-info/
+.venv/
+venv/
+.pytest_cache/
+.mypy_cache/
+
+# ── Runtime state / logs (generated, machine-local) ────────
+*.log
+.tracker_*
+predictions.json
+prediction_history.json
+prediction_accuracy.json
+liquidity_state.json
+liquidity_log.json
+smart_money_log.json
+paper_trading.json
+training_buffer.json
+
+# ── Generated model artifacts ──────────────────────────────
+models/*.pkl
+models/calibration.json
+ppo_models/
+*.pth
+*.pt
+*.onnx
+
+# ── Data caches / downloads ────────────────────────────────
+data/
+*-data.csv
+
+# ── IDE / OS ───────────────────────────────────────────────
+.vscode/
+.idea/
+Thumbs.db
+.DS_Store
+
+# ── Data dumps / runtime state (never commit) ───────────────────
+news_events.jsonl
+prediction_history.json.*
+prediction_accuracy_verified.json
+research_data/
+historical_data/
+fast_historical_report.json
+master_signals.json
+last_startup_report.json
+news_subscribers.json
+portfolio.json
+pairs_refilter_state.json
+telegram_mute.flag
+output.txt
+*.err
+*.bak
+*.bak_*

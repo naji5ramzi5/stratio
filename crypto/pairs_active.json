@@ -1,0 +1,98 @@
+{
+  "generated": "2026-10-05T16:49:02+03:00",
+  "min_sharpe": 1.0,
+  "min_windows": 2,
+  "source": "pairs_robust.json",
+  "pairs": [
+    {
+      "pair": "FILUSDT/NEARUSDT",
+      "windows": {
+        "w2500": [
+          2.06,
+          2
+        ],
+        "w3000": [
+          1.88,
+          2
+        ],
+        "w3500": [
+          1.74,
+          2
+        ]
+      },
+      "mean_sharpe": 1.89
+    },
+    {
+      "pair": "FILUSDT/OPUSDT",
+      "windows": {
+        "w2500": [
+          1.86,
+          3
+        ],
+        "w3000": [
+          1.7,
+          3
+        ],
+        "w3500": [
+          1.57,
+          3
+        ]
+      },
+      "mean_sharpe": 1.71
+    },
+    {
+      "pair": "APTUSDT/NEARUSDT",
+      "windows": {
+        "w2500": [
+          1.7,
+          1
+        ],
+        "w3000": [
+          1.55,
+          1
+        ],
+        "w3500": [
+          1.44,
+          1
+        ]
+      },
+      "mean_sharpe": 1.56
+    },
+    {
+      "pair": "BNBUSDT/SHIBUSDT",
+      "windows": {
+        "w2500": [
+          0.91,
+          1
+        ],
+        "w3000": [
+          0.83,
+          1
+        ],
+        "w3500": [
+          1.49,
+          3
+        ]
+      },
+      "mean_sharpe": 1.08
+    },
+    {
+      "pair": "BCHUSDT/RUNEUSDT",
+      "windows": {
+        "w2500": [
+          1.11,
+          1
+        ],
+        "w3000": [
+          1.02,
+          1
+        ],
+        "w3500": [
+          0.94,
+          1
+        ]
+      },
+      "mean_sharpe": 1.02
+    }
+  ]
+}

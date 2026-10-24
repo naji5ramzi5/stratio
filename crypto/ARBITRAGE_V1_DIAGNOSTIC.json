@@ -1,0 +1,67 @@
+{
+  "bucket_us": 100000,
+  "results": {
+    "BTC_ETH": {
+      "cycle": "BTC/ETH",
+      "days_analyzed": true,
+      "buckets_total": 7814242,
+      "gross_buckets_gt_0": 1891663,
+      "gross_pct_gt_0": 24.2079,
+      "buckets_gt_thr_bps": {
+        "5": 11275,
+        "10": 2,
+        "15": 2,
+        "20": 1,
+        "30": 1,
+        "50": 1
+      },
+      "pct_gt_thr_bps": {
+        "5": 0.1443,
+        "10": 0.0,
+        "15": 0.0,
+        "20": 0.0,
+        "30": 0.0,
+        "50": 0.0
+      },
+      "gross_bps_mean": -1.982,
+      "gross_bps_std": 2.944,
+      "gross_bps_p01": -11.021,
+      "gross_bps_p99": 3.798,
+      "gross_bps_min": -89.68,
+      "gross_bps_max": 67.923,
+      "max_consecutive_buckets_gt_5bps": 268,
+      "max_consecutive_seconds": 26.8
+    },
+    "BTC_BNB": {
+      "cycle": "BTC/BNB",
+      "days_analyzed": true,
+      "buckets_total": 7927060,
+      "gross_buckets_gt_0": 2764596,
+      "gross_pct_gt_0": 34.8754,
+      "buckets_gt_thr_bps": {
+        "5": 74281,
+        "10": 770,
+        "15": 2,
+        "20": 0,
+        "30": 0,
+        "50": 0
+      },
+      "pct_gt_thr_bps": {
+        "5": 0.9371,
+        "10": 0.0097,
+        "15": 0.0,
+        "20": 0.0,
+        "30": 0.0,
+        "50": 0.0
+      },
+      "gross_bps_mean": -1.431,
+      "gross_bps_std": 3.436,
+      "gross_bps_p01": -13.317,
+      "gross_bps_p99": 4.923,
+      "gross_bps_min": -43.905,
+      "gross_bps_max": 15.781,
+      "max_consecutive_buckets_gt_5bps": 815,
+      "max_consecutive_seconds": 81.5
+    }
+  }
+}

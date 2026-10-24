@@ -1,0 +1,152 @@
+[
+  {
+    "name": "BASELINE",
+    "params": {
+      "z_entry": 2.0,
+      "tp_pct": 0.001,
+      "sl_pct": -0.005,
+      "max_hold": 24,
+      "size_pct": 0.03,
+      "fee_rate": 0.002
+    },
+    "trades": 508,
+    "wins": 336,
+    "losses": 172,
+    "win_rate": 0.661,
+    "gross_profit": 425.01,
+    "gross_loss": 452.21,
+    "gross_pnl": -27.2,
+    "total_fees": 300.27,
+    "net_pnl": -327.47,
+    "return_pct": -3.27,
+    "profit_factor": 0.94,
+    "avg_win": 0.429,
+    "avg_loss": -0.891
+  },
+  {
+    "name": "H1_TIGHTER_STOP",
+    "params": {
+      "z_entry": 2.0,
+      "tp_pct": 0.001,
+      "sl_pct": -0.002,
+      "max_hold": 24,
+      "size_pct": 0.03,
+      "fee_rate": 0.002
+    },
+    "trades": 714,
+    "wins": 396,
+    "losses": 318,
+    "win_rate": 0.555,
+    "gross_profit": 495.62,
+    "gross_loss": 520.9,
+    "gross_pnl": -25.28,
+    "total_fees": 419.09,
+    "net_pnl": -444.37,
+    "return_pct": -4.44,
+    "profit_factor": 0.95,
+    "avg_win": 0.427,
+    "avg_loss": -0.559
+  },
+  {
+    "name": "H2_HIGHER_ENTRY",
+    "params": {
+      "z_entry": 2.5,
+      "tp_pct": 0.001,
+      "sl_pct": -0.005,
+      "max_hold": 24,
+      "size_pct": 0.03,
+      "fee_rate": 0.002
+    },
+    "trades": 431,
+    "wins": 285,
+    "losses": 146,
+    "win_rate": 0.661,
+    "gross_profit": 367.59,
+    "gross_loss": 392.9,
+    "gross_pnl": -25.31,
+    "total_fees": 255.56,
+    "net_pnl": -280.87,
+    "return_pct": -2.81,
+    "profit_factor": 0.94,
+    "avg_win": 0.436,
+    "avg_loss": -0.91
+  },
+  {
+    "name": "H3_ONE_PAIR",
+    "params": {
+      "z_entry": 2.0,
+      "tp_pct": 0.001,
+      "sl_pct": -0.005,
+      "max_hold": 24,
+      "size_pct": 0.03,
+      "fee_rate": 0.002,
+      "pairs": [
+        [
+          "BTCUSDT",
+          "ETHUSDT"
+        ]
+      ]
+    },
+    "trades": 76,
+    "wins": 60,
+    "losses": 16,
+    "win_rate": 0.789,
+    "gross_profit": 45.46,
+    "gross_loss": 34.11,
+    "gross_pnl": 11.35,
+    "total_fees": 45.6,
+    "net_pnl": -34.25,
+    "return_pct": -0.34,
+    "profit_factor": 1.33,
+    "avg_win": 0.253,
+    "avg_loss": -0.712
+  },
+  {
+    "name": "H4_NO_TIME_EXIT",
+    "params": {
+      "z_entry": 2.0,
+      "tp_pct": 0.001,
+      "sl_pct": -0.005,
+      "max_hold": 72,
+      "size_pct": 0.03,
+      "fee_rate": 0.002
+    },
+    "trades": 508,
+    "wins": 336,
+    "losses": 172,
+    "win_rate": 0.661,
+    "gross_profit": 425.01,
+    "gross_loss": 452.21,
+    "gross_pnl": -27.2,
+    "total_fees": 300.27,
+    "net_pnl": -327.47,
+    "return_pct": -3.27,
+    "profit_factor": 0.94,
+    "avg_win": 0.429,
+    "avg_loss": -0.891
+  },
+  {
+    "name": "H5_COMBINED",
+    "params": {
+      "z_entry": 2.5,
+      "tp_pct": 0.005,
+      "sl_pct": -0.002,
+      "max_hold": 48,
+      "size_pct": 0.03,
+      "fee_rate": 0.002
+    },
+    "trades": 381,
+    "wins": 152,
+    "losses": 229,
+    "win_rate": 0.399,
+    "gross_profit": 370.06,
+    "gross_loss": 405.98,
+    "gross_pnl": -35.92,
+    "total_fees": 226.18,
+    "net_pnl": -262.1,
+    "return_pct": -2.62,
+    "profit_factor": 0.91,
+    "avg_win": 0.822,
+    "avg_loss": -0.599
+  }
+]

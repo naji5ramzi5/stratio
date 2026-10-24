@@ -1,0 +1,149 @@
+{
+  "protocol": "DEV 07-25..08-03 | OOS 08-04..08-09 | pre-registered params",
+  "results": {
+    "thr5.0_win500ms_p0.5": {
+      "dev": {
+        "completed": 1035,
+        "failures": 360,
+        "net_pnl_usd": 38.45
+      },
+      "oos": {
+        "completed": 445,
+        "failures": 142,
+        "net_pnl_usd": 16.71
+      }
+    },
+    "thr5.0_win500ms_p0.2": {
+      "dev": {
+        "completed": 243,
+        "failures": 1000,
+        "net_pnl_usd": -32.78
+      },
+      "oos": {
+        "completed": 103,
+        "failures": 412,
+        "net_pnl_usd": -13.65
+      }
+    },
+    "thr5.0_win1000ms_p0.5": {
+      "dev": {
+        "completed": 1192,
+        "failures": 212,
+        "net_pnl_usd": 56.03
+      },
+      "oos": {
+        "completed": 504,
+        "failures": 81,
+        "net_pnl_usd": 23.57
+      }
+    },
+    "thr5.0_win1000ms_p0.2": {
+      "dev": {
+        "completed": 654,
+        "failures": 650,
+        "net_pnl_usd": 5.01
+      },
+      "oos": {
+        "completed": 281,
+        "failures": 267,
+        "net_pnl_usd": 1.43
+      }
+    },
+    "thr8.0_win500ms_p0.5": {
+      "dev": {
+        "completed": 211,
+        "failures": 85,
+        "net_pnl_usd": 13.68
+      },
+      "oos": {
+        "completed": 95,
+        "failures": 31,
+        "net_pnl_usd": 6.38
+      }
+    },
+    "thr8.0_win500ms_p0.2": {
+      "dev": {
+        "completed": 50,
+        "failures": 211,
+        "net_pnl_usd": -5.61
+      },
+      "oos": {
+        "completed": 18,
+        "failures": 99,
+        "net_pnl_usd": -2.65
+      }
+    },
+    "thr8.0_win1000ms_p0.5": {
+      "dev": {
+        "completed": 235,
+        "failures": 62,
+        "net_pnl_usd": 17.05
+      },
+      "oos": {
+        "completed": 108,
+        "failures": 16,
+        "net_pnl_usd": 8.37
+      }
+    },
+    "thr8.0_win1000ms_p0.2": {
+      "dev": {
+        "completed": 157,
+        "failures": 111,
+        "net_pnl_usd": 7.89
+      },
+      "oos": {
+        "completed": 61,
+        "failures": 59,
+        "net_pnl_usd": 2.18
+      }
+    },
+    "thr10.0_win500ms_p0.5": {
+      "dev": {
+        "completed": 64,
+        "failures": 18,
+        "net_pnl_usd": 5.81
+      },
+      "oos": {
+        "completed": 26,
+        "failures": 12,
+        "net_pnl_usd": 2.13
+      }
+    },
+    "thr10.0_win500ms_p0.2": {
+      "dev": {
+        "completed": 11,
+        "failures": 63,
+        "net_pnl_usd": -1.7
+      },
+      "oos": {
+        "completed": 4,
+        "failures": 26,
+        "net_pnl_usd": -0.69
+      }
+    },
+    "thr10.0_win1000ms_p0.5": {
+      "dev": {
+        "completed": 73,
+        "failures": 9,
+        "net_pnl_usd": 7.28
+      },
+      "oos": {
+        "completed": 32,
+        "failures": 7,
+        "net_pnl_usd": 3.09
+      }
+    },
+    "thr10.0_win1000ms_p0.2": {
+      "dev": {
+        "completed": 36,
+        "failures": 38,
+        "net_pnl_usd": 1.83
+      },
+      "oos": {
+        "completed": 16,
+        "failures": 17,
+        "net_pnl_usd": 0.9
+      }
+    }
+  }
+}

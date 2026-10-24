@@ -1,0 +1,164 @@
+{
+  "timestamp": "2026-08-08T22:29:33.256921+00:00",
+  "summary": {
+    "passed": 4,
+    "warnings": 16,
+    "failed": 2
+  },
+  "findings": [
+    {
+      "category": "Look-Ahead",
+      "test": "baseline_exclusion",
+      "status": "PASS",
+      "detail": "walk_forward only uses df + train_bars \u2014 no test leak in signature",
+      "timestamp": "2026-08-08T22:29:32+00:00"
+    },
+    {
+      "category": "Look-Ahead",
+      "test": "zscore_causality",
+      "status": "PASS",
+      "detail": "z-score is causal \u2014 future data doesn't affect current z",
+      "timestamp": "2026-08-08T22:29:32+00:00"
+    },
+    {
+      "category": "Look-Ahead",
+      "test": "regime_features",
+      "status": "PASS",
+      "detail": "features use current+past bars only (vol_20 changes with current bar: 0.070 -> 46.962)",
+      "timestamp": "2026-08-08T22:29:32+00:00"
+    },
+    {
+      "category": "Data-Leakage",
+      "test": "train_test_overlap",
+      "status": "PASS",
+      "detail": "no cointegration found \u2014 overlap irrelevant",
+      "timestamp": "2026-08-08T22:29:33+00:00"
+    },
+    {
+      "category": "Data-Leakage",
+      "test": "pair_selection",
+      "status": "WARN",
+      "detail": "selected 82 pairs from ~1500 candidates \u2014 selection bias exists",
+      "timestamp": "2026-08-08T22:29:33+00:00"
+    },
+    {
+      "category": "Data-Snooping",
+      "test": "multiple_testing",
+      "status": "WARN",
+      "detail": "7500 tests \u2014 Bonferroni p < 0.000007",
+      "timestamp": "2026-08-08T22:29:33+00:00"
+    },
+    {
+      "category": "Data-Snooping",
+      "test": "experiment_tracking",
+      "status": "FAIL",
+      "detail": "no experiment tracking \u2014 can't distinguish signal from luck",
+      "timestamp": "2026-08-08T22:29:33+00:00"
+    },
+    {
+      "category": "Survivorship",
+      "test": "delisted_assets",
+      "status": "WARN",
+      "detail": "only active assets tested \u2014 delisted assets excluded (survivorship bias)",
+      "timestamp": "2026-08-08T22:29:33+00:00"
+    },
+    {
+      "category": "Survivorship",
+      "test": "universe_size",
+      "status": "INFO",
+      "detail": "testing 12 assets \u2014 small universe, bias likely",
+      "timestamp": "2026-08-08T22:29:33+00:00"
+    },
+    {
+      "category": "Significance",
+      "test": "sample_size",
+      "status": "WARN",
+      "detail": "36 pairs with <20 trades (weak evidence), 46 with \u226520",
+      "timestamp": "2026-08-08T22:29:33+00:00"
+    },
+    {
+      "category": "Significance",
+      "test": "sharpe_CI_CRVUSDT/FLOKIUSDT",
+      "status": "INFO",
+      "detail": "Sharpe=23.94 CI=[11.38, 36.50] (n=7)",
+      "timestamp": "2026-08-08T22:29:33+00:00"
+    },
+    {
+      "category": "Significance",
+      "test": "sharpe_CI_1000SATSUSDT/SHIBUSDT",
+      "status": "INFO",
+      "detail": "Sharpe=55.74 CI=[24.19, 87.29] (n=6)",
+      "timestamp": "2026-08-08T22:29:33+00:00"
+    },
+    {
+      "category": "Significance",
+      "test": "sharpe_CI_1000SATSUSDT/ATOMUSDT",
+      "status": "INFO",
+      "detail": "Sharpe=33.84 CI=[12.85, 54.83] (n=5)",
+      "timestamp": "2026-08-08T22:29:33+00:00"
+    },
+    {
+      "category": "Significance",
+      "test": "sharpe_CI_FLOKIUSDT/SUIUSDT",
+      "status": "INFO",
+      "detail": "Sharpe=30.95 CI=[14.72, 47.18] (n=7)",
+      "timestamp": "2026-08-08T22:29:33+00:00"
+    },
+    {
+      "category": "Significance",
+      "test": "sharpe_CI_BONKUSDT/XRPUSDT",
+      "status": "INFO",
+      "detail": "Sharpe=16.86 CI=[12.17, 21.55] (n=25)",
+      "timestamp": "2026-08-08T22:29:33+00:00"
+    },
+    {
+      "category": "Significance",
+      "test": "winrate_CI_CRVUSDT/FLOKIUSDT",
+      "status": "INFO",
+      "detail": "Win=100% CI=[65%, 100%] (n=7)",
+      "timestamp": "2026-08-08T22:29:33+00:00"
+    },
+    {
+      "category": "Significance",
+      "test": "winrate_CI_1000SATSUSDT/SHIBUSDT",
+      "status": "INFO",
+      "detail": "Win=83% CI=[43%, 97%] (n=6)",
+      "timestamp": "2026-08-08T22:29:33+00:00"
+    },
+    {
+      "category": "Significance",
+      "test": "winrate_CI_1000SATSUSDT/ATOMUSDT",
+      "status": "INFO",
+      "detail": "Win=100% CI=[57%, 100%] (n=5)",
+      "timestamp": "2026-08-08T22:29:33+00:00"
+    },
+    {
+      "category": "Significance",
+      "test": "winrate_CI_FLOKIUSDT/SUIUSDT",
+      "status": "INFO",
+      "detail": "Win=86% CI=[49%, 98%] (n=7)",
+      "timestamp": "2026-08-08T22:29:33+00:00"
+    },
+    {
+      "category": "Significance",
+      "test": "winrate_CI_BONKUSDT/XRPUSDT",
+      "status": "INFO",
+      "detail": "Win=60% CI=[41%, 77%] (n=25)",
+      "timestamp": "2026-08-08T22:29:33+00:00"
+    },
+    {
+      "category": "Execution",
+      "test": "cost_realism",
+      "status": "WARN",
+      "detail": "cost_bps=25 (0.25%) \u2014 realistic is 40-60 bps (0.4-0.6%) with slippage",
+      "timestamp": "2026-08-08T22:29:33+00:00"
+    },
+    {
+      "category": "Execution",
+      "test": "slippage_model",
+      "status": "FAIL",
+      "detail": "no slippage model \u2014 assumes perfect execution at signal price",
+      "timestamp": "2026-08-08T22:29:33+00:00"
+    }
+  ]
+}

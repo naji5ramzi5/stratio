@@ -1,0 +1,537 @@
+{
+  "generated_at_utc": "2026-08-22T22:33:16.979433+00:00",
+  "pipeline_version": "2.1.0",
+  "config": {
+    "symbol": "BTCUSDT",
+    "interval": "1h",
+    "bars": 1300,
+    "n_train": 700,
+    "n_val": 150,
+    "n_test": 150,
+    "step": 150,
+    "n_fwd_bars": 24,
+    "neutral_band_pct": 0.3,
+    "embargo_bars": 24,
+    "round_trip_cost_bps": 30.0,
+    "taker_bps": 10.0,
+    "slip_bps": 5.0
+  },
+  "data_download": {
+    "source": "Binance API (data_loader.binance_ohlcv)",
+    "symbol": "BTCUSDT",
+    "interval": "1h",
+    "bars_requested": 1300,
+    "rows_after_cleanup": 1227,
+    "n_fwd_bars": 24,
+    "feature_count": 112,
+    "start_utc": "2026-06-02T16:00:00+00:00",
+    "end_utc": "2026-07-23T18:00:00+00:00",
+    "downloaded_at_utc": "2026-08-22T22:33:01.715894+00:00"
+  },
+  "leakage_self_check": {
+    "passed": true,
+    "problems": []
+  },
+  "n_folds": 2,
+  "pooled_metrics": {
+    "accuracy": 0.4067,
+    "balanced_accuracy": 0.3374,
+    "precision": [
+      0.3979,
+      0.0,
+      0.4259
+    ],
+    "recall": [
+      0.6441,
+      0.0,
+      0.368
+    ],
+    "f1": [
+      0.4919,
+      0.0,
+      0.3948
+    ],
+    "support": [
+      118,
+      57,
+      125
+    ],
+    "brier_score": 0.6803,
+    "log_loss": 1.1136,
+    "confusion_matrix": [
+      [
+        76,
+        0,
+        42
+      ],
+      [
+        37,
+        0,
+        20
+      ],
+      [
+        78,
+        1,
+        46
+      ]
+    ],
+    "neutral_pct": 0.003,
+    "reliability": {
+      "DOWN": {
+        "bins": [
+          0.316,
+          0.505,
+          0.708,
+          0.836
+        ],
+        "observed": [
+          0.402,
+          0.226,
+          0.6,
+          0.471
+        ]
+      },
+      "NEUTRAL": {
+        "bins": [
+          0.123,
+          0.25
+        ],
+        "observed": [
+          0.187,
+          0.204
+        ]
+      },
+      "UP": {
+        "bins": [
+          0.13,
+          0.307,
+          0.497,
+          0.645
+        ],
+        "observed": [
+          0.286,
+          0.452,
+          0.485,
+          0.1
+        ]
+      }
+    },
+    "model_performance": {
+      "n_trades": 11,
+      "net_return_pct": -9.667,
+      "gross_return_pct": -6.367,
+      "fees_pct": 3.3,
+      "profit_factor": 0.169,
+      "expectancy_pct": -0.8788,
+      "max_drawdown_pct": 9.697,
+      "win_rate_pct": 18.18,
+      "turnover": 11
+    },
+    "baselines": {
+      "buy_and_hold": {
+        "n_trades": 13,
+        "net_return_pct": -0.951,
+        "gross_return_pct": 2.949,
+        "fees_pct": 3.9,
+        "profit_factor": 0.863,
+        "expectancy_pct": -0.0732,
+        "max_drawdown_pct": 3.433,
+        "win_rate_pct": 46.15,
+        "turnover": 13
+      },
+      "majority_class": {
+        "n_trades": 13,
+        "net_return_pct": -0.951,
+        "gross_return_pct": 2.949,
+        "fees_pct": 3.9,
+        "profit_factor": 0.863,
+        "expectancy_pct": -0.0732,
+        "max_drawdown_pct": 3.433,
+        "win_rate_pct": 46.15,
+        "turnover": 13
+      },
+      "random": {
+        "n_trades": 8,
+        "net_return_pct": -6.522,
+        "gross_return_pct": -4.122,
+        "fees_pct": 2.4,
+        "profit_factor": 0.187,
+        "expectancy_pct": -0.8152,
+        "max_drawdown_pct": 6.528,
+        "win_rate_pct": 25.0,
+        "turnover": 8
+      },
+      "simple_momentum": {
+        "n_trades": 13,
+        "net_return_pct": 6.967,
+        "gross_return_pct": 10.867,
+        "fees_pct": 3.9,
+        "profit_factor": 3.985,
+        "expectancy_pct": 0.5359,
+        "max_drawdown_pct": 1.065,
+        "win_rate_pct": 69.23,
+        "turnover": 13
+      }
+    },
+    "regime_breakdown": {
+      "high_vol": {
+        "n": 140,
+        "accuracy": 0.3571,
+        "balanced_accuracy": 0.3583,
+        "neutral_pct": 0.0
+      },
+      "low_vol": {
+        "n": 141,
+        "accuracy": 0.4468,
+        "balanced_accuracy": 0.334,
+        "neutral_pct": 0.0
+      }
+    }
+  },
+  "folds": [
+    {
+      "accuracy": 0.3933,
+      "balanced_accuracy": 0.3537,
+      "precision": [
+        0.5254,
+        0.0,
+        0.3111
+      ],
+      "recall": [
+        0.4247,
+        0.0,
+        0.6364
+      ],
+      "f1": [
+        0.4697,
+        0.0,
+        0.4179
+      ],
+      "support": [
+        73,
+        33,
+        44
+      ],
+      "brier_score": 0.6498,
+      "log_loss": 1.067,
+      "confusion_matrix": [
+        [
+          31,
+          0,
+          42
+        ],
+        [
+          13,
+          0,
+          20
+        ],
+        [
+          15,
+          1,
+          28
+        ]
+      ],
+      "neutral_pct": 0.007,
+      "reliability": {
+        "DOWN": {
+          "bins": [
+            0.32,
+            0.462,
+            0.698
+          ],
+          "observed": [
+            0.477,
+            0.244,
+            0.957
+          ]
+        },
+        "NEUTRAL": {
+          "bins": [
+            0.13,
+            0.25
+          ],
+          "observed": [
+            0.202,
+            0.29
+          ]
+        },
+        "UP": {
+          "bins": [
+            0.172,
+            0.317,
+            0.505,
+            0.645
+          ],
+          "observed": [
+            0.0,
+            0.31,
+            0.361,
+            0.1
+          ]
+        }
+      },
+      "model_performance": {
+        "n_trades": 6,
+        "net_return_pct": -5.886,
+        "gross_return_pct": -4.086,
+        "fees_pct": 1.8,
+        "profit_factor": 0.202,
+        "expectancy_pct": -0.981,
+        "max_drawdown_pct": 6.944,
+        "win_rate_pct": 16.67,
+        "turnover": 6
+      },
+      "baselines": {
+        "buy_and_hold": {
+          "n_trades": 7,
+          "net_return_pct": -2.774,
+          "gross_return_pct": -0.674,
+          "fees_pct": 2.1,
+          "profit_factor": 0.504,
+          "expectancy_pct": -0.3963,
+          "max_drawdown_pct": 3.433,
+          "win_rate_pct": 28.57,
+          "turnover": 7
+        },
+        "majority_class": {
+          "n_trades": 7,
+          "net_return_pct": -1.426,
+          "gross_return_pct": 0.674,
+          "fees_pct": 2.1,
+          "profit_factor": 0.698,
+          "expectancy_pct": -0.2037,
+          "max_drawdown_pct": 3.947,
+          "win_rate_pct": 42.86,
+          "turnover": 7
+        },
+        "random": {
+          "n_trades": 5,
+          "net_return_pct": -2.61,
+          "gross_return_pct": -1.11,
+          "fees_pct": 1.5,
+          "profit_factor": 0.365,
+          "expectancy_pct": -0.5219,
+          "max_drawdown_pct": 4.111,
+          "win_rate_pct": 40.0,
+          "turnover": 5
+        },
+        "simple_momentum": {
+          "n_trades": 7,
+          "net_return_pct": 5.139,
+          "gross_return_pct": 7.239,
+          "fees_pct": 2.1,
+          "profit_factor": 6.293,
+          "expectancy_pct": 0.7342,
+          "max_drawdown_pct": 0.534,
+          "win_rate_pct": 71.43,
+          "turnover": 7
+        }
+      },
+      "regime_breakdown": {
+        "high_vol": {
+          "n": 65,
+          "accuracy": 0.4923,
+          "balanced_accuracy": 0.424,
+          "neutral_pct": 0.0
+        },
+        "low_vol": {
+          "n": 66,
+          "accuracy": 0.2727,
+          "balanced_accuracy": 0.4403,
+          "neutral_pct": 0.0
+        }
+      },
+      "fold": 0,
+      "train_range": [
+        0,
+        700
+      ],
+      "val_range": [
+        724,
+        874
+      ],
+      "test_range": [
+        898,
+        1048
+      ],
+      "val_accuracy": 0.3533
+    },
+    {
+      "accuracy": 0.42,
+      "balanced_accuracy": 0.4074,
+      "precision": [
+        0.3409,
+        0.0,
+        1.0
+      ],
+      "recall": [
+        1.0,
+        0.0,
+        0.2222
+      ],
+      "f1": [
+        0.5085,
+        0.0,
+        0.3636
+      ],
+      "support": [
+        45,
+        24,
+        81
+      ],
+      "brier_score": 0.7108,
+      "log_loss": 1.1602,
+      "confusion_matrix": [
+        [
+          45,
+          0,
+          0
+        ],
+        [
+          24,
+          0,
+          0
+        ],
+        [
+          63,
+          0,
+          18
+        ]
+      ],
+      "neutral_pct": 0.0,
+      "reliability": {
+        "DOWN": {
+          "bins": [
+            0.291,
+            0.532,
+            0.712,
+            0.836
+          ],
+          "observed": [
+            0.0,
+            0.215,
+            0.442,
+            0.471
+          ]
+        },
+        "NEUTRAL": {
+          "bins": [
+            0.116,
+            0.25
+          ],
+          "observed": [
+            0.174,
+            0.056
+          ]
+        },
+        "UP": {
+          "bins": [
+            0.117,
+            0.302,
+            0.462
+          ],
+          "observed": [
+            0.375,
+            0.524,
+            1.0
+          ]
+        }
+      },
+      "model_performance": {
+        "n_trades": 6,
+        "net_return_pct": -3.13,
+        "gross_return_pct": -1.33,
+        "fees_pct": 1.8,
+        "profit_factor": 0.458,
+        "expectancy_pct": -0.5216,
+        "max_drawdown_pct": 5.06,
+        "win_rate_pct": 66.67,
+        "turnover": 6
+      },
+      "baselines": {
+        "buy_and_hold": {
+          "n_trades": 7,
+          "net_return_pct": 0.326,
+          "gross_return_pct": 2.426,
+          "fees_pct": 2.1,
+          "profit_factor": 1.065,
+          "expectancy_pct": 0.0465,
+          "max_drawdown_pct": 1.498,
+          "win_rate_pct": 42.86,
+          "turnover": 7
+        },
+        "majority_class": {
+          "n_trades": 7,
+          "net_return_pct": 0.326,
+          "gross_return_pct": 2.426,
+          "fees_pct": 2.1,
+          "profit_factor": 1.065,
+          "expectancy_pct": 0.0465,
+          "max_drawdown_pct": 1.498,
+          "win_rate_pct": 42.86,
+          "turnover": 7
+        },
+        "random": {
+          "n_trades": 5,
+          "net_return_pct": -7.71,
+          "gross_return_pct": -6.21,
+          "fees_pct": 1.5,
+          "profit_factor": 0.037,
+          "expectancy_pct": -1.5419,
+          "max_drawdown_pct": 5.776,
+          "win_rate_pct": 40.0,
+          "turnover": 5
+        },
+        "simple_momentum": {
+          "n_trades": 7,
+          "net_return_pct": -0.574,
+          "gross_return_pct": 1.526,
+          "fees_pct": 2.1,
+          "profit_factor": 0.889,
+          "expectancy_pct": -0.082,
+          "max_drawdown_pct": 5.196,
+          "win_rate_pct": 57.14,
+          "turnover": 7
+        }
+      },
+      "regime_breakdown": {
+        "high_vol": {
+          "n": 65,
+          "accuracy": 0.3077,
+          "balanced_accuracy": 0.363,
+          "neutral_pct": 0.0
+        },
+        "low_vol": {
+          "n": 66,
+          "accuracy": 0.5152,
+          "balanced_accuracy": 0.4706,
+          "neutral_pct": 0.0
+        }
+      },
+      "fold": 1,
+      "train_range": [
+        150,
+        850
+      ],
+      "val_range": [
+        874,
+        1024
+      ],
+      "test_range": [
+        1048,
+        1198
+      ],
+      "val_accuracy": 0.3267
+    }
+  ],
+  "edge_verdict": "PROFITABILITY UNPROVEN",
+  "edge_requirements": {
+    "minimum_folds": 3,
+    "minimum_trades": 30,
+    "requires_positive_net_return": true,
+    "requires_beat_buy_and_hold": true,
+    "minimum_profit_factor": 1.0,
+    "minimum_balanced_accuracy": 0.55,
+    "sufficient_evidence": false
+  }
+}

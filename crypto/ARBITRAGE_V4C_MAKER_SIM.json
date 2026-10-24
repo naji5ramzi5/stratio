@@ -1,0 +1,174 @@
+{
+  "fee_net_bps": 6.0,
+  "notional_usd": 100.0,
+  "results": {
+    "thr5.0_lat0ms_p1.0": {
+      "candidates": 2358,
+      "filled": 2358,
+      "net_bps_mean": 5.537,
+      "net_pnl_usd": 130.57,
+      "profitable": 2358
+    },
+    "thr5.0_lat0ms_p0.5": {
+      "candidates": 2358,
+      "filled": 1181,
+      "net_bps_mean": 5.537,
+      "net_pnl_usd": 65.39,
+      "profitable": 1181
+    },
+    "thr5.0_lat100ms_p1.0": {
+      "candidates": 2358,
+      "filled": 2010,
+      "net_bps_mean": 5.525,
+      "net_pnl_usd": 111.06,
+      "profitable": 2010
+    },
+    "thr5.0_lat100ms_p0.5": {
+      "candidates": 2358,
+      "filled": 1043,
+      "net_bps_mean": 5.545,
+      "net_pnl_usd": 57.83,
+      "profitable": 1043
+    },
+    "thr5.0_lat500ms_p1.0": {
+      "candidates": 2358,
+      "filled": 1606,
+      "net_bps_mean": 5.616,
+      "net_pnl_usd": 90.19,
+      "profitable": 1606
+    },
+    "thr5.0_lat500ms_p0.5": {
+      "candidates": 2358,
+      "filled": 818,
+      "net_bps_mean": 5.638,
+      "net_pnl_usd": 46.12,
+      "profitable": 818
+    },
+    "thr8.0_lat0ms_p1.0": {
+      "candidates": 516,
+      "filled": 516,
+      "net_bps_mean": 8.525,
+      "net_pnl_usd": 43.99,
+      "profitable": 516
+    },
+    "thr8.0_lat0ms_p0.5": {
+      "candidates": 516,
+      "filled": 239,
+      "net_bps_mean": 8.528,
+      "net_pnl_usd": 20.38,
+      "profitable": 239
+    },
+    "thr8.0_lat100ms_p1.0": {
+      "candidates": 516,
+      "filled": 430,
+      "net_bps_mean": 8.502,
+      "net_pnl_usd": 36.56,
+      "profitable": 430
+    },
+    "thr8.0_lat100ms_p0.5": {
+      "candidates": 516,
+      "filled": 184,
+      "net_bps_mean": 8.474,
+      "net_pnl_usd": 15.59,
+      "profitable": 184
+    },
+    "thr8.0_lat500ms_p1.0": {
+      "candidates": 516,
+      "filled": 344,
+      "net_bps_mean": 8.599,
+      "net_pnl_usd": 29.58,
+      "profitable": 344
+    },
+    "thr8.0_lat500ms_p0.5": {
+      "candidates": 516,
+      "filled": 166,
+      "net_bps_mean": 8.589,
+      "net_pnl_usd": 14.26,
+      "profitable": 166
+    },
+    "thr10.0_lat0ms_p1.0": {
+      "candidates": 144,
+      "filled": 144,
+      "net_bps_mean": 10.769,
+      "net_pnl_usd": 15.51,
+      "profitable": 144
+    },
+    "thr10.0_lat0ms_p0.5": {
+      "candidates": 144,
+      "filled": 72,
+      "net_bps_mean": 10.626,
+      "net_pnl_usd": 7.65,
+      "profitable": 72
+    },
+    "thr10.0_lat100ms_p1.0": {
+      "candidates": 144,
+      "filled": 122,
+      "net_bps_mean": 10.609,
+      "net_pnl_usd": 12.94,
+      "profitable": 122
+    },
+    "thr10.0_lat100ms_p0.5": {
+      "candidates": 144,
+      "filled": 59,
+      "net_bps_mean": 10.595,
+      "net_pnl_usd": 6.25,
+      "profitable": 59
+    },
+    "thr10.0_lat500ms_p1.0": {
+      "candidates": 144,
+      "filled": 97,
+      "net_bps_mean": 10.646,
+      "net_pnl_usd": 10.33,
+      "profitable": 97
+    },
+    "thr10.0_lat500ms_p0.5": {
+      "candidates": 144,
+      "filled": 47,
+      "net_bps_mean": 10.653,
+      "net_pnl_usd": 5.01,
+      "profitable": 47
+    },
+    "thr15.0_lat0ms_p1.0": {
+      "candidates": 5,
+      "filled": 5,
+      "net_bps_mean": 15.622,
+      "net_pnl_usd": 0.78,
+      "profitable": 5
+    },
+    "thr15.0_lat0ms_p0.5": {
+      "candidates": 5,
+      "filled": 3,
+      "net_bps_mean": 15.734,
+      "net_pnl_usd": 0.47,
+      "profitable": 3
+    },
+    "thr15.0_lat100ms_p1.0": {
+      "candidates": 5,
+      "filled": 3,
+      "net_bps_mean": 15.615,
+      "net_pnl_usd": 0.47,
+      "profitable": 3
+    },
+    "thr15.0_lat100ms_p0.5": {
+      "candidates": 5,
+      "filled": 0,
+      "net_bps_mean": NaN,
+      "net_pnl_usd": 0.0,
+      "profitable": 0
+    },
+    "thr15.0_lat500ms_p1.0": {
+      "candidates": 5,
+      "filled": 2,
+      "net_bps_mean": 15.482,
+      "net_pnl_usd": 0.31,
+      "profitable": 2
+    },
+    "thr15.0_lat500ms_p0.5": {
+      "candidates": 5,
+      "filled": 1,
+      "net_bps_mean": 15.92,
+      "net_pnl_usd": 0.16,
+      "profitable": 1
+    }
+  }
+}

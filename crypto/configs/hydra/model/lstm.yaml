@@ -1,0 +1,9 @@
+defaults:
+  - _self_
+  - common
+
+type: lstm
+hidden_dim: 256
+epochs: 50
+is_regression: True
+

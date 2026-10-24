@@ -1,0 +1,126 @@
+{
+  "protocol": "DEV 07-25..08-03 (10d) | OOS 08-04..08-09 (6d) | params FIXED a priori",
+  "fee_net_bps": 30.0,
+  "results": {
+    "BTC_ETH_lat0": {
+      "dev": {
+        "trades": 0,
+        "net_pnl_usd": 0.0,
+        "candidates": 0
+      },
+      "oos": {
+        "trades": 0,
+        "net_pnl_usd": 0.0,
+        "candidates": 1
+      }
+    },
+    "BTC_ETH_lat50": {
+      "dev": {
+        "trades": 0,
+        "net_pnl_usd": 0.0,
+        "candidates": 0
+      },
+      "oos": {
+        "trades": 0,
+        "net_pnl_usd": 0.0,
+        "candidates": 1
+      }
+    },
+    "BTC_ETH_lat100": {
+      "dev": {
+        "trades": 0,
+        "net_pnl_usd": 0.0,
+        "candidates": 0
+      },
+      "oos": {
+        "trades": 0,
+        "net_pnl_usd": 0.0,
+        "candidates": 1
+      }
+    },
+    "BTC_ETH_lat250": {
+      "dev": {
+        "trades": 0,
+        "net_pnl_usd": 0.0,
+        "candidates": 0
+      },
+      "oos": {
+        "trades": 0,
+        "net_pnl_usd": 0.0,
+        "candidates": 0
+      }
+    },
+    "BTC_ETH_lat500": {
+      "dev": {
+        "trades": 0,
+        "net_pnl_usd": 0.0,
+        "candidates": 0
+      },
+      "oos": {
+        "trades": 0,
+        "net_pnl_usd": 0.0,
+        "candidates": 0
+      }
+    },
+    "BTC_BNB_lat0": {
+      "dev": {
+        "trades": 0,
+        "net_pnl_usd": 0.0,
+        "candidates": 0
+      },
+      "oos": {
+        "trades": 0,
+        "net_pnl_usd": 0.0,
+        "candidates": 0
+      }
+    },
+    "BTC_BNB_lat50": {
+      "dev": {
+        "trades": 0,
+        "net_pnl_usd": 0.0,
+        "candidates": 0
+      },
+      "oos": {
+        "trades": 0,
+        "net_pnl_usd": 0.0,
+        "candidates": 0
+      }
+    },
+    "BTC_BNB_lat100": {
+      "dev": {
+        "trades": 0,
+        "net_pnl_usd": 0.0,
+        "candidates": 0
+      },
+      "oos": {
+        "trades": 0,
+        "net_pnl_usd": 0.0,
+        "candidates": 0
+      }
+    },
+    "BTC_BNB_lat250": {
+      "dev": {
+        "trades": 0,
+        "net_pnl_usd": 0.0,
+        "candidates": 0
+      },
+      "oos": {
+        "trades": 0,
+        "net_pnl_usd": 0.0,
+        "candidates": 0
+      }
+    },
+    "BTC_BNB_lat500": {
+      "dev": {
+        "trades": 0,
+        "net_pnl_usd": 0.0,
+        "candidates": 0
+      },
+      "oos": {
+        "trades": 0,
+        "net_pnl_usd": 0.0,
+        "candidates": 0
+      }
+    }
+  }
+}

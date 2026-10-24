@@ -1,0 +1,23 @@
+[Unit]
+Description=StratoCrypto Telegram bot fleet
+After=network-online.target
+Wants=network-online.target
+
+[Service]
+Type=simple
+# Adjust these two paths to where you uploaded the project:
+WorkingDirectory=/opt/stratocrypto/crypto
+ExecStart=/opt/stratocrypto/.venv/bin/python launch_bots.py
+Environment=PYTHONUNBUFFERED=1
+Environment=PYTHONIOENCODING=utf-8
+Environment=FOUNDATION_MODELS=0
+Environment=OPENBLAS_NUM_THREADS=1
+Environment=OMP_NUM_THREADS=1
+Environment=MKL_NUM_THREADS=1
+Restart=always
+RestartSec=10
+StandardOutput=append:/opt/stratocrypto/crypto/logs/systemd.out.log
+StandardError=append:/opt/stratocrypto/crypto/logs/systemd.err.log
+
+[Install]
+WantedBy=multi-user.target

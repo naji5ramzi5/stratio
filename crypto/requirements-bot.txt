@@ -1,0 +1,17 @@
+# Ultra-minimal for 256MB - no heavy ML/CUDA
+requests
+python-telegram-bot
+pyTelegramBotAPI
+python-dotenv
+pytz
+flask
+apscheduler
+python-binance
+textblob
+vaderSentiment
+tqdm
+# Light ML only (no xgboost/cuda)
+pandas
+numpy
+scikit-learn
+scipy

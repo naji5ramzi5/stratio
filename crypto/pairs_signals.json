@@ -1,0 +1,38 @@
+[
+  {
+    "status": "ok",
+    "a": "BTCUSDT",
+    "b": "LINKUSDT",
+    "interval": "1h",
+    "cointegrated": false,
+    "pvalue": 0.2830413199654105,
+    "hedge_ratio": 0.6274,
+    "half_life_bars": 37.0,
+    "baseline_mean": 9.756667,
+    "baseline_std": 0.011207,
+    "current_z": -1.413,
+    "signal": "HOLD",
+    "note": "z=-1.41 stretched but not at entry yet",
+    "entry_z": 2.0,
+    "exit_z": 0.5,
+    "as_of_utc": "2026-08-07T22:15:21+00:00"
+  },
+  {
+    "status": "ok",
+    "a": "BTCUSDT",
+    "b": "LTCUSDT",
+    "interval": "1h",
+    "cointegrated": false,
+    "pvalue": 0.1555096119432483,
+    "hedge_ratio": 0.7807,
+    "half_life_bars": 43.7,
+    "baseline_mean": 8.099297,
+    "baseline_std": 0.016947,
+    "current_z": -0.878,
+    "signal": "HOLD",
+    "note": "z=-0.88 stretched but not at entry yet",
+    "entry_z": 2.0,
+    "exit_z": 0.5,
+    "as_of_utc": "2026-08-07T22:30:05+00:00"
+  }
+]

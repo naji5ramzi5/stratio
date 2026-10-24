@@ -1,0 +1,40 @@
+{
+  "strategy_version": "BASELINE_V1",
+  "created": "2026-08-09",
+  "description": "Original strategy - DO NOT MODIFY. Reference baseline for all research.",
+  "parameters": {
+    "z_entry": 2.0,
+    "z_exit_profit": 0.001,
+    "z_exit_loss": -0.005,
+    "max_hold_bars": 24,
+    "position_size_pct": 0.03,
+    "fee_rate": 0.002,
+    "slippage_rate": 0.0005,
+    "pairs": ["BTCUSDT/ETHUSDT", "SOLUSDT/XRPUSDT", "ADAUSDT/LTCUSDT"],
+    "timeframe": "1h",
+    "train_bars": 200,
+    "lookback": 500
+  },
+  "results": {
+    "total_trades": 507,
+    "win_rate": 0.661,
+    "avg_win_pct": 0.429,
+    "avg_loss_pct": -0.891,
+    "gross_profit": 423.34,
+    "gross_loss": 450.36,
+    "total_fees": 373.46,
+    "net_return_pct": -4.01,
+    "profit_factor": 0.94,
+    "max_drawdown_pct": -4.02,
+    "trades_per_day": 12.5,
+    "profitable_periods": 0,
+    "total_periods": 6,
+    "classification": "CONSISTENTLY_UNPROFITABLE"
+  },
+  "failure_modes": [
+    "Average loss > Average win (2x)",
+    "Excessive trading frequency (12.5/day)",
+    "High fees relative to edge",
+    "No profitable periods in any regime"
+  ]
+}

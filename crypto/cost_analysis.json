@@ -1,0 +1,80 @@
+[
+  {
+    "fee_rate": 0.0,
+    "slippage_rate": 0.0,
+    "trades": 508,
+    "win_rate": 0.6614173228346457,
+    "gross_profit": 431.79,
+    "gross_loss": 459.71,
+    "gross_pnl": -27.92,
+    "total_costs": 0.0,
+    "net_pnl": -27.92,
+    "profit_factor": 0.94,
+    "name": "No costs"
+  },
+  {
+    "fee_rate": 0.001,
+    "slippage_rate": 0.0,
+    "trades": 508,
+    "win_rate": 0.6614173228346457,
+    "gross_profit": 428.38,
+    "gross_loss": 455.94,
+    "gross_pnl": -27.56,
+    "total_costs": 151.2,
+    "net_pnl": -178.76,
+    "profit_factor": 0.94,
+    "name": "0.1% fees only"
+  },
+  {
+    "fee_rate": 0.002,
+    "slippage_rate": 0.0,
+    "trades": 508,
+    "win_rate": 0.6614173228346457,
+    "gross_profit": 425.01,
+    "gross_loss": 452.21,
+    "gross_pnl": -27.2,
+    "total_costs": 300.13,
+    "net_pnl": -327.33,
+    "profit_factor": 0.94,
+    "name": "0.2% fees only"
+  },
+  {
+    "fee_rate": 0.002,
+    "slippage_rate": 0.0005,
+    "trades": 508,
+    "win_rate": 0.6614173228346457,
+    "gross_profit": 423.34,
+    "gross_loss": 450.36,
+    "gross_pnl": -27.03,
+    "total_costs": 373.75,
+    "net_pnl": -400.77,
+    "profit_factor": 0.94,
+    "name": "0.2% fees + 5bps slippage (current)"
+  },
+  {
+    "fee_rate": 0.002,
+    "slippage_rate": 0.001,
+    "trades": 508,
+    "win_rate": 0.6614173228346457,
+    "gross_profit": 421.67,
+    "gross_loss": 448.52,
+    "gross_pnl": -26.85,
+    "total_costs": 446.81,
+    "net_pnl": -473.66,
+    "profit_factor": 0.94,
+    "name": "0.2% fees + 10bps slippage"
+  },
+  {
+    "fee_rate": 0.005,
+    "slippage_rate": 0.002,
+    "trades": 508,
+    "win_rate": 0.6614173228346457,
+    "gross_profit": 408.66,
+    "gross_loss": 434.14,
+    "gross_pnl": -25.48,
+    "total_costs": 1011.83,
+    "net_pnl": -1037.31,
+    "profit_factor": 0.94,
+    "name": "0.5% fees + 20bps slippage (stress)"
+  }
+]

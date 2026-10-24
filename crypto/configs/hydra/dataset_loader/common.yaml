@@ -1,0 +1,3 @@
+window_size: 5
+features: Date, open, High, Low, close, volume
+indicators_names: rsi macd

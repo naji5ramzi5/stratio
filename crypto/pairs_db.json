@@ -1,0 +1,744 @@
+{
+  "generated": "2026-08-08T17:37:58+00:00",
+  "results": [
+    {
+      "pair": "CRVUSDT/FLOKIUSDT",
+      "tf": "5m",
+      "sharpe": 23.94,
+      "n_trades": 7,
+      "win_rate": 1.0,
+      "total_ret_pct": 3.01,
+      "avg_ret_pct": 1.505
+    },
+    {
+      "pair": "1000SATSUSDT/SHIBUSDT",
+      "tf": "1d",
+      "sharpe": 55.74,
+      "n_trades": 6,
+      "win_rate": 0.83,
+      "total_ret_pct": 20.17,
+      "avg_ret_pct": 10.085
+    },
+    {
+      "pair": "1000SATSUSDT/ATOMUSDT",
+      "tf": "1d",
+      "sharpe": 33.84,
+      "n_trades": 5,
+      "win_rate": 1.0,
+      "total_ret_pct": 81.14,
+      "avg_ret_pct": 27.048
+    },
+    {
+      "pair": "FLOKIUSDT/SUIUSDT",
+      "tf": "1d",
+      "sharpe": 30.95,
+      "n_trades": 7,
+      "win_rate": 0.86,
+      "total_ret_pct": 58.25,
+      "avg_ret_pct": 19.416
+    },
+    {
+      "pair": "BONKUSDT/XRPUSDT",
+      "tf": "4h",
+      "sharpe": 16.86,
+      "n_trades": 25,
+      "win_rate": 0.6,
+      "total_ret_pct": 19.31,
+      "avg_ret_pct": 9.655
+    },
+    {
+      "pair": "CRVUSDT/LDOUSDT",
+      "tf": "4h",
+      "sharpe": 53.28,
+      "n_trades": 24,
+      "win_rate": 0.42,
+      "total_ret_pct": 14.03,
+      "avg_ret_pct": 7.014
+    },
+    {
+      "pair": "SEIUSDT/SHIBUSDT",
+      "tf": "4h",
+      "sharpe": 16.89,
+      "n_trades": 29,
+      "win_rate": 0.55,
+      "total_ret_pct": 18.72,
+      "avg_ret_pct": 9.358
+    },
+    {
+      "pair": "DOGEUSDT/SUIUSDT",
+      "tf": "4h",
+      "sharpe": 24.3,
+      "n_trades": 31,
+      "win_rate": 0.45,
+      "total_ret_pct": 16.43,
+      "avg_ret_pct": 8.214
+    },
+    {
+      "pair": "1000SATSUSDT/DOTUSDT",
+      "tf": "1h",
+      "sharpe": 6.9,
+      "n_trades": 34,
+      "win_rate": 0.62,
+      "total_ret_pct": 44.48,
+      "avg_ret_pct": 14.828
+    },
+    {
+      "pair": "1000SATSUSDT/SOLUSDT",
+      "tf": "1h",
+      "sharpe": 8.13,
+      "n_trades": 28,
+      "win_rate": 0.57,
+      "total_ret_pct": 11.74,
+      "avg_ret_pct": 3.914
+    },
+    {
+      "pair": "1000SATSUSDT/AAVEUSDT",
+      "tf": "1h",
+      "sharpe": 9.71,
+      "n_trades": 26,
+      "win_rate": 0.54,
+      "total_ret_pct": 33.84,
+      "avg_ret_pct": 11.28
+    },
+    {
+      "pair": "DOGEUSDT/WLDUSDT",
+      "tf": "1d",
+      "sharpe": 13.63,
+      "n_trades": 22,
+      "win_rate": 0.5,
+      "total_ret_pct": 31.28,
+      "avg_ret_pct": 15.642
+    },
+    {
+      "pair": "BONKUSDT/FILUSDT",
+      "tf": "5m",
+      "sharpe": 6.93,
+      "n_trades": 24,
+      "win_rate": 0.62,
+      "total_ret_pct": 5.79,
+      "avg_ret_pct": 2.895
+    },
+    {
+      "pair": "DOGEUSDT/FILUSDT",
+      "tf": "4h",
+      "sharpe": 11.42,
+      "n_trades": 6,
+      "win_rate": 0.83,
+      "total_ret_pct": 19.03,
+      "avg_ret_pct": 9.513
+    },
+    {
+      "pair": "1000SATSUSDT/XRPUSDT",
+      "tf": "4h",
+      "sharpe": 6.59,
+      "n_trades": 39,
+      "win_rate": 0.54,
+      "total_ret_pct": 24.91,
+      "avg_ret_pct": 6.228
+    },
+    {
+      "pair": "1000SATSUSDT/AVAXUSDT",
+      "tf": "1h",
+      "sharpe": 10.24,
+      "n_trades": 26,
+      "win_rate": 0.5,
+      "total_ret_pct": 39.61,
+      "avg_ret_pct": 13.204
+    },
+    {
+      "pair": "GALAUSDT/WLDUSDT",
+      "tf": "4h",
+      "sharpe": 9.64,
+      "n_trades": 38,
+      "win_rate": 0.45,
+      "total_ret_pct": 34.78,
+      "avg_ret_pct": 11.592
+    },
+    {
+      "pair": "AVAXUSDT/CRVUSDT",
+      "tf": "4h",
+      "sharpe": 5.52,
+      "n_trades": 26,
+      "win_rate": 0.62,
+      "total_ret_pct": 157.51,
+      "avg_ret_pct": 31.503
+    },
+    {
+      "pair": "1000SATSUSDT/GALAUSDT",
+      "tf": "4h",
+      "sharpe": 5.27,
+      "n_trades": 30,
+      "win_rate": 0.6,
+      "total_ret_pct": 27.79,
+      "avg_ret_pct": 5.558
+    },
+    {
+      "pair": "FILUSDT/XRPUSDT",
+      "tf": "4h",
+      "sharpe": 6.65,
+      "n_trades": 18,
+      "win_rate": 0.61,
+      "total_ret_pct": 36.25,
+      "avg_ret_pct": 12.082
+    },
+    {
+      "pair": "1000SATSUSDT/LTCUSDT",
+      "tf": "1h",
+      "sharpe": 5.99,
+      "n_trades": 32,
+      "win_rate": 0.53,
+      "total_ret_pct": 330.12,
+      "avg_ret_pct": 82.531
+    },
+    {
+      "pair": "BNBUSDT/SOLUSDT",
+      "tf": "4h",
+      "sharpe": 13.89,
+      "n_trades": 6,
+      "win_rate": 0.67,
+      "total_ret_pct": 6.04,
+      "avg_ret_pct": 3.021
+    },
+    {
+      "pair": "GALAUSDT/SEIUSDT",
+      "tf": "4h",
+      "sharpe": 3.78,
+      "n_trades": 30,
+      "win_rate": 0.63,
+      "total_ret_pct": 25.81,
+      "avg_ret_pct": 5.163
+    },
+    {
+      "pair": "1000SATSUSDT/TRXUSDT",
+      "tf": "1h",
+      "sharpe": 4.52,
+      "n_trades": 80,
+      "win_rate": 0.45,
+      "total_ret_pct": 73.89,
+      "avg_ret_pct": 24.629
+    },
+    {
+      "pair": "1000SATSUSDT/XRPUSDT",
+      "tf": "1h",
+      "sharpe": 4.24,
+      "n_trades": 48,
+      "win_rate": 0.52,
+      "total_ret_pct": 30.26,
+      "avg_ret_pct": 7.566
+    },
+    {
+      "pair": "ADAUSDT/SNXUSDT",
+      "tf": "1h",
+      "sharpe": 6.31,
+      "n_trades": 43,
+      "win_rate": 0.44,
+      "total_ret_pct": 126.32,
+      "avg_ret_pct": 63.159
+    },
+    {
+      "pair": "1000SATSUSDT/APTUSDT",
+      "tf": "1h",
+      "sharpe": 3.84,
+      "n_trades": 36,
+      "win_rate": 0.58,
+      "total_ret_pct": 20.5,
+      "avg_ret_pct": 5.124
+    },
+    {
+      "pair": "SNXUSDT/XRPUSDT",
+      "tf": "1h",
+      "sharpe": 5.3,
+      "n_trades": 5,
+      "win_rate": 1.0,
+      "total_ret_pct": 30.37,
+      "avg_ret_pct": 7.593
+    },
+    {
+      "pair": "CRVUSDT/WLDUSDT",
+      "tf": "4h",
+      "sharpe": 6.17,
+      "n_trades": 38,
+      "win_rate": 0.45,
+      "total_ret_pct": 50.72,
+      "avg_ret_pct": 25.362
+    },
+    {
+      "pair": "DOGEUSDT/INJUSDT",
+      "tf": "4h",
+      "sharpe": 3.52,
+      "n_trades": 29,
+      "win_rate": 0.62,
+      "total_ret_pct": 38.7,
+      "avg_ret_pct": 9.675
+    },
+    {
+      "pair": "1000SATSUSDT/BCHUSDT",
+      "tf": "1h",
+      "sharpe": 6.24,
+      "n_trades": 27,
+      "win_rate": 0.48,
+      "total_ret_pct": 31.13,
+      "avg_ret_pct": 10.376
+    },
+    {
+      "pair": "ADAUSDT/SEIUSDT",
+      "tf": "4h",
+      "sharpe": 5.46,
+      "n_trades": 25,
+      "win_rate": 0.52,
+      "total_ret_pct": 26.14,
+      "avg_ret_pct": 13.068
+    },
+    {
+      "pair": "1000SATSUSDT/SEIUSDT",
+      "tf": "4h",
+      "sharpe": 5.24,
+      "n_trades": 20,
+      "win_rate": 0.55,
+      "total_ret_pct": 60.66,
+      "avg_ret_pct": 30.332
+    },
+    {
+      "pair": "1000SATSUSDT/UNIUSDT",
+      "tf": "1h",
+      "sharpe": 4.27,
+      "n_trades": 48,
+      "win_rate": 0.46,
+      "total_ret_pct": 40.78,
+      "avg_ret_pct": 13.592
+    },
+    {
+      "pair": "FILUSDT/SNXUSDT",
+      "tf": "1h",
+      "sharpe": 4.67,
+      "n_trades": 39,
+      "win_rate": 0.46,
+      "total_ret_pct": 118.73,
+      "avg_ret_pct": 29.683
+    },
+    {
+      "pair": "STXUSDT/WLDUSDT",
+      "tf": "4h",
+      "sharpe": 3.52,
+      "n_trades": 38,
+      "win_rate": 0.53,
+      "total_ret_pct": 15.6,
+      "avg_ret_pct": 5.2
+    },
+    {
+      "pair": "BONKUSDT/LTCUSDT",
+      "tf": "5m",
+      "sharpe": 4.88,
+      "n_trades": 26,
+      "win_rate": 0.5,
+      "total_ret_pct": 24.81,
+      "avg_ret_pct": 12.407
+    },
+    {
+      "pair": "1000SATSUSDT/COMPUSDT",
+      "tf": "1h",
+      "sharpe": 5.11,
+      "n_trades": 29,
+      "win_rate": 0.45,
+      "total_ret_pct": 148.07,
+      "avg_ret_pct": 74.035
+    },
+    {
+      "pair": "SHIBUSDT/WLDUSDT",
+      "tf": "4h",
+      "sharpe": 2.83,
+      "n_trades": 8,
+      "win_rate": 0.88,
+      "total_ret_pct": 87.17,
+      "avg_ret_pct": 29.058
+    },
+    {
+      "pair": "1000SATSUSDT/ADAUSDT",
+      "tf": "1h",
+      "sharpe": 3.43,
+      "n_trades": 19,
+      "win_rate": 0.58,
+      "total_ret_pct": 184.37,
+      "avg_ret_pct": 46.093
+    },
+    {
+      "pair": "AVAXUSDT/DOGEUSDT",
+      "tf": "4h",
+      "sharpe": 3.83,
+      "n_trades": 13,
+      "win_rate": 0.62,
+      "total_ret_pct": 48.8,
+      "avg_ret_pct": 16.268
+    },
+    {
+      "pair": "BONKUSDT/BTCUSDT",
+      "tf": "5m",
+      "sharpe": 4.98,
+      "n_trades": 25,
+      "win_rate": 0.44,
+      "total_ret_pct": 365.9,
+      "avg_ret_pct": 182.949
+    },
+    {
+      "pair": "AVAXUSDT/SOLUSDT",
+      "tf": "1h",
+      "sharpe": 4.82,
+      "n_trades": 31,
+      "win_rate": 0.42,
+      "total_ret_pct": 84.61,
+      "avg_ret_pct": 42.304
+    },
+    {
+      "pair": "BONKUSDT/STXUSDT",
+      "tf": "5m",
+      "sharpe": 3.22,
+      "n_trades": 29,
+      "win_rate": 0.52,
+      "total_ret_pct": 73.2,
+      "avg_ret_pct": 24.401
+    },
+    {
+      "pair": "BONKUSDT/STXUSDT",
+      "tf": "1h",
+      "sharpe": 3.42,
+      "n_trades": 37,
+      "win_rate": 0.46,
+      "total_ret_pct": 7.22,
+      "avg_ret_pct": 3.61
+    },
+    {
+      "pair": "1000SATSUSDT/CRVUSDT",
+      "tf": "1h",
+      "sharpe": 2.73,
+      "n_trades": 50,
+      "win_rate": 0.46,
+      "total_ret_pct": 28.22,
+      "avg_ret_pct": 9.406
+    },
+    {
+      "pair": "1000SATSUSDT/RUNEUSDT",
+      "tf": "1d",
+      "sharpe": 4.61,
+      "n_trades": 8,
+      "win_rate": 0.62,
+      "total_ret_pct": 22.52,
+      "avg_ret_pct": 11.258
+    },
+    {
+      "pair": "BONKUSDT/FLOKIUSDT",
+      "tf": "4h",
+      "sharpe": 5.17,
+      "n_trades": 22,
+      "win_rate": 0.41,
+      "total_ret_pct": 48.83,
+      "avg_ret_pct": 12.208
+    },
+    {
+      "pair": "ARBUSDT/FLOKIUSDT",
+      "tf": "4h",
+      "sharpe": 4.36,
+      "n_trades": 20,
+      "win_rate": 0.45,
+      "total_ret_pct": 391.98,
+      "avg_ret_pct": 195.992
+    },
+    {
+      "pair": "BONKUSDT/TRXUSDT",
+      "tf": "5m",
+      "sharpe": 4.38,
+      "n_trades": 22,
+      "win_rate": 0.41,
+      "total_ret_pct": 61.89,
+      "avg_ret_pct": 30.946
+    },
+    {
+      "pair": "SNXUSDT/SUIUSDT",
+      "tf": "5m",
+      "sharpe": 4.29,
+      "n_trades": 18,
+      "win_rate": 0.44,
+      "total_ret_pct": 18.11,
+      "avg_ret_pct": 6.036
+    },
+    {
+      "pair": "BONKUSDT/ETHUSDT",
+      "tf": "5m",
+      "sharpe": 4.37,
+      "n_trades": 20,
+      "win_rate": 0.4,
+      "total_ret_pct": 67.87,
+      "avg_ret_pct": 33.935
+    },
+    {
+      "pair": "AVAXUSDT/SEIUSDT",
+      "tf": "4h",
+      "sharpe": 2.39,
+      "n_trades": 6,
+      "win_rate": 0.83,
+      "total_ret_pct": 228.67,
+      "avg_ret_pct": 114.337
+    },
+    {
+      "pair": "FILUSDT/PEPEUSDT",
+      "tf": "5m",
+      "sharpe": 2.88,
+      "n_trades": 5,
+      "win_rate": 0.8,
+      "total_ret_pct": 0.97,
+      "avg_ret_pct": 0.487
+    },
+    {
+      "pair": "FLOKIUSDT/SOLUSDT",
+      "tf": "5m",
+      "sharpe": 5.03,
+      "n_trades": 5,
+      "win_rate": 0.6,
+      "total_ret_pct": 1.23,
+      "avg_ret_pct": 0.613
+    },
+    {
+      "pair": "FLOKIUSDT/SUIUSDT",
+      "tf": "4h",
+      "sharpe": 2.66,
+      "n_trades": 18,
+      "win_rate": 0.5,
+      "total_ret_pct": 17.21,
+      "avg_ret_pct": 5.738
+    },
+    {
+      "pair": "BONKUSDT/INJUSDT",
+      "tf": "4h",
+      "sharpe": 3.37,
+      "n_trades": 19,
+      "win_rate": 0.42,
+      "total_ret_pct": 39.32,
+      "avg_ret_pct": 19.662
+    },
+    {
+      "pair": "ATOMUSDT/STXUSDT",
+      "tf": "4h",
+      "sharpe": 4.39,
+      "n_trades": 8,
+      "win_rate": 0.5,
+      "total_ret_pct": 7.48,
+      "avg_ret_pct": 3.739
+    },
+    {
+      "pair": "1000SATSUSDT/LINKUSDT",
+      "tf": "1h",
+      "sharpe": 1.93,
+      "n_trades": 39,
+      "win_rate": 0.46,
+      "total_ret_pct": 100.36,
+      "avg_ret_pct": 25.091
+    },
+    {
+      "pair": "1000SATSUSDT/ARBUSDT",
+      "tf": "4h",
+      "sharpe": 1.55,
+      "n_trades": 28,
+      "win_rate": 0.57,
+      "total_ret_pct": 35.57,
+      "avg_ret_pct": 8.892
+    },
+    {
+      "pair": "1000SATSUSDT/COMPUSDT",
+      "tf": "4h",
+      "sharpe": 3.51,
+      "n_trades": 8,
+      "win_rate": 0.5,
+      "total_ret_pct": 13.72,
+      "avg_ret_pct": 6.859
+    },
+    {
+      "pair": "SNXUSDT/WLDUSDT",
+      "tf": "4h",
+      "sharpe": 4.46,
+      "n_trades": 6,
+      "win_rate": 0.5,
+      "total_ret_pct": 79.42,
+      "avg_ret_pct": 39.712
+    },
+    {
+      "pair": "1000SATSUSDT/SEIUSDT",
+      "tf": "1h",
+      "sharpe": 1.27,
+      "n_trades": 68,
+      "win_rate": 0.44,
+      "total_ret_pct": 11.82,
+      "avg_ret_pct": 3.94
+    },
+    {
+      "pair": "1000SATSUSDT/INJUSDT",
+      "tf": "5m",
+      "sharpe": 2.01,
+      "n_trades": 8,
+      "win_rate": 0.62,
+      "total_ret_pct": 1.62,
+      "avg_ret_pct": 0.808
+    },
+    {
+      "pair": "1000SATSUSDT/BTCUSDT",
+      "tf": "1h",
+      "sharpe": 1.33,
+      "n_trades": 29,
+      "win_rate": 0.52,
+      "total_ret_pct": 159.19,
+      "avg_ret_pct": 39.797
+    },
+    {
+      "pair": "BNBUSDT/CRVUSDT",
+      "tf": "1d",
+      "sharpe": 1.62,
+      "n_trades": 9,
+      "win_rate": 0.67,
+      "total_ret_pct": 7.52,
+      "avg_ret_pct": 3.758
+    },
+    {
+      "pair": "LDOUSDT/XRPUSDT",
+      "tf": "4h",
+      "sharpe": 2.91,
+      "n_trades": 5,
+      "win_rate": 0.6,
+      "total_ret_pct": 17.76,
+      "avg_ret_pct": 8.879
+    },
+    {
+      "pair": "SEIUSDT/WLDUSDT",
+      "tf": "4h",
+      "sharpe": 2.34,
+      "n_trades": 7,
+      "win_rate": 0.57,
+      "total_ret_pct": 14.4,
+      "avg_ret_pct": 7.201
+    },
+    {
+      "pair": "FLOKIUSDT/LDOUSDT",
+      "tf": "4h",
+      "sharpe": 2.61,
+      "n_trades": 5,
+      "win_rate": 0.6,
+      "total_ret_pct": 8.2,
+      "avg_ret_pct": 4.102
+    },
+    {
+      "pair": "APTUSDT/SEIUSDT",
+      "tf": "1d",
+      "sharpe": 1.28,
+      "n_trades": 31,
+      "win_rate": 0.48,
+      "total_ret_pct": 15.66,
+      "avg_ret_pct": 7.831
+    },
+    {
+      "pair": "AVAXUSDT/XRPUSDT",
+      "tf": "4h",
+      "sharpe": 1.76,
+      "n_trades": 6,
+      "win_rate": 0.67,
+      "total_ret_pct": 15.08,
+      "avg_ret_pct": 7.539
+    },
+    {
+      "pair": "BONKUSDT/LDOUSDT",
+      "tf": "4h",
+      "sharpe": 2.03,
+      "n_trades": 7,
+      "win_rate": 0.57,
+      "total_ret_pct": 74.54,
+      "avg_ret_pct": 37.272
+    },
+    {
+      "pair": "DOTUSDT/JUPUSDT",
+      "tf": "1d",
+      "sharpe": 2.8,
+      "n_trades": 6,
+      "win_rate": 0.5,
+      "total_ret_pct": 20.47,
+      "avg_ret_pct": 10.237
+    },
+    {
+      "pair": "ADAUSDT/CRVUSDT",
+      "tf": "4h",
+      "sharpe": 2.23,
+      "n_trades": 5,
+      "win_rate": 0.6,
+      "total_ret_pct": 4.84,
+      "avg_ret_pct": 2.421
+    },
+    {
+      "pair": "ETCUSDT/LINKUSDT",
+      "tf": "1h",
+      "sharpe": 1.64,
+      "n_trades": 5,
+      "win_rate": 0.6,
+      "total_ret_pct": 226.55,
+      "avg_ret_pct": 75.517
+    },
+    {
+      "pair": "INJUSDT/SEIUSDT",
+      "tf": "4h",
+      "sharpe": 1.14,
+      "n_trades": 17,
+      "win_rate": 0.41,
+      "total_ret_pct": 6.5,
+      "avg_ret_pct": 1.625
+    },
+    {
+      "pair": "INJUSDT/WLDUSDT",
+      "tf": "4h",
+      "sharpe": 1.64,
+      "n_trades": 7,
+      "win_rate": 0.43,
+      "total_ret_pct": 30.97,
+      "avg_ret_pct": 15.485
+    },
+    {
+      "pair": "BONKUSDT/DOTUSDT",
+      "tf": "5m",
+      "sharpe": 0.71,
+      "n_trades": 31,
+      "win_rate": 0.42,
+      "total_ret_pct": 1.07,
+      "avg_ret_pct": 0.535
+    },
+    {
+      "pair": "CRVUSDT/DOTUSDT",
+      "tf": "15m",
+      "sharpe": 0.88,
+      "n_trades": 9,
+      "win_rate": 0.44,
+      "total_ret_pct": 1.03,
+      "avg_ret_pct": 0.515
+    },
+    {
+      "pair": "ETCUSDT/XRPUSDT",
+      "tf": "4h",
+      "sharpe": 0.56,
+      "n_trades": 22,
+      "win_rate": 0.45,
+      "total_ret_pct": 4.54,
+      "avg_ret_pct": 1.134
+    },
+    {
+      "pair": "AAVEUSDT/SNXUSDT",
+      "tf": "5m",
+      "sharpe": 0.98,
+      "n_trades": 5,
+      "win_rate": 0.4,
+      "total_ret_pct": 0.81,
+      "avg_ret_pct": 0.403
+    },
+    {
+      "pair": "PEPEUSDT/STXUSDT",
+      "tf": "1d",
+      "sharpe": 0.65,
+      "n_trades": 7,
+      "win_rate": 0.43,
+      "total_ret_pct": 6.25,
+      "avg_ret_pct": 3.126
+    }
+  ],
+  "filtered_at": "2026-08-08T17:37:58+00:00"
+}
