@@ -341,6 +341,14 @@ def get_symbols_by_volume(limit: int = 30,
 
 # ─── TECHNICAL ANALYSIS ─────────────────────────────────────────
 def compute_ema(prices: np.ndarray, period: int) -> np.ndarray:
+    prices = np.asarray(prices, dtype=float)
+    if prices.size == 0:
+        return np.zeros(0)
+    if prices.size < period:
+        # Newly listed pairs can have fewer candles than the EMA period.
+        # A flat EMA at the mean keeps callers working instead of raising
+        # "index 8 is out of bounds for axis 0 with size 6".
+        return np.full(prices.size, float(np.mean(prices)))
     ema = np.zeros_like(prices)
     ema[period - 1] = np.mean(prices[:period])
     k = 2 / (period + 1)
@@ -362,7 +370,11 @@ def compute_rsi(prices: np.ndarray, period: int = 14) -> float:
     return round(100 - (100 / (1 + rs)), 2)
 
 def compute_macd(prices: np.ndarray) -> dict:
-    if len(prices) < 26:
+    # 26 candles build the MACD line, but the 9-period signal EMA needs 9 more
+    # points after macd_line[25:].  With 26..33 candles the old guard passed and
+    # compute_ema then raised IndexError, which killed analysis for every newly
+    # listed pair (e.g. HYPEUSDT, RLUSDUSDT).
+    if len(prices) < 34:
         return {"macd": 0, "signal": 0, "hist": 0, "trend": "Neutral"}
     ema12 = compute_ema(prices, 12)
     ema26 = compute_ema(prices, 26)
