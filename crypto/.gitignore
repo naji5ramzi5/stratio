@@ -59,3 +59,4 @@ output.txt
 *.bak
 *.bak_*
 *.log.*
+daily_report_*.json
