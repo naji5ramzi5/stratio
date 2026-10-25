@@ -1225,6 +1225,18 @@ def run_prediction_scan():
     v = verify_predictions()
     if v:
         logger.info(f"[BOT3] Verified {v} predictions")
+    # Close out matured predictions in prediction_accuracy.json.  Only train.py
+    # calls verify_prediction(), so on a live server the verified sample count
+    # never grows and calibrated confidence would freeze at whatever it was on
+    # day one.  max_late_factor=1.5 stops stale rows from being scored on a
+    # multi-day move, which would fake the accuracy numbers.
+    try:
+        from prediction_tracker import prediction_tracker as _pt
+        _closed = _pt.verify_all(get_all_prices(), max_late_factor=1.5)
+        if _closed:
+            logger.info(f"[TRACKER] verified {_closed} matured predictions")
+    except Exception as e:
+        logger.warning(f"[TRACKER] verify_all skipped: {e}")
     # Clear ML feature cache for fresh data
     try:
         from ml_trainer import clear_feature_cache

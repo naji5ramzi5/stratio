@@ -176,7 +176,15 @@ class PredictionTracker:
             self.data = data
             return verified_count
 
-    def verify_all(self, current_prices, max_age_hours=720):
+    def verify_all(self, current_prices, max_age_hours=720, max_late_factor=None):
+        """Verify matured predictions against current prices.
+
+        ``max_late_factor`` keeps the measurement honest: a 2h prediction that
+        is only noticed 3 days later would otherwise be scored on a 3-day move,
+        which inflates MAE and fakes the direction accuracy.  When it is set,
+        only predictions between 0.9x and ``max_late_factor`` x their horizon
+        are closed out; older ones stay unverified and are simply ignored.
+        """
         if not current_prices:
             return 0
         cutoff = datetime.now() - timedelta(hours=max_age_hours)
@@ -200,6 +208,9 @@ class PredictionTracker:
                     continue
                 age_hours = (now - pred_time).total_seconds() / 3600
                 if age_hours < pred["timeframe_hours"] * 0.9:
+                    continue
+                if (max_late_factor is not None
+                        and age_hours > pred["timeframe_hours"] * max_late_factor):
                     continue
                 actual = (safe_float(price) / entry - 1.0) * 100.0
                 pred["actual_change_pct"] = actual
