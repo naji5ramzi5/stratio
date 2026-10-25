@@ -1,8 +1,8 @@
-# ── Secrets ────────────────────────────────────────────────
+﻿# â”€â”€ Secrets â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
 .env
 .env.*
 
-# ── Python ─────────────────────────────────────────────────
+# â”€â”€ Python â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
 __pycache__/
 *.py[cod]
 *.egg-info/
@@ -11,7 +11,7 @@ venv/
 .pytest_cache/
 .mypy_cache/
 
-# ── Runtime state / logs (generated, machine-local) ────────
+# â”€â”€ Runtime state / logs (generated, machine-local) â”€â”€â”€â”€â”€â”€â”€â”€
 *.log
 .tracker_*
 predictions.json
@@ -23,7 +23,7 @@ smart_money_log.json
 paper_trading.json
 training_buffer.json
 
-# ── Generated model artifacts ──────────────────────────────
+# â”€â”€ Generated model artifacts â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
 models/*.pkl
 models/calibration.json
 ppo_models/
@@ -31,17 +31,17 @@ ppo_models/
 *.pt
 *.onnx
 
-# ── Data caches / downloads ────────────────────────────────
+# â”€â”€ Data caches / downloads â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
 data/
 *-data.csv
 
-# ── IDE / OS ───────────────────────────────────────────────
+# â”€â”€ IDE / OS â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
 .vscode/
 .idea/
 Thumbs.db
 .DS_Store
 
-# ── Data dumps / runtime state (never commit) ───────────────────
+# â”€â”€ Data dumps / runtime state (never commit) â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
 news_events.jsonl
 prediction_history.json.*
 prediction_accuracy_verified.json
@@ -58,3 +58,4 @@ output.txt
 *.err
 *.bak
 *.bak_*
+*.log.*
