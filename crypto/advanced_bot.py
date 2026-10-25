@@ -46,8 +46,13 @@ def fmt_baghdad(dt=None):
     dt = dt or now_baghdad()
     return dt.strftime("%Y-%m-%d %H:%M AST")
 
+# Load .env from the script's own folder FIRST, then CWD, then project root.
+# (On a server the CWD is often /root or the repo root, so relying on CWD alone
+# silently left every token empty and no bot could send.)
+_HERE = os.path.dirname(os.path.abspath(__file__))
+load_dotenv(os.path.join(_HERE, ".env"))
 load_dotenv()
-load_dotenv(os.path.join(os.path.dirname(os.path.abspath(__file__)), "..", ".env"))
+load_dotenv(os.path.join(_HERE, "..", ".env"))
 
 BINANCE_BASE     = os.getenv("BINANCE_BASE", "https://data-api.binance.vision")
 BINANCE_FAPI     = "https://fapi.binance.com"
@@ -156,6 +161,15 @@ def send_telegram(token: str, message: str, parse_mode: str = "Markdown"):
             }, timeout=TELEGRAM_TIMEOUT)
             if resp.status_code == 400 and "chat not found" in resp.text:
                 pass  # user didn't start bot, skip silently
+            elif resp.status_code == 400 and "parse" in resp.text.lower():
+                # A malformed Markdown entity must never silence a signal.
+                # Resend the exact same text without parse_mode.
+                r2 = sess.post(url, json={"chat_id": uid, "text": message},
+                               timeout=TELEGRAM_TIMEOUT)
+                if r2.status_code != 200:
+                    logger.warning(f"Telegram {uid} plain-text retry failed: {r2.text[:80]}")
+                else:
+                    logger.info(f"Telegram {uid}: Markdown rejected, sent as plain text")
             elif resp.status_code != 200:
                 logger.warning(f"Telegram {uid}: {resp.text[:80]}")
         except Exception as e:
@@ -248,14 +262,31 @@ def get_long_short_ratio(symbol: str) -> dict:
     return get_binance("/futures/data/globalLongShortAccountRatio",
                        {"symbol": symbol, "period": "1h", "limit": 1}, futures=True)
 
+# Pairs that cannot produce a meaningful directional forecast: stablecoins,
+# tokenised gold and other pegs.  "USDC +3% in 24h" is noise that wastes a
+# prediction slot and can never become a trade.
+_NON_FORECASTABLE_BASES = {
+    "USDC", "USDT", "BUSD", "TUSD", "FDUSD", "USDP", "DAI", "USD1",
+    "BFUSD", "EUR", "EURI", "AEUR", "PAXG", "XAUT",
+}
+
+
+def _is_forecastable(sym: str) -> bool:
+    """False for stablecoin/gold pairs that should never be scanned."""
+    base = sym[:-4] if sym.endswith("USDT") else sym
+    return base.upper() not in _NON_FORECASTABLE_BASES
+
+
 def get_qualified_symbols(min_volume: float = MIN_24H_VOLUME_USDT) -> list:
     data = get_binance("/api/v3/ticker/24hr")
     if not isinstance(data, list):
+        logger.warning(f"[FILTER] Binance ticker unavailable (got {type(data).__name__}); "
+                       f"cannot build symbol list")
         return []
     qualified = []
     for t in data:
         sym = t.get("symbol", "")
-        if not sym.endswith("USDT"):
+        if not sym.endswith("USDT") or not _is_forecastable(sym):
             continue
         try:
             if float(t.get("quoteVolume", 0)) >= min_volume:
@@ -277,6 +308,36 @@ def get_qualified_symbols(min_volume: float = MIN_24H_VOLUME_USDT) -> list:
         logger.info(f"  ... and {len(usdt_pairs) - 20} more USDT pairs")
     
     return sorted(qualified)
+
+
+def get_symbols_by_volume(limit: int = 30,
+                          min_volume: float = MIN_24H_VOLUME_USDT) -> list:
+    """Top-N USDT pairs by 24h quote volume.
+
+    The old code did ``get_qualified_symbols()[:15]``, which is alphabetical:
+    it always predicted AAVE..BTC and never ETH, SOL, XRP, DOGE, etc.  Ranking
+    by volume keeps the majors in every scan.
+    """
+    data = get_binance("/api/v3/ticker/24hr")
+    if not isinstance(data, list):
+        logger.warning("[FILTER] Binance ticker unavailable; cannot rank symbols by volume")
+        return []
+    rows = []
+    for t in data:
+        sym = t.get("symbol", "")
+        if not sym.endswith("USDT") or not _is_forecastable(sym):
+            continue
+        try:
+            vol = float(t.get("quoteVolume", 0) or 0)
+        except (TypeError, ValueError):
+            continue
+        if vol >= min_volume:
+            rows.append((vol, sym))
+    rows.sort(reverse=True)
+    out = [sym for _, sym in rows[:limit]]
+    logger.info(f"[FILTER] top {len(out)} by 24h volume: {', '.join(out[:8])}"
+                + (" ..." if len(out) > 8 else ""))
+    return out
 
 # ─── TECHNICAL ANALYSIS ─────────────────────────────────────────
 def compute_ema(prices: np.ndarray, period: int) -> np.ndarray:
@@ -1170,8 +1231,11 @@ def run_prediction_scan():
         clear_feature_cache()
     except Exception:
         pass
-    symbols = get_qualified_symbols()[:15]
+    # Rank by 24h volume, not alphabetically: the old [:15] slice always picked
+    # AAVE..BTC and never reached ETH, SOL, XRP or DOGE.
+    symbols = get_symbols_by_volume(15)
     if not symbols:
+        logger.warning("[BOT3] No symbols to predict (Binance ticker unavailable?)")
         return
     logger.info(f"[BOT3] Predicting {len(symbols)} symbols x {len(PREDICTION_TIMEFRAMES)} TFs...")
     ctx = get_market_context()
@@ -1181,10 +1245,16 @@ def run_prediction_scan():
             try:
                 r = predict_movement(sym, tf)
                 all_predictions.append(r)
-            except Exception:
-                pass
+                if "error" in r:
+                    logger.warning(f"[BOT3] {sym} {tf}h failed: {r['error']}")
+            except Exception as e:
+                logger.warning(f"[BOT3] {sym} {tf}h crashed: {e}")
         if (i + 1) % 10 == 0:
             logger.info(f"[BOT3] {i+1}/{len(symbols)} symbols predicted")
+    n_err = sum(1 for p in all_predictions if "error" in p)
+    if n_err:
+        logger.warning(f"[BOT3] {n_err}/{len(all_predictions)} predictions failed "
+                       f"(first: {next(p.get('error') for p in all_predictions if 'error' in p)})")
     # Save each prediction with metadata for future verification
     for p in all_predictions:
         if "error" not in p:
@@ -1512,11 +1582,16 @@ def run_full_scan(lite_mode=True):
     logger.info(f"🔍 Market scan at {fmt_baghdad()} (lite={lite_mode})")
     logger.info("=" * 60)
     
-    # Get symbols - limit to top 30 in lite mode for speed
-    all_symbols = get_qualified_symbols()
+    # Get symbols - limit to top 30 by volume in lite mode for speed.
+    # (Alphabetical order used to hide ETH/SOL/XRP/DOGE from every scan.)
+    if lite_mode:
+        symbols = get_symbols_by_volume(30)
+        all_symbols = symbols
+    else:
+        all_symbols = get_qualified_symbols()
+        symbols = all_symbols
     if not all_symbols:
         return
-    symbols = all_symbols[:30] if lite_mode else all_symbols
     logger.info(f"Scanning {len(symbols)} symbols (of {len(all_symbols)} qualified)...")
     
     p1_signals, p2_signals = [], []
@@ -1586,8 +1661,9 @@ def run_master_scan():
     logger.info("=" * 60)
     logger.info(f"🏆 Bot 4 – Master scan at {fmt_baghdad()}")
     logger.info("=" * 60)
-    symbols = get_qualified_symbols()[:30]
+    symbols = get_symbols_by_volume(15)
     if not symbols:
+        logger.warning("[BOT4] No symbols available (Binance ticker unavailable?)")
         return
     logger.info(f"[BOT4] Scanning {len(symbols)} for audited convergence...")
     try:
@@ -1628,14 +1704,45 @@ def run_master_scan():
     except Exception as e:
         logger.warning(f"[BOT4] Could not load prediction cache: {e}")
 
-    for sym in symbols:
-        if sym in cached_preds:
-            preds_by_sym[sym] = cached_preds[sym]
-        else:
-            logger.info(f"[BOT4] No cached pred for {sym}, skipping (use Bot3 scan)")
+    # Bot 4 only analyses symbols that Bot 3 actually predicted.  The volume
+    # ranking can shift between the two scans, so keep any cached symbol even
+    # if it dropped out of today's top list (capped so the scan stays fast).
+    scan_syms = [s for s in symbols if s in cached_preds]
+    for sym in cached_preds:
+        if sym not in scan_syms and len(scan_syms) < 18:
+            scan_syms.append(sym)
+    for sym in scan_syms:
+        preds_by_sym[sym] = cached_preds[sym]
+    skipped = [s for s in symbols if s not in cached_preds]
+    if skipped:
+        logger.info("[BOT4] No cached pred for %d symbol(s) (Bot3 covers the top 15): %s",
+                    len(skipped), ", ".join(skipped[:10]))
+    logger.info(f"[BOT4] Usable predictions for {len(preds_by_sym)} symbols")
 
     if not preds_by_sym:
-        logger.info("[BOT4] No cached predictions found. Run Bot3 scan first or wait for it.")
+        # Last-resort fallback so Boss is never blind.  The old comment above
+        # promised "fall back to live compute" but the code just returned, which
+        # is exactly why Boss went completely silent when Bot 3 produced nothing.
+        live_n = min(5, len(symbols))
+        logger.warning(f"[BOT4] No cached predictions in the last 2h; "
+                       f"computing {live_n} live fallback predictions")
+        for sym in symbols[:live_n]:
+            try:
+                r = predict_movement(sym, PREDICTION_TIMEFRAMES[0])
+                if r and "error" not in r:
+                    preds_by_sym[sym] = [r]
+                else:
+                    logger.warning(f"[BOT4] live fallback failed for {sym}: {(r or {}).get('error')}")
+            except Exception as e:
+                logger.warning(f"[BOT4] live fallback crashed for {sym}: {e}")
+
+    if not preds_by_sym:
+        logger.warning("[BOT4] Still no predictions; sending heartbeat instead of silence.")
+        send_telegram(BOT4_TOKEN,
+                      "📡 *Boss: مسح ماسح*\n"
+                      "Bot 3 لم ينتج توقعات جديدة ولم ينجح الحساب المباشر، لذلك لا يوجد ما يُفحص الآن.\n"
+                      "سأعيد المحاولة في الدورة القادمة.\n\n"
+                      f"🕒 {fmt_baghdad()} (بغداد)")
         return
 
     ctx = get_market_context()

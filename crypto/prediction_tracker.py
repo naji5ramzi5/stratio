@@ -109,7 +109,16 @@ class PredictionTracker:
             try:
                 with os.fdopen(fd, "w", encoding="utf-8") as f:
                     json.dump(data, f, ensure_ascii=False, indent=2)
-                os.replace(tmp, TRACKER_FILE)
+                # On Windows another reader (dashboard, antivirus) can hold the
+                # destination open for a moment; retry instead of losing the write.
+                for attempt in range(6):
+                    try:
+                        os.replace(tmp, TRACKER_FILE)
+                        break
+                    except PermissionError:
+                        if attempt == 5:
+                            raise
+                        time.sleep(0.25 * (attempt + 1))
             except Exception:
                 try:
                     os.remove(tmp)
